@@ -41,4 +41,3 @@ def find_element_by_xpath(driver: WebDriver, xpath: str, by: By = By.XPATH) -> W
         return driver.find_element(by=by, value=xpath)
     except Exception as e:
         raise Exception("It is not possible to find element by xpath" + xpath)
-
