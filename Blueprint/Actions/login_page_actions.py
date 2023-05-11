@@ -15,7 +15,7 @@ class LoginPage:
     title_locator = TITLE_LOCATOR
     username_label_locator = USERNAME_LABEL_LOCATOR
     password_label_locator = PASSWORD_LABEL_LOCATOR
-    URL_LOGIN = URL
+    URL_LOGIN = URL  # Move to URL class
 
     def __new__(cls):
         """Creates a unique instance of the session. Returns the created instance of the class."""
