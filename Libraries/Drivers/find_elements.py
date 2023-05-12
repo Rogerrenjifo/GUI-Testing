@@ -1,9 +1,9 @@
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class FindElements(object):
+    """A class that provides methods to locate web elements on a webpage."""
     def __init__(self, driver):
         self.driver = driver
 
@@ -16,10 +16,10 @@ class FindElements(object):
 
     def by_id(self, element_id: str, by: By = By.ID) -> WebElement:
         """Finds and returns a web element by its ID value."""
-        # try:
-        return self.driver.find_element(by=by, value=element_id)
-        # except Exception as e:
-        #     raise Exception("It is not possible to find element by id" + element_id)
+        try:
+            return self.driver.find_element(by=by, value=element_id)
+        except Exception as e:
+            raise Exception("It is not possible to find element by id" + element_id)
 
     def by_class(self, class_name: str, by: By = By.CLASS_NAME) -> WebElement:
         """Finds and returns a web element by its Class name."""
