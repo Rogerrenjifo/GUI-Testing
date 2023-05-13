@@ -6,5 +6,7 @@ class FlowsPageObjects(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.export_button = locators.EXPORT_BUTTON_LOCATOR
-        # self.find_element.by_xpath(self.export_button)
+        self.__publish_tab =locators.PUBLISH_TAB
+        self.__save_and_publish_button = locators.SAVE_AND_PUBLISH__BUTTON_LOCATOR
+        self.__popup_messages = locators.POPUP_MESSAGES_LOCATOR
+        self.__close_popup_messages = locators.CLOSE_POPUP_MESSAGES_LOCATOR
