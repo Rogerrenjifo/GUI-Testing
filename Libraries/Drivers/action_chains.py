@@ -8,4 +8,4 @@ class ActionsChains(object):
 
     def drag_and_drop_element(self, element, target):
         """Drags and drops an element"""
-        self.action_chains.drag_and_drop(element, target).perform()
+        self.action_chains.click_and_hold(element).move_to_element(target).release(target).perform()

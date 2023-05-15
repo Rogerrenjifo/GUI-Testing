@@ -8,11 +8,10 @@ class ComponentsActions(Components):
     def drag_and_drop_action(self, target) -> WebElement:
         """Drags and Drop action"""
         element = self.get_action_element()
-        action = ActionsChains(self.driver)
-        action.drag_and_drop_element(self.driver, element, target)
+        self.action_chains.drag_and_drop_element(element, target)
 
     def drag_and_drop_step(self, target) -> WebElement:
         """Drags and Drop step"""
         element = self.get_step_element()
-        action = ActionsChains(self.driver)
-        action.drag_and_drop_element(self.driver, element, target)
+        self.action_chains.drag_and_drop_element(element, target)
+        
