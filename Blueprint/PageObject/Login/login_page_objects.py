@@ -15,7 +15,6 @@ class LoginPageObjects(BasePage):
         self.__title = locators.TITLE_LOCATOR
         self.__username_label = locators.USERNAME_LABEL_LOCATOR
         self.__password_label = locators.PASSWORD_LABEL_LOCATOR
-        self.__URL_LOGIN = locators.URL
 
     def get_header(self) -> WebElement:
         """Finds and returns the header element of the page."""
