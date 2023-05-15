@@ -4,6 +4,7 @@ from Libraries.Drivers.action_chains import ActionsChains
 
 
 class ComponentsActions(Components):
+    """This class represents the components of a Blueprint application"""
 
     def drag_and_drop_action(self, target) -> WebElement:
         """Drags and Drop action"""
