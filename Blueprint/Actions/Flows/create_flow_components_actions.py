@@ -15,4 +15,3 @@ class ComponentsActions(Components):
         """Drags and Drop step"""
         element = self.get_step_element()
         self.action_chains.drag_and_drop_element(element, target)
-        

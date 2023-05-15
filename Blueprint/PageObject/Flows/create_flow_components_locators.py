@@ -1,7 +1,7 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import create_flow_components_locators as locators
 from Libraries.Drivers.base_page import BasePage
-# from Libraries.DataProcessors.find_elements import *
+
 
 class Components(BasePage):
     """This class represents components menu of create form"""
