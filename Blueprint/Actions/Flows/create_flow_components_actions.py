@@ -1,0 +1,18 @@
+from selenium.webdriver.remote.webelement import WebElement
+from Blueprint.PageObject.Flows.create_flow_components_locators import Components
+from Libraries.Drivers.action_chains import ActionsChains
+
+
+class ComponentsActions(Components):
+
+    def drag_and_drop_action(self, target) -> WebElement:
+        """Drags and Drop action"""
+        element = self.get_action_element()
+        action = ActionsChains(self.driver)
+        action.drag_and_drop_element(self.driver, element, target)
+
+    def drag_and_drop_step(self, target) -> WebElement:
+        """Drags and Drop step"""
+        element = self.get_step_element()
+        action = ActionsChains(self.driver)
+        action.drag_and_drop_element(self.driver, element, target)
