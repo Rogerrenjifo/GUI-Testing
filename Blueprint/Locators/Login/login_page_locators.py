@@ -1,0 +1,7 @@
+HEADER_LOCATOR = "kc-header"
+INPUT_LOCATOR = "username"
+PASSWORD_LOCATOR = "password"
+SIGN_IN_BUTTON_LOCATOR = "kc-login"
+TITLE_LOCATOR = "kc-page-title"
+USERNAME_LABEL_LOCATOR = "//div[@class='form-group']/label[text()='Username or email']"
+PASSWORD_LABEL_LOCATOR = "//div[@class='form-group']/label[text()='Password']"
