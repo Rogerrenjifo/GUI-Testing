@@ -26,6 +26,7 @@ class Browser(object):
     def navigate_to_url(self, url: str):
         """Navigates to the given URL"""
         try:
+            self.driver.maximize_window()
             return self.driver.get(url)
         except Exception as e:
             raise Exception("It is not possible to navigate to" + url)

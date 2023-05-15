@@ -6,7 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 
 class LoginPageObjects(BasePage):
     """This class represents the login page of a Blueprint application"""
-    _instance = None
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -39,17 +38,17 @@ class LoginPageObjects(BasePage):
         element = self.find_element.by_xpath(self.__password_label)
         return element
 
-    def get_username_element(self):
+    def get_username_element(self) -> WebElement:
         """Inserts the value of the 'USER' environment variable into the username input field."""
         element = self.find_element.by_id(self.__input_username)
         return element
 
-    def get_password_element(self):
+    def get_password_element(self) -> WebElement:
         """Inserts the value of the 'PASSWORD' environment variable into the password input field."""
         element = self.find_element.by_id(self.__input_password)
         return element
 
-    def get_sign_button_element(self):
+    def get_sign_button_element(self) -> WebElement:
         """Clicks the sign-in button element"""
         element = self.find_element.by_id(self.__sign_in_button)
         return element
