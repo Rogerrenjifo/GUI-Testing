@@ -28,12 +28,12 @@ class Browser(object):
         try:
             self.driver.maximize_window()
             return self.driver.get(url)
-        except Exception as e:
+        except Exception:
             raise Exception("It is not possible to navigate to" + url)
 
     def close_browser(self):
         """Closes the provided browser driver instance"""
         try:
             return self.driver.quit()
-        except Exception as e:
+        except Exception:
             raise Exception("It is not possible close de browser")

@@ -5,15 +5,15 @@ from Blueprint.PageObject.Login.login_page_objects import LoginPageObjects
 class LoginPageActions(LoginPageObjects):
     """This class represents the login page of a Blueprint application"""
 
-    def login(self):
-        """Logs a user with given credentials"""
-        self.get_username_element().send_keys(os.environ.get("USER"))
-        self.get_password_element().send_keys(os.environ.get("PASSWORD"))
-        self.get_sign_button_element().click()
+    def login(self, user, password):
+        """Log in user with given credentials"""
+        self.insert_username(user)
+        self.get_password_element().send_keys(password)
+        self.get_sign_in_button_element().click()
 
-    def insert_username(self):
+    def insert_username(self, user: str = os.environ.get("USER")):
         """Insert the username got from env file"""
-        self.get_username_element().send_keys(os.environ.get("USER"))
+        self.get_username_element().send_keys(user)
 
     def insert_password(self):
         """Insert the password got from env file"""

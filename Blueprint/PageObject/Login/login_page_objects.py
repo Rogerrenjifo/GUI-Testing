@@ -1,5 +1,4 @@
 from selenium.webdriver.remote.webelement import WebElement
-
 from Blueprint.Locators.Login import login_page_locators as locators
 from Libraries.Drivers.base_page import BasePage
 
@@ -48,7 +47,7 @@ class LoginPageObjects(BasePage):
         element = self.find_element.by_id(self.__input_password)
         return element
 
-    def get_sign_button_element(self) -> WebElement:
+    def get_sign_in_button_element(self) -> WebElement:
         """Clicks the sign-in button element"""
         element = self.find_element.by_id(self.__sign_in_button)
         return element
