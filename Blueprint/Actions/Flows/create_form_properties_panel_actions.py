@@ -39,7 +39,7 @@ class PropertiesPanelActions(PropertiesPanelObjects):
         """Gets number default value formatted"""
         self.get_number_default_value_formatted_noedit().text
     
-    def click_chackbox_default_checked_label(self):
+    def click_checkbox_default_checked_label(self):
         """Clicks checkbox default checked label"""
         self.get_checkbox_default_checked_label().click()
         
