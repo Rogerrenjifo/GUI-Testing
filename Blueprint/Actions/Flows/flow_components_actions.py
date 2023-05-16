@@ -7,13 +7,13 @@ class ComponentsActions(Components):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def drag_and_drop_action(self) -> WebElement:
+    def move_action_to_board(self) -> WebElement:
         """Drags and Drop action"""
         target = self.get_canvas_element()
         element = self.get_action_element()
         self.action_chains.drag_and_drop_element(element, target)
 
-    def drag_and_drop_step(self) -> WebElement:
+    def move_step_to_board(self) -> WebElement:
         """Drags and Drop step"""
         target = self.get_canvas_element()
         element = self.get_step_element()
