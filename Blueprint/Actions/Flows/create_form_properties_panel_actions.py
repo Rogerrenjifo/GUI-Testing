@@ -3,22 +3,22 @@ from Blueprint.PageObject.Flows.create_form_properties_panel_objects import Prop
 class PropertiesPanelActions(PropertiesPanelObjects):
     """This class represents the properties panel on the create form tab in flow page"""
     
-    def set_section_name(self, name):
+    def set_section_name(self, name: str):
         """"Sets section text name"""
         self.get_section_name_input().clear()
         self.get_section_name_input().send_keys(name)
     
-    def set_name(self, name):
+    def set_name(self, name: str):
         """Sets element text name"""
         self.get_name_input().clear()
         self.get_name_input().send_keys(name)
     
-    def set_placeholder(self, placeholder):
+    def set_placeholder(self, placeholder: str):
         """Sets element text placeholder"""
         self.get_placeholder_input().clear()
         self.get_placeholder_input().send_keys(placeholder)
         
-    def set_default_value(self, default_value):
+    def set_default_value(self, default_value: str):
         """Sets default value text"""
         self.get_default_value_input().clear()
         self.get_default_value_input().send_keys(default_value)
@@ -47,7 +47,7 @@ class PropertiesPanelActions(PropertiesPanelObjects):
         """Selects date format"""
         # TO DO
         
-    def set_add_dropdown_value(self, value):
+    def set_add_dropdown_value(self, value: str):
         """Sets a dropdown value on this input"""
         self.get_add_dropdown_value_input().send_keys(value)
         
