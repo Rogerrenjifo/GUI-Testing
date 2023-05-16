@@ -66,4 +66,3 @@ class PropertiesPanelActions(PropertiesPanelObjects):
     def select_userlist_value(self, value):
         """Selects userlist value"""
         # TO DO
-    
