@@ -21,7 +21,6 @@ class FindElements(object):
         except Exception:
             raise Exception("It is not possible to find element by id " + element_id)
 
-
     def by_class(self, class_name: str, by: By = By.CLASS_NAME) -> WebElement:
         """Finds and returns a web element by its Class name."""
         try:
@@ -35,7 +34,6 @@ class FindElements(object):
             return self.driver.find_element(by=by, value=tag_name)
         except Exception:
             raise Exception("It is not possible to find element by tag name " + tag_name)
-
 
     def by_xpath(self, xpath: str, by: By = By.XPATH) -> WebElement:
         """Finds and returns a web element by its Xpath."""
