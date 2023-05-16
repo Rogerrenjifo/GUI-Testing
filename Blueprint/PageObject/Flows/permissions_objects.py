@@ -14,7 +14,7 @@ class FlowPermissions(BasePage):
         self.__dropdownbox = locators.DROPDOWNBOX
         self.__save_button = locators.SAVE_BUTTON
         self.__scroll_bar = locators.SCROLL_BAR
-        self.__permissions_tab = locators.PERMISSIONS_BUTTON
+        self.__permissions_tab = locators.PERMISSIONS_TAB
 
     def get_permissions_tab(self) -> WebElement:
         """Finds and returns the permissions tab object"""

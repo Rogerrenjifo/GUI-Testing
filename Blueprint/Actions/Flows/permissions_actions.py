@@ -2,14 +2,15 @@ from Blueprint.PageObject.Flows.permissions_objects import FlowPermissions
 
 
 class FlowPermissionsActions(FlowPermissions):
-    """This class represents the login page of a Blueprint application"""
+    """This class represents the flow permissions of Blueprint application"""
 
-    def get_permission_label(self):
-        """Log in user with given credentials"""
+    def get_flow_permissions_title(self):
+        """returns the flow permissions title"""
         text = self.get_title_flow_permissions().text
         return text
 
     def click_on_permissions_tab(self):
+        """Clicks on permissions tab"""
         self.get_permissions_tab().click()
 
     def get_all_versions_title(self):
