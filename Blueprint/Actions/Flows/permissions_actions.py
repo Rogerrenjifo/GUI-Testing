@@ -48,3 +48,30 @@ class FlowPermissionsActions(FlowPermissions):
 
     def click_save_button(self):
         # TODO
+
+class ProcessPermissionsActions(ProcessPermissions):
+    """This class represents the process permission of a Blueprint application"""
+
+    def click_dropdown(self):
+        # TODO
+
+    def set_text(self):
+        # TODO
+
+    def delete_text(self):
+        # TODO
+
+    def dropdown_narrow(self):
+        # TODO
+
+    def scroll_dropdown_list(self):
+        # TODO
+
+    def select_user(self):
+        # TODO
+
+    def delete_user(self):
+        # TODO
+
+    def delete_all_users(self):
+        # TODO
