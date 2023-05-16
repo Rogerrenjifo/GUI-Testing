@@ -1,7 +1,6 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import header_locators as locators
 from Libraries.Drivers.base_page import BasePage
-import os
 
 class Header(BasePage):
     """This class represents the header of the Flow feature"""
@@ -26,32 +25,32 @@ class Header(BasePage):
         self.__icon_error_unmarked_locator = locators.ICON_ERROR_UNMARKED 
     
     def get_status(self) -> WebElement:
-        """Finds and returns the status element of the page."""
+        """Finds and returns the flow status element of the header."""
         element = self.find_element.by_class(self.__status_locator)
         return element
     
     def get_version(self) -> WebElement:
-        """Finds and returns the version element of the page."""
+        """Finds and returns the flow version element of the header."""
         element = self.find_element.by_class(self.__version_locator)
         return element
     
     def get_flow_name(self) -> WebElement:
-        """Finds and returns the flow name element of the page."""
+        """Finds and returns the flow name element of the header."""
         element = self.find_element.by_class(self.__flow_name_locator)
         return element
     
     def get_dropdown_button(self) -> WebElement:
-        """Finds and returns the dropdown element of the page."""
+        """Finds and returns the dropdown element of the header."""
         element = self.find_element.by_class(self.__flow_dropdown)
         return element
     
     def get_delete_option(self) -> WebElement:
-        """Finds and returns the delete option element of the page."""
+        """Finds and returns the delete option element in the dropdown of the header."""
         element = self.find_element.by_class(self.__delete_locator)
         return element
     
     def get_select_version_option(self) -> WebElement:
-        """Finds and returns the select version element of the page."""
+        """Finds and returns the select version element in the dropdown of the header."""
         element = self.find_element.by_class(self.__select_version_locator)
         return element
     
@@ -61,17 +60,17 @@ class Header(BasePage):
         return element
     
     def get_update_text(self) -> WebElement:
-        """Finds and returns the updated text element of the page."""
+        """Finds and returns the updated text element of the header."""
         element = self.find_element.by_class(self.__update_text_locator)
         return element
     
     def get_save_button(self) -> WebElement:
-        """Finds and returns the save button element of the page."""
+        """Finds and returns the save button element of the header."""
         element = self.find_element.by_class(self.__save_button_locator)
         return element
     
     def get_save_next_button(self) -> WebElement:
-        """Finds and returns the save and next button element of the page."""
+        """Finds and returns the save and next button element of the header."""
         element = self.find_element.by_class(self.__save_next_button_locator)
         return element  
     
