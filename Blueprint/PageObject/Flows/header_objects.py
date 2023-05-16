@@ -41,7 +41,7 @@ class Header(BasePage):
     
     def get_dropdown_button(self) -> WebElement:
         """Finds and returns the dropdown element of the header."""
-        element = self.find_element.by_class(self.__flow_dropdown)
+        element = self.find_element.by_xpath(self.__flow_dropdown)
         return element
     
     def get_delete_option(self) -> WebElement:
@@ -151,4 +151,3 @@ class Header(BasePage):
         bar_element = self.find_element.by_xpath(self.__bar_tab_unmarked_locator.replace('TAB_NAME','Publish'))
         icon_element = self.find_element.by_xpath(self.__icon_tab_unmarked_locator.replace('TAB_NAME','Publish'))
         return (bar_element & icon_element)
-    

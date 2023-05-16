@@ -1,7 +1,7 @@
 STATUS="//span[@class='uppercase bg-primary text-white rounded-md p-1 text-xs'][1]"
 VERSION="//span[@class='uppercase bg-primary text-white rounded-md p-1 text-xs'][2]"
 FLOW_NAME="text-2xl overflow-stepper-header"
-FLOW_DROPDOWN="outline-none focus:outline-none border-none bg-none rounded-md flex items-center hover:bg-white hover:cursor-pointer p-2"
+FLOW_DROPDOWN="//button[contains(@Class ,'outline-none focus:outline-none')]"
 DELETE="w-full flex"
 SELECT_VERSION="w-full text-left flex items-center"
 VERSIONS="//button[@class='text-left overflow-version-item w-full' and contains(text(),'v1')]"
