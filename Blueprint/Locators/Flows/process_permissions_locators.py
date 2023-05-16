@@ -5,5 +5,5 @@ SUBTITLE_INITIATE_PROCESS = "//label[@_ngcontent-yos-c155='' and @for='initiate-
 EMPTY_DROPDOWNBOX_TEXT ="//div[@class='ng-input']/descendant::input[@id='initiate-process']"
 DROPDOWNBOX_NARROW = "//span[@class='ng-arrow-wraper']"
 DROPDOWNBOX_INITIATE_PROCESS = "//div[@class='ng-select-container ng-has-value']"
-SCROLL_BAR = "//*[@id='a83895dc546a']/div"
+SCROLL_BAR = "//div[starts-with(@id, 'ac')]/div"
 DROPDOWNBOX_SECTIONS_VISIBILITY  = "//div[contains(@class,'sections')]//ng-select[@id='<<component_number>>']"
