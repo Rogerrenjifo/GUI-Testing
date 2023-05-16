@@ -6,6 +6,6 @@ class ActionsChains(object):
         self.driver = driver
         self.action_chains = ActionChains(self.driver)
 
-    def drag_and_drop_element(self, element, target):
+    def drag_and_drop_element(self, source, target):
         """Drags and drops an element"""
-        self.action_chains.click_and_hold(element).move_to_element(target).release(target).perform()
+        self.action_chains.click_and_hold(source).move_to_element(target).release(target).perform()
