@@ -1,9 +1,0 @@
-.gitignore
-.idea/
-example.py
-Flow.py
-__pycache__/
-*.log
-venv/
-*.html
-*.xml
