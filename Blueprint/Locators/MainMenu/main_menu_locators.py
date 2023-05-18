@@ -1,0 +1,6 @@
+MY_INBOX_BUTTON = "//div[@class='link-title flex' and text()=' My Inbox ']"
+PROJECTS_BUTTON = "//div[@class='link-title' and text()='Projects']"
+REPORTS_BUTTON = "//div[@class='link-title' and text()='Reports']"
+FLOWS_BUTTON = "//div[@class='link-title' and text()='Flows']"
+USERS_AND_GROUPS_BUTTON = "//div[@class='link-title' and text()='Users & Groups']"
+PROJECT_RESULTS = "//app-projects-menu-item//app-sublist-item"
