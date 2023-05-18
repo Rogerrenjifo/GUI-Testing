@@ -1,0 +1,11 @@
+CONTAINER = "//app-properties//div[contains(@class,'properties-container')]",
+HEADER_TITLE = "//app-properties//h2",
+SEL_TYPE = "//ng-select[@id='type']",
+TXT_CMP_NAME = "//input[@id='name']",
+BODY_PROPERTIES = "//app-properties//div[@class='overflow-sidenav']",
+BODY_UPPPER = "//app-properties//div[@class='mt-4']",
+BODY_LOWER = "//app-properties//div[@class='mt-7']",
+CHK_ADD_COMMENT = "//input[@id='add-comment']",
+CHK_UPDATE_FIELDS = "//input[@id='update-form-fields']",
+OWNER = "//input[@id='owner-type']",
+SEL_ADD_FIELDS = "//div[@class='properties-field-container-action']//div[@class='ng-input']"
