@@ -1,4 +1,3 @@
-
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import create_form_elements_locators as locators
 from Libraries.Drivers.base_page import BasePage

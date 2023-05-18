@@ -21,9 +21,11 @@ class ActionsChains(object):
         if direction.lower() == "down":
             self.action_chains.click_and_hold(source).move_to_element(target).\
                 move_by_offset(0, 10).release().perform()
+            logger.info(f"The element {source.text} is moved under of {target.text}")
         elif direction.lower() == "up":
             self.action_chains.click_and_hold(source).move_to_element(target).\
                 move_by_offset(0, -10).release().perform()
+            logger.info(f"The element {source.text} is moved up to {target.text}")
         else:
             logger.info(f"The input '{direction}' is an invalid direction, "
                         f"please send 'up' or 'down'")
