@@ -23,6 +23,7 @@ time.sleep(30)
 create_flow = browser.find_element(By.XPATH, "//main[text()=' Create Flow ']")
 create_flow.click()
 
+
 step_comp = browser.find_element(By.XPATH, "//p[text()=' Step ']")
 action_comp = browser.find_element(By.XPATH, "//p[text()=' Action ']")
 canvas = browser.find_element(By.ID, "canvas")
@@ -44,15 +45,26 @@ action_comp2 = browser.find_element(By.XPATH, '(//div[contains(@class,"endpoint0
 time.sleep(10)
 action.click_and_hold(step_comp2).move_to_element(action_comp2).release(action_comp2).perform()
 time.sleep(10)
+step_initial = browser.find_element(By.ID, "first")
 
-
-
-from selenium.webdriver.support.ui import Select
-
-def click_dropdown_option(driver, dropdown_id, option_text):
-    dropdown = Select(driver.find_element_by_id(dropdown_id))
-    dropdown.select_by_visible_text(option_text)
+publishtab = browser.find_element(By.XPATH, "//main[@class='text-sm text-left text-black flex' and text()=' Publish ']")
+publishtab.click()
 
 
 
 
+# from selenium.webdriver.support.ui import Select
+
+# def click_dropdown_option(driver, dropdown_id, option_text):
+#     dropdown = Select(driver.find_element_by_id(dropdown_id))
+#     dropdown.select_by_visible_text(option_text)
+
+
+
+
+    self.__publish_tabb = "//main[@class='text-sm text-left text-black flex' and text()=' Publish ']"
+
+    def publish_tab(self):
+        """Returns the element of save and publish button"""
+        element = self.find_element.by_xpath(self.__publish_tabb)
+        return element
