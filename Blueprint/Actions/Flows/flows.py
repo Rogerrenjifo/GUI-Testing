@@ -18,7 +18,7 @@ class Flows():
         self.__create_form_main_panel = FormMainPanelActions(self.driver)
         self.__create_form_properties_panel = PropertiesPanelActions(self.driver)
         self.__create_flow_main_panel = FlowMainPanelActions(self.driver)
-        self.__create_flow_properties = FlowPropertiesActions()
+        self.__create_flow_properties = FlowPropertiesActions(self.driver)
         self.__create_flow_components = ComponentsActions(self.driver)
         self.__header = HeaderActions(self.driver)
         self.__permissions_tab = FlowPermissionsActions(self.driver)
