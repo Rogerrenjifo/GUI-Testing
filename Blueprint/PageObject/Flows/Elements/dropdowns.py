@@ -46,7 +46,9 @@ class Dropdownbox(BasePage):
         return message
 
     def scroll_down(self):
+        """Moves the scroll bar"""
         # TODO
 
     def delete_selected_user(self):
+        """Deletes a specific user from dropdown"""
         # TODO
