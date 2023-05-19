@@ -33,3 +33,17 @@ class ActionsChains(object):
     def custom_click_element(self, source: WebElement):
         """Clicks on a side of an element"""
         self.action_chains.move_to_element(source).move_by_offset(0, 5).click().perform()
+
+    def drag_and_drop_by_position(self, source: WebElement, target: WebElement, x_percentage: int, y_percentage: int):
+        """Drags and drops an element to target position"""
+        x_position, y_position = self.__convert_percent_to_pixel(x_percentage, y_percentage, target)
+        self.action_chains.click_and_hold(source).move_to_element(target).perform()
+        self.action_chains.move_by_offset(x_position, y_position).release().perform()
+
+    def __convert_percent_to_pixel(self, x_percentage: int, y_percentage: int, target: WebElement):
+        element_size = target.size
+        width = element_size["width"]
+        height = element_size["height"]
+        x_pixels = ((x_percentage/100)*width)-(width/2)-1
+        y_pixels = ((y_percentage/100)*height)-(height/2)-1
+        return x_pixels, y_pixels

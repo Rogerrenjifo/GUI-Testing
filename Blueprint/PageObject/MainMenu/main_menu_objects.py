@@ -18,6 +18,7 @@ class MainMenuObjects(BasePage):
         self.__search_flows = locators.SEARCH_INPUT_FLOWS
         self.__search_projects = locators.SEARCH_INPUT_PROJECTS
         self.__users_and_groups_button = locators.USERS_AND_GROUPS_BUTTON
+        self.__new_flow_button = locators.NEW_FLOW_BUTTON
 
     def get_my_inbox_button(self) -> WebElement:
         """Finds and returns the 'My Inbox' button element on the page."""
@@ -62,4 +63,9 @@ class MainMenuObjects(BasePage):
     def get_first_flow_result(self) -> WebElement:
         """Finds and returns the first flow result element on the page."""
         element = self.find_element.by_xpath(self.__first_flow_result)
+        return element
+
+    def get_new_flow_button(self) -> WebElement:
+        """Finds and returns the new flow button element on the page."""
+        element = self.find_element.by_xpath(self.__new_flow_button)
         return element
