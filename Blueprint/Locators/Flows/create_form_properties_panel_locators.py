@@ -13,3 +13,5 @@ ADD_DROPDOWN_VALUE_BUTTON_LOCATOR = "//label[text()=' Dropdown values ']//follow
 DROPDOWN_VALUES_NOEDIT_LOCATOR = "//label[text()=' Dropdown values ']//following::ng-select[1]"
 DEFAULT_VALUE_SELECT_LOCATOR = "//label[text()='Default Value']//following::ng-select"
 USERLIST_VALUES_SELECT_LOCATOR = "//label[text()='User List values']//following::ng-select[1]"
+DEFAULT_DATE_YEAR_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[@class='dropdown-selector'][2]"
+DEFAULT_DATE_MONTH_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[@class='dropdown-selector'][1]"
