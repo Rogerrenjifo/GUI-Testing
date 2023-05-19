@@ -44,3 +44,9 @@ class Dropdownbox(BasePage):
         xpath = locators.EMPTY_MESSAGE.format(number=self.number)
         message = self.find_element.by_xpath(xpath).get_attribute("textContent")
         return message
+
+    def scroll_down(self):
+        # TODO
+
+    def delete_selected_user(self):
+        # TODO
