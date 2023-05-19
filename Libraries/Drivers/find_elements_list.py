@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class FindElementsList(object):
-    """A class that provides methods to locate web elements on a webpage."""
+    """A class that provides methods to locate web Elements on a webpage."""
     def __init__(self, driver):
         self.driver = driver
 

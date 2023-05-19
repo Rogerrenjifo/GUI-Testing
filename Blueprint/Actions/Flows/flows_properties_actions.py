@@ -2,7 +2,7 @@ from Blueprint.PageObject.Flows.flows_properties_objects import FlowPropertiesOb
 
 
 class FlowPropertiesActions(FlowPropertiesObjects):
-    """Flow properties actions on elements."""
+    """Flow properties actions on Elements."""
 
     def click_selected_component_type(self):
         """Performs click on """

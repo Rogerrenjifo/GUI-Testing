@@ -2,7 +2,7 @@ from Blueprint.PageObject.Flows.create_form_elements_objects import CreateFormEl
 
 
 class CreateFormElementsActions(CreateFormElementsObjects):
-    """This class represents the create form elements of a Blueprint application"""
+    """This class represents the create form Elements of a Blueprint application"""
     def select_element_type(self, element_type: str):
         """Returns the element according the type selected"""
         elements = {

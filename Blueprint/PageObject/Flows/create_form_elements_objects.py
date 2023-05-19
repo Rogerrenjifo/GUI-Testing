@@ -5,7 +5,7 @@ from Libraries.Drivers.base_page import BasePage
 
 
 class CreateFormElementsObjects(BasePage):
-    """This class represents the create form elements of a Blueprint application"""
+    """This class represents the create form Elements of a Blueprint application"""
 
     def __init__(self, driver):
         super().__init__(driver)

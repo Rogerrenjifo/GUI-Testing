@@ -3,7 +3,7 @@ from Blueprint.Locators.Flows import publish_tab_locators as locators
 
 
 class PublishTabObjects(BasePage):
-    """This class represents the elements of publish tab in flow page"""
+    """This class represents the Elements of publish tab in flow page"""
 
     def __init__(self, driver):
         super().__init__(driver)
