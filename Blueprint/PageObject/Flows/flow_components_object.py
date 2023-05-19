@@ -3,10 +3,10 @@ from Blueprint.Locators.Flows import flow_components_locators as locators
 from Libraries.Drivers.base_page import BasePage
 
 
-class Components(BasePage):
-    """This class represents components menu of create form"""
+class FlowComponentObjects(BasePage):
+    """This class represents components menu of create flow"""
 
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         self.__components_title = locators.COMPONENTS_TITLE
         self.__step_locator = locators.STEP_LOCATOR
