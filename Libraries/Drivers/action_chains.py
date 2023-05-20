@@ -32,7 +32,7 @@ class ActionsChains(object):
 
     def custom_click_element(self, source: WebElement):
         """Clicks on a side of an element"""
-        self.action_chains.move_to_element(source).move_by_offset(0, 5).click().perform()
+        self.action_chains.move_to_element(source).move_by_offset(5, 5).click().perform()
 
     def drag_and_drop_by_position(self, source: WebElement, target: WebElement, x_percentage: int, y_percentage: int):
         """Drags and drops an element to target position"""

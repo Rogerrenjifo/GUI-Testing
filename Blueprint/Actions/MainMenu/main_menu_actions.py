@@ -14,6 +14,7 @@ class MainMenuActions(MainMenuObjects):
 
     def insert_project_name(self, name: str):
         """Inserts the provided project name into the search input."""
+        self.get_search_projects_input().clear()
         self.get_search_projects_input().send_keys(name)
 
     def click_on_first_project_result(self):
@@ -30,6 +31,7 @@ class MainMenuActions(MainMenuObjects):
 
     def insert_flow_name(self, name: str):
         """Inserts the provided flow name into the search input."""
+        self.get_search_flows_input().clear()
         self.get_search_flows_input().send_keys(name)
 
     def click_on_first_flow_result(self):
