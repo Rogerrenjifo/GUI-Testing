@@ -17,7 +17,7 @@ class FlowComponentsActions(FlowComponentObjects):
         component = self.get_action_element()
         self.action_chains.drag_and_drop_by_position(component, self.target, x_percentage, y_percentage)
         id = f"002Added{self.index.counter_action}"
-        self.index.add_action(id, ActionComponent(id, self.target, self.driver)) 
+        self.index.add_component(id, ActionComponent(id, self.target, self.driver))
         self.index.increment_counter_action()
 
     def move_step_to_board_position(self, x_percentage: int, y_percentage: int) -> None:
@@ -25,5 +25,5 @@ class FlowComponentsActions(FlowComponentObjects):
         component = self.get_step_element()
         self.action_chains.drag_and_drop_by_position(component, self.target, x_percentage, y_percentage)
         id = f"001Added{self.index.counter_step}"
-        self.index.add_step(id, StepComponent(id, self.target, self.driver)) 
+        self.index.add_component(id, StepComponent(id, self.target, self.driver))
         self.index.increment_counter_step()
