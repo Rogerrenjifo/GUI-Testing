@@ -7,6 +7,6 @@ class BasePage(object):
     """Base class for pages that provides a common wrapper for functions"""
     def __init__(self, driver):
         self.driver = driver
-        self.find_element = FindElements(driver)
-        self.action_chains = ActionsChains(driver)
-        self.find_elements = FindElementsList(driver)
+        self.find_element = FindElements(self.driver)
+        self.action_chains = ActionsChains(self.driver)
+        self.find_elements = FindElementsList(self.driver)

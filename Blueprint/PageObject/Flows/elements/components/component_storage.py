@@ -3,12 +3,11 @@ from Blueprint.PageObject.Flows.elements.components.base_component import BaseCo
 
 class ComponentStorage:
     """This class storages objects in dictionaries"""
-    def __init__(self): 
+    def __init__(self) -> None: 
         self.counter_action = 1
         self.counter_step = 1
         self.counter_end = 1
-        self.action_dictionary = {}
-        self.step_dictionary = {}
+        self.component_dictionary = {}
 
     def increment_counter_action(self) -> None: 
         """Increments the counter for actions"""
@@ -22,10 +21,6 @@ class ComponentStorage:
         """Increments the counter for end steps"""
         self.counter_end += 1
 
-    def add_action(self, key: str, value: BaseComponent) -> None:
-        """Adds Actions to the dictionary"""
-        self.action_dictionary[key] = value
-    
-    def add_step(self, key: str, value: BaseComponent) -> None:
-        """Adds Steps to the dictionary"""
-        self.step_dictionary[key] = value
+    def add_component(self, key: str, value: BaseComponent):
+        """Adds component to the dictionary"""
+        self.component_dictionary[key] = value
