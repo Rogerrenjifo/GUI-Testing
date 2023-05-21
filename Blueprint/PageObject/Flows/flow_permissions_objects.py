@@ -9,16 +9,14 @@ class FlowPermissions(BasePage):
     def __init__(self, driver):
         """Builds the class constructor"""
         super().__init__(driver)
-        self.__title_flow_permissions = locators.TITLE_FLOW_PERMISSIONS
-        self.__title_all_versions = locators.TITLE_ALL_VERSIONS
         self.dropdown_flow_admin = Dropdownbox(self.driver, 1)
 
     def get_title_flow_permissions(self) -> WebElement:
         """Finds and returns the flow permissions title object"""
-        element = self.find_element.by_xpath(self.__title_flow_permissions)
+        element = self.find_element.by_xpath(locators.TITLE_FLOW_PERMISSIONS)
         return element
 
     def get_title_all_versions(self) -> WebElement:
         """Finds and returns the all versions title object"""
-        element = self.find_element.by_xpath(self.__title_all_versions)
+        element = self.find_element.by_xpath(locators.TITLE_ALL_VERSIONS)
         return element
