@@ -3,7 +3,7 @@ from Blueprint.Locators.Flows import popup_messages_locators as locators
 
 
 class PopupMessagesObjects(BasePage):
-    """This class represents the elements of popup messages in flow page"""
+    """This class represents the Elements of popup messages in flow page"""
 
     def __init__(self, driver):
         super().__init__(driver)

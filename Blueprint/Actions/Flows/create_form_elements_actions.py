@@ -7,7 +7,7 @@ class CreateFormElementsActions(CreateFormElementsObjects):
     def __init__(self, driver):
         super().__init__(driver)
         self.main_panel = FormMainPanelPage(driver)
-    
+
     def select_element_type(self, element_type: str):
         """Returns the element according the type selected"""
         elements = {
