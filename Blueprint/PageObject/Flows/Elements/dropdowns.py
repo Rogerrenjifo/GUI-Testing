@@ -46,10 +46,21 @@ class Dropdownbox(BasePage):
         message = self.find_element.by_xpath(xpath).text
         return message
 
-    def scroll_down(self):
-        """Moves the scroll bar"""
-        # TODO
-
-    def delete_selected_user(self):
+    def delete_selected_user(self, name: str):
         """Deletes a specific user from dropdown"""
-        # TODO
+        try:
+            xpath = locators.DELETE_ONE_USER.replace("<<number>>", str(self.number)).replace("<<user>>", name)
+            self.find_element.by_xpath(xpath).click()
+        except Exception:
+            print("user " + name + " does not exist")
+
+    def delete_selected_users(self, names: list):
+        """Deletes specific users from dropdown"""
+        for name in names:
+            self.delete_selected_user(name)
+
+    def scroll_down(self, name: str):
+        """Moves the scroll bar"""
+        xpath = locators.SELECT_USER.replace("<<user>>", name)
+        user = self.find_element.by_xpath(xpath)
+        self.action_chains.custom_scroll(user)

@@ -46,3 +46,19 @@ class FlowPermissionsActions(FlowPermissions):
         """Gets the message when dropdown is empty"""
         message = self.dropdown_flow_admin.message_empty()
         return message
+
+    def delete_one_selected_user_in_dropdown(self, name: str):
+        """Delete one user from the dropdown"""
+        self.dropdown_flow_admin.delete_selected_user(name)
+
+    def delete_selected_users_in_dropdown(self, names: list):
+        """Delete users from the dropdown"""
+        self.dropdown_flow_admin.delete_selected_users(names)
+
+    def scroll_to_user(self, name: str):
+        """Scroll and select a user"""
+        self.dropdown_flow_admin.scroll_down(name)
+
+
+    def click_on_permissions_tab(self):
+        self.get_permissions_tab().click()
