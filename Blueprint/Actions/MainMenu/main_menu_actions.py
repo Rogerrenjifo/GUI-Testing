@@ -43,5 +43,5 @@ class MainMenuActions(MainMenuObjects):
         self.get_users_and_groups_button().click()
 
     def click_on_new_flow(self):
-        """Click on the 'New Flow' button."""
+        """Clicks on the 'New Flow' button."""
         self.get_new_flow_button().click()

@@ -1,10 +1,16 @@
 import time
+
+from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.groups_objects import GroupsObjects
 from robot.api import logger
 
 
 class GroupsActions(GroupsObjects):
     """This class represents the actions of the groups column of the Blueprint application"""
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.driver = driver
+        self.pop_up_messages = PopUpMessagesActions(self.driver)
 
     def create_new_group(self, name: str):
         """Creates a new group with the specified name."""
@@ -57,7 +63,7 @@ class GroupsActions(GroupsObjects):
         """Clicks on a dropdown button group result, if it does not display, clicks on its corner, first by default."""
         self.get_group_result_dropdown_menu(index).click()
         if not self.get_group_result_edit_button(index).is_displayed():
-            logger.info("Clicking on the middle fo the drop-down button failed, \
+            logger.info("Clicking on the middle of the drop-down button failed, \
                         I will try to click on one side of this tricky button...")
             self.action_chains.custom_click_element(self.get_group_result_dropdown_menu(index))
         time.sleep(2)
@@ -69,3 +75,12 @@ class GroupsActions(GroupsObjects):
     def click_on_delete_button_of_a_group_result(self,  index: str = "1"):
         """Clicks on the delete button of the first group result, first by default."""
         self.get_group_result_delete_button(index).click()
+
+    def get_pop_up_text_created_group(self):
+        """Returns the text of the pop-up message displayed."""
+        text = self.pop_up_messages.get_popup_messages().text
+        return text
+
+    def close_pop_up(self):
+        """Clicks on 'X' button of the popup message"""
+        self.pop_up_messages.click_close_popup_message()
