@@ -1,7 +1,8 @@
-from Blueprint.PageObject.Flows.elements.components.base_component import BaseComponent
+from Blueprint.PageObject.Flows.Elements.Components.base_component import BaseComponent
+from Libraries.Drivers.singleton import Singleton
 
 
-class ComponentStorage:
+class ComponentStorage(metaclass = Singleton):
     """This class storages objects in dictionaries"""
     def __init__(self) -> None: 
         self.counter_action = 1
