@@ -47,6 +47,3 @@ class ActionsChains(object):
         x_pixels = ((x_percentage/100)*width)-(width/2)-1
         y_pixels = ((y_percentage/100)*height)-(height/2)-1
         return x_pixels, y_pixels
-
-    def custom_scroll(self, option: WebElement):
-        self.action_chains.scroll_to_element(option).click(option).perform()
