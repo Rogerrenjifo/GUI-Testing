@@ -7,9 +7,9 @@ from Blueprint.Actions.Flows.flow_permissions_actions import FlowPermissionsActi
 from Blueprint.Actions.Flows.publish_tab_actions import PublishTabActions
 from Blueprint.Actions.Flows.flow_main_panel_actions import FlowMainPanelActions
 from Blueprint.Actions.Flows.flows_properties_actions import FlowPropertiesActions
-from Libraries.Drivers.base_page import BasePage
 
-class Flows(BasePage):
+
+class Flows():
     """This class represents all the actions in flow page"""
 
     def __init__(self):
