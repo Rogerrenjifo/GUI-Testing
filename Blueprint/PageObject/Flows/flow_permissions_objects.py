@@ -20,9 +20,3 @@ class FlowPermissions(BasePage):
         """Finds and returns the all versions title object"""
         element = self.find_element.by_xpath(locators.TITLE_ALL_VERSIONS)
         return element
-
-
-
-    def get_permissions_tab(self) -> WebElement:
-        element = self.find_element.by_xpath(locators.PERMISSION_TAB)
-        return element

@@ -58,7 +58,7 @@ class FlowPermissionsActions(FlowPermissions):
     def scroll_to_user(self, name: str):
         """Scroll and select a user"""
         self.dropdown_flow_admin.scroll_down(name)
-
-
-    def click_on_permissions_tab(self):
-        self.get_permissions_tab().click()
+        
+    def click_dropdown_arrow(self):
+        """Clicks on dropdown arrow"""
+        self.dropdown_flow_admin.click_drop_arrow()

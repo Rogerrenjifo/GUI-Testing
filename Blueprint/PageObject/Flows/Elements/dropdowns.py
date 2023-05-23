@@ -1,5 +1,6 @@
 from Libraries.Drivers.base_page import BasePage
 from Blueprint.Locators.Flows import dropdown_locators as locators
+from robot.api import logger
 
 
 class Dropdownbox(BasePage):
@@ -52,7 +53,7 @@ class Dropdownbox(BasePage):
             xpath = locators.DELETE_ONE_USER.replace("<<number>>", str(self.number)).replace("<<user>>", name)
             self.find_element.by_xpath(xpath).click()
         except Exception:
-            print("user " + name + " does not exist")
+            logger.info(f" user '{name}' does not exist")
 
     def delete_selected_users(self, names: list):
         """Deletes specific users from dropdown"""
@@ -64,3 +65,8 @@ class Dropdownbox(BasePage):
         xpath = locators.SELECT_USER.replace("<<user>>", name)
         user = self.find_element.by_xpath(xpath)
         self.action_chains.custom_scroll(user)
+
+    def click_drop_arrow(self):
+        """Click on the dropdown arrow"""
+        xpath = locators.DROPDOWN_ARROW.replace("<<number>>", str(self.number))
+        self.find_element.by_xpath(xpath).click()
