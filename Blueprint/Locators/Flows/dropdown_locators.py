@@ -5,4 +5,4 @@ DELETE_ALL_USERS = "(//ng-select[@ bindlabel='name'])[<<number>>]/descendant::sp
 SELECT_USER = "//span[@title='<<user>>']"
 EMPTY_MESSAGE = "(//ng-select[@bindlabel='name'])[<<number>>]/following-sibling::span"
 DELETE_ONE_USER = "(//div[contains(@class, 'ng-has')])[<<number>>]//span[text()='<<user>>']/preceding-sibling::span"
-DROPDOWN_ARROW = "(//span[@class='ng-arrow-wrapper'])[1]"
+DROPDOWN_ARROW = "(//span[@class='ng-arrow-wrapper'])[<<number>>]"
