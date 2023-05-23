@@ -4,8 +4,8 @@ from Blueprint.Locators.Flows import dropdown_locators as locators
 
 class Dropdownbox(BasePage):
     """Builds the class constructor"""
-    def __init__(self, driver, number):
-        super().__init__(driver)
+    def __init__(self, number):
+        super().__init__()
         self.number = number
 
     def get_title(self):

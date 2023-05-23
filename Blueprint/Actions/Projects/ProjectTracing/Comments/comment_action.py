@@ -7,12 +7,12 @@ from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopU
 
 class CommentActions(Comment):
     """Represents the actions of the edit comment section in project tracing page"""
-    def __init__(self, driver, owner, comment_list: CommentsList):
-        super().__init__(driver)
-        self.driver = driver
+    def __init__(self, owner:str, comment_list: CommentsList):
+        super().__init__()
+        
         self.comment_list = comment_list
         self.owner = owner
-        self.pop_up_messages = PopUpMessagesActions(self.driver)
+        self.pop_up_messages = PopUpMessagesActions()
 
     def identify_own_comments(self, content: str = None, index: int = 0) -> bool:
         """Compare the given username with the displayed in the comment"""
@@ -97,12 +97,12 @@ class CommentActions(Comment):
     def select_update_button(self, index: int = 0, index_edit_box: str = "1"):
         """Clicks on "Update" button edit the comment"""
         self.get_update_button(index_edit_box).click()
-        self.comment_list[index] = Comment(self.driver, str(index + 1))
+        self.comment_list[index] = Comment(str(index + 1))
 
     def select_cancel_button(self, index: int = 0, index_edit_box: str = "1"):
         """Clicks on "Cancel" button for close the edit process"""
         self.get_cancel_button(index_edit_box).click()
-        self.comment_list[index] = Comment(self.driver, str(index + 1))
+        self.comment_list[index] = Comment(str(index + 1))
 
     def obtain_update_button_disabled_attribute(self) -> str:
         """Gets the status of the attribute "disabled" of the button update"""

@@ -6,8 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 
 class SectionAddComment(BasePage):
     """This class represents the section for write and add a new comment"""
-    def __init__(self, driver):
-        super().__init__(driver)
 
     def get_title(self) -> WebElement:
         """Finds and returns text area for write a comment"""

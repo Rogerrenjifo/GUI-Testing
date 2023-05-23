@@ -5,8 +5,8 @@ from selenium.webdriver.remote.webelement import WebElement
 class BaseComponent(BasePage):
     """This class represents the common attributs and methods of components"""
     
-    def __init__(self, id: str, canvas: WebElement, driver) -> None:
-        super().__init__(driver)
+    def __init__(self, id: str, canvas: WebElement) -> None:
+        super().__init__()
         self.id = id
         self.element = self.get_component()
         self.title = self.get_component_title()

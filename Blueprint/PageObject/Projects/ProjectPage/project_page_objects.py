@@ -9,10 +9,10 @@ from typing import List
 class ProjectPageObjects(BasePage):
     """This class represents the Project Page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.projects_table = ProjectTableObjects(driver)
-        self.delete_dialog = DeleteDialogObjects(driver)
+    def __init__(self):
+        super().__init__()
+        self.projects_table = ProjectTableObjects()
+        self.delete_dialog = DeleteDialogObjects()
         self.__select_row_pagination = locators.SELECT_ROW_PAGINATION
 
     @staticmethod

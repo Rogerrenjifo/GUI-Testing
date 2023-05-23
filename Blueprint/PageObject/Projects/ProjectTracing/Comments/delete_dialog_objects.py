@@ -6,8 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 
 class DeleteCommentDialog(BasePage):
     """This class represents the "Delete comment" dialog displayed in project tracing page"""
-    def __init__(self, driver):
-        super().__init__(driver)
 
     def get_delete_button(self) -> WebElement:
         """Finds and returns the delete button in the dialog"""

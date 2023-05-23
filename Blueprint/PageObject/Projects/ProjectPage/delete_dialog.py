@@ -6,9 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 class DeleteDialogObjects(BasePage):
     """This class represents the Delete Dialog of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def get_delete_dialog(self) -> WebElement:
         """Finds and returns the delete dialog element of the page."""
         element = self.find_element.by_xpath(locators.DELETE_DIALOG)

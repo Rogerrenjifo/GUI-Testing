@@ -6,10 +6,10 @@ from Libraries.Drivers.base_page import BasePage
 
 class FlowPermissions(BasePage):
     """This class represents the flow permission of a Blueprint application"""
-    def __init__(self, driver):
+    def __init__(self):
         """Builds the class constructor"""
-        super().__init__(driver)
-        self.dropdown_flow_admin = Dropdownbox(self.driver, 1)
+        super().__init__()
+        self.dropdown_flow_admin = Dropdownbox(1)
 
     def get_title_flow_permissions(self) -> WebElement:
         """Finds and returns the flow permissions title object"""

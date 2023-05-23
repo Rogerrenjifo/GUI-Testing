@@ -4,8 +4,6 @@ from selenium.webdriver.support.ui import Select
 
 class ProjectPageActions(ProjectPageObjects):
     """This class represents the Project PAge actions of a Blueprint application"""
-    def __init__(self, driver):
-        super().__init__(driver)
 
     def click_new_request_button(self):
         """Clicks the new request button"""

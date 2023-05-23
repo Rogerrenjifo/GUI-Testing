@@ -8,11 +8,10 @@ from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopU
 
 class SectionAddCommentActions(SectionAddComment):
     """Represents the actions of the edit comment section in project tracing page"""
-    def __init__(self, driver, comments_list: CommentsList):
-        super().__init__(driver)
-        self.driver = driver
+    def __init__(self, comments_list: CommentsList):
+        super().__init__()
         self.comments_list = comments_list
-        self.pop_up_messages = PopUpMessagesActions(self.driver)
+        self.pop_up_messages = PopUpMessagesActions()
 
     def obtain_title(self) -> str:
         """Gets the text displayed  in the title"""
@@ -37,7 +36,7 @@ class SectionAddCommentActions(SectionAddComment):
         """Clicks on add button to post the comment"""
         self.get_add_button().click()
         index = len(self.comments_list) + 1
-        self.comments_list.append(Comment(self.driver, str(index)))
+        self.comments_list.append(Comment(str(index)))
 
     def obtain_the_placeholder(self) -> str:
         """Clicks on add button to post the comment"""

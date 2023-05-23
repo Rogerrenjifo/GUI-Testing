@@ -5,9 +5,6 @@ from selenium.webdriver.remote.webelement import WebElement
 class ProjectSystemActions(ProjectSystemObject):
     """Represents the system section actions of the Project Tracing"""
 
-    def __init__(self, driver) -> None:
-        super().__init__(driver)
-
     def get_current_step(self) ->str:
         """Returns the current step text"""
         current_step = self.get_current_step_element().text

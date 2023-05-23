@@ -1,12 +1,12 @@
-from Blueprint.PageObject.Flows.elements.components.base_component import BaseComponent
+from Blueprint.PageObject.Flows.Elements.Components.base_component import BaseComponent
 from Blueprint.Locators.Flows import flow_main_panel_locators as elements
 from selenium.webdriver.remote.webelement import WebElement
 
 
 class FirstComponent(BaseComponent):
     """This class represents a step component"""
-    def __init__(self, id, canvas, driver) -> None:
-        super().__init__(id, canvas, driver)
+    def __init__(self, id, canvas) -> None:
+        super().__init__(id, canvas)
         self.type = "First"
 
     def connect_component(self, target: WebElement, number: int) -> None:

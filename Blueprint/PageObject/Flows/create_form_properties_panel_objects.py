@@ -5,8 +5,8 @@ from Libraries.Drivers.base_page import BasePage
 class PropertiesPanelObjects(BasePage):
     """This class represents the properties panel on the create form tab in the flow page of Blueprint app"""
     
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__section_name_input_locator = locators.SECTION_NAME_INPUT_LOCATOR
         self.__name_input_locator = locators.NAME_INPUT_LOCATOR
         self.__placeholder_input_locator = locators.PLACEHOLDER_INPUT_LOCATOR

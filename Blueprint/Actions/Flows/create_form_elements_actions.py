@@ -4,9 +4,9 @@ from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPa
 
 class CreateFormElementsActions(CreateFormElementsObjects):
     """This class represents the create form elements of a Blueprint application"""
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.main_panel = FormMainPanelPage(driver)
+    def __init__(self):
+        super().__init__()
+        self.main_panel = FormMainPanelPage()
 
     def select_element_type(self, element_type: str):
         """Returns the element according the type selected"""

@@ -6,9 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 class SelectedUsersObjects(BasePage):
     """This class represents the selected users page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def get_input_search_selected(self) -> WebElement:
         """Finds and returns the input element for searching selected users."""
         element = self.find_element.by_xpath(locators.INPUT_SEARCH_SELECTED)

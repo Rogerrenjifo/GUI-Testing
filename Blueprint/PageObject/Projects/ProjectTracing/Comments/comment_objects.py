@@ -5,8 +5,8 @@ from Libraries.Drivers.base_page import BasePage
 
 class Comment(BasePage):
     """This class represents a published comment in project-tracing page"""
-    def __init__(self, driver, index: str = "1"):
-        super().__init__(driver)
+    def __init__(self, index: str = "1"):
+        super().__init__()
         self.index = index
 
     def get_content_xpath(self, content: str = None) -> str:

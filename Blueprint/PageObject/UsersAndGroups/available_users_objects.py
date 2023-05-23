@@ -6,9 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 class AvailableUsersObjects(BasePage):
     """This class represents the user page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def get_input_search_users(self) -> WebElement:
         """Finds and returns the input element for searching users."""
         element = self.find_element.by_xpath(locators.INPUT_SEARCH_USERS)

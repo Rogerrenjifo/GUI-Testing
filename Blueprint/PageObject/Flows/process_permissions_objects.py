@@ -7,9 +7,9 @@ from Libraries.Drivers.base_page import BasePage
 class ProcessPermissions(BasePage):
     """This class represents the process permission of a Blueprint application"""
 
-    def __init__(self, driver):
+    def __init__(self):
         """Builds the class constructor"""
-        super().__init__(driver)
+        super().__init__()
         self.dropdown_process_admin = Dropdownbox(self.driver, 2)
 
     def get_title_process_permissions(self) -> WebElement:

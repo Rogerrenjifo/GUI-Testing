@@ -6,11 +6,10 @@ from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopU
 
 class DialogDeleteCommentActions(DeleteCommentDialog):
     """Represents the actions of the "Delete comment" dialog in project tracing page"""
-    def __init__(self, driver, comments_list: CommentsList):
-        super().__init__(driver)
-        self.driver = driver
+    def __init__(self, comments_list: CommentsList):
+        super().__init__()
         self.comments_list = comments_list
-        self.pop_up_messages = PopUpMessagesActions(self.driver)
+        self.pop_up_messages = PopUpMessagesActions()
 
     def select_delete_button(self, index: int = 0):
         """Clicks on "Delete" button for delete the comment"""

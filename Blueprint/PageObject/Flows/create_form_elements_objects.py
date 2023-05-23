@@ -6,8 +6,8 @@ from Libraries.Drivers.base_page import BasePage
 class CreateFormElementsObjects(BasePage):
     """This class represents the create form Elements of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__input_text_element = locators.INPUT_TEXT_ELEMENT
         self.__input_date_element = locators.INPUT_DATE_ELEMENT
         self.__input_numbers_element = locators.INPUT_NUMBERS_ELEMENT

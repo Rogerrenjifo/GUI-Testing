@@ -1,13 +1,18 @@
-from Blueprint.PageObject.Flows.elements.components.base_component import BaseComponent
+from Blueprint.PageObject.Flows.Elements.Components.base_component import BaseComponent
 from Blueprint.Locators.Flows import flow_main_panel_locators as elements
 from selenium.webdriver.remote.webelement import WebElement
 
 
-class EndComponent(BaseComponent):
-    """This class represents an end component"""
-    def __init__(self, id, canvas, driver) -> None:
-        super().__init__(id, canvas, driver)
-        self.type = "End"
+class StepComponent(BaseComponent):
+    """This class represents a step component"""
+    def __init__(self, id , canvas) -> None:
+        super().__init__(id, canvas)
+        self.type = "Step"
+
+    def connect_component(self, target: WebElement, number: int):
+        """Connect the step with an action"""
+        source = self.get_connector_element(number)
+        self.action_chains.drag_and_drop_element(source, target)
     
     def delete(self) -> None:
         """Deletes the step"""
@@ -23,13 +28,13 @@ class EndComponent(BaseComponent):
         clone_option = self.find_element.by_xpath(clone_xpath)
         clone_option.click()
 
-    def get_connector_element(self, number: int) -> WebElement: 
+    def get_connector_element(self, number: str) -> WebElement: 
         """Returns the enpoint of the component to connect"""
         xpath = elements.CONECTOR_XPATH.replace("<<data>>", self.id).replace("<<number>>", str(number))
         return self.find_element.by_xpath(xpath)
 
     def __click_dots_button(self) -> None:
-        """clicks dots menu button"""
+        """Clicks dots menu button"""
         xpath = elements.DOTS_BUTTON_XPATH.replace("<<data>>", self.id)
         menu_step = self.find_element.by_xpath(xpath)
         self.action_chains.custom_click_element(menu_step)

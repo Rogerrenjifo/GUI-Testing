@@ -5,8 +5,8 @@ from Blueprint.Locators.Flows import publish_tab_locators as locators
 class PublishTabObjects(BasePage):
     """This class represents the Elements of publish tab in flow page"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__save_and_publish_button = locators.SAVE_AND_PUBLISH__BUTTON_LOCATOR
 
     def get_save_and_publish_button(self):

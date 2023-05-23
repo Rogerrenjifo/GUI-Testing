@@ -5,10 +5,7 @@ from Libraries.Drivers.base_page import BasePage
 
 class FormObjects(BasePage):
     """This class represents the forms page on the Projects feature."""
-    
-    def __init__(self, driver):
-        super().__init__(driver)
-    
+
     def get_input_field(self, title: str) -> WebElement:
         """Finds and returns a input field with title given."""
         try:

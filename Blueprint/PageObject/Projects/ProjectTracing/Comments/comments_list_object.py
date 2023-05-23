@@ -6,9 +6,8 @@ from Blueprint.PageObject.Projects.ProjectTracing.Comments.comment_objects impor
 class CommentsList(BasePage):
     """This class represents the all the comments displayed in project tracing page"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    def __init__(self):
+        super().__init__()
         self.comments_list = self.get_existing_comments()
 
     def get_existing_comments(self) -> list:
@@ -16,5 +15,5 @@ class CommentsList(BasePage):
         comments_list = []
         comments_len = len(self.find_elements.by_xpath(locators.COMMENT_OWNER_NAME))+1
         for comment_number in range(1, comments_len):
-            comments_list.append(Comment(self.driver, str(comment_number)))
+            comments_list.append(Comment(str(comment_number)))
         return comments_list

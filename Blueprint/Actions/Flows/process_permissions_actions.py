@@ -4,9 +4,6 @@ from Blueprint.PageObject.Flows.process_permissions_objects import ProcessPermis
 class ProcessPermissionsActions(ProcessPermissions):
     """This class represents the process permission of a Blueprint application"""
 
-    def __int__(self, driver):
-        super().__init__(driver)
-
     def get_process_permissions_title(self) -> str:
         """Returns the process permissions title"""
         title_process_permissions = self.get_title_process_permissions().text

@@ -6,9 +6,6 @@ from Libraries.Drivers.base_page import BasePage
 class GroupsObjects(BasePage):
     """This class represents the groups page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-
     def get_input_search_groups(self) -> WebElement:
         """Finds and returns the input field for searching groups."""
         element = self.find_element.by_xpath(locators.INPUT_SEARCH_GROUPS)

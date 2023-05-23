@@ -6,8 +6,8 @@ from Libraries.Drivers.base_page import BasePage
 class NewFlow(BasePage):
     """This class represents the login page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__drop_down_flow_menu = locators.DROP_DOWN_FLOW_MENU
         self.__new_flow_button = locators.NEW_FLOW_BUTTON
         self.__header_create_new_flow = locators.HEADER_CREATE_NEW_FLOW

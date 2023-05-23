@@ -7,8 +7,8 @@ from typing import List
 class ProjectTableObjects(BasePage):
     """This class represents the Project Page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__projects_ids = locators.PROJECTS_IDS
 
     @staticmethod

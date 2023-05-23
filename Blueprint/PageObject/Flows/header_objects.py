@@ -5,8 +5,8 @@ from Libraries.Drivers.base_page import BasePage
 class Header(BasePage):
     """This class represents the header of the Flow feature"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__status_locator = locators.STATUS
         self.__version_locator = locators.VERSION
         self.__flow_name_locator = locators.FLOW_NAME

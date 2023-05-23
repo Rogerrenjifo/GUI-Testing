@@ -7,9 +7,6 @@ from robot.api import logger
 class ProjectSystemObject(BasePage):
     """This class represents the system section of the Project Tracing"""
 
-    def __init__(self, driver) -> None:
-        super().__init__(driver)
-
     def get_system_title(self) -> WebElement:
         """Finds and returns the title element of the system section"""
         element = self.find_element.by_xpath(locators.SYSTEM_TITLE)
