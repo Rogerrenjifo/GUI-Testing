@@ -1,0 +1,8 @@
+INPUT_SEARCH_USERS = "//input[@placeholder='Search users']"
+USERNAME_RESULT = "(//span[@class='item-title overflow-selected-users'])"
+EMAIL_RESULT = "//label[@class='item-subtitle overflow-selected-users'])"
+USER_RESULT_ADD_BUTTON = "(//div[contains(@class,'flex flex-col')]//img)"
+NEW_USER_BUTTON = "(//button[@class='new-button'][normalize-space()='New'])[2]"
+INPUT_USER_NAME = "//input[@formcontrolname='userEmail']"
+CANCEL_CREATE_USER_BUTTON = "//button[@class='secondary-button action']"
+CREATE_USER_BUTTON = "//button[@class='primary-button action']"
