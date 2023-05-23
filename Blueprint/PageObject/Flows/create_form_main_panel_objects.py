@@ -21,7 +21,7 @@ class FormMainPanelPage(BasePage):
     def get_locator(locator_model: str, replacement_attribute: str, index=None):
         """Returns the xpath of a specific section or component by its title and position"""
         if index is not None:
-            locator = locator_model.replace("ToChange", replacement_attribute)
+            locator = locator_model.replace("<<value>>", replacement_attribute)
             locator = f"({locator})[{str(index)}]"
         else:
             locator = locator_model.replace("ToChange", replacement_attribute)
