@@ -45,6 +45,10 @@ class PropertiesPanelActions(PropertiesPanelObjects):
         """Clicks checkbox default checked label."""
         self.get_checkbox_default_checked_label().click()
     
+    def click_date_default_value(self):
+        """Clicks the date default value."""
+        self.get_default_value_input().click()
+    
     def set_date_default_value(self, year: str, month: str, day: str):
         """Sets date default value."""
         self.get_default_value_input().click()

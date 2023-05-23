@@ -94,7 +94,7 @@ class PropertiesPanelObjects(BasePage):
         return element
     
     def get_date_default_year_value(self, year: str) -> WebElement:
-        """Finds and returns a year value from the dropdaown with the required value."""
+        """Finds and returns a year value from the dropdown with the required value."""
         new_xpath = self.__date_default_year_option.replace("<<value>>", year)
         try:
             element = self.find_element.by_xpath(new_xpath)
@@ -108,7 +108,7 @@ class PropertiesPanelObjects(BasePage):
         return element
     
     def get_date_default_month_value(self, month: str) -> WebElement:
-        """Finds and returns a month value from the dropdaown with the required value."""
+        """Finds and returns a month value from the dropdown with the required value."""
         new_xpath = self.__date_default_month_option.replace("<<value>>", month)
         try:
             element = self.find_element.by_xpath(new_xpath)
@@ -117,7 +117,7 @@ class PropertiesPanelObjects(BasePage):
             raise Exception("Month  " + month + " not found.")
     
     def get_date_default_day_value(self, day: str) -> WebElement:
-        """Finds and returns a day value from the dropdaown with the required value."""
+        """Finds and returns a day value from the dropdown with the required value."""
         new_xpath = self.__date_default_day_option.replace("<<value>>", day)
         try:
             element = self.find_element.by_xpath(new_xpath)
