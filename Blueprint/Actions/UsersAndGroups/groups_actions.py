@@ -1,6 +1,6 @@
 import time
 
-from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.groups_objects import GroupsObjects
 from robot.api import logger
 
@@ -77,9 +77,9 @@ class GroupsActions(GroupsObjects):
 
     def get_pop_up_text_created_group(self):
         """Returns the text of the pop-up message displayed."""
-        text = self.pop_up_messages.get_popup_messages().text
+        text = self.pop_up_messages.get_popup_message_text()
         return text
 
     def close_pop_up(self):
         """Clicks on 'X' button of the popup message"""
-        self.pop_up_messages.click_close_popup_message()
+        self.pop_up_messages.click_to_close_popup_message()

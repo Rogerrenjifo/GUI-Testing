@@ -1,4 +1,4 @@
-from Blueprint.PageObject.Projects.ProjectsTracing.system_objects import ProjectSystemObject
+from Blueprint.PageObject.Projects.ProjectTracing.system_objects import ProjectSystemObject
 from selenium.webdriver.remote.webelement import WebElement
 
 

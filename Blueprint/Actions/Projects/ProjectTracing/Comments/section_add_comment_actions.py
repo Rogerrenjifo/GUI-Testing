@@ -3,7 +3,7 @@ from Blueprint.PageObject.Projects.ProjectTracing.Comments.section_add_comment_o
     import SectionAddComment
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comments_list_object import CommentsList
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comment_objects import Comment
-from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 
 
 class SectionAddCommentActions(SectionAddComment):
@@ -49,10 +49,10 @@ class SectionAddCommentActions(SectionAddComment):
         return disabled
 
     def close_pop_up(self):
-        """Select the button for close the popup message"""
-        self.pop_up_messages.click_close_popup_message()
+        """Selects the button for close the popup message"""
+        self.pop_up_messages.click_to_close_popup_message()
 
     def obtain_pop_up_text(self):
         """Gets the text displayed in the popup message"""
-        pop_up_content = self.pop_up_messages.get_popup_messages().text
+        pop_up_content = self.pop_up_messages.get_popup_message_text()
         return pop_up_content

@@ -1,4 +1,4 @@
-from Blueprint.PageObject.Projects.project_tracing_forms_objects import FormObjects
+from Blueprint.PageObject.Projects.ProjectTracing.project_tracing_forms_objects import FormObjects
 
 
 class FormsActions(FormObjects):
