@@ -1,3 +1,4 @@
+from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.Flows.create_form_elements_objects import CreateFormElementsObjects
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
 
@@ -7,6 +8,7 @@ class CreateFormElementsActions(CreateFormElementsObjects):
     def __init__(self):
         super().__init__()
         self.main_panel = FormMainPanelPage()
+        self.pop_up_messages = PopUpMessagesActions()
 
     def select_element_type(self, element_type: str):
         """Returns the element according the type selected"""
@@ -56,3 +58,12 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         source = self.get_section_element()
         target = self.main_panel.get_section(existing_section_title)
         self.action_chains.custom_drag_and_drop(source, target)
+
+    def close_pop_up_on_create_form_elements_page(self):
+        """Selects the button for close the popup message"""
+        self.pop_up_messages.click_to_close_popup_message()
+
+    def obtain_pop_up_text_on_create_form_elements_page(self) -> str:
+        """Gets the text displayed in the popup message"""
+        pop_up_content = self.pop_up_messages.get_popup_message_text()
+        return pop_up_content

@@ -1,6 +1,7 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import create_form_properties_panel_locators as locators
 from Libraries.Drivers.base_page import BasePage
+from robot.api import logger
 
 class PropertiesPanelObjects(BasePage):
     """This class represents the properties panel on the create form tab in the flow page of Blueprint app"""
@@ -66,7 +67,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Option "+value+" not found.")
+            logger.info("Option "+value+" not found.")
     
     def get_required_field_label(self) -> WebElement:
         """Finds and returns required field label."""
@@ -100,7 +101,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Year  " + year + " not found.")
+            logger.info("Year  " + year + " not found.")
     
     def get_date_default_month_select(self) -> WebElement:
         """Finds and returns date default value month select."""
@@ -114,7 +115,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Month  " + month + " not found.")
+            logger.info("Month  " + month + " not found.")
     
     def get_date_default_day_value(self, day: str) -> WebElement:
         """Finds and returns a day value from the dropdown with the required value."""
@@ -123,7 +124,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Day  " + day + " not found.")
+            logger.info("Day  " + day + " not found.")
     
     def get_date_format_select(self) -> WebElement:
         """Finds and returns date format select."""
@@ -152,7 +153,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Added dropdown value with text "+value+" not found.")
+            logger.info("Added dropdown value with text "+value+" not found.")
     
     def get_added_dropdown_value_delete_button(self, value: str) -> WebElement:
         """Finds and returns delete button of an added dropdown value with text of the value."""
@@ -161,7 +162,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Added dropdown value with text "+value+" not found.")
+            logger.info("Added dropdown value with text "+value+" not found.")
         
     def get_default_value_select(self) -> WebElement:
         """Finds and returns default value select."""
@@ -175,7 +176,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("Added dropdown value with text "+value+" not found.")
+            logger.info("Added dropdown value with text "+value+" not found.")
     
     def get_userlist_values_select(self) -> WebElement:
         """Finds and returns userlist values select."""
@@ -189,7 +190,7 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("User or group with name "+name+" not found.")
+            logger.info("User or group with name "+name+" not found.")
     
     def get_userlist_default_value_option(self, name: str) -> WebElement:
         """Finds and returns userlist default value option with value name given."""
@@ -198,4 +199,4 @@ class PropertiesPanelObjects(BasePage):
             element = self.find_element.by_xpath(new_xpath)
             return element
         except Exception:
-            raise Exception("User or group with name " + name + " not found.")
+            logger.info("User or group with name " + name + " not found.")

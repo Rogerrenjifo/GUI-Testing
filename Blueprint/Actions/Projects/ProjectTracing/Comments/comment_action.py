@@ -113,7 +113,7 @@ class CommentActions(Comment):
         """Selects the button for close the popup message"""
         self.pop_up_messages.click_to_close_popup_message()
 
-    def obtain_pop_up_text(self):
+    def obtain_pop_up_text(self) -> str:
         """Gets the text displayed in the popup message"""
         pop_up_content = self.pop_up_messages.get_popup_message_text()
         return pop_up_content
