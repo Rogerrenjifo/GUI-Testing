@@ -1,0 +1,5 @@
+PROJECT_TAG = "//span[contains(@class,'uppercase')]"
+PROJECT_TITLE = "//h2[contains(@class,'sub-title')]"
+DELETE_BUTTON = "//div[@class='flex']//button[normalize-space()='Delete']"
+ACTION_BUTTON = "//button[contains(@class, 'instance-button') and contains(text(), '<<value>>')]"
+NO_ACTIONS_TEXT = "no-available-actions"
