@@ -1,69 +1,58 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Libraries.Drivers.base_page import BasePage
 from Blueprint.Locators.Flows import flows_properties_locators as locators
+from Blueprint.PageObject.Flows.Elements.flows_properties.flow_elements import FlowElements
 
 
 class FlowPropertiesObjects(BasePage):
-    """"Properties container contents and Elements involved representation."""
+    """"Flows Properties objects representation."""
 
-    def __init__(self) -> None:
+    def __init__(self, component: str=None):
         super().__init__()
-        self.__container = locators.CONTAINER
-        self.__header_title = locators.HEADER_TITLE
-        self.__body_properties = locators.BODY_PROPERTIES
-        self.__body_uppper = locators.BODY_UPPPER
-        self.__body_lower = locators.BODY_LOWER
-        self.__chk_add_comment = locators.CHK_ADD_COMMENT
-        self.__chk_update_fields = locators.CHK_UPDATE_FIELDS
-        self.__owner = locators.OWNER
-        self.__txt_cmp_name = locators.TXT_CMP_NAME
-        self.__vasel_typer = locators.SEL_TYPE
-        self.__sel_add_fields = locators.SEL_ADD_FIELDS
+        self.component = self.find_element.by_xpath(component)
+        self.locators = locators
+        self.name_field = FlowElements().name_field
+        self.select_type_dropbox = FlowElements().select_type_dropbox
+        self.end_step_checkbox = FlowElements().end_step_checkbox
+        self.add_comment_checkbox = FlowElements().add_comment_checkbox
+        self.required_fields_update_checkbox = FlowElements().update_fields_checkbox
+        self.select_owner_dropbox = FlowElements().select_owner_dropbox
+        self.required_fields_update = FlowElements().required_fields_update
+        self.error_message = FlowElements().error_message
+        self.update_fields = FlowElements().update_fields
+        self.update_values = FlowElements().update_values
+        self.update_commons = FlowElements().update_commons
 
-    def get_element_name(self) -> WebElement:
-        """Finds and returns selected component name."""
-        return self.find_element.by_xpath(self.__txt_cmp_name)
+    def space_handler(self, text: str="") -> str:
+        """Returns text with added space at begining and the end of the string."""
+        if not text.startswith(" ") and not text.endswith(" "):
+            return " " + text + " "
+        else:
+            return text.strip()
+    
+    def get_calendar_year_dropdown(self) -> WebElement:
+        """Gets calendar's year dropdown list."""
+        element = self.find_element.by_xpath(self.locators.DATE_PICKER_YEAR)
+        return element
+    
+    def get_calendar_month_dropdown(self) -> WebElement:
+        """Gets calendar's month dropdown list."""
+        element = self.find_element.by_xpath(self.locators.DATE_PICKER_MONTH)
+        return element
+    
+    def get_calendar_year_dropdown_item(self, year: int=None) -> WebElement:
+        """Gets calendar's year dropdown list."""
+        element = self.find_element.by_xpath(self.locators.DATE_PICKER_YEAR_ADD)
+        return element
+    
+    def get_calendar_month_dropdown_item(self, month: int=None) -> WebElement:
+        """Gets calendar's month dropdown list."""
+        month -= 1
+        element = self.find_element.by_xpath(self.locators.DATE_PICKER_MONTH_ADD)
+        return element
 
-    def get_element_type(self) -> WebElement:
-        """Finds and returns selected component type."""
-        return self.find_element.by_xpath(self.__vasel_typer)
-
-    def get_propeties_container(self) -> WebElement:
-        """Finds and returns properties container"""
-        return self.find_element.by_xpath(self.__container)
-
-    def get_properties_header_title(self) -> WebElement:
-        """Finds and returns properties container header title."""
-        return self.find_element.by_xpath(self.__header_title)
-
-    def get_properties_body_container(self) -> WebElement:
-        """Finds and returns properties container full body."""
-        return self.find_element.by_xpath(self.__body_properties)
-
-    def get_properties_body_container_upper_section(self) -> WebElement:
-        """Finds and returns properties container body upper section."""
-        return self.find_element.by_xpath(self.__body_uppper)
-
-    def get_properties_body_container_lower_section(self) -> WebElement:
-        """Finds and returns properties container lower section."""
-        return self.find_element.by_xpath(self.__body_lower)
-
-    def get_add_comments_checkbox(self) -> WebElement:
-        """Finds and returns properties container add comments ckeckbox."""
-        return self.find_element.by_xpath(self.__chk_add_comment)
-
-    def get_update_fields_checkbox(self) -> WebElement:
-        """Finds and returns properties container update fields checkbox."""
-        return self.find_element.by_xpath(self.__chk_update_fields)
-
-    def get_owner_dropdown_list(self) -> WebElement:
-        """Finds and returns owners dropdown list."""
-        return self.find_element.by_xpath(self.__owner + "[1]")
-
-    def get_owner_list_values(self) -> WebElement:
-        """Finds and returns selected owners list."""
-        return self.find_element.by_xpath(self.__owner + "[2]")
-
-    def get_add_fields_button(self) -> WebElement:
-        """Finds and returns add fields to selected components button."""
-        return self.find_element.by_xpath(self.__sel_add_fields)
+    def get_calendar_day(self, day: int=None)-> WebElement:
+        """Gets calendar's day table."""
+        xpath = self.locators.DATE_PICKER_DAY.replace("<<day>>", self.space_handler(str(day)))
+        element = self.find_element.by_xpath(xpath)
+        return element
