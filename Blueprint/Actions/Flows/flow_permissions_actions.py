@@ -43,3 +43,9 @@ class FlowPermissionsActions(FlowPermissions):
         """Gets the message when dropdown is empty"""
         message = self.dropdown_flow_admin.message_empty()
         return message
+
+    def add_new_flow_admin_by_typing(self):
+        # TODO
+
+    def add_new_flow_admin_by_scrolling(self):
+        # TODO

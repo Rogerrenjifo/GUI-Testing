@@ -44,3 +44,9 @@ class SectionsVisibilityActions(ProcessPermissions):
     def scroll_to_user(self, number: int, name: str):
         """Scroll and select a user of the sections visibility"""
         Dropdownbox(number).scroll_down(name)
+
+    def add_user_to_section_visibility_by_typing(self):
+        # TODO
+
+    def add_user_to_section_visibility_by_scrolling(self):
+        # TODO

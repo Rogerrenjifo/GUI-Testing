@@ -92,3 +92,26 @@ class HeaderActions(Header):
         """Gets the unmarked status from the selected tab"""          
         status_tab = self.get_error_unmarked_tab_elements(tab_name)
         return status_tab
+
+    def delete_flow_process(self):
+        """Run the process to delete a flow"""
+        self.deploy_header_dropdown()
+        self.click_delete_option()
+        self.click_delete_button()
+
+    def cancel_delete_flow_process(self):
+        """Cancel the process to delete a flow. The flow is not deleted"""
+        self.deploy_header_dropdown()
+        self.click_delete_option()
+        self.click_cancel_button()
+
+    def close_delete_process(self):
+        """Closes the delete dialog while delete flow process is running. The flow is not deleted"""
+        self.deploy_header_dropdown()
+        self.click_delete_option()
+        self.click_close_button()
+
+    def change_version(self, version: str):
+        self.deploy_header_dropdown()
+        self.deploy_select_version()
+        self.click_version(version)

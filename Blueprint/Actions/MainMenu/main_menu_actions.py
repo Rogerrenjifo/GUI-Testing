@@ -45,3 +45,9 @@ class MainMenuActions(MainMenuObjects):
     def click_on_new_flow(self):
         """Clicks on the 'New Flow' button."""
         self.get_new_flow_button().click()
+
+    def go_to_project(self, project_name: str):
+        # TODO
+
+    def go_to_flow(self, flow_name):
+        # TODO

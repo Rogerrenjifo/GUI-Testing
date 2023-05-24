@@ -60,3 +60,9 @@ class ProcessPermissionsActions(ProcessPermissions):
     def scroll_to_user(self, name: str):
         """Scroll and select a user"""
         self.dropdown_process_admin.scroll_down(name)
+
+    def add_initiate_process_admin_by_typing(self):
+        # TODO
+
+    def add_initiate_process_admin_by_scrolling(self):
+        # TODO
