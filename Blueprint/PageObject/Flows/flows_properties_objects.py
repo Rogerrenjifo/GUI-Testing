@@ -4,10 +4,10 @@ from Blueprint.Locators.Flows import flows_properties_locators as locators
 
 
 class FlowPropertiesObjects(BasePage):
-    """"Properties container contents and elements involved representation."""
+    """"Properties container contents and Elements involved representation."""
 
-    def __init__(self, driver) -> None:
-        super().__init__(driver)
+    def __init__(self) -> None:
+        super().__init__()
         self.__container = locators.CONTAINER
         self.__header_title = locators.HEADER_TITLE
         self.__body_properties = locators.BODY_PROPERTIES

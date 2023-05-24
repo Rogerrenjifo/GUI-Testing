@@ -1,21 +1,20 @@
-from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.available_users_objects import AvailableUsersObjects
 
 
 class AvailableUsersActions(AvailableUsersObjects):
     """This class represents the users column actions of the Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-        self.pop_up_messages = PopUpMessagesActions(self.driver)
+    def __init__(self):
+        super().__init__()
+        self.pop_up_messages = PopUpMessagesActions()
 
     def create_new_user(self, username: str):
         """Creates a new user with the specified username."""
         self.click_on_new_user_button()
         self.insert_username(username)
         self.click_on_create_user_button()
-        self.pop_up_messages = PopUpMessagesActions(self.driver)
+        self.pop_up_messages = PopUpMessagesActions()
 
     def insert_user_in_search_user_bar(self, username: str):
         """Inserts the specified username into the search user bar."""

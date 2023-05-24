@@ -6,8 +6,8 @@ from Libraries.Drivers.base_page import BasePage
 class LoginPageObjects(BasePage):
     """This class represents the login page of a Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__header = locators.HEADER_LOCATOR
         self.__input_username = locators.INPUT_LOCATOR
         self.__input_password = locators.PASSWORD_LOCATOR

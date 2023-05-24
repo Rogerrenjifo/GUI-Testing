@@ -41,9 +41,14 @@ class ActionsChains(object):
         self.action_chains.move_by_offset(x_position, y_position).release().perform()
 
     def __convert_percent_to_pixel(self, x_percentage: int, y_percentage: int, target: WebElement):
+        """Converts percentage to pixels"""
         element_size = target.size
         width = element_size["width"]
         height = element_size["height"]
         x_pixels = ((x_percentage/100)*width)-(width/2)-1
         y_pixels = ((y_percentage/100)*height)-(height/2)-1
         return x_pixels, y_pixels
+
+    def move_to_and_click(self, target: WebElement):
+        """Moves the cursor to a target and clicks it"""
+        self.action_chains.move_to_element(target).click()

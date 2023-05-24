@@ -1,16 +1,15 @@
 import time
-
-from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.groups_objects import GroupsObjects
 from robot.api import logger
 
 
 class GroupsActions(GroupsObjects):
     """This class represents the actions of the groups column of the Blueprint application"""
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-        self.pop_up_messages = PopUpMessagesActions(self.driver)
+
+    def __init__(self):
+        super().__init__()
+        self.pop_up_messages = PopUpMessagesActions()
 
     def create_new_group(self, name: str):
         """Creates a new group with the specified name."""

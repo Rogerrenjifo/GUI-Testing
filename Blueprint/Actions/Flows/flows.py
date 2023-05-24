@@ -3,28 +3,26 @@ from Blueprint.Actions.Flows.create_form_main_panel_actions import FormMainPanel
 from Blueprint.Actions.Flows.create_form_properties_panel_actions import PropertiesPanelActions
 from Blueprint.Actions.Flows.flow_components_actions import FlowComponentsActions
 from Blueprint.Actions.Flows.header_actions import HeaderActions
-from Blueprint.Actions.Flows.permissions_actions import FlowPermissionsActions
+from Blueprint.Actions.Flows.flow_permissions_actions import FlowPermissionsActions
 from Blueprint.Actions.Flows.publish_tab_actions import PublishTabActions
 from Blueprint.Actions.Flows.flow_main_panel_actions import FlowMainPanelActions
 from Blueprint.Actions.Flows.flows_properties_actions import FlowPropertiesActions
-from Blueprint.PageObject.Flows.elements.components.component_storage import ComponentStorage
 
 
 class Flows():
     """This class represents all the actions in flow page"""
 
-    def __init__(self, driver):
-        self.driver = driver
-        self.__storage = ComponentStorage()
-        self.__create_form_elements = CreateFormElementsActions(self.driver)
-        self.__create_form_main_panel = FormMainPanelActions(self.driver)
-        self.__create_form_properties_panel = PropertiesPanelActions(self.driver)
-        self.__create_flow_main_panel = FlowMainPanelActions(self.driver)
-        self.__create_flow_properties = FlowPropertiesActions(self.driver)
-        self.__create_flow_components = FlowComponentsActions(self.driver, self.__storage)
-        self.__header = HeaderActions(self.driver)
-        self.__permissions_tab = FlowPermissionsActions(self.driver)
-        self.__publish_tab = PublishTabActions(self.driver)
+    def __init__(self):
+        super().__init__()
+        self.__create_form_elements = CreateFormElementsActions()
+        self.__create_form_main_panel = FormMainPanelActions()
+        self.__create_form_properties_panel = PropertiesPanelActions()
+        self.__create_flow_components = FlowComponentsActions()
+        self.__create_flow_main_panel = FlowMainPanelActions()
+        self.__create_flow_properties = FlowPropertiesActions()
+        self.__header = HeaderActions()
+        self.__permissions_tab = FlowPermissionsActions()
+        self.__publish_tab = PublishTabActions()
 
     @property
     def form_tab_elements(self):

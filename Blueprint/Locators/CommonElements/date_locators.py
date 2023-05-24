@@ -1,0 +1,7 @@
+DATE_DEFAULT_YEAR_OPTION_LOCATOR = "//div[@class='item-container selected' or @class='item-container']//child::a[normalize-space()='<<value>>']"
+DATE_DEFAULT_MONTH_OPTION_LOCATOR = "//div[@class='item-container selected' or @class='item-container']//child::a[normalize-space()='<<value>>']"
+DATE_DEFAULT_DAY_OPTION_LOCATOR = "//div[@class='calendar-table-cell' and text()=' <<value>> ']"
+DEFAULT_DATE_YEAR_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[@class='dropdown-selector'][2]"
+DEFAULT_DATE_MONTH_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[@class='dropdown-selector'][1]"
+PREV_MONTH_BUTTON_LOCATOR = "//button[text() = '<']"
+NEXT_MONTH_BUTTON_LOCATOR = "//button[text() = '>']"
