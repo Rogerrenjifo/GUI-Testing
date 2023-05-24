@@ -1,4 +1,4 @@
-from Blueprint.Actions.elements.PopupMessages.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.selected_users_objects import SelectedUsersObjects
 
 
@@ -19,9 +19,9 @@ class SelectedUsersActions(SelectedUsersObjects):
 
     def get_pop_up_text_user(self):
         """Returns the text of the pop-up message displayed."""
-        text = self.pop_up_messages.get_popup_messages().text
+        text = self.pop_up_messages.get_popup_message_text()
         return text
 
     def close_pop_up(self):
         """Clicks on 'X' button of the popup message"""
-        self.pop_up_messages.click_close_popup_message()
+        self.pop_up_messages.click_to_close_popup_message()

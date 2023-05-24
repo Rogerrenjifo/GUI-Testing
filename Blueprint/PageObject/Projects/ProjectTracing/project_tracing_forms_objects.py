@@ -1,5 +1,5 @@
 from selenium.webdriver.remote.webelement import WebElement
-from Blueprint.Locators.Projects import project_tracing_forms_locators as locators
+from Blueprint.Locators.Projects.ProjectTracing import project_tracing_forms_locators as locators
 from Libraries.Drivers.base_page import BasePage
 
 
