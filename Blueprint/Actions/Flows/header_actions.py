@@ -111,7 +111,7 @@ class HeaderActions(Header):
         self.click_delete_option()
         self.click_close_button()
 
-    def change_version(self, version: str):
+    def change_version_process(self, version: str):
         self.deploy_header_dropdown()
         self.deploy_select_version()
         self.click_version(version)

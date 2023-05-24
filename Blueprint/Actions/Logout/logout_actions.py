@@ -15,3 +15,10 @@ class LogoutActions(Logout):
         self.display_logout_menu()
         user_name = self.get_username().text
         return user_name
+
+    def click_sing_out_button(self):
+        self.get_sing_out_button().click()
+
+    def sing_out_process(self):
+        self.display_logout_menu()
+        self.click_sing_out_button()
