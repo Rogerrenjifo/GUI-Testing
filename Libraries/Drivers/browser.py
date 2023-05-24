@@ -49,7 +49,7 @@ class Browser(object):
         cls._devices[device_name] = device_option
 
     @classmethod
-    def add_browser(cls, browser_name: str, driver: webdriver, options: webdriver.Options):
+    def add_browser(cls, browser_name: str, driver: webdriver, options):
         """Adds a new browser to the _webdriver_map dictionary"""
         cls._webdriver_map[browser_name] = {"driver": driver, "options": options}
 
