@@ -6,8 +6,8 @@ from Libraries.Drivers.base_page import BasePage
 class FlowComponentObjects(BasePage):
     """This class represents components menu of create flow"""
 
-    def __init__(self, driver) -> None:
-        super().__init__(driver)
+    def __init__(self) -> None:
+        super().__init__()
         self.__components_title = locators.COMPONENTS_TITLE
         self.__step_locator = locators.STEP_LOCATOR
         self.__action_locator = locators.ACTION_LOCATOR

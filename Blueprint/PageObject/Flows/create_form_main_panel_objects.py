@@ -6,8 +6,8 @@ from Libraries.Drivers.base_page import BasePage
 class FormMainPanelPage(BasePage):
     """Represents the main panel objects of create form tab in flow page"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__section_locator = locators.SECTION_LOCATOR
         self.__section_title_locator = locators.SECTION_TITLE_LOCATOR
         self.__section_dropdown_locator = locators.SECTION_DROPDOWN_LOCATOR
@@ -21,7 +21,7 @@ class FormMainPanelPage(BasePage):
     def get_locator(locator_model: str, replacement_attribute: str, index=None):
         """Returns the xpath of a specific section or component by its title and position"""
         if index is not None:
-            locator = locator_model.replace("ToChange", replacement_attribute)
+            locator = locator_model.replace("<<value>>", replacement_attribute)
             locator = f"({locator})[{str(index)}]"
         else:
             locator = locator_model.replace("ToChange", replacement_attribute)

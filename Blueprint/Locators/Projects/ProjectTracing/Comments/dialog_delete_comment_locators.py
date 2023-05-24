@@ -1,0 +1,5 @@
+DIALOG_DELETE_BUTTON = "//button[contains(@class,'primary')]"
+DIALOG_CANCEL_BUTTON = "//button[contains(@class,'secondary')]"
+DIALOG_X_BUTTON = "close-modal-button"
+COMMENT_DIALOG_TITLE = "modal-title"
+COMMENT_DIALOG_TEXT = "py-4"

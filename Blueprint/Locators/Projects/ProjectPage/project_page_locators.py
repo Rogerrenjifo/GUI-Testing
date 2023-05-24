@@ -1,0 +1,6 @@
+PROJECT_NAME = "//div[@class='instance-table-title']//h1"
+PROJECT_NEW_REQUEST_BUTTON = "//button[contains(text(), 'New Request')]"
+SELECT_ROW_PAGINATION = "//div[@class='row-selector']//descendant::select"
+PREVIOUS_PAGE_BUTTON = "//div[@class='paginator-content']//child::button[@class='previous']"
+NEXT_PAGE_BUTTON = "//div[@class='paginator-content']//child::button[@class='next']"
+NUMBER_PAGE_BUTTON = "//div[@class='paginator-content']//descendant::span[normalize-space()='<<value>>']//parent::ul"

@@ -6,8 +6,8 @@ from Libraries.Drivers.base_page import BasePage
 class MainMenuObjects(BasePage):
     """This class represents the Main Menu of the Blueprint application"""
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__first_flow_result = locators.FIRST_FLOW_RESULT
         self.__first_project_result = locators.FIRST_PROJECT_RESULT
         self.__flows_button = locators.FLOWS_BUTTON

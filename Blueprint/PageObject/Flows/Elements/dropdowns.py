@@ -5,10 +5,9 @@ from robot.api import logger
 
 class Dropdownbox(BasePage):
     """Builds the class constructor"""
-    def __init__(self, driver, number: int):
-        """Builds the class constructor"""
-        super().__init__(driver)
-        self.number = str(number)
+    def __init__(self, number):
+        super().__init__()
+        self.number = number
 
     def get_title(self) -> str:
         """Gets the title of the dropdown"""

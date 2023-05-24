@@ -5,8 +5,8 @@ from Libraries.Drivers.base_page import BasePage
 class PropertiesPanelObjects(BasePage):
     """This class represents the properties panel on the create form tab in the flow page of Blueprint app"""
     
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
         self.__section_name_input_locator = locators.SECTION_NAME_INPUT_LOCATOR
         self.__name_input_locator = locators.NAME_INPUT_LOCATOR
         self.__placeholder_input_locator = locators.PLACEHOLDER_INPUT_LOCATOR
@@ -94,7 +94,7 @@ class PropertiesPanelObjects(BasePage):
         return element
     
     def get_date_default_year_value(self, year: str) -> WebElement:
-        """Finds and returns a year value from the dropdaown with the required value."""
+        """Finds and returns a year value from the dropdown with the required value."""
         new_xpath = self.__date_default_year_option.replace("<<value>>", year)
         try:
             element = self.find_element.by_xpath(new_xpath)
@@ -108,7 +108,7 @@ class PropertiesPanelObjects(BasePage):
         return element
     
     def get_date_default_month_value(self, month: str) -> WebElement:
-        """Finds and returns a month value from the dropdaown with the required value."""
+        """Finds and returns a month value from the dropdown with the required value."""
         new_xpath = self.__date_default_month_option.replace("<<value>>", month)
         try:
             element = self.find_element.by_xpath(new_xpath)
@@ -117,7 +117,7 @@ class PropertiesPanelObjects(BasePage):
             raise Exception("Month  " + month + " not found.")
     
     def get_date_default_day_value(self, day: str) -> WebElement:
-        """Finds and returns a day value from the dropdaown with the required value."""
+        """Finds and returns a day value from the dropdown with the required value."""
         new_xpath = self.__date_default_day_option.replace("<<value>>", day)
         try:
             element = self.find_element.by_xpath(new_xpath)

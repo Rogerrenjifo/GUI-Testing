@@ -3,9 +3,6 @@ from Blueprint.PageObject.Flows.flow_permissions_objects import FlowPermissions
 
 class FlowPermissionsActions(FlowPermissions):
     """This class represents the flow permissions of Blueprint application"""
-    def __init__(self, driver):
-        """Builds the class constructor"""
-        super().__init__(driver)
 
     def get_flow_permissions_title(self) -> str:
         """returns the flow permissions title"""

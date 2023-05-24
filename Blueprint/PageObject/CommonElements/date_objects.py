@@ -4,10 +4,7 @@ from Libraries.Drivers.base_page import BasePage
 
 class DateObjects(BasePage):
     """This class represents the date selection on all the possible cases in Blueprint."""
-    
-    def __init__(self, driver):
-        super().__init__(driver)
-    
+
     def get_prev_month_button(self) -> WebElement:
         """Finds and returns previous month button."""
         element = self.find_element.by_xpath(locators.PREV_MONTH_BUTTON_LOCATOR)
