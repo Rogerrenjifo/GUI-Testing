@@ -7,7 +7,7 @@ class Dropdownbox(BasePage):
     """Builds the class constructor"""
     def __init__(self, number):
         super().__init__()
-        self.number = number
+        self.number = str(number)
 
     def get_title(self) -> str:
         """Gets the title of the dropdown"""
@@ -22,8 +22,11 @@ class Dropdownbox(BasePage):
 
     def select_dropdown_user(self, user: str):
         """Selects a user from the dropdown"""
-        xpath = locators.SELECT_USER.replace("<<user>>", user)
-        self.find_element.by_xpath(xpath).click()
+        try:
+            xpath = locators.SELECT_USER.replace("<<user>>", user)
+            self.find_element.by_xpath(xpath).click()
+        except Exception:
+            logger.info(f" user '{user}' does not exist")
 
     def type_name_user(self, name: str):
         """Types the name of a user in the dropdown """
@@ -61,9 +64,13 @@ class Dropdownbox(BasePage):
 
     def scroll_down(self, name: str):
         """Moves the scroll bar"""
-        xpath = locators.SELECT_USER.replace("<<user>>", name)
-        user = self.find_element.by_xpath(xpath)
-        self.action_chains.custom_scroll(user)
+        try:
+            xpath = locators.SELECT_USER.replace("<<user>>", name)
+            user = self.find_element.by_xpath(xpath)
+            self.action_chains.custom_scroll(user)
+        except Exception:
+            logger.info(f" user '{name}' does not exist")
+            self.click_drop_arrow()
 
     def click_drop_arrow(self):
         """Click on the dropdown arrow"""

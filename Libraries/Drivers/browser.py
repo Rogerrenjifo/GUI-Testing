@@ -6,16 +6,16 @@ class Browser(object):
     """A class that provides a browser instance"""
     _driver = None
     _webdriver_map = {"edge": {"driver": webdriver.Edge, "options": webdriver.EdgeOptions()},
-                    "chrome": {"driver": webdriver.Chrome, "options": webdriver.ChromeOptions()},
-                   "firefox": {"driver": webdriver.Firefox, "options": webdriver.FirefoxOptions()}}    
+                      "chrome": {"driver": webdriver.Chrome, "options": webdriver.ChromeOptions()},
+                      "firefox": {"driver": webdriver.Firefox, "options": webdriver.FirefoxOptions()}}
     _devices = {
-            "pixel s5": "--window-size=360,640",
-            "iphone 12pro": "--window-size=390,844",
-            "iphone xr": "--window-size=414,896",
-            "galaxy s20 ultra": "--window-size=412,915",
-            "ipad air": "--window-size=820,1180",
-            "hub max": "--window-size=820,1180",
-            "pc": "--start-maximized"}
+        "pixel s5": "--window-size=360,640",
+        "iphone 12pro": "--window-size=390,844",
+        "iphone xr": "--window-size=414,896",
+        "galaxy s20 ultra": "--window-size=412,915",
+        "ipad air": "--window-size=820,1180",
+        "hub max": "--window-size=820,1180",
+        "pc": "--start-maximized"}
 
     @classmethod
     def get_driver(cls):
@@ -23,7 +23,7 @@ class Browser(object):
         if cls._driver is None:
             cls._driver = cls.__create_instance()
         return cls._driver
-    
+
     @classmethod
     def __create_instance(cls):
         """Creates an WebDriver customized instance"""
@@ -49,7 +49,7 @@ class Browser(object):
         cls._devices[device_name] = device_option
 
     @classmethod
-    def add_browser(cls, browser_name: str, driver: webdriver, options: webdriver.Options):
+    def add_browser(cls, browser_name: str, driver: webdriver, options):
         """Adds a new browser to the _webdriver_map dictionary"""
         cls._webdriver_map[browser_name] = {"driver": driver, "options": options}
 
