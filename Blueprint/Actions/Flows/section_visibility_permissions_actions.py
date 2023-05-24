@@ -29,7 +29,7 @@ class SectionsVisibilityActions(ProcessPermissions):
         """Deletes all name users from the dropdown of the sections visibility"""
         Dropdownbox(number).delete_all_users()
 
-    def get_message_empty_in_section_dropdown(self, number: str):
+    def get_message_empty_in_section_dropdown(self, number: int):
         """Gets the message when dropdown is empty of the sections visibility"""
         return Dropdownbox(number).message_empty()
 
@@ -44,3 +44,7 @@ class SectionsVisibilityActions(ProcessPermissions):
     def scroll_to_user(self, number: int, name: str):
         """Scroll and select a user of the sections visibility"""
         Dropdownbox(number).scroll_down(name)
+
+    def click_dropdown_arrow(self, number: int):
+        """Clicks on dropdown arrow"""
+        Dropdownbox(number).click_drop_arrow()
