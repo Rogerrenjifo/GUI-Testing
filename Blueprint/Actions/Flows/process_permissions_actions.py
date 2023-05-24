@@ -61,6 +61,10 @@ class ProcessPermissionsActions(ProcessPermissions):
         """Scroll and select a user"""
         self.dropdown_process_admin.scroll_down(name)
 
+    def click_dropdown_arrow(self):
+        """Clicks on dropdown arrow"""
+        self.dropdown_process_admin.click_drop_arrow()
+
     def add_initiate_process_admin_by_typing(self):
         # TODO
 
