@@ -37,12 +37,14 @@ class BaseComponent(BasePage):
     def convert_pixel_to_percentage(self) -> list:
         """Converts the position from pixels to percentage"""
         canvas_size = self.canvas.size
-        width = canvas_size["width"] + 325
-        height = canvas_size["height"] + 74
-        element_x = self.element.location['x']
-        element_y = self.element.location['y']
-        x_percentage = ((element_x ) * 100) / width
-        y_percentage = ((element_y ) * 100) / height
+        width = canvas_size["width"] 
+        height = canvas_size["height"] 
+        x_canvas = self.canvas.location['x']
+        y_canvas = self.canvas.location['y']
+        element_x = self.element.location['x'] - (width - 1) / 2 - x_canvas
+        element_y = self.element.location['y'] - (height - 1) / 2 - y_canvas
+        x_percentage = ((element_x + (width / 2)) / (width - 166)) * 100
+        y_percentage = ((element_y + (height / 2)) / (height - 23)) * 100
         return x_percentage, y_percentage
     
     def __repr__(self) -> str:
