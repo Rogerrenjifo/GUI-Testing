@@ -1,4 +1,5 @@
-from Blueprint.PageObject.Projects.project_tracing_forms_objects import FormObjects
+from Blueprint.PageObject.Projects.ProjectTracing.project_tracing_forms_objects import FormObjects
+from Blueprint.Actions.CommonElements.date_actions import DateActions
 
 
 class FormsActions(FormObjects):
@@ -45,6 +46,7 @@ class FormsActions(FormObjects):
         """Seleects a date on the field with the title given."""
         self.select_field_to_edit(field_title)
         self.get_editable_text_input().click()
+        DateActions().set_date(year, month, day)
     
     def set_multiline_text_input(self, field_title: str, input_text: str):
         """Edits multiline text field into given value."""

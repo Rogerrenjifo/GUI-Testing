@@ -4,6 +4,8 @@ from Blueprint.Actions.Flows.create_form_properties_panel_actions import Propert
 from Blueprint.Actions.Flows.flow_components_actions import FlowComponentsActions
 from Blueprint.Actions.Flows.header_actions import HeaderActions
 from Blueprint.Actions.Flows.flow_permissions_actions import FlowPermissionsActions
+from Blueprint.Actions.Flows.process_permissions_actions import ProcessPermissionsActions
+from Blueprint.Actions.Flows.section_visibility_permissions_actions import SectionsVisibilityActions
 from Blueprint.Actions.Flows.publish_tab_actions import PublishTabActions
 from Blueprint.Actions.Flows.flow_main_panel_actions import FlowMainPanelActions
 from Blueprint.Actions.Flows.flows_properties_actions import FlowPropertiesActions
@@ -13,7 +15,6 @@ class Flows():
     """This class represents all the actions in flow page"""
 
     def __init__(self):
-        super().__init__()
         self.__create_form_elements = CreateFormElementsActions()
         self.__create_form_main_panel = FormMainPanelActions()
         self.__create_form_properties_panel = PropertiesPanelActions()
@@ -21,7 +22,9 @@ class Flows():
         self.__create_flow_main_panel = FlowMainPanelActions()
         self.__create_flow_properties = FlowPropertiesActions()
         self.__header = HeaderActions()
-        self.__permissions_tab = FlowPermissionsActions()
+        self.__permissions_tab_flow = FlowPermissionsActions()
+        self.__permissions_tab_process = ProcessPermissionsActions()
+        self.__permissions_tab_sections = SectionsVisibilityActions()
         self.__publish_tab = PublishTabActions()
 
     @property
@@ -55,9 +58,19 @@ class Flows():
         return self.__create_flow_main_panel
     
     @property
-    def permissions_tab(self):
-        """This attribute contains the actions in permissions tab - flow page"""
-        return self.__permissions_tab
+    def permissions_tab_flow(self):
+        """This attribute contains the actions in permissions tab (flow) - flow page"""
+        return self.__permissions_tab_flow
+
+    @property
+    def permissions_tab_process(self):
+        """This attribute contains the actions in permissions tab (process) - flow page"""
+        return self.__permissions_tab_process
+
+    @property
+    def permissions_tab_sections(self):
+        """This attribute contains the actions in permissions tab (sections) - flow page"""
+        return self.__permissions_tab_sections
     
     @property
     def publish_tab(self):

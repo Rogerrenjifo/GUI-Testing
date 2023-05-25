@@ -14,6 +14,7 @@ class ActionsChains(object):
         self.action_chains.click_and_hold(source).move_to_element(target).release(target).perform()
 
     def move_to_an_element(self, source: WebElement):
+        """Moves cursor to an element"""
         self.action_chains.move_to_element(source).perform()
 
     def custom_drag_and_drop(self, source: WebElement, target: WebElement, direction="down"):
@@ -43,12 +44,16 @@ class ActionsChains(object):
     def __convert_percent_to_pixel(self, x_percentage: int, y_percentage: int, target: WebElement):
         """Converts percentage to pixels"""
         element_size = target.size
-        width = element_size["width"]
-        height = element_size["height"]
-        x_pixels = ((x_percentage/100)*width)-(width/2)-1
-        y_pixels = ((y_percentage/100)*height)-(height/2)-1
+        width = element_size["width"] - 1
+        height = element_size["height"] - 1
+        x_pixels = ((x_percentage * (width - 166)) / 100) - (width / 2)
+        y_pixels = ((y_percentage * (height - 23)) / 100) - (height / 2)
         return x_pixels, y_pixels
 
     def move_to_and_click(self, target: WebElement):
         """Moves the cursor to a target and clicks it"""
         self.action_chains.move_to_element(target).click()
+    
+    def custom_scroll(self, option: WebElement):
+        """Scrolls and selects option"""
+        self.action_chains.scroll_to_element(option).click(option).perform()

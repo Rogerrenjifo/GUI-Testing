@@ -82,3 +82,12 @@ class GroupsActions(GroupsObjects):
     def click_on_delete_button_of_a_group_result(self,  index: str = "1"):
         """Clicks on the delete button of the first group result, first by default."""
         self.get_group_result_delete_button(index).click()
+
+    def get_pop_up_text_created_group(self):
+        """Returns the text of the pop-up message displayed."""
+        text = self.pop_up_messages.get_popup_message_text()
+        return text
+
+    def close_pop_up(self):
+        """Clicks on 'X' button of the popup message"""
+        self.pop_up_messages.click_to_close_popup_message()

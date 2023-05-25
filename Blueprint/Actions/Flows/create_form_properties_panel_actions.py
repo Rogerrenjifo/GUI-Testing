@@ -1,5 +1,6 @@
 from Blueprint.PageObject.Flows.create_form_properties_panel_objects import PropertiesPanelObjects
 
+
 class PropertiesPanelActions(PropertiesPanelObjects):
     """This class represents the properties panel on the create form tab in flow page."""
     

@@ -43,3 +43,12 @@ class AvailableUsersActions(AvailableUsersObjects):
     def click_on_cancel_create_user_button(self):
         """Clicks on the cancel user button"""
         self.get_cancel_create_user_button().click()
+
+    def get_pop_up_text_user(self):
+        """Returns the text of the pop-up message displayed."""
+        text = self.pop_up_messages.get_popup_message_text()
+        return text
+
+    def close_pop_up(self):
+        """Clicks on 'X' button of the popup message"""
+        self.pop_up_messages.click_to_close_popup_message()

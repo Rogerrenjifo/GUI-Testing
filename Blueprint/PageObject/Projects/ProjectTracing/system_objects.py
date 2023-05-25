@@ -1,5 +1,5 @@
 from selenium.webdriver.remote.webelement import WebElement
-from Blueprint.Locators.Projects.ProjectsTracing import system_locators as locators
+from Blueprint.Locators.Projects.ProjectTracing import system_locators as locators
 from Libraries.Drivers.base_page import BasePage
 from robot.api import logger
 

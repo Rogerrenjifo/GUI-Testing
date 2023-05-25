@@ -1,0 +1,6 @@
+FLOW_TITLE = "//h3[text()='Flow']"
+START_ACTION = "//span[@class='start']"
+FINAL_STEP = "//span[contains(@class,'last')]"
+STEPS = "(//span[@class='executed__step overflow-instance-button'])[<<number>>]"
+ACTIONS = "(//span[contains(@class,'text-center')])[<<number>>]"
+ACTION_POPUP = "//div[@class='flex gap-3']/descendant::ngb-popover-window"
