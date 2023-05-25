@@ -4,13 +4,13 @@ from Blueprint.PageObject.Flows.Elements.Components.action_component import Acti
 from Blueprint.PageObject.Flows.Elements.Components.step_component import StepComponent
 from Blueprint.PageObject.Flows.Elements.Components.base_component import BaseComponent
 
+
 class FlowMainPanelActions(FlowMainPanelObject):
     """Represents the actions of Create flow main panel"""
 
     def __init__(self) -> None:
         super().__init__()
         self.index = ComponentStorage()
-        self.target = self.get_canvas_element()
 
     def move_component_to_specific_position(self, component_id: str, x: int, y: int) -> None:
         """Moves components to specific position."""
@@ -43,14 +43,14 @@ class FlowMainPanelActions(FlowMainPanelObject):
         component.clone()
         if component.type =="Action":
             new_id = f"002Added{self.index.counter_action}"
-            self.index.add_component(new_id, ActionComponent(new_id, self.target))
+            self.index.add_component(new_id, ActionComponent(new_id))
             self.index.increment_counter_action()
         if component.type =="Step":
             new_id = f"001Added{self.index.counter_step}"
-            self.index.add_component(new_id, StepComponent(new_id, self.target))
+            self.index.add_component(new_id, StepComponent(new_id))
             self.index.increment_counter_step()
 
     def click_component(self, id):
-        component:BaseComponent = self.index.component_dictionary[id]
+        component: BaseComponent = self.index.component_dictionary[id]
         component.select_component()
         return component

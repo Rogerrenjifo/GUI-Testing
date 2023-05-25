@@ -9,9 +9,8 @@ class FlowMainPanelObject(BasePage):
     """This class represents main panel of create flow"""
     def __init__(self) -> None:
         super().__init__()
-        self.canvas = self.get_canvas_element()
-        self.start_component = StartComponent(locators.START_ID, self.canvas)
-        self.first_component = FirstComponent(locators.FIRST_ID, self.canvas)
+        self.start_component = StartComponent(locators.START_ID)
+        self.first_component = FirstComponent(locators.FIRST_ID)
     
     def generate_elements(self) -> WebElement:
         """Generates all the components from canvas board."""
@@ -26,8 +25,3 @@ class FlowMainPanelObject(BasePage):
             element_id = element.get_attribute('id')
             list_id.append(element_id)
         return list_id
-
-    def get_canvas_element(self) -> WebElement:
-        """Returns the canvas element."""
-        element = self.find_element.by_id(locators.CANVAS)
-        return element
