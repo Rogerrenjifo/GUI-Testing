@@ -59,3 +59,13 @@ class ProjectSystemActions(ProjectSystemObject):
     def display_dropdown(self):
         """Displays the dropdown"""
         self.get_arrow_element().click()
+
+    def edit_current_step_process(self, option):
+        self.click_edit_current_step_button()
+        self.select_specific_option(option)
+        self.save_changes()
+
+    def cancel_edit_current_step_process(self, option):
+        self.click_edit_current_step_button()
+        self.select_specific_option(option)
+        self.cancel_changes()

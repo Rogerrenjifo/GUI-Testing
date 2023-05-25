@@ -105,13 +105,13 @@ class HeaderActions(Header):
         self.click_delete_option()
         self.click_cancel_button()
 
-    def close_delete_process(self):
+    def close_delete_flow_process(self):
         """Closes the delete dialog while delete flow process is running. The flow is not deleted"""
         self.deploy_header_dropdown()
         self.click_delete_option()
         self.click_close_button()
 
-    def change_version_process(self, version: str):
+    def change_flow_version_process(self, version: str):
         self.deploy_header_dropdown()
         self.deploy_select_version()
         self.click_version(version)

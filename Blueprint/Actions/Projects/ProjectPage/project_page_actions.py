@@ -1,9 +1,13 @@
 from Blueprint.PageObject.Projects.ProjectPage.project_page_objects import ProjectPageObjects
 from selenium.webdriver.support.ui import Select
+from Blueprint.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
 
 
 class ProjectPageActions(ProjectPageObjects):
     """This class represents the Project PAge actions of a Blueprint application"""
+    def __init__(self):
+        super().__init__()
+        self.delete_dialog = DeleteDialogActions()
 
     def click_new_request_button(self):
         """Clicks the new request button"""
@@ -40,34 +44,31 @@ class ProjectPageActions(ProjectPageObjects):
         button = self.get_table_row(project_id)["project_actions_delete"]
         self.action_chains.move_to_an_element(button)
 
-    def click_delete_dialog_close_button(self):
+    def click_delete_dialog_close_button_project_page(self):
         """Clicks the close button of a delete dialog"""
-        button = self.delete_dialog.get_delete_dialog_close_button()
-        button.click()
+        self.delete_dialog.click_close_dialog_button()
 
     def hover_delete_dialog_close_button(self):
         """Position the mouse pointer over the element"""
-        button = self.delete_dialog.get_delete_dialog_close_button()
+        button = self.delete_dialog.get_close_dialog_button()
         self.action_chains.move_to_an_element(button)
 
     def click_delete_dialog_cancel_button(self):
         """Clicks the cancel button of a delete dialog"""
-        button = self.delete_dialog.get_delete_dialog_cancel_button()
-        button.click()
+        self.delete_dialog.click_delete_dialog_button()
 
     def hover_delete_dialog_cancel_button(self):
         """Position the mouse pointer over the element"""
-        button = self.delete_dialog.get_delete_dialog_cancel_button()
+        button = self.delete_dialog.get_cancel_dialog_button()
         self.action_chains.move_to_an_element(button)
 
     def click_delete_dialog_delete_button(self):
         """Clicks the delete button of a delete dialog"""
-        button = self.delete_dialog.get_delete_dialog_delete_button()
-        button.click()
+        button = self.delete_dialog.click_delete_dialog_button()
 
     def hover_delete_dialog_delete_button(self):
         """Position the mouse pointer over the element"""
-        button = self.delete_dialog.get_delete_dialog_delete_button()
+        button = self.delete_dialog.get_delete_dialog_button()
         self.action_chains.move_to_an_element(button)
 
     def click_select_row_pagination(self):
@@ -119,3 +120,18 @@ class ProjectPageActions(ProjectPageObjects):
         """Returns the text of the project name"""
         text = self.get_project_name().text
         return text
+
+    def delete_project_instance_process(self, project_id: str):
+        self.click_action_button(project_id)
+        self.click_action_delete_button(project_id)
+        self.click_delete_dialog_delete_button()
+
+    def cancel_delete_project_instance_process(self, project_id: str):
+        self.click_action_button(project_id)
+        self.click_action_delete_button(project_id)
+        self.click_delete_dialog_cancel_button()
+
+    def close_delete_project_instance_process(self, project_id: str):
+        self.click_action_button(project_id)
+        self.click_action_delete_button(project_id)
+        self.click_delete_dialog_close_button_project_page()

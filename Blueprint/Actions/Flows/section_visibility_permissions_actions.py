@@ -49,10 +49,10 @@ class SectionsVisibilityActions(ProcessPermissions):
         """Clicks on dropdown arrow"""
         Dropdownbox(number).click_drop_arrow()
 
-    def add_user_to_section_visibility_by_typing(self, number: int, name: str):
+    def add_user_to_section_visibility_by_typing_process(self, number: int, name: str):
         self.type_name_user_in_section_dropdown(number, name)
         self.select_user_in_section_dropdown(number, name)
 
-    def add_user_to_section_visibility_by_scrolling(self, number: int, name: str):
+    def add_user_to_section_visibility_by_scrolling_process(self, number: int, name: str):
         self.click_dropdown_arrow(number)
         self.scroll_to_user(number, name)
