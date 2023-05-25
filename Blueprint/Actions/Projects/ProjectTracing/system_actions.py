@@ -5,27 +5,27 @@ from selenium.webdriver.remote.webelement import WebElement
 class ProjectSystemActions(ProjectSystemObject):
     """Represents the system section actions of the Project Tracing"""
 
-    def get_current_step(self) ->str:
+    def get_current_step(self) -> str:
         """Returns the current step text"""
         current_step = self.get_current_step_element().text
         return current_step
     
-    def get_action_owner(self) ->str:
+    def get_action_owner(self) -> str:
         """Returns the action owner text"""
         action_owner = self.get_action_owner_element().text
         return action_owner
     
-    def get_creation_date(self) ->str:
+    def get_creation_date(self) -> str:
         """Returns the creation date text"""
         creation_date = self.get_creation_date_element().text
         return creation_date
     
-    def get_last_update(self) ->str:
+    def get_last_update(self) -> str:
         """Returns the last update text"""
         last_update = self.get_last_update_element().text
         return last_update
     
-    def get_closure_date(self) ->str:
+    def get_closure_date(self) -> str:
         """Returns the closure date text"""
         closure_date = self.get_closure_date_element().text
         return closure_date
