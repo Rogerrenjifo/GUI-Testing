@@ -122,16 +122,19 @@ class ProjectPageActions(ProjectPageObjects):
         return text
 
     def delete_project_instance_process(self, project_id: str):
+        """Deletes a project instance"""
         self.click_action_button(project_id)
         self.click_action_delete_button(project_id)
         self.click_dialog_delete_button_project_page()
 
     def cancel_delete_project_instance_process(self, project_id: str):
+        """Cancel delete a project instance process"""
         self.click_action_button(project_id)
         self.click_action_delete_button(project_id)
         self.click_dialog_cancel_button_project_page()
 
     def close_delete_project_instance_process(self, project_id: str):
+        """Closes delete a project instance process"""
         self.click_action_button(project_id)
         self.click_action_delete_button(project_id)
         self.click_dialog_close_button_project_page()

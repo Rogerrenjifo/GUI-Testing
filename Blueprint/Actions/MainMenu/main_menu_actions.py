@@ -47,11 +47,13 @@ class MainMenuActions(MainMenuObjects):
         self.get_new_flow_button().click()
 
     def go_to_project_process(self, project_name: str):
+        """Goes to a specific project"""
         self.click_on_projects_button()
         self.insert_project_name(project_name)
         self.click_on_first_project_result()
 
     def go_to_flow_process(self, flow_name: str):
+        """Goes to a specific flow"""
         self.click_on_flows_button()
         self.insert_flow_name(flow_name)
         self.click_on_first_flow_result()
