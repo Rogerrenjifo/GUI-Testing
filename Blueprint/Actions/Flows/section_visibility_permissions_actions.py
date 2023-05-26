@@ -5,7 +5,7 @@ from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
 class SectionsVisibilityActions(ProcessPermissions):
     """This class represents the section visibility of a Blueprint application"""
 
-    def get_sections_title_(self, number: int):
+    def get_sections_title(self, number: int):
         """Gets the title of the sections visibility"""
         return Dropdownbox(number).get_title()
 

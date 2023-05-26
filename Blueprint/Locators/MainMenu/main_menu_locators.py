@@ -1,5 +1,5 @@
-FIRST_FLOW_RESULT = "//app-flows-menu-item//ul//div//app-sublist-item/li[1]"
-FIRST_PROJECT_RESULT = "//app-projects-menu-item//ul//div//app-sublist-item/li[1]"
+FLOW_RESULT = "(//app-flows-menu-item//ul//div//app-sublist-item/li)"
+PROJECT_RESULT = "(//app-projects-menu-item//ul//div//app-sublist-item/li)"
 FLOWS_BUTTON = "//div[@class='link-title' and text()='Flows']"
 MY_INBOX_BUTTON = "//div[@class='link-title flex' and text()=' My Inbox ']"
 PROJECT_RESULTS = "//app-projects-menu-item//app-sublist-item"

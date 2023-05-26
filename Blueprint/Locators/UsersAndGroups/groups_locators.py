@@ -6,4 +6,4 @@ GROUP_RESULT_DELETE_BUTTON = "(//div[@class='dropdown-item item'][normalize-spac
 NEW_GROUP_BUTTON = "//button[@class='new-button'][normalize-space()='New'][1]"
 INPUT_GROUP_NAME = "//input[@formcontrolname='name']"
 CANCEL_CREATE_GROUP_BUTTON = "//button[@class='secondary-button action']"
-CREATE_GROUP_BUTTON = "//button[@class='primary-button action']"
+PRIMARY_GROUP_BUTTON = "//button[@class='primary-button action']"

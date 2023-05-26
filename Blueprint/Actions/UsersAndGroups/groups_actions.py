@@ -1,5 +1,4 @@
 import time
-
 from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.groups_objects import GroupsObjects
 from robot.api import logger
@@ -7,6 +6,7 @@ from robot.api import logger
 
 class GroupsActions(GroupsObjects):
     """This class represents the actions of the groups column of the Blueprint application"""
+
     def __init__(self):
         super().__init__()
         self.pop_up_messages = PopUpMessagesActions()
@@ -14,42 +14,50 @@ class GroupsActions(GroupsObjects):
     def create_new_group(self, name: str):
         """Creates a new group with the specified name."""
         self.click_on_new_group_button()
-        self.insert_group_name(name)
-        self.click_on_primary_button()
+        self.insert_group_name_into_the_create_new_group_page(name)
+        self.click_on_create_button()
 
     def edit_group(self, name: str, new_name: str, index: str = "1"):
         """Edits an existing group with the specified name by changing it to a new name."""
-        self.insert_search_in_groups_search_bar(name)
+        self.insert_search_into_the_groups_search_bar(name)
         self.click_on_dropdown_button_of_a_group_result(index)
         self.click_on_edit_button_of_a_group_result(index)
         self.get_input_group_name().clear()
-        self.insert_group_name(new_name)
-        self.click_on_primary_button()
+        self.insert_group_name_into_the_create_group_dialog(new_name)
+        self.click_on_update_button()
 
     def delete_group(self, name: str, index: str = "1"):
         """Deletes an existing group with the specified name."""
-        self.insert_search_in_groups_search_bar(name)
+        self.insert_search_into_the_groups_search_bar(name)
         self.click_on_dropdown_button_of_a_group_result(index)
         self.click_on_delete_button_of_a_group_result(index)
-        self.click_on_primary_button()
+        self.click_on_delete_button()
 
     def click_on_new_group_button(self):
         """Clicks on the 'New Group' button."""
         self.get_new_group_button().click()
 
-    def insert_group_name(self, name: str):
+    def insert_group_name_into_the_create_group_dialog(self, name: str):
         """Inserts the specified group name into the input field."""
         self.get_input_group_name().send_keys(name)
 
-    def click_on_primary_button(self):
-        """Clicks on the 'Create', 'Update' or 'Delete' button."""
-        self.get_create_group_button().click()
+    def click_on_create_button(self):
+        """Clicks on the 'Create' button."""
+        self.get_primary_group_button().click()
+
+    def click_on_update_button(self):
+        """Clicks on the 'Update' button."""
+        self.get_primary_group_button().click()
+
+    def click_on_delete_button(self):
+        """Clicks on the 'Delete' button."""
+        self.get_primary_group_button().click()
 
     def click_on_cancel_button(self):
         """Clicks on the cancel button in any groups page."""
         self.get_cancel_create_group_button().click()
 
-    def insert_search_in_groups_search_bar(self, search: str):
+    def insert_search_into_the_groups_search_bar(self, search: str):
         """Inserts the specified search string into the groups search bar."""
         self.get_input_search_groups().clear()
         self.get_input_search_groups().send_keys(search)
