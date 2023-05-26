@@ -30,7 +30,6 @@ class CommentActions(Comment):
         """Gets the text displayed as owner name above the comment"""
         if content is None:
             owner = self.comment_list[index].get_owner_name().text
-            print(owner)
         else:
             owner = self.get_owner_name(content).text
         return owner
@@ -65,7 +64,6 @@ class CommentActions(Comment):
     def click_on_delete_button_of_a_comment(self, owner: str, content: str = None, index: int = 0):
         """Clicks on delete comment button"""
         own_comment = self.identify_own_comments(owner, content, index)
-        print(self.comment_list)
         if own_comment is True:
             if content is None:
                 self.comment_list[index].get_delete_button().click()
@@ -162,21 +160,42 @@ class CommentActions(Comment):
         pop_up_color = self.pop_up_messages.get_popup_message_color()
         return pop_up_color
 
-    def edit_full_comment_process(self, new_content: str, owner: str, existent_content: str = None, index: int = 0):
+    def edit_full_comment_by_index_process(self, new_content: str, owner: str, index: int = 0):
         """Edits all the text of a comment"""
-        self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content, index=index)
+        self.click_on_edit_button_of_a_comment(owner=owner, index=index)
         self.delete_all_text_in_edit_comment_text_box()
         self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
 
-    def edit_partially_comment_process(self, new_content: str, number_characters: int, owner: str, existent_content: str = None, index: int = 0):
+    def edit_full_comment_by_content_process(self, new_content: str, owner: str, existent_content: str):
+        """Edits all the text of a comment"""
+        self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content)
+        self.delete_all_text_in_edit_comment_text_box()
+        self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
+
+    def edit_partially_comment_by_index_process(self, new_content: str, number_characters: int, owner: str, index: int = 0):
         """Edits part of the text of a comment"""
-        self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content, index=index)
+        self.click_on_edit_button_of_a_comment(owner=owner, index=index)
         self.delete_a_number_of_characters_in_edit_comment_text_box(characters_number=number_characters)
         self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
 
-    def delete_comment_process(self, owner: str, existent_content: str = None, index: int = 0):
+    def edit_partially_comment_by_content_process(self, new_content: str, number_characters: int, owner: str, existent_content: str):
+        """Edits part of the text of a comment"""
+        self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content)
+        self.delete_a_number_of_characters_in_edit_comment_text_box(characters_number=number_characters)
+        self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
+
+    def delete_comment_by_index_process(self, owner: str, index: int):
         """Deletes a comment from the list of comments"""
-        self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content, index=index)
+        self.click_on_delete_button_of_a_comment(owner=owner, index=index)
+        self.click_on_delete_button_in_delete_comment_dialog()
+
+    def delete_comment_by_content_process(self, owner: str, existent_content: str):
+        """Deletes a comment from the list of comments"""
+        self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content)
         self.click_on_delete_button_in_delete_comment_dialog()
 
     def cancel_delete_comment_process(self, owner: str, existent_content: str = None, index: int = 0):
