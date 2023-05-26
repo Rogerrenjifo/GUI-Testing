@@ -57,7 +57,7 @@ class SectionAddCommentActions(SectionAddComment):
         pop_up_content = self.pop_up_messages.get_popup_message_text()
         return pop_up_content
 
-    def oadd_text_to_add_comment_text_box(self):
+    def obtain_color_of_add_comment_pop_up_message(self):
         """Gets the text displayed in the popup message"""
         pop_up_color = self.pop_up_messages.get_popup_message_color()
         return pop_up_color

@@ -1,5 +1,6 @@
 from Blueprint.PageObject.Flows.header_objects import Header
 
+
 class HeaderActions(Header):
     """This class represents the actions in the header of Flows page"""
     

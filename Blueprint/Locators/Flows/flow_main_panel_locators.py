@@ -1,7 +1,6 @@
 FIRST_ID = "first"
 START_ID = "start"
 COMPONENT_LIST_XPATH = "//div[contains(@class, 'process-element')]"
-CANVAS = "canvas"
 DOTS_BUTTON_XPATH = "//div[@id='<<data>>']/descendant::button"
 DELETE_BUTTON_XPATH = "//div[@id='<<data>>']/descendant::div[5]"
 CLONE_BUTTON_XPATH = "//div[@id='<<data>>']/descendant::div[4]"

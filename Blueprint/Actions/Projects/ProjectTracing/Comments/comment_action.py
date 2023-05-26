@@ -72,7 +72,7 @@ class CommentActions(Comment):
         else:
             logger.info("You can not delete other users' comment")
 
-    def obtain_edited_tag_of_edited_comment(self, content: str = None, index: int = 0) -> str:
+    def obtain_edited_tag_of_a_comment(self, content: str = None, index: int = 0) -> str:
         """Gets the text that indicating that the commentary was edited"""
         if content is None:
             tag = self.comment_list[index].get_edited_tag().text
@@ -85,12 +85,12 @@ class CommentActions(Comment):
         self.get_text_area(index_edit_box).send_keys(Keys.END)
         self.get_text_area(index_edit_box).send_keys(text)
 
-    def delete_a_number_of_characters_in_edit_comment_text_box(self, characters_number: int, index_edit_box: str = "1"):
+    def delete_a_number_of_characters_to_edit_comment_text_box(self, characters_number: int, index_edit_box: str = "1"):
         """Delete a specific number of characters"""
         for character in range(int(characters_number)):
             self.get_text_area(index_edit_box).send_keys(Keys.BACKSPACE)
 
-    def delete_all_text_in_edit_comment_text_box(self, index_edit_box: str = "1"):
+    def delete_all_text_to_edit_comment_text_box(self, index_edit_box: str = "1"):
         """Delete the content of the textbox"""
         self.get_text_area(index_edit_box).clear()
 
@@ -163,28 +163,28 @@ class CommentActions(Comment):
     def edit_full_comment_by_index_process(self, new_content: str, owner: str, index: int = 0):
         """Edits all the text of a comment"""
         self.click_on_edit_button_of_a_comment(owner=owner, index=index)
-        self.delete_all_text_in_edit_comment_text_box()
+        self.delete_all_text_to_edit_comment_text_box()
         self.add_text_to_edit_comment_text_box(new_content)
         self.click_on_update_button_of_edit_comment_section()
 
     def edit_full_comment_by_content_process(self, new_content: str, owner: str, existent_content: str):
         """Edits all the text of a comment"""
         self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content)
-        self.delete_all_text_in_edit_comment_text_box()
+        self.delete_all_text_to_edit_comment_text_box()
         self.add_text_to_edit_comment_text_box(new_content)
         self.click_on_update_button_of_edit_comment_section()
 
     def edit_partially_comment_by_index_process(self, new_content: str, number_characters: int, owner: str, index: int = 0):
         """Edits part of the text of a comment"""
         self.click_on_edit_button_of_a_comment(owner=owner, index=index)
-        self.delete_a_number_of_characters_in_edit_comment_text_box(characters_number=number_characters)
+        self.delete_a_number_of_characters_to_edit_comment_text_box(characters_number=number_characters)
         self.add_text_to_edit_comment_text_box(new_content)
         self.click_on_update_button_of_edit_comment_section()
 
     def edit_partially_comment_by_content_process(self, new_content: str, number_characters: int, owner: str, existent_content: str):
         """Edits part of the text of a comment"""
         self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content)
-        self.delete_a_number_of_characters_in_edit_comment_text_box(characters_number=number_characters)
+        self.delete_a_number_of_characters_to_edit_comment_text_box(characters_number=number_characters)
         self.add_text_to_edit_comment_text_box(new_content)
         self.click_on_update_button_of_edit_comment_section()
 
