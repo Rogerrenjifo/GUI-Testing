@@ -60,12 +60,12 @@ class FlowPermissionsActions(FlowPermissions):
         """Clicks on dropdown arrow"""
         self.dropdown_flow_admin.click_drop_arrow()
 
-    def add_new_flow_admin_by_typing_process(self, name: str):
+    def add_new_flow_admin_by_typing_process_in_flow_permission(self, name: str):
         """Adds a new flow administrator by typing the name"""
         self.type_name_user_in_dropdown(name)
         self.select_user_in_dropdown(name)
 
-    def add_new_flow_admin_by_scrolling_process(self, name: str):
+    def add_new_flow_admin_by_scrolling_process_in_flow_permission(self, name: str):
         """Adds a new flow administrator by scrolling to the name"""
         self.click_dropdown_arrow()
         self.scroll_to_user(name)

@@ -59,16 +59,16 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         target = self.main_panel.get_section(existing_section_title)
         self.action_chains.custom_drag_and_drop(source, target)
 
-    def close_pop_up_on_create_form_elements_page(self):
+    def close_pop_up_on_create_form_elements(self):
         """Selects the button for close the popup message"""
         self.pop_up_messages.click_to_close_popup_message()
 
-    def obtain_pop_up_text_on_create_form_elements_page(self) -> str:
+    def obtain_pop_up_text_on_create_form_elements(self) -> str:
         """Gets the text displayed in the popup message"""
         pop_up_content = self.pop_up_messages.get_popup_message_text()
         return pop_up_content
 
-    def obtain_pop_up_color_on_create_form_elements_page(self) -> str:
+    def obtain_pop_up_color_on_create_form_elements(self) -> str:
         """Gets the color of the displayed popup message"""
         pop_up_color = self.pop_up_messages.get_popup_message_color()
         return pop_up_color
