@@ -17,10 +17,9 @@ class MainMenuActions(MainMenuObjects):
         self.get_search_projects_input().clear()
         self.get_search_projects_input().send_keys(name)
 
-    def click_on_first_project_result(self):
-        """Clicks on the first project result."""
-        self.get_first_project_result().click()
-        # TODO
+    def click_on_a_project_result(self, index: str = "1"):
+        """Clicks on a project result by index (default: 1)"""
+        self.get_project_result(index).click()
 
     def click_on_reports_button(self):
         """Clicks on the 'Reports' button in the Main Menu."""
@@ -35,10 +34,9 @@ class MainMenuActions(MainMenuObjects):
         self.get_search_flows_input().clear()
         self.get_search_flows_input().send_keys(name)
 
-    def click_on_first_flow_result(self):
-        """Clicks on the first flow result."""
-        self.get_first_flow_result().click()
-        # TODO
+    def click_on_first_flow_result(self, index: str = "1"):
+        """Clicks on a flow result by index (default: 1)"""
+        self.get_flow_result(index).click()
 
     def click_on_users_and_groups_button(self):
         """Clicks on the 'Users and Groups' button in the Main Menu."""

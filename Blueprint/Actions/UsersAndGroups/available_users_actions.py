@@ -24,10 +24,6 @@ class AvailableUsersActions(AvailableUsersObjects):
         """Clicks on the add button of the user result at the specified index (default: 1)"""
         self.get_user_result_add_button(index).click()
 
-    def click_on_add_button_of_username_result(self, username: str):
-        """Clicks on the add button of the user result at the specified username"""
-        # TODO
-
     def click_on_new_user_button(self):
         """Clicks on the 'New User' button"""
         self.get_new_user_button().click()
