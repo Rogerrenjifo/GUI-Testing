@@ -31,7 +31,7 @@ class FlowPermissionsActions(FlowPermissions):
         """Deletes which was typed into the dropdown text box"""
         self.dropdown_flow_admin.delete_typed_name()
 
-    def select_user_in_dropdown_in_flow_permissions(self, user: str):
+    def select_user_from_dropdown_in_flow_permissions(self, user: str):
         """Select a user of the dropdown"""
         self.dropdown_flow_admin.select_dropdown_user(user)
 

@@ -23,7 +23,7 @@ class FlowMainPanelActions(FlowMainPanelObject):
         component.select_component()
         return component
 
-    def connect_component_to_in_flow_main_panel(self, source_id: str, target_id: str, source_point_number: int,
+    def connect_components_in_flow_main_panel(self, source_id: str, target_id: str, source_point_number: int,
                                                 target_point_number: int) -> None:
         """Connect two components."""
         source_component = self.index.component_dictionary[source_id]

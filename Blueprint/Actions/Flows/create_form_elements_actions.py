@@ -39,19 +39,19 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         source = self.select_element_type_in_create_form(element_type)
         self.action_chains.custom_drag_and_drop(source, target, direction="up")
 
-    def add_new_section_in_create_form_elements(self):
+    def add_new_section_in_create_form(self):
         """Adds a new section in a form"""
         target = self.get_drop_area()
         source = self.get_section_element()
         self.action_chains.drag_and_drop_element(source, target)
 
-    def add_section_up_other_in_create_form_elements(self, existing_section_title: str):
+    def add_section_up_other_in_create_form(self, existing_section_title: str):
         """Adds a new section on top of an existing one"""
         source = self.get_section_element()
         target = self.main_panel.get_section_title(existing_section_title)
         self.action_chains.custom_drag_and_drop(source, target, direction="up")
 
-    def add_section_down_other_in_create_form_elements(self, existing_section_title: str):
+    def add_section_down_other_in_create_form(self, existing_section_title: str):
         """Adds a new section under an existing one"""
         source = self.get_section_element()
         target = self.main_panel.get_section(existing_section_title)

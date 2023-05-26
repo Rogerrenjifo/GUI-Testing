@@ -46,11 +46,11 @@ class GroupsObjects(BasePage):
         return element
 
     def get_cancel_create_group_button(self) -> WebElement:
-        """Finds and returns the 'Cancel' button for creating a new group."""
+        """Finds and returns the 'Cancel' button in group dialogs."""
         element = self.find_element.by_xpath(locators.CANCEL_CREATE_GROUP_BUTTON)
         return element
 
     def get_primary_group_button(self) -> WebElement:
-        """Finds and returns the 'Create' button for creating a new group."""
+        """Finds and returns the primary button for creating, editing or deleting a group dialogs."""
         element = self.find_element.by_xpath(locators.PRIMARY_GROUP_BUTTON)
         return element

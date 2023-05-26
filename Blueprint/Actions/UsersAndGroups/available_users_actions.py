@@ -12,7 +12,7 @@ class AvailableUsersActions(AvailableUsersObjects):
     def create_new_user(self, username: str):
         """Creates a new user with the specified username."""
         self.click_on_new_user_button()
-        self.insert_username_into_create_new_user_page(username)
+        self.insert_username_into_create_user_dialog(username)
         self.click_on_create_user_button()
 
     def insert_username_into_the_search_user_bar(self, username: str):
@@ -28,7 +28,7 @@ class AvailableUsersActions(AvailableUsersObjects):
         """Clicks on the 'New User' button"""
         self.get_new_user_button().click()
 
-    def insert_username_into_create_new_user_page(self, username: str):
+    def insert_username_into_create_user_dialog(self, username: str):
         """Inserts the specified username into the input field"""
         self.get_input_user_name().send_keys(username)
 

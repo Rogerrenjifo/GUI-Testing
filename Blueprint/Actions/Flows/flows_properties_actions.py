@@ -61,7 +61,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         default_owner = self.select_owner_dropbox.owner_default_item.text
         return default_owner
 
-    def select_owner_in_flow_properties(self, text: str="", position: int=None) -> None:
+    def select_owner_in_flow_properties(self, text: str = "", position: int = None) -> None:
         """Selects owner from list by text or position."""
         self.select_owner_dropbox.owner_item(text, str(position)).click()
 
@@ -119,7 +119,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         """Performs click on 'value' combobox."""
         self.update_values.form_value_set_value_item.click()
 
-    def select_update_field_option_by_in_flow_properties(self, text: str="", position: int=None) -> None:
+    def select_update_field_option_by_in_flow_properties(self, text: str = "", position: int = None) -> None:
         """Selects field combobox item by text or by position"""
         xpath = self.locators.REQ_FIELDS_FLD_CMB_ITEM
         if text != "":
@@ -161,7 +161,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         """Click on multiline text field."""
         self.update_values.multiline_type_field.click()
 
-    def update_fields_multiline_text_value_in_flow_properties(self, text: str="") -> None:
+    def update_fields_multiline_text_value_in_flow_properties(self, text: str = "") -> None:
         """Input text into multiline text field."""
         self.click_multiline_text_value_in_flow_properties()
         self.update_values.multiline_type_field.clear()
@@ -179,9 +179,9 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         """Selects value from users dropdown list."""
         self.click_select_user_list_value_in_flow_properties()
     
-    def set_date_value_in_flow_properties(self, day: int=1, month: int=1, year: int=2023) -> None:
+    def set_date_value_in_flow_properties(self, day: int = 1, month: int = 1, year: int = 2023) -> None:
         """Updates the new date in update value field in 'action' component."""
-        if (1 <= day <= 31 ) and (1 <= month <= 12):
+        if (1 <= day <= 31) and (1 <= month <= 12):
             self.get_calendar_month_dropdown().click()
             self.get_calendar_month_dropdown_item(month).click()
             self.get_calendar_year_dropdown().click()

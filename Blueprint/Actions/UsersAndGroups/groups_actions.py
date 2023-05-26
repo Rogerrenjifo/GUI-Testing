@@ -23,7 +23,7 @@ class GroupsActions(GroupsObjects):
         self.click_on_dropdown_button_of_a_group_result(index)
         self.click_on_edit_button_of_a_group_result(index)
         self.get_input_group_name().clear()
-        self.insert_group_name_into_the_create_new_group_page(new_name)
+        self.insert_group_name_into_the_create_group_dialog(new_name)
         self.click_on_update_button()
 
     def delete_group(self, name: str, index: str = "1"):
@@ -37,7 +37,7 @@ class GroupsActions(GroupsObjects):
         """Clicks on the 'New Group' button."""
         self.get_new_group_button().click()
 
-    def insert_group_name_into_the_create_new_group_page(self, name: str):
+    def insert_group_name_into_the_create_group_dialog(self, name: str):
         """Inserts the specified group name into the input field."""
         self.get_input_group_name().send_keys(name)
 

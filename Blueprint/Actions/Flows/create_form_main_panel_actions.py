@@ -74,17 +74,17 @@ class FormMainPanelActions(FormMainPanelPage):
         self.get_component_dropdown(component_id).click()
         time.sleep(2)
 
-    def obtain_section_error_message_from_main_panel_in_form_main_panel(self, section_title: str, index=None):
+    def obtain_section_error_message_in_form_main_panel(self, section_title: str, index=None):
         """Returns section error message displayed in main panel"""
         message = self.get_section_error_message(section_title, index).text
         return message
 
-    def obtain_section_title_from_main_panel_in_form_main_panel(self, index: str):
+    def obtain_section_title_in_form_main_panel(self, index: str):
         """Returns section title displayed in main panel"""
         section_title = self.get_section_title(index).text
         return section_title
 
-    def obtain_component_title_from_main_panel_in_form_main_panel(self, component_id: str):
+    def obtain_component_title_in_form_main_panel(self, component_id: str):
         """Returns component title displayed in main panel"""
         component_title = self.get_component_title(component_id).text
         return component_title
