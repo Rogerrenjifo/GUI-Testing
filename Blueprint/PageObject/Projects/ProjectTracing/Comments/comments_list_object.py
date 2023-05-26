@@ -1,9 +1,10 @@
 from Blueprint.Locators.Projects.ProjectTracing.Comments import comment_locators as locators
 from Libraries.Drivers.base_page import BasePage
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comment_objects import Comment
+from Libraries.Drivers.singleton import Singleton
 
 
-class CommentsList(BasePage):
+class CommentsList(BasePage, metaclass=Singleton):
     """This class represents the all the comments displayed in project tracing page"""
 
     def __init__(self):
