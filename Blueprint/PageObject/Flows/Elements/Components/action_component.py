@@ -5,8 +5,8 @@ from Blueprint.Locators.Flows import flow_main_panel_locators as elements
 
 class ActionComponent(BaseComponent):
     """This class represents an 'action' component"""
-    def __init__(self, id, canvas) -> None:
-        super().__init__(id, canvas)
+    def __init__(self, id) -> None:
+        super().__init__(id)
         self.type = "Action"
 
     def connect_component(self, target, number) -> None:

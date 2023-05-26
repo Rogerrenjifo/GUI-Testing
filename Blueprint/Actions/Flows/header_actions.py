@@ -1,5 +1,6 @@
 from Blueprint.PageObject.Flows.header_objects import Header
 
+
 class HeaderActions(Header):
     """This class represents the actions in the header of Flows page"""
     
@@ -75,22 +76,22 @@ class HeaderActions(Header):
 
     def get_marked_tab(self, tab_name: str):
         """Gets the marked status from the selected tab"""        
-        status_tab = self.get_marked_tab_elements(tab_name)
+        status_tab = self.is_marked_tab_elements(tab_name)
         return status_tab  
     
     def get_unmarked_tab(self, tab_name: str):
         """Gets the unmarked status from the selected tab"""          
-        status_tab = self.get_unmarked_tab_elements(tab_name)
+        status_tab = self.is_unmarked_tab_elements(tab_name)
         return status_tab 
     
     def get_error_marked_tab(self, tab_name: str):
         """Gets the marked status from the selected tab"""        
-        status_tab = self.get_error_marked_tab_elements(tab_name)
+        status_tab = self.is_error_marked_tab_elements(tab_name)
         return status_tab  
     
     def get_error_unmarked_tab(self, tab_name: str):
         """Gets the unmarked status from the selected tab"""          
-        status_tab = self.get_error_unmarked_tab_elements(tab_name)
+        status_tab = self.is_error_unmarked_tab_elements(tab_name)
         return status_tab
 
     def delete_flow_process(self):
