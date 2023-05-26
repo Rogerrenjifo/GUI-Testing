@@ -199,21 +199,21 @@ class CommentActions(Comment):
         self.click_on_delete_button_in_delete_comment_dialog()
 
     def cancel_delete_comment_by_index_process(self, owner: str, index: int):
-        """Cancel the process of delete a comment selected by its index"""
+        """Cancels the process of delete a comment selected by its index"""
         self.click_on_delete_button_of_a_comment(owner=owner, index=index)
         self.click_on_cancel_button_in_delete_comment_dialog()
 
     def cancel_delete_comment_by_content_process(self, owner: str, existent_content: str):
-        """Cancel the process of delete a comment selected by its content"""
+        """Cancels the process of delete a comment selected by its content"""
         self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content)
         self.click_on_cancel_button_in_delete_comment_dialog()
 
     def close_delete_comment_by_index_process(self, owner: str, index: int):
-        """Closes the process of delete a comment"""
+        """Closes the process of delete a comment selected by its index"""
         self.click_on_delete_button_of_a_comment(owner=owner, index=index)
         self.click_on_close_button_in_delete_comment_dialog()
 
     def close_delete_comment_by_content_process(self, owner: str, existent_content: str):
-        """Closes the process of delete a comment"""
+        """Closes the process of delete a comment selected by its content"""
         self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content)
         self.click_on_close_button_in_delete_comment_dialog()

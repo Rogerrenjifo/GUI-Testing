@@ -19,8 +19,8 @@ class HeaderActions(Header):
         flow_name_text = self.get_flow_name().text
         return flow_name_text
     
-    def deploy_header_dropdown(self):
-        """Deploys the dropdown of the Flows header"""
+    def display_header_dropdown(self):
+        """Displays the dropdown of the Flows header"""
         dropdown = self.get_dropdown_button()
         dropdown.click()
 
@@ -44,8 +44,8 @@ class HeaderActions(Header):
         delete = self.get_close_button()
         delete.click()    
    
-    def deploy_select_version(self):
-        """Deploys the Select Version option. The "deploy_header_dropdown" method needs to be executed before."""
+    def display_select_version(self):
+        """Displays the Select Version option. The "deploy_header_dropdown" method needs to be executed before."""
         select_version = self.get_select_version_option()
         self.action_chains.move_to_an_element(select_version)
 
@@ -95,25 +95,25 @@ class HeaderActions(Header):
         return status_tab
 
     def delete_flow_process(self):
-        """Run the process to delete a flow"""
-        self.deploy_header_dropdown()
+        """Executes the process to delete a flow"""
+        self.display_header_dropdown()
         self.click_delete_option()
         self.click_delete_button()
 
     def cancel_delete_flow_process(self):
-        """Cancel the process to delete a flow. The flow is not deleted"""
-        self.deploy_header_dropdown()
+        """Cancels the process to delete a flow. The flow is not deleted"""
+        self.display_header_dropdown()
         self.click_delete_option()
         self.click_cancel_button()
 
     def close_delete_flow_process(self):
         """Closes the delete dialog while delete flow process is running. The flow is not deleted"""
-        self.deploy_header_dropdown()
+        self.display_header_dropdown()
         self.click_delete_option()
         self.click_close_button()
 
     def change_flow_version_process(self, version: str):
         """Changes the flow version selected"""
-        self.deploy_header_dropdown()
-        self.deploy_select_version()
+        self.display_header_dropdown()
+        self.display_select_version()
         self.click_version(version)

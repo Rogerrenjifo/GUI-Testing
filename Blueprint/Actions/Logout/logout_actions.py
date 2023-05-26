@@ -17,8 +17,10 @@ class LogoutActions(Logout):
         return user_name
 
     def click_sing_out_button(self):
+        """Clicks on the sing out button"""
         self.get_sing_out_button().click()
 
     def sing_out_process(self):
+        """Sings out the user"""
         self.display_logout_menu()
         self.click_sing_out_button()

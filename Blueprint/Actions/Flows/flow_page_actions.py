@@ -36,7 +36,7 @@ class NewFlowActions(NewFlow):
         self.click_on_create_button()
 
     def cancel_create_new_flow_process(self):
-        """Cancel the creation of a new flow"""
+        """Cancels the creation of a new flow"""
         self.click_on_flows_drop_down_button()
         self.click_on_new_flow_button()
         self.click_on_cancel_button()
