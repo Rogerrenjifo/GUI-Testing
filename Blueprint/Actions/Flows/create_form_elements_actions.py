@@ -69,6 +69,6 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         return pop_up_content
 
     def obtain_pop_up_color_on_create_form_elements_page(self) -> str:
-        """Gets the text displayed in the popup message"""
-        pop_up_content = self.pop_up_messages.get_popup_message_color()
-        return pop_up_content
+        """Gets the color of the displayed popup message"""
+        pop_up_color = self.pop_up_messages.get_popup_message_color()
+        return pop_up_color
