@@ -44,29 +44,29 @@ class ProjectPageActions(ProjectPageObjects):
         button = self.get_table_row(project_id)["project_actions_delete"]
         self.action_chains.move_to_an_element(button)
 
-    def click_dialog_close_button_in_a_project_instance_project_page(self):
+    def click_dialog_close_button_in_a_project_instance(self):
         """Clicks the close button of a delete dialog."""
         self.delete_dialog.click_close_dialog_button()
 
-    def hover_dialog_close_button_in_project_instance_project_page(self):
+    def hover_dialog_close_button_in_project_instance(self):
         """Position the mouse pointer over the element."""
         button = self.delete_dialog.get_close_dialog_button()
         self.action_chains.move_to_an_element(button)
 
-    def click_dialog_cancel_button_in_project_instance_project_page(self):
+    def click_dialog_cancel_button_in_project_instance(self):
         """Clicks the cancel button of a delete dialog."""
         self.delete_dialog.click_cancel_dialog_button()
 
-    def hover_dialog_cancel_button_in_project_instance_project_page(self):
+    def hover_dialog_cancel_button_in_project_instance(self):
         """Position the mouse pointer over the element."""
         button = self.delete_dialog.get_cancel_dialog_button()
         self.action_chains.move_to_an_element(button)
 
-    def click_dialog_delete_button_in_project_instance_project_page(self):
+    def click_dialog_delete_button_in_project_instance(self):
         """Clicks the delete button of a delete dialog."""
         self.delete_dialog.click_delete_dialog_button()
 
-    def hover_dialog_delete_button_in_project_instance_project_page(self):
+    def hover_dialog_delete_button_in_project_instance(self):
         """Position the mouse pointer over the element."""
         button = self.delete_dialog.get_delete_dialog_button()
         self.action_chains.move_to_an_element(button)
@@ -125,16 +125,16 @@ class ProjectPageActions(ProjectPageObjects):
         """Deletes a project instance"""
         self.click_action_button_in_project_instance(project_id)
         self.click_action_delete_button_project_instance(project_id)
-        self.click_dialog_delete_button_in_project_instance_project_page()
+        self.click_dialog_delete_button_in_project_instance()
 
     def cancel_delete_project_instance_process_in_project_page(self, project_id: str):
         """Cancel delete a project instance process"""
         self.click_action_button_in_project_instance(project_id)
         self.click_action_delete_button_project_instance(project_id)
-        self.click_dialog_cancel_button_in_project_instance_project_page()
+        self.click_dialog_cancel_button_in_project_instance()
 
     def close_delete_project_instance_process_in_project_page(self, project_id: str):
         """Closes delete a project instance process"""
         self.click_action_button_in_project_instance(project_id)
         self.click_action_delete_button_project_instance(project_id)
-        self.click_dialog_close_button_in_a_project_instance_project_page()
+        self.click_dialog_close_button_in_a_project_instance()
