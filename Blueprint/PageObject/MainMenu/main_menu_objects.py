@@ -8,64 +8,55 @@ class MainMenuObjects(BasePage):
 
     def __init__(self):
         super().__init__()
-        self.__first_flow_result = locators.FIRST_FLOW_RESULT
-        self.__first_project_result = locators.FIRST_PROJECT_RESULT
-        self.__flows_button = locators.FLOWS_BUTTON
-        self.__my_inbox_button = locators.MY_INBOX_BUTTON
-        self.__projects_button = locators.PROJECTS_BUTTON
-        self.__projects_results = locators.PROJECT_RESULTS
-        self.__reports_button = locators.REPORTS_BUTTON
-        self.__search_flows = locators.SEARCH_INPUT_FLOWS
-        self.__search_projects = locators.SEARCH_INPUT_PROJECTS
-        self.__users_and_groups_button = locators.USERS_AND_GROUPS_BUTTON
-        self.__new_flow_button = locators.NEW_FLOW_BUTTON
 
     def get_my_inbox_button(self) -> WebElement:
         """Finds and returns the 'My Inbox' button element on the page."""
-        element = self.find_element.by_xpath(self.__my_inbox_button)
+        element = self.find_element.by_xpath(locators.MY_INBOX_BUTTON)
         return element
 
     def get_projects_button(self) -> WebElement:
         """Finds and returns the 'Projects' button element on the page."""
-        element = self.find_element.by_xpath(self.__projects_button)
+        element = self.find_element.by_xpath(locators.PROJECTS_BUTTON)
         return element
 
     def get_reports_button(self) -> WebElement:
         """Finds and returns the 'Reports' button element on the page."""
-        element = self.find_element.by_xpath(self.__reports_button)
+        element = self.find_element.by_xpath(locators.REPORTS_BUTTON)
         return element
 
     def get_flows_button(self) -> WebElement:
         """Finds and returns the 'Flows' button element on the page."""
-        element = self.find_element.by_xpath(self.__flows_button)
+        element = self.find_element.by_xpath(locators.FLOWS_BUTTON)
         return element
 
     def get_users_and_groups_button(self) -> WebElement:
         """Finds and returns the 'Users and Groups' button element on the page."""
-        element = self.find_element.by_xpath(self.__users_and_groups_button)
+        element = self.find_element.by_xpath(locators.USERS_AND_GROUPS_BUTTON)
         return element
 
     def get_search_projects_input(self) -> WebElement:
         """Finds and returns the search input element for projects on the page"""
-        element = self.find_element.by_xpath(self.__search_projects)
+        element = self.find_element.by_xpath(locators.SEARCH_INPUT_PROJECTS)
         return element
 
     def get_search_flows_input(self) -> WebElement:
         """Finds and returns the search input element for flows on the page."""
-        element = self.find_element.by_xpath(self.__search_flows)
+        element = self.find_element.by_xpath(locators.SEARCH_INPUT_FLOWS)
         return element
 
-    def get_first_project_result(self) -> WebElement:
-        """Finds and returns the first project result element on the page."""
-        element = self.find_element.by_xpath(self.__first_project_result)
+    def get_project_result(self, index: str) -> WebElement:
+        """Finds and returns a project result element on the page by index."""
+        result_by_index = locators.PROJECT_RESULT + "[" + index + "]"
+        element = self.find_element.by_xpath(result_by_index)
         return element
 
-    def get_first_flow_result(self) -> WebElement:
-        """Finds and returns the first flow result element on the page."""
-        element = self.find_element.by_xpath(self.__first_flow_result)
+    def get_flow_result(self, index: str) -> WebElement:
+        """Finds and returns a flow result element on the page by index."""
+        result_by_index = locators.FLOW_RESULT + "[" + index + "]"
+        element = self.find_element.by_xpath(result_by_index)
         return element
 
     def get_new_flow_button(self) -> WebElement:
         """Finds and returns the new flow button element on the page."""
-        element = self.find_element.by_xpath(self.__new_flow_button)
+        element = self.find_element.by_xpath(locators.NEW_FLOW_BUTTON)
         return element

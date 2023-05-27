@@ -8,7 +8,7 @@ class SelectedUsersActions(SelectedUsersObjects):
         super().__init__()
         self.pop_up_messages = PopUpMessagesActions()
 
-    def insert_user_in_search_selected_bar(self, username: str):
+    def insert_username_into_the_search_selected_bar(self, username: str):
         """Inserts the specified username into the search selected bar"""
         self.get_input_search_selected().clear()
         self.get_input_search_selected().send_keys(username)

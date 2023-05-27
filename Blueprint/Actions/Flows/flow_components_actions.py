@@ -23,6 +23,6 @@ class FlowComponentsActions(FlowComponentObjects):
         """Drags and drops a step to the center of the board"""
         component = self.get_step_element()
         self.action_chains.drag_and_drop_by_position(component, self.get_canvas_element(), x_percentage, y_percentage)
-        id = f"001Added{self.index.counter_step}"
-        self.index.add_component(id, StepComponent(id))
+        component_id = f"001Added{self.index.counter_step}"
+        self.index.add_component(component_id, StepComponent(component_id))
         self.index.increment_counter_step()

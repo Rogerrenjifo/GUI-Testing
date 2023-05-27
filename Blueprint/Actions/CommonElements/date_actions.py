@@ -1,5 +1,6 @@
 from Blueprint.PageObject.CommonElements.date_objects import DateObjects
 
+
 class DateActions(DateObjects):
     """This class represents the dates possible actions to interact in Blueprint."""
     
