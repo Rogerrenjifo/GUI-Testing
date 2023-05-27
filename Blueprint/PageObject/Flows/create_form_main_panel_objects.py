@@ -24,7 +24,7 @@ class FormMainPanelPage(BasePage):
             locator = locator_model.replace("<<value>>", replacement_attribute)
             locator = f"({locator})[{str(index)}]"
         else:
-            locator = locator_model.replace("ToChange", replacement_attribute)
+            locator = locator_model.replace("<<value>>", replacement_attribute)
         return locator
 
     def get_section(self, title: str, index=None) -> WebElement:

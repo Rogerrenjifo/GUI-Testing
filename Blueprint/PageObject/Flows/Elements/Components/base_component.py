@@ -1,18 +1,16 @@
 from Libraries.Drivers.base_page import BasePage
 from selenium.webdriver.remote.webelement import WebElement
+from Blueprint.PageObject.Flows.flow_components_object import FlowComponentObjects
 
 
 class BaseComponent(BasePage):
     """This class represents the common attributs and methods of components"""
     
-    def __init__(self, id: str, canvas: WebElement) -> None:
+    def __init__(self, id: str) -> None:
         super().__init__()
         self.id = id
-        self.element = self.get_component()
-        self.title = self.get_component_title()
-        self.canvas = canvas
+        self.components = FlowComponentObjects()
         self.properties = ""
-        self.x_percentage, self.y_percentage = self.convert_pixel_to_percentage()
     
     def get_component(self) -> WebElement:
         """Returns the component"""
@@ -21,29 +19,36 @@ class BaseComponent(BasePage):
 
     def get_component_title(self) -> str:
         """Returns the component's title"""
-        title = self.element.text
+        title = self.get_component().text
         return title
+    
+    def get_component_color(self) ->str:
+        """Gets the border color of a component"""
+        color = self.get_component().value_of_css_property('border-color')
+        return color
 
     def move_component(self, new_position_x: int, new_position_y: int) -> None:
         """Moves component by position"""
         x = new_position_x
         y = new_position_y
-        self.action_chains.drag_and_drop_by_position(self.element, self.canvas, x, y)
+        self.action_chains.drag_and_drop_by_position(self.get_component(), self.components.get_canvas_element(), x, y)
 
     def select_component(self) -> None:
         """Selects component"""
-        self.element.click()
+        self.get_component().click()
     
     def convert_pixel_to_percentage(self) -> list:
         """Converts the position from pixels to percentage"""
-        canvas_size = self.canvas.size
-        width = canvas_size["width"] + 325
-        height = canvas_size["height"] + 74
-        element_x = self.element.location['x']
-        element_y = self.element.location['y']
-        x_percentage = ((element_x ) * 100) / width
-        y_percentage = ((element_y ) * 100) / height
+        canvas_size = self.components.get_canvas_element().size
+        width = canvas_size["width"] 
+        height = canvas_size["height"] 
+        x_canvas = self.components.get_canvas_element().location['x']
+        y_canvas = self.components.get_canvas_element().location['y']
+        element_x = self.get_component().location['x'] - (width - 1) / 2 - x_canvas
+        element_y = self.get_component().location['y'] - (height - 1) / 2 - y_canvas
+        x_percentage = ((element_x + (width / 2)) / (width - 166)) * 100
+        y_percentage = ((element_y + (height / 2)) / (height - 23)) * 100
         return x_percentage, y_percentage
     
     def __repr__(self) -> str:
-        return f"title: {self.title}, x_position: {self.x_percentage}, y_position: {self.y_percentage}"
+        return f"title: {self.get_component_title()}, x_position: {self.convert_pixel_to_percentage()[0]}, y_position: {self.convert_pixel_to_percentage()[1]}"

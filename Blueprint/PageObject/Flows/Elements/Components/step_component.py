@@ -5,8 +5,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 class StepComponent(BaseComponent):
     """This class represents a step component"""
-    def __init__(self, id , canvas) -> None:
-        super().__init__(id, canvas)
+    def __init__(self, id) -> None:
+        super().__init__(id)
         self.type = "Step"
 
     def connect_component(self, target: WebElement, number: int):

@@ -10,7 +10,7 @@ class ProcessPermissions(BasePage):
     def __init__(self):
         """Builds the class constructor"""
         super().__init__()
-        self.dropdown_process_admin = Dropdownbox(self.driver, 2)
+        self.dropdown_process_admin = Dropdownbox(2)
 
     def get_title_process_permissions(self) -> WebElement:
         """Finds and returns the process permissions title object"""

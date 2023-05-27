@@ -5,7 +5,7 @@ from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
 class SectionsVisibilityActions(ProcessPermissions):
     """This class represents the section visibility of a Blueprint application"""
 
-    def get_sections_title_(self, number: int):
+    def get_sections_title(self, number: int):
         """Gets the title of the sections visibility"""
         return Dropdownbox(number).get_title()
 
@@ -48,3 +48,13 @@ class SectionsVisibilityActions(ProcessPermissions):
     def click_dropdown_arrow(self, number: int):
         """Clicks on dropdown arrow"""
         Dropdownbox(number).click_drop_arrow()
+
+    def add_user_to_section_visibility_by_typing_process(self, number: int, name: str):
+        """Adds a new user to section visibility process by typing the name"""
+        self.type_name_user_in_section_dropdown(number, name)
+        self.select_user_in_section_dropdown(number, name)
+
+    def add_user_to_section_visibility_by_scrolling_process(self, number: int, name: str):
+        """Adds a new user to section visibility by scrolling to the name"""
+        self.click_dropdown_arrow(number)
+        self.scroll_to_user(number, name)

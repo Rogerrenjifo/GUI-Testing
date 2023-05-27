@@ -6,21 +6,36 @@ from Libraries.Drivers.base_page import BasePage
 class NewRequestObject(BasePage):
     """This class represents the objects in new request page of projects """
 
-    def __init__(self):
-        super().__init__()
-
     def get_create_button(self) -> WebElement:
         """Returns the xpath of create button."""
         element = self.find_element.by_xpath(locators.CREATE_BUTTON)
         return element
     
-    def get_template_title(self) -> WebElement:
-        """Returns the xpath of the template title."""
+    def get_flow_template_title(self) -> WebElement:
+        """Returns the xpath of the flow template title."""
         element = self.find_element.by_xpath(locators.TEMPLATE_TITLE)
         return element
     
-    def get_locator(self, section_name: str, label_name: str) -> WebElement:
-        """Returns the xpath of a specific component by its sections and label title."""
-        locator = locators.LABELS.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+    def get_checkbox_locator(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of a specific checkbox by section and label title."""
+        locator = locators.CHECKBOX.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
+    
+    def get_element_locator_from_each_section(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of a specific textbox, numberbox, datebox or userlist by section and label title."""
+        locator = locators.TEXT_USER_NUMBER_DATE_BOX.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
+    
+    def get_user_locator_from_dropdown(self, user: str) -> WebElement:
+        """Returns the xpath of a specific user from the dropdown by name or email"""
+        locator = locators.SELECT_USER.replace("<<user>>", user)
+        element = self.find_element.by_xpath(locator)
+        return element
+    
+    def get_locator_from_remove_user(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of the remove user from a userbox by section and label title."""
+        locator = locators.REMOVE_USER_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
         element = self.find_element.by_xpath(locator)
         return element

@@ -15,3 +15,9 @@ class Logout(BasePage):
         """Finds and returns the profile button that display the logout menu"""
         element = self.find_element.by_class(locators.PROFILE_BUTTON)
         return element
+
+    def get_sing_out_button(self):
+        """Finds and returns the sing out button that display the logout menu"""
+        element = self.find_element.by_xpath(locators.SING_OUT_BUTTON)
+        return element
+
