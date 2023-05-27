@@ -1,7 +1,6 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Projects.ProjectPage import project_page_locators as locators
 from Blueprint.PageObject.Projects.ProjectPage.projects_table_objects import ProjectTableObjects
-from Blueprint.PageObject.Projects.ProjectPage.delete_dialog import DeleteDialogObjects
 from Libraries.Drivers.base_page import BasePage
 from typing import List
 
@@ -12,7 +11,6 @@ class ProjectPageObjects(BasePage):
     def __init__(self):
         super().__init__()
         self.projects_table = ProjectTableObjects()
-        self.delete_dialog = DeleteDialogObjects()
         self.__select_row_pagination = locators.SELECT_ROW_PAGINATION
 
     @staticmethod

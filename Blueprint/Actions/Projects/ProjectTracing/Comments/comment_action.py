@@ -159,3 +159,61 @@ class CommentActions(Comment):
         """Gets the text displayed in the popup message"""
         pop_up_color = self.pop_up_messages.get_popup_message_color()
         return pop_up_color
+
+    def edit_full_comment_by_index_process(self, new_content: str, owner: str, index: int = 0):
+        """Edits all the text of a comment selected by its index"""
+        self.click_on_edit_button_of_a_comment(owner=owner, index=index)
+        self.delete_all_text_to_edit_comment_text_box()
+        self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
+
+    def edit_full_comment_by_content_process(self, new_content: str, owner: str, existent_content: str):
+        """Edits all the text of a comment selected by its content"""
+        self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content)
+        self.delete_all_text_to_edit_comment_text_box()
+        self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
+
+    def edit_partially_comment_by_index_process(self, new_content: str, number_characters: int, owner: str, index: int = 0):
+        """Edits part of the text of a comment selected by its index"""
+        self.click_on_edit_button_of_a_comment(owner=owner, index=index)
+        self.delete_a_number_of_characters_to_edit_comment_text_box(characters_number=number_characters)
+        self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
+
+    def edit_partially_comment_by_content_process(self, new_content: str, number_characters: int, owner: str, existent_content: str):
+        """Edits part of the text of a comment selected by its content"""
+        self.click_on_edit_button_of_a_comment(owner=owner, content=existent_content)
+        self.delete_a_number_of_characters_to_edit_comment_text_box(characters_number=number_characters)
+        self.add_text_to_edit_comment_text_box(new_content)
+        self.click_on_update_button_of_edit_comment_section()
+
+    def delete_comment_by_index_process(self, owner: str, index: int):
+        """Deletes a comment from the list of comments selected by its index"""
+        self.click_on_delete_button_of_a_comment(owner=owner, index=index)
+        self.click_on_delete_button_in_delete_comment_dialog()
+
+    def delete_comment_by_content_process(self, owner: str, existent_content: str):
+        """Deletes a comment from the list of comments selected by its content"""
+        self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content)
+        self.click_on_delete_button_in_delete_comment_dialog()
+
+    def cancel_delete_comment_by_index_process(self, owner: str, index: int):
+        """Cancels the process of delete a comment selected by its index"""
+        self.click_on_delete_button_of_a_comment(owner=owner, index=index)
+        self.click_on_cancel_button_in_delete_comment_dialog()
+
+    def cancel_delete_comment_by_content_process(self, owner: str, existent_content: str):
+        """Cancels the process of delete a comment selected by its content"""
+        self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content)
+        self.click_on_cancel_button_in_delete_comment_dialog()
+
+    def close_delete_comment_by_index_process(self, owner: str, index: int):
+        """Closes the process of delete a comment selected by its index"""
+        self.click_on_delete_button_of_a_comment(owner=owner, index=index)
+        self.click_on_close_button_in_delete_comment_dialog()
+
+    def close_delete_comment_by_content_process(self, owner: str, existent_content: str):
+        """Closes the process of delete a comment selected by its content"""
+        self.click_on_delete_button_of_a_comment(owner=owner, content=existent_content)
+        self.click_on_close_button_in_delete_comment_dialog()

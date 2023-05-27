@@ -53,7 +53,7 @@ class ActionsChains(object):
     def move_to_and_click(self, target: WebElement):
         """Moves the cursor to a target and clicks it"""
         self.action_chains.move_to_element(target).click()
-    
+
     def custom_scroll(self, option: WebElement):
         """Scrolls and selects option"""
         self.action_chains.scroll_to_element(option).click(option).perform()

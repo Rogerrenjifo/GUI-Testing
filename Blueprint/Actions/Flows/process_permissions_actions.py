@@ -64,3 +64,13 @@ class ProcessPermissionsActions(ProcessPermissions):
     def click_dropdown_arrow_in_flow_process_permission(self):
         """Clicks on dropdown arrow"""
         self.dropdown_process_admin.click_drop_arrow()
+
+    def add_user_to_initiate_process_by_typing_process_in_process_permissions(self, name: str):
+        """Adds a new user to initiate process by typing the name"""
+        self.type_name_user_in_dropdown_in_flow_process_permission(name)
+        self.select_user_in_dropdown_in_flow_process_permission(name)
+
+    def add_user_to_initiate_process_by_scrolling_process_in_process_permissions(self, name: str):
+        """Adds a new user to initiate process by scrolling to the name"""
+        self.click_dropdown_arrow_in_flow_process_permission()
+        self.scroll_to_user_in_flow_process_permission(name)

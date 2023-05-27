@@ -19,8 +19,8 @@ class HeaderActions(Header):
         flow_name_text = self.get_flow_name().text
         return flow_name_text
     
-    def deploy_header_dropdown_in_flow_header(self):
-        """Deploys the dropdown of the Flows header"""
+    def display_header_dropdown_in_flow_header(self):
+        """Displays the dropdown of the Flows header"""
         dropdown = self.get_dropdown_button()
         dropdown.click()
 
@@ -47,8 +47,8 @@ class HeaderActions(Header):
         delete = self.get_close_button()
         delete.click()    
    
-    def deploy_select_version_in_flow_header(self):
-        """Deploys the Select Version option. The "deploy_header_dropdown" method needs to be executed before."""
+    def display_select_version_in_flow_header(self):
+        """Displays the Select Version option. The "deploy_header_dropdown" method needs to be executed before."""
         select_version = self.get_select_version_option()
         self.action_chains.move_to_an_element(select_version)
 
@@ -97,3 +97,27 @@ class HeaderActions(Header):
         """Gets the unmarked status from the selected tab"""          
         status_tab = self.is_error_unmarked_tab_elements(tab_name)
         return status_tab
+
+    def delete_flow_process_in_flow_header(self):
+        """Executes the process to delete a flow"""
+        self.display_header_dropdown_in_flow_header()
+        self.click_delete_option_in_flow_header()
+        self.click_delete_button_in_flow_header()
+
+    def cancel_delete_flow_process_in_flow_header(self):
+        """Cancels the process to delete a flow. The flow is not deleted"""
+        self.display_header_dropdown_in_flow_header()
+        self.click_delete_option_in_flow_header()
+        self.click_cancel_button_in_flow_header()
+
+    def close_delete_flow_process_in_flow_header(self):
+        """Closes the delete dialog while delete flow process is running. The flow is not deleted"""
+        self.display_header_dropdown_in_flow_header()
+        self.click_delete_option_in_flow_header()
+        self.click_close_button_in_flow_header()
+
+    def change_flow_version_process_in_flow_header(self, version: str):
+        """Changes the flow version selected"""
+        self.display_header_dropdown_in_flow_header()
+        self.display_select_version_in_flow_header()
+        self.click_version_in_flow_header(version)
