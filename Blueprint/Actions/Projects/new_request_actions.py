@@ -49,10 +49,10 @@ class NewRequestActions(NewRequestObject):
             element.send_keys(Keys.ARROW_DOWN)
 
     def mouse_over_create_button_in_new_request_page(self) -> None:
-        """Position the mouse pointer over create button."""
+        """Positions the mouse pointer over create button."""
         button = self.get_create_button()
         self.action_chains.move_to_an_element(button)
     
     def clear_the_content_of_a_component_in_new_request_page(self, section_name: str, label_name: str) -> None:
-        """removes the text or number in a textbox or numeric box in new request page."""
+        """Removes the text or number in a textbox or numeric box in new request page."""
         self.get_element_locator_from_each_section(section_name, label_name).clear()

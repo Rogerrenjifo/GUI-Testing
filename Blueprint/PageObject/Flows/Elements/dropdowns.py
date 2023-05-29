@@ -6,101 +6,110 @@ from robot.api import logger
 class Dropdownbox(BasePage):
     """Represents the dropdowns base class"""
 
-    def __init__(self, page: str, number: int = None):
+    def __init__(self, page: str):
         super().__init__()
-        self.number = str(number)
         self.page = page
 
-    def get_title(self, key: str) -> str:
+    def get_title(self, key: str, dropdown_index: str = None) -> str:
         """Gets the title of the dropdown"""
-        xpath = self.__xpath_selector(key)
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         title = self.find_element.by_xpath(xpath).text
         return title
 
-    def click_dropdown(self, key: str, name: str = None, label_name: str = None):
+    def click_dropdown(self, key: str, section_name: str = None, label_name: str = None, dropdown_index: str = None):
         """Clicks the dropdown"""
-        xpath = self.__xpath_selector(key, name, label_name)
+        xpath = self.__xpath_selector(key, section_name, label_name, dropdown_index)
         self.find_element.by_xpath(xpath).click()
 
-    def select_dropdown_option(self, key: str, user: str):
+    def select_dropdown_option(self, key: str, option: str, dropdown_index: str = None):
         """Selects an option from the dropdown"""
         try:
-            xpath = self.__xpath_selector(key, user)
+            xpath = self.__xpath_selector(key, option=option, dropdown_index=dropdown_index)
             self.find_element.by_xpath(xpath).click()
         except Exception:
-            logger.info(f" option '{user}' does not exist")
+            logger.info(f" option '{option}' does not exist")
 
-    def type_characters_in_dropdown(self, key: str, name: str):
+    def type_characters_in_dropdown(self, key: str, characters: str, dropdown_index: str = None):
         """Types the name of a user in the dropdown """
-        xpath = self.__xpath_selector(key)
-        self.find_element.by_xpath(xpath).send_keys(name)
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        self.find_element.by_xpath(xpath).send_keys(characters)
 
-    def delete_typed_characters_in_dropdown(self, key: str):
+    def delete_typed_characters_in_dropdown(self, key: str, dropdown_index: str = None):
         """Deletes the typed name of the user in the dropdown"""
-        xpath = self.__xpath_selector(key)
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         self.find_element.by_xpath(xpath).clear()
 
-    def delete_all_options(self, key: str, name: str = None, label_name: str = None):
+    def delete_all_options(self, key: str, section_name: str = None, label_name: str = None, dropdown_index: str = None):
         """Deletes all selected users from the dropdown"""
-        xpath = self.__xpath_selector(key, name, label_name)
+        xpath = self.__xpath_selector(key, option=section_name, label_name=label_name, dropdown_index=dropdown_index)
         self.find_element.by_xpath(xpath).click()
 
-    def message_empty_in_dropdown(self, key: str) -> str:
+    def message_empty_in_dropdown(self, key: str, dropdown_index: str = None) -> str:
         """Gets the message when dropdown textbox is empty"""
-        xpath = self.__xpath_selector(key)
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         message = self.find_element.by_xpath(xpath).text
         return message
 
-    def delete_selected_option(self, key: str, name: str):
+    def delete_selected_option(self, key: str, option: str, dropdown_index: str = None):
         """Deletes a specific user from dropdown"""
         try:
-            xpath = self.__xpath_selector(key, name)
+            xpath = self.__xpath_selector(key, option=option, dropdown_index=dropdown_index)
             self.find_element.by_xpath(xpath).click()
         except Exception:
-            logger.info(f" option '{name}' does not exist")
+            logger.info(f" option '{option}' does not exist")
 
-    def scroll_down(self, key: str, name: str):
-        """Moves the scroll bar"""
+    def scroll_down(self, key: str, option: str, dropdown_index: str = None):
+        """Moves the scroll bar until the option sent"""
         try:
-            xpath = self.__xpath_selector(key, name)
+            xpath = self.__xpath_selector(key, option=option, dropdown_index=dropdown_index)
             user = self.find_element.by_xpath(xpath)
             self.action_chains.custom_scroll(user)
         except Exception:
-            logger.info(f" option '{name}' does not exist")
+            logger.info(f" option '{option}' does not exist")
             self.click_drop_arrow()
 
-    def click_drop_arrow(self, key: str):
-        """Click on the dropdown arrow"""
-        xpath = self.__xpath_selector(key)
+    def click_drop_arrow(self, key: str, dropdown_index: str = None):
+        """Clicks on the dropdown arrow"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         self.find_element.by_xpath(xpath).click()
 
-    def get_available_options(self, key: str) -> list:
-        """Return a list of available options of the dropdown"""
-        xpath = self.__xpath_selector(key)
+    def get_available_options(self, key: str, dropdown_index: str = None) -> list:
+        """Returns a list of available options of the dropdown"""
+        xpath = self.__xpath_selector(key, dropdown_index)
         options = self.find_elements.by_xpath(xpath)
         available_options = [option.text for option in options]
         option_list = available_options[0].split("\n")
         return option_list
 
-    def __xpath_selector(self, key: str, name: str = None, label_name: str = None) -> str:
+    def __xpath_selector(self, key: str, option: str = None, label_name: str = None, dropdown_index: str = None) -> str:
         """Selects the corresponding xpath"""
+        valid_pages = ['permissions', 'projects_tracing_system', 'projects_new_project']
+        if self.page not in valid_pages:
+            logger.info(f"Invalid page: {self.page}. Supported pages: {', '.join(valid_pages)}")
         if self.page == 'permissions':
-            if key == 'SELECT_USER':
-                return locators.permissions[key].replace("<<user>>", name)
-            elif key == 'DELETE_ONE_USER':
-                return locators.permissions[key].replace("<<number>>", self.number).replace("<<user>>", name)
-            else:
-                return locators.permissions[key].replace("<<number>>", self.number)
-
+            try:
+                if key == 'SELECT_USER':
+                    return locators.permissions[key].replace("<<user>>", option)
+                elif key == 'DELETE_ONE_USER':
+                    return locators.permissions[key].replace("<<number>>", str(dropdown_index)).replace("<<user>>", option)
+                else:
+                    return locators.permissions[key].replace("<<number>>", str(dropdown_index)) 
+            except Exception:  
+                logger.info(f"Invalid key: {key} not supported in {self.page} page")      
         if self.page == "projects_tracing_system":
-            if key == 'OPTION':
-                return locators.projects_tracing_system[key].replace("<<option>>", name)
-            else:
-                return locators.projects_tracing_system[key]
-
+            try:
+                if key == 'OPTION':
+                    return locators.projects_tracing_system[key].replace("<<option>>", option)
+                else:
+                    return locators.projects_tracing_system[key]
+            except Exception:
+                logger.info(f"Invalid key: {key} not supported in {self.page} page")
         if self.page == 'projects_new_project':
-            if key == 'SELECT_USER':
-                return locators.projects_new_project[key].replace("<<user>>", name)
-            else:
-                return locators.projects_new_project[key].replace("<<section_name>>", name).replace("<<label_name>>",
-                                                                                                    label_name)
+            try:
+                if key == 'SELECT_USER':
+                    return locators.projects_new_project[key].replace("<<user>>", option)
+                else:
+                    return locators.projects_new_project[key].replace("<<section_name>>", option).replace("<<label_name>>",
+                                                                                                label_name)
+            except Exception:
+                logger.info(f"Invalid key: {key} not supported in {self.page} page")
