@@ -34,6 +34,7 @@ class ProjectPageObjects(BasePage):
         project = {
             "project_row": self.projects_table.get_table_row_by_project_id(project_id),
             "project_checkbox": self.projects_table.get_project_checkbox_by_project_id(project_id),
+            "project_checkbox_label": self.projects_table.get_project_checkbox_label_by_project_id(project_id),
             "project_title": self.projects_table.get_project_title_by_project_id(project_id),
             "project_current_step": self.projects_table
             .get_project_current_step_by_project_id(project_id),
