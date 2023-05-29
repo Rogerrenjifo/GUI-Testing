@@ -34,28 +34,28 @@ class ProcessPermissionsActions(ProcessPermissions):
 
     def type_name_user_in_dropdown_in_flow_process_permission(self, name:str):
         """Types the name of a user in a dropdown of the process permissions"""
-        self.dropdown.type_name_user('INPUT_TEXT_BOX', name)
+        self.dropdown.type_characters_in_dropdown('INPUT_TEXT_BOX', name)
 
     def delete_typed_name_in_dropdown_in_flow_process_permission(self):
         """Deletes typed name from the dropdown of the process permissions"""
-        self.dropdown.delete_typed_name('INPUT_TEXT_BOX')
+        self.dropdown.delete_typed_characters_in_dropdown('INPUT_TEXT_BOX')
 
     def select_user_in_dropdown_in_flow_process_permission(self, user:str):
         """Selects a user from the dropdown of the process permissions"""
-        self.dropdown.select_dropdown_user('SELECT_USER', user)
+        self.dropdown.select_dropdown_option('SELECT_USER', user)
 
     def delete_all_users_in_dropdown_in_flow_process_permission(self):
         """Deletes all name users from the dropdown of the sections visibility"""
-        self.dropdown.delete_all_users('DELETE_ALL_USERS')
+        self.dropdown.delete_all_options('DELETE_ALL_USERS')
 
     def get_message_empty_dropdown_in_flow_process_permission(self) -> str:
         """Gets the message when dropdown is empty"""
-        message = self.dropdown.message_empty('EMPTY_MESSAGE')
+        message = self.dropdown.message_empty_in_dropdown('EMPTY_MESSAGE')
         return message
 
     def delete_one_selected_user_in_dropdown_in_flow_process_permission(self, name: str):
         """Delete one user from the dropdown"""
-        self.dropdown.delete_selected_user('DELETE_ONE_USER', name)
+        self.dropdown.delete_selected_option('DELETE_ONE_USER', name)
 
     def delete_selected_users_in_dropdown_in_flow_process_permission(self, names: list):
         """Delete users from the dropdown"""

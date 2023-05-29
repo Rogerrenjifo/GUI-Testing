@@ -23,8 +23,9 @@ class NewRequestObject(BasePage):
         return element
     
     def get_element_locator_from_each_section(self, section_name: str, label_name: str) -> WebElement:
-        """Returns the xpath of a specific textbox, numberbox, datebox or userlist by section and label title."""
-        locator = locators.TEXT_USER_NUMBER_DATE_BOX.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        """Returns the xpath of a specific textbox, number box, datebox or user list by section and label title."""
+        locator = locators.TEXT_USER_NUMBER_DATE_BOX.replace("<<section_name>>", section_name).replace("<<label_name>>",
+                                                                                                       label_name)
         element = self.find_element.by_xpath(locator)
         return element
     
@@ -34,17 +35,6 @@ class NewRequestObject(BasePage):
         element = self.find_element.by_xpath(locator)
         return element
     
-    def get_locator_from_remove_user(self, section_name: str, label_name: str) -> WebElement:
-        """Returns the xpath of the remove user from a userbox by section and label title."""
-        locator = locators.REMOVE_USER_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
-        element = self.find_element.by_xpath(locator)
-    
-    def get_locator_from_remove_user(self, section_name: str, label_name: str) -> WebElement:
-        """Returns the xpath of the remove user from a userbox by section and label title."""
-        locator = locators.REMOVE_USER_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
-        element = self.find_element.by_xpath(locator)
-        return element
-
     def get_css_selector_from_create_button(self) -> WebElement:
         """Returns the css selector from create button"""
         element = self.find_element.by_css_selector(locators.CREATE_BUTTON_CSS_SELECTOR)
