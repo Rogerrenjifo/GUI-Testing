@@ -2,8 +2,8 @@ from selenium.webdriver import Keys
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comment_objects import Comment
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comments_list_object import CommentsList
 from robot.api import logger
-from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
-from Blueprint.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
 
 
 class CommentActions(Comment):

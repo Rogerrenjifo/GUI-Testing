@@ -1,4 +1,4 @@
-from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.available_users_objects import AvailableUsersObjects
 
 
