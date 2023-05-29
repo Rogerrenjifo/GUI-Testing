@@ -5,74 +5,95 @@ from robot.api import logger
 
 class Dropdownbox(BasePage):
     """Builds the class constructor"""
-    def __init__(self, number):
+    def __init__(self, page, number=None, name=None):
         super().__init__()
         self.number = str(number)
+        self.page = page
 
-    def get_title(self) -> str:
+    def get_title(self, key: str) -> str:
         """Gets the title of the dropdown"""
-        xpath = locators.TITLE.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         title = self.find_element.by_xpath(xpath).text
         return title
 
-    def click_dropdown(self):
+    def click_dropdown(self, key: str):
         """Clicks the dropdown"""
-        xpath = locators.TEXT_BOX.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         self.find_element.by_xpath(xpath).click()
 
-    def select_dropdown_user(self, user: str):
-        """Selects a user from the dropdown"""
+    def select_dropdown_option(self, key: str, user: str):
+        """Selects an option from the dropdown"""
         try:
-            xpath = locators.SELECT_USER.replace("<<user>>", user)
+            xpath = self.__xpath_selector(key, user)
             self.find_element.by_xpath(xpath).click()
         except Exception:
             logger.info(f" user '{user}' does not exist")
 
-    def type_name_user(self, name: str):
+    def type_characters_in_dropdown(self, key: str, name: str):
         """Types the name of a user in the dropdown """
-        xpath = locators.INPUT_TEXT_BOX.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         self.find_element.by_xpath(xpath).send_keys(name)
 
-    def delete_typed_name(self):
+    def delete_typed_characters_in_dropdown(self, key: str):
         """Deletes the typed name of the user in the dropdown"""
-        xpath = locators.INPUT_TEXT_BOX.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         self.find_element.by_xpath(xpath).clear()
 
-    def delete_all_users(self):
+    def delete_all_options(self, key: str):
         """Deletes all selected users from the dropdown"""
-        xpath = locators.DELETE_ALL_USERS.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         self.find_element.by_xpath(xpath).click()
 
-    def message_empty(self) -> str:
+    def message_empty_in_dropdown(self, key: str) -> str:
         """Gets the message when dropdown textbox is empty"""
-        xpath = locators.EMPTY_MESSAGE.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         message = self.find_element.by_xpath(xpath).text
         return message
 
-    def delete_selected_user(self, name: str):
+    def delete_selected_option(self, key: str, name: str):
         """Deletes a specific user from dropdown"""
         try:
-            xpath = locators.DELETE_ONE_USER.replace("<<number>>", self.number).replace("<<user>>", name)
+            xpath = self.__xpath_selector(key, name)
             self.find_element.by_xpath(xpath).click()
         except Exception:
-            logger.info(f" user '{name}' does not exist")
+            logger.info(f" option '{name}' does not exist")
 
-    def delete_selected_users(self, names: list):
-        """Deletes specific users from dropdown"""
-        for name in names:
-            self.delete_selected_user(name)
-
-    def scroll_down(self, name: str):
+    def scroll_down(self, key: str, name: str):
         """Moves the scroll bar"""
         try:
-            xpath = locators.SELECT_USER.replace("<<user>>", name)
+            xpath = self.__xpath_selector(key, name)
             user = self.find_element.by_xpath(xpath)
             self.action_chains.custom_scroll(user)
         except Exception:
-            logger.info(f" user '{name}' does not exist")
+            logger.info(f" option '{name}' does not exist")
             self.click_drop_arrow()
 
-    def click_drop_arrow(self):
+    def click_drop_arrow(self, key: str):
         """Click on the dropdown arrow"""
-        xpath = locators.DROPDOWN_ARROW.replace("<<number>>", self.number)
+        xpath = self.__xpath_selector(key)
         self.find_element.by_xpath(xpath).click()
+    
+    def get_available_options(self, key: str) ->list:
+        """Return a list of available options of the dropdown"""
+        xpath = self.__xpath_selector(key)
+        options = self.find_elements.by_xpath(xpath)
+        available_options = [option.text for option in options]
+        option_list = available_options[0].split("\n")
+        return option_list
+
+    def __xpath_selector(self, key: str, name=None) -> str:
+        """Selects the corresponding xpath"""
+        if self.page == 'permissions':
+            if key == 'SELECT_USER':
+                return locators.permissions[key].replace("<<user>>", name)
+            elif key == 'DELETE_ONE_USER':
+                return locators.permissions[key].replace("<<number>>", self.number).replace("<<user>>", name)     
+            else:
+                return locators.permissions[key].replace("<<number>>", self.number)
+            
+        if self.page == "projects_tracing_system":
+            if key == 'OPTION':
+                return locators.projects_tracing_system[key].replace("<<option>>", name)
+            else:
+                return locators.projects_tracing_system[key]
+            

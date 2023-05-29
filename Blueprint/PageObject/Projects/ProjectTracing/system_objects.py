@@ -56,20 +56,6 @@ class ProjectSystemObject(BasePage):
             except Exception:
                 logger.info("Action owner element not found")
     
-    def get_arrow_element(self) -> WebElement:
-        """Finds and returns the arrow element"""
-        element = self.find_element.by_xpath(locators.ARROW_LOCATOR)
-        return element
-    
-    def get_option_selected_element(self, option: str) -> WebElement:
-        """Finds and returns the option element of the dropdown"""
-        try:
-            xpath = locators.OPTION.replace("<<option>>", option)
-            element = self.find_element.by_xpath(xpath)
-            return element
-        except Exception:
-            logger.info(f"'{option}' is not an available option")
-    
     def get_creation_date_element(self) -> WebElement:
         """Finds and returns the creation date value element"""
         element = self.find_element.by_xpath(locators.CREATION_DATE_VALUE)
@@ -105,24 +91,7 @@ class ProjectSystemObject(BasePage):
         element = self.find_element.by_xpath(locators.CANCEL_LOCATOR)
         return element
     
-    def get_clear_all_button_element(self) -> WebElement:
-        """Finds and returns the clear all button element"""
-        element = self.find_element.by_xpath(locators.CLEAR_LOCATOR)
-        return element
-    
     def get_field_required_element(self) -> WebElement:
         """Finds and returns the message element"""
         element = self.find_element.by_xpath(locators.FIELD_REQUIRED)
         return element
-    
-    def get_dropdown_elements(self) -> WebElement:
-        """Finds and returns the dropdown element"""
-        elements = self.find_elements.by_xpath(locators.DROPDOWN_LOCATOR)
-        return elements
-    
-    def get_available_options(self) ->list:
-        """Return a list of available options of the dropdown"""
-        options = self.get_dropdown_elements()
-        available_options = [option.text for option in options]
-        option_list = available_options[0].split("\n")
-        return option_list
