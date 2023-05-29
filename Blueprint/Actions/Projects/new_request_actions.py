@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 class NewRequestActions(NewRequestObject):
-    """This class represents the actions to create a request in project page."""
+    """This class represents the actions to create a new request in project page."""
 
     def click_create_button_in_new_request(self) -> None:
         """Clicks create button."""
@@ -44,3 +44,12 @@ class NewRequestActions(NewRequestObject):
         element.click() 
         for _ in range(number):
             element.send_keys(Keys.ARROW_DOWN)
+
+    def mouse_over_create_button_in_new_request_page(self) -> None:
+        """Position the mouse pointer over create button."""
+        button = self.get_create_button()
+        self.action_chains.move_to_an_element(button)
+    
+    def clear_the_content_of_a_component_in_new_request_page(self, section_name: str, label_name: str) -> None:
+        """removes the text or number in a textbox or numbericbox in new request page."""
+        self.get_element_locator_from_each_section(section_name, label_name).clear()
