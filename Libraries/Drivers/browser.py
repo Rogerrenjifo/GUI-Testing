@@ -66,3 +66,10 @@ class Browser(object):
             return self._driver.quit()
         except Exception:
             raise Exception("It is not possible close de browser")
+
+    def go_back_to_previous_page(self):
+        """Goes back to a previous page."""
+        try:
+            return self._driver.back()
+        except Exception:
+            raise Exception("It is not possible to go back")

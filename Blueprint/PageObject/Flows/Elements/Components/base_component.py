@@ -21,6 +21,11 @@ class BaseComponent(BasePage):
         """Returns the component's title"""
         title = self.get_component().text
         return title
+    
+    def get_component_color(self) ->str:
+        """Gets the border color of a component"""
+        color = self.get_component().value_of_css_property('border-color')
+        return color
 
     def move_component(self, new_position_x: int, new_position_y: int) -> None:
         """Moves component by position"""

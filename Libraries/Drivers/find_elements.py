@@ -41,3 +41,10 @@ class FindElements(object):
             return self.driver.find_element(by=by, value=xpath)
         except Exception:
             raise Exception("It is not possible to find element by xpath " + xpath)
+    
+    def by_css_selector(self, css_selector: str, by: By = By.CSS_SELECTOR) -> WebElement:
+        """Finds and returns a web element by CSS selector."""
+        try:
+            return self.driver.find_element(by=by, value=css_selector)
+        except Exception:
+            raise Exception("It is not possible to find element by css selector" + css_selector)

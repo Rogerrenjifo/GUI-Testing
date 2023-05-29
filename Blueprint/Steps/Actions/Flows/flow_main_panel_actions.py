@@ -17,12 +17,6 @@ class FlowMainPanelActions(FlowMainPanelObject):
         component = self.index.component_dictionary[component_id]
         component.move_component(x, y)
 
-    def select_component_in_flow_main_panel(self, component_id: str) -> BaseComponent:
-        """Selects 'actions' or 'steps' components"""
-        component = self.index.component_dictionary[component_id]
-        component.select_component()
-        return component
-
     def connect_components_in_flow_main_panel(self, source_id: str, target_id: str, source_point_number: int,
                                                 target_point_number: int) -> None:
         """Connect two components."""
@@ -50,7 +44,19 @@ class FlowMainPanelActions(FlowMainPanelObject):
             self.index.add_component(new_id, StepComponent(new_id))
             self.index.increment_counter_step()
 
-    def click_component(self, component_id):
+    def click_component(self, component_id: str) -> None:
+        """Clicks a component"""
         component: BaseComponent = self.index.component_dictionary[component_id]
         component.select_component()
-        return component
+    
+    def obtain_component_color_in_flow_main_panel(self, component_id :str) -> str:
+        """Returns the component color"""
+        component = self.index.component_dictionary[component_id]
+        color = component.get_component_color()
+        return color
+    
+    def obtain_component_title_in_flow_main_panel(self, component_id :str) -> str:
+        """Returns the component title"""
+        component = self.index.component_dictionary[component_id]
+        title = component.get_component_title()
+        return title
