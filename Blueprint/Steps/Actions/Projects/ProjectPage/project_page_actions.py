@@ -192,7 +192,7 @@ class ProjectPageActions(ProjectPageObjects):
         return question
 
     def obtain_dialog_cancel_button_text_in_project_instance(self) -> str:
-        """obtains the text from the cancel button of the delete instance dialog"""
+        """Obtains the text from the cancel button of the delete instance dialog"""
         text = self.delete_dialog.get_cancel_dialog_button().text
         return text
 
