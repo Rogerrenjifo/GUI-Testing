@@ -1,5 +1,5 @@
 import time
-from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.groups_objects import GroupsObjects
 from robot.api import logger
 

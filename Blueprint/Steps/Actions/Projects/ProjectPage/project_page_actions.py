@@ -1,6 +1,6 @@
 from Blueprint.PageObject.Projects.ProjectPage.project_page_objects import ProjectPageObjects
 from selenium.webdriver.support.ui import Select
-from Blueprint.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
+from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
 
 
 class ProjectPageActions(ProjectPageObjects):

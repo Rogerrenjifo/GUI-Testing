@@ -1,6 +1,6 @@
 from Blueprint.PageObject.Flows.create_form_properties_panel_objects import PropertiesPanelObjects
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
-from Blueprint.Actions.CommonElements.date_actions import DateActions
+from Blueprint.Steps.Actions.CommonElements.date_actions import DateActions
 from robot.api import logger
 from typing import List
 
