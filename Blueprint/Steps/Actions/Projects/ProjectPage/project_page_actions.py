@@ -4,7 +4,6 @@ from Blueprint.PageObject.Projects.ProjectPage.project_page_objects import Proje
 from selenium.webdriver.support.ui import Select
 from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
-from Blueprint.Steps.Actions.Projects.ProjectPage.export_dialog_actions import ExportDialogActions
 
 
 class ProjectPageActions(ProjectPageObjects):
@@ -24,13 +23,18 @@ class ProjectPageActions(ProjectPageObjects):
         button = self.get_project_new_request_button()
         self.action_chains.move_to_an_element(button)
 
+    def obtain_new_request_button_color(self) -> str:
+        """Obtains the color of the new request button"""
+        button = self.get_project_new_request_button()
+        return button.value_of_css_property("background-color")
+
     def click_on_row_in_a_project_instance(self, project_id: str):
         """Clicks the table row according to the project id."""
         row = self.get_table_row(project_id)["project_row"]
         row.click()
     
     def click_on_checkbox_in_a_project_instance(self, project_id: str):
-        print('project: ', project_id)
+        """Clicks on checkbox of a project instance"""
         checkbox = self.projects_table.get_project_checkbox_label_by_project_id(project_id)
         checkbox.click()
 
@@ -177,7 +181,7 @@ class ProjectPageActions(ProjectPageObjects):
         self.click_action_button_in_project_instance(project_id)
         self.click_action_delete_button_project_instance(project_id)
 
-    def obtain_title_in_delete_in_project_instance(self) -> str:
+    def obtain_title_in_delete_dialog_in_project_instance(self) -> str:
         """Obtains the title of the delete instance dialog"""
         title = self.delete_dialog.get_dialog_title_text()
         return title
@@ -211,3 +215,13 @@ class ProjectPageActions(ProjectPageObjects):
         """Obtains the color of the popup message in project page"""
         color = self.popup.get_popup_message_color()
         return color
+
+    def click_export_button_in_project_page(self):
+        """Clicks the export button un project page"""
+        button = self.get_export_button()
+        button.click()
+
+    def obtain_export_button_text_in_project_page(self):
+        """Obtains the text of the export button in the project page"""
+        text = self.get_export_button().text
+        return text
