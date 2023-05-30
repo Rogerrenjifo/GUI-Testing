@@ -38,9 +38,9 @@ class ProjectPageActions(ProjectPageObjects):
         checkbox = self.projects_table.get_project_checkbox_label_by_project_id(project_id)
         checkbox.click()
 
-    def click_on_id_in_project_instance(self, project_index: str):
+    def click_on_id_in_project_instance(self, project_index: int):
         """Clicks on the project id."""
-        project_id_element = self.projects_table.get_all_project_ids()[int(project_index)]
+        project_id_element = self.projects_table.get_all_project_ids()[project_index]
         project_id_element.click()
 
     def click_action_button_in_project_instance(self, project_id: str):
@@ -221,7 +221,7 @@ class ProjectPageActions(ProjectPageObjects):
         button = self.get_export_button()
         button.click()
 
-    def obtain_export_button_text_in_project_page(self):
+    def obtain_export_button_text_in_project_page(self) -> str:
         """Obtains the text of the export button in the project page"""
         text = self.get_export_button().text
         return text
