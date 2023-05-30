@@ -1,15 +1,10 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import permissions_locators as locators
-from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
 from Libraries.Drivers.base_page import BasePage
 
 
 class FlowPermissions(BasePage):
     """This class represents the flow permission of a Blueprint application"""
-    def __init__(self):
-        """Builds the class constructor"""
-        super().__init__()
-        self.dropdown_flow_admin = Dropdownbox(1)
 
     def get_title_flow_permissions(self) -> WebElement:
         """Finds and returns the flow permissions title object"""

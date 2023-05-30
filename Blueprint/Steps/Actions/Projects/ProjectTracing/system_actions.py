@@ -1,9 +1,12 @@
 from Blueprint.PageObject.Projects.ProjectTracing.system_objects import ProjectSystemObject
-from selenium.webdriver.remote.webelement import WebElement
+from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
 
 
 class ProjectSystemActions(ProjectSystemObject):
     """Represents the system section actions of the Project Tracing"""
+    def __init__(self):
+        super().__init__()
+        self.dropdown = Dropdownbox('projects_tracing_system')
 
     def get_current_step_in_project_system(self) -> str:
         """Returns the current step text"""
@@ -47,15 +50,20 @@ class ProjectSystemActions(ProjectSystemObject):
     def cancel_changes_in_project_system(self):
         """Clicks cancel button"""
         self.get_cancel_button_element().click()
-
-    def select_specific_option_in_project_system(self, option: WebElement):
+    
+    def select_specific_option_in_project_system(self, option: str):
         """Scroll and select an option of the dropdown"""
-        self.action_chains.custom_scroll(option)
+        self.dropdown.scroll_down('OPTION', option)
 
     def delete_current_value_in_project_system(self):
         """Clicks clear all button"""
-        self.get_clear_all_button_element().click()
+        self.dropdown.delete_all_options('CLEAR_ALL')
 
     def display_dropdown_in_project_system(self):
         """Displays the dropdown"""
-        self.get_arrow_element().click()
+        self.dropdown.click_drop_arrow('ARROW_LOCATOR')
+        
+    def get_options_in_dropdown(self) -> list:
+        """Gets the options contents in the dropdown"""
+        options_in_dropdown = self.dropdown.get_available_options('DROPDOWN_LIST')
+        return options_in_dropdown
