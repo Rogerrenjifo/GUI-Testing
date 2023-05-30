@@ -7,7 +7,7 @@ class FlowPermissionsActions(FlowPermissions):
 
     def __init__(self):
         super().__init__()
-        self.dropdown = Dropdownbox('permissi')
+        self.dropdown = Dropdownbox('permissions')
         self.index_dropdown = '1'
 
     def get_flow_permissions_title(self) -> str:
