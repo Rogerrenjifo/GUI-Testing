@@ -60,3 +60,44 @@ class FlowMainPanelActions(FlowMainPanelObject):
         component = self.index.component_dictionary[component_id]
         title = component.get_component_title()
         return title
+    
+    def obtain_dictionary_status_in_flow_main_panel(self) -> list:
+        """Returns the dictionary with the current components"""
+        dictionary = self.index.component_dictionary
+        return dictionary
+    
+    def obtain_component_dot_status_in_flow_main_panel(self, component_id :str, component_number: int) -> bool:
+        """Returns status of a dot component"""
+        target_component = self.index.component_dictionary[component_id]
+        target_endpoint = target_component.get_connector_element(component_number)
+        dot_status = target_component.get_dot_status(target_endpoint)
+        return dot_status
+    
+    def obtain_dots_list_of_start_component_in_flow_main_panel(self) -> list:
+        """Returns a list of dots associated with the start component"""
+        dots_list = self.get_dots_list_of_start_component()
+        return dots_list
+    
+    def is_dropdown_not_found_in_flow_main_panel(self, component_id :str) -> bool:
+        """Checks if a dropdown component is not found"""
+        component = self.index.component_dictionary[component_id]
+        is_found = component.is_element_not_found()
+        return is_found
+    
+    def obtains_dropdown_options_in_flow_main_panel(self, component_id :str) -> list:
+        """Returns a list of options available in a dropdown"""
+        component = self.index.component_dictionary[component_id]
+        options = component.get_dropdown_menu_options()
+        return options
+    
+    def obtain_dropdown_color_in_flow_main_panel(self, component_id :str) -> str:
+        """Returns the color of dropdown"""
+        component = self.index.component_dictionary[component_id]
+        color = component.get_color_dropdown()
+        return color
+    
+    def obtain_x_and_y_position_component_in_flow_main_panel(self, component_id :str) -> list:
+        """Returns a list of component positions"""
+        component = self.index.component_dictionary[component_id]
+        x_position, y_position = component.convert_pixel_to_percentage()
+        return x_position, y_position
