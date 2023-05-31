@@ -54,6 +54,15 @@ class Verification(object):
             logger.info(actual_result)
             assert_that(expected_result).does_not_contain(actual_result)
 
+    def verify_a_list_is_empty(self, actual_result):
+        """Asserts the expected does not contain of actual"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info("[]")
+            logger.info("*****Actual******")
+            logger.info(actual_result)
+            assert_that(actual_result).is_empty()
+
     def verify_a_list_contains(self, elements_list, item):
         """Asserts the expected does not contain of actual"""
         with soft_assertions():
