@@ -56,3 +56,7 @@ class NewRequestActions(NewRequestObject):
     def clear_the_content_of_a_component_in_new_request_page(self, section_name: str, label_name: str) -> None:
         """Removes the text or number in a textbox or numeric box in new request page."""
         self.get_element_locator_from_each_section(section_name, label_name).clear()
+        
+    def get_the_content_of_a_dropdown(self, section_name: str, label_name: str) -> str:
+        dropdown_content = self.get_element_locator_from_Text_dropdown(section_name, label_name).get_attribute('textContent')
+        return dropdown_content

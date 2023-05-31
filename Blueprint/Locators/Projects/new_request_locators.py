@@ -5,3 +5,4 @@ TEXT_USER_NUMBER_DATE_BOX = "//h3[@title='<<section_name>>']//following-sibling:
                              label[@title='<<label_name>>']//following-sibling::div//child::input"
 CREATE_BUTTON_CSS_SELECTOR = ".bp-btn-action:not([disabled])"
 SELECT_USER = "//span[@title='<<user>>'] | //label[@title='<<user>>']"
+TEXT_IN_DROPDOWN = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']//following-sibling::div//child::span[@class='ng-value-label']"

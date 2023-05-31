@@ -62,6 +62,9 @@ class FlowPermissionsActions(FlowPermissions):
     def click_dropdown_arrow_in_flow_permissions(self):
         """Clicks on dropdown arrow"""
         self.dropdown.click_drop_arrow('DROPDOWN_ARROW', self.index_dropdown)
+    
+    def get_content_in_dropdown(self):
+        self.dropdown.default_text_empty('CONTENT_TEXT_BOX', self.index_dropdown)
 
     def add_new_flow_admin_by_typing_process_in_flow_permission(self, name: str):
         """Adds a new flow administrator by typing the name"""

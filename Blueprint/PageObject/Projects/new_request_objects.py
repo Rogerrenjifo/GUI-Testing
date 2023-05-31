@@ -39,3 +39,11 @@ class NewRequestObject(BasePage):
         """Returns the css selector from create button"""
         element = self.find_element.by_css_selector(locators.CREATE_BUTTON_CSS_SELECTOR)
         return element
+    
+    def get_element_locator_from_Text_dropdown(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of a specific textbox, number box, datebox or user list by section and label title."""
+        locator = locators.TEXT_IN_DROPDOWN.replace("<<section_name>>", section_name).replace("<<label_name>>",
+                                                                                                       label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
+    

@@ -62,11 +62,12 @@ class Dropdownbox(BasePage):
         """Moves the scroll bar until the option sent"""
         try:
             xpath = self.__xpath_selector(key, option=option, dropdown_index=dropdown_index)
+            print('****************', xpath)
             user = self.find_element.by_xpath(xpath)
             self.action_chains.custom_scroll(user)
         except Exception:
-            logger.info(f" option '{option}' does not exist")
-            self.click_drop_arrow()
+            logger.info(f" option {option} does not exist")
+            #self.click_drop_arrow()
 
     def click_drop_arrow(self, key: str, dropdown_index: str = None):
         """Clicks on the dropdown arrow"""
@@ -80,6 +81,12 @@ class Dropdownbox(BasePage):
         available_options = [option.text for option in options]
         option_list = available_options[0].split("\n")
         return option_list
+    
+    def message_empty_in_dropdown(self, key: str, dropdown_index: str = None) -> str:
+        """Gets the message when dropdown textbox is empty"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        message = self.find_element.by_xpath(xpath).text
+        return message
 
     def __xpath_selector(self, key: str, option: str = None, label_name: str = None, dropdown_index: str = None) -> str:
         """Selects the corresponding xpath"""

@@ -15,7 +15,7 @@ class Verification(object):
             logger.info(actual_result)
             logger.info(f"Are ignored: {list_ignore}")
             assert_that(actual_result).is_equal_to(expected_result, ignore=list_ignore)
-
+    
     def verify_is_not_equal_ignore(self, actual_result, expected_result, list_ignore=[]):
         """Asserts the actual is not equal to expected ignoring params"""
         with soft_assertions():
