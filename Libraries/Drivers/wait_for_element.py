@@ -8,4 +8,4 @@ class WaitForElement(object):
     
     def wait_for_element_with_xpath(self, xpath: str, timeout: int = 10):
         """Waits (timeout) seconds for element with given xpath to load."""
-        WebDriverWait(self.driver, timeout).until(lambda x: x.find_element(By.XPATH, xpath)
+        WebDriverWait(self.driver, timeout).until(lambda x: x.find_element(By.XPATH, xpath))
