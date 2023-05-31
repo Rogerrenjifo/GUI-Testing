@@ -4,10 +4,6 @@ from Blueprint.PageObject.Flows.flows_properties_objects import FlowPropertiesOb
 class FlowPropertiesActions(FlowPropertiesObjects):
     """Flow properties actions on elements."""
     
-    def click_on_component_in_flow_properties(self) -> None:
-        """Performs click on provided component."""
-        self.component.click()
-
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
         """Change component 'name'."""
         self.name_field.text_field.click()

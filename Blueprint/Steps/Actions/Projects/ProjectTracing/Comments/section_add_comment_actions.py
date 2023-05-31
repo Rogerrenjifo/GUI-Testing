@@ -3,7 +3,7 @@ from Blueprint.PageObject.Projects.ProjectTracing.Comments.section_add_comment_o
     import SectionAddComment
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comments_list_object import CommentsList
 from Blueprint.PageObject.Projects.ProjectTracing.Comments.comment_objects import Comment
-from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 
 
 class SectionAddCommentActions(SectionAddComment):

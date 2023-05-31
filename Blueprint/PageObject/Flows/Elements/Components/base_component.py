@@ -1,6 +1,7 @@
 from Libraries.Drivers.base_page import BasePage
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.PageObject.Flows.flow_components_object import FlowComponentObjects
+from Blueprint.Locators.Flows import flow_main_panel_locators as elements
 
 
 class BaseComponent(BasePage):
@@ -22,8 +23,8 @@ class BaseComponent(BasePage):
         title = self.get_component().text
         return title
     
-    def get_component_color(self) ->str:
-        """Gets the border color of a component"""
+    def get_component_color(self) -> str:
+        """Returns the RGB color code of a component"""
         color = self.get_component().value_of_css_property('border-color')
         return color
 
@@ -50,5 +51,14 @@ class BaseComponent(BasePage):
         y_percentage = ((element_y + (height / 2)) / (height - 23)) * 100
         return x_percentage, y_percentage
     
+    def is_element_not_found(self) -> bool:
+        """Checks if the element is not found"""
+        try:
+            xpath = elements.DOTS_BUTTON_XPATH.replace("<<data>>", self.id)
+            self.find_element.by_xpath(xpath)
+            return False
+        except Exception:
+            return True
+
     def __repr__(self) -> str:
         return f"title: {self.get_component_title()}, x_position: {self.convert_pixel_to_percentage()[0]}, y_position: {self.convert_pixel_to_percentage()[1]}"

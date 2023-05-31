@@ -1,5 +1,6 @@
 PROJECT_ROW = "//td[@class='table-id' and contains(text(), '<<value>>')]//parent::tr"
 PROJECT_CHECKBOX = "//td[@class='table-id' and contains(text(), '<<value>>')]//preceding::td[@class='table-checkbox']//input"
+PROJECT_CHECKBOX_LABEL = "//input[@id='<<value>>']/following-sibling::label[1]"
 PROJECTS_IDS = "//tr[contains(@class, 'grid-cols-instances')]//child::td[@class='table-id']"
 PROJECT_TITLE = "//td[@class='table-id' and contains(text(), '<<value>>')]//following-sibling::td[@class='table-title']//child::span"
 PROJECT_CURRENT_STEP = "//td[@class='table-id' and contains(text(), '<<value>>')]//following-sibling::td[@class='table-step']//child::button"

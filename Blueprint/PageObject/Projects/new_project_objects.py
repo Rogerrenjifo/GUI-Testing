@@ -1,17 +1,17 @@
 from selenium.webdriver.remote.webelement import WebElement
-from Blueprint.Locators.Projects import new_request_locators as locators
+from Blueprint.Locators.Projects import new_project_locators as locators
 from Libraries.Drivers.base_page import BasePage
 
 
-class NewRequestObject(BasePage):
-    """This class represents the objects in new request page of projects """
+class NewProjectObjects(BasePage):
+    """This class represents the objects in new project page of Projects."""
 
     def get_create_button(self) -> WebElement:
         """Returns the xpath of create button."""
         element = self.find_element.by_xpath(locators.CREATE_BUTTON)
         return element
     
-    def get_flow_template_title(self) -> WebElement:
+    def get_the_locator_of_flow_template_title(self) -> WebElement:
         """Returns the xpath of the flow template title."""
         element = self.find_element.by_xpath(locators.TEMPLATE_TITLE)
         return element
@@ -30,7 +30,7 @@ class NewRequestObject(BasePage):
         return element
     
     def get_user_locator_from_dropdown(self, user: str) -> WebElement:
-        """Returns the xpath of a specific user from the dropdown by name or email"""
+        """Returns the xpath of a specific user from the dropdown by name or email."""
         locator = locators.SELECT_USER.replace("<<user>>", user)
         element = self.find_element.by_xpath(locator)
         return element
@@ -47,3 +47,24 @@ class NewRequestObject(BasePage):
         element = self.find_element.by_xpath(locator)
         return element
     
+    def get_locator_from_remove_user(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of the remove user from a userbox by section and label title."""
+        locator = locators.REMOVE_USER_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
+    
+    def get_locator_from_required_field_error_message(self) -> WebElement:
+        """Returns the xpath of text 'Field required' error message."""
+        element = self.find_element.by_xpath(locators.FIELD_REQUIRED_ERROR_MESSAGE_LOCATOR)
+        return element
+    
+    def get_locator_from_error_message_icon(self) -> WebElement:
+        """Returns the xpath of error message icon."""
+        element = self.find_element.by_xpath(locators.ERROR_MESSAGE_ICON)
+        return element
+    
+    def get_locator_from_the_label_of_each_component(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of the label of each component in a section."""
+        locator = locators.LABEL_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element

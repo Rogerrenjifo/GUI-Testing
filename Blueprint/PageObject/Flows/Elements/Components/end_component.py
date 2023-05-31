@@ -33,3 +33,25 @@ class EndComponent(BaseComponent):
         xpath = elements.DOTS_BUTTON_XPATH.replace("<<data>>", self.id)
         menu_step = self.find_element.by_xpath(xpath)
         self.action_chains.custom_click_element(menu_step)
+
+    def get_dot_status(self, dot: WebElement) -> bool:
+        """Returns status of dot component"""
+        class_name = dot.get_attribute('class')
+        is_connected = 'jtk-endpoint-connected' in class_name
+        return is_connected
+    
+    def get_dropdown_menu_options(self) -> list:
+        """Returns the list of options in the dropdown menu"""
+        self.__click_dots_button()
+        options = self.find_elements.by_xpath(elements.MENU_DROPDOWN)
+        available_options = [option.text for option in options]
+        dropdown_list = available_options[0].split("\n")
+        return dropdown_list
+    
+    def get_color_dropdown(self) -> str:
+        """Returns the RGB color code of the dropdown element"""
+        xpath = elements.DOTS_BUTTON_XPATH.replace("<<data>>", self.id)
+        dropdown = self.find_element.by_xpath(xpath)
+        self.action_chains.move_to_an_element(dropdown)
+        color = dropdown.value_of_css_property('background-color')
+        return color

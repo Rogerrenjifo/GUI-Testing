@@ -1,6 +1,8 @@
-from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.Flows.create_form_elements_objects import CreateFormElementsObjects
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
+from Blueprint.PageObject.Flows.header_objects import Header
+from Blueprint.PageObject.MainMenu.main_menu_objects import MainMenuObjects
 
 
 class CreateFormElementsActions(CreateFormElementsObjects):
@@ -9,6 +11,8 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         super().__init__()
         self.main_panel = FormMainPanelPage()
         self.pop_up_messages = PopUpMessagesActions()
+        self.header = Header()
+        self.main_menu = MainMenuObjects()
 
     def select_element_type_in_create_form(self, element_type: str):
         """Returns the element according the type selected"""
@@ -42,22 +46,31 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         self.action_chains.custom_drag_and_drop(source, target, direction="up")
 
     def add_new_section_in_create_form(self):
-        """Adds a new section in a form"""
-        target = self.get_drop_area()
+        """Adds a new section at the end of a form"""
+        target = self.main_panel.get_section(self.main_panel.section_list[-1])
         source = self.get_section_element()
         self.action_chains.drag_and_drop_element(source, target)
+        section_index = str(len(self.main_panel.get_all_sections()))
+        self.main_panel.section_list.append("Section " + section_index)
 
     def add_section_up_other_in_create_form(self, existing_section_title: str):
         """Adds a new section on top of an existing one"""
         source = self.get_section_element()
-        target = self.main_panel.get_section_title(existing_section_title)
+        target = self.main_panel.get_section_dropdown(existing_section_title)
         self.action_chains.custom_drag_and_drop(source, target, direction="up")
+        existing_section_index = self.main_panel.section_list.index(existing_section_title)
+        section_index = str(len(self.main_panel.get_all_sections()))
+        if existing_section_index != 0:
+            self.main_panel.section_list.insert(existing_section_index, "Section " + section_index)
 
     def add_section_down_other_in_create_form(self, existing_section_title: str):
         """Adds a new section under an existing one"""
         source = self.get_section_element()
         target = self.main_panel.get_section(existing_section_title)
         self.action_chains.custom_drag_and_drop(source, target)
+        existing_section_index = self.main_panel.section_list.index(existing_section_title) + 1
+        section_index = str(len(self.main_panel.get_all_sections()))
+        self.main_panel.section_list.insert(existing_section_index, "Section " + section_index)
 
     def close_pop_up_on_create_form_elements(self):
         """Selects the button for close the popup message"""
@@ -72,3 +85,15 @@ class CreateFormElementsActions(CreateFormElementsObjects):
         """Gets the color of the displayed popup message"""
         pop_up_color = self.pop_up_messages.get_popup_message_color()
         return pop_up_color
+
+    def add_new_section_in_flow_page_header(self):
+        """Adds a new section at page header"""
+        target = self.header.get_flow_name()
+        source = self.get_section_element()
+        self.action_chains.drag_and_drop_element(source, target)
+
+    def add_new_section_in_page_menu(self):
+        """Adds a new section at page menu"""
+        target = self.main_menu.get_main_menu_container()
+        source = self.get_section_element()
+        self.action_chains.drag_and_drop_element(source, target)

@@ -35,6 +35,12 @@ class ProjectTableObjects(BasePage):
         element = self.find_element.by_xpath(locator)
         return element
 
+    def get_project_checkbox_label_by_project_id(self, project_id: str) -> WebElement:
+        """Finds and returns the checkbox element of the page according to the project id."""
+        locator = self.generate_locator_by_project_id(locators.PROJECT_CHECKBOX_LABEL, project_id)
+        element = self.find_element.by_xpath(locator)
+        return element
+
     def get_all_project_ids(self) -> List[WebElement]:
         """Finds and returns all the project ids elements of the page."""
         element_list = self.find_elements.by_xpath(self.__projects_ids)

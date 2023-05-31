@@ -1,6 +1,0 @@
-DELETE_DIALOG = "//div[@class='modal-body']"
-DELETE_DIALOG_CLOSE_BUTTON = "//div[@class='modal-body']//descendant::button[@class='close-modal-button']"
-DELETE_DIALOG_TITLE = "//div[@class='modal-body']//descendant::h3"
-DELETE_DIALOG_PARAGRAPH = "//div[@class='modal-body']//descendant::p"
-DELETE_DIALOG_CANCEL_BUTTON = "//div[@class='modal-body']//descendant::button[normalize-space()='Cancel']"
-DELETE_DIALOG_DELETE_BUTTON = "//div[@class='modal-body']//descendant::button[normalize-space()='Delete']"

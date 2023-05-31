@@ -29,12 +29,17 @@ class FlowMainPanelObject(BasePage):
             list_id.append(element_id)
         return list_id
     
-    def add_start_component_to_dictionary(self):
+    def add_start_component_to_dictionary(self) -> None:
         """Adds the start component to the dictionary"""
         id = 'start'
         self.index.add_component(id, StartComponent(locators.START_ID))
     
-    def add_initial_step_to_dictionary(self):
+    def add_initial_step_to_dictionary(self) -> None:
         """Adds the initial step to the dictionary"""
         id = 'first'
         self.index.add_component(id, FirstComponent(locators.FIRST_ID))
+
+    def get_dots_list_of_start_component(self) -> WebElement:
+        """Return a dots list of the start component"""
+        elements = self.find_elements.by_xpath(locators.DOT_START)
+        return elements

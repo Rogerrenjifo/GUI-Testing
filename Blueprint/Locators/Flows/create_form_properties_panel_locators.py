@@ -24,3 +24,4 @@ DEFAULT_DATE_YEAR_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[
 DEFAULT_DATE_MONTH_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[@class='dropdown-selector'][1]"
 USERLIST_VALUE_LOCATOR = "//span[@title='<<value>>']"
 USERLIST_DEFAULT_VALUE_OPTION_LOCATOR = "//span[@class='ng-option-label' and text()='<<value>>']"
+PANEL_TITLE = "//h2[@class='name overflow-properties-panel']"

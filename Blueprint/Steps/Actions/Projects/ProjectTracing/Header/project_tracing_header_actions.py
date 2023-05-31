@@ -1,5 +1,5 @@
 from Blueprint.PageObject.Projects.ProjectTracing.Header.project_tracing_header_objects import ProjectTracingHeader
-from Blueprint.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
+from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
 
 
 class ProjectTracingHeaderActions(ProjectTracingHeader):

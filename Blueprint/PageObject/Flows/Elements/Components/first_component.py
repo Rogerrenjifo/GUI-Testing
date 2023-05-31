@@ -18,3 +18,9 @@ class FirstComponent(BaseComponent):
         """Returns the enpoint of the component to connect"""
         xpath = elements.CONECTOR_XPATH.replace("<<data>>", self.id).replace("<<number>>", str(number))
         return self.find_element.by_xpath(xpath)
+    
+    def get_dot_status(self, dot: WebElement) -> bool:
+        """Returns status of dot component"""
+        class_name = dot.get_attribute('class')
+        is_connected = 'jtk-endpoint-connected' in class_name
+        return is_connected
