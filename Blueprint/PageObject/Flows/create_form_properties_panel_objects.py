@@ -3,6 +3,7 @@ from Blueprint.Locators.Flows import create_form_properties_panel_locators as lo
 from Libraries.Drivers.base_page import BasePage
 from robot.api import logger
 
+
 class PropertiesPanelObjects(BasePage):
     """This class represents the properties panel on the create form tab in the flow page of Blueprint app"""
     
@@ -200,3 +201,8 @@ class PropertiesPanelObjects(BasePage):
             return element
         except Exception:
             logger.info("User or group with name " + name + " not found.")
+
+    def get_panel_title(self) -> WebElement:
+        """Finds and returns the panel title"""
+        element = self.find_element.by_xpath(locators.PANEL_TITLE)
+        return element

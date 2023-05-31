@@ -1,10 +1,13 @@
-import time
 from robot.api import logger
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 
 
 class FormMainPanelActions(FormMainPanelPage):
     """Represents the main panel actions of create form tab in flow page"""
+    def __init__(self):
+        super().__init__()
+        self.pop_up_messages = PopUpMessagesActions()
 
     def select_component_in_form_main_panel(self, component_id: str):
         """Clicks a component from main panel for display its properties"""
@@ -50,6 +53,9 @@ class FormMainPanelActions(FormMainPanelPage):
         """Deletes a section from its drop-down menu"""
         self.display_section_delete_menu_in_form_main_panel(section_title, index)
         self.select_section_delete_button_in_form_main_panel()
+        section_index = self.section_list.index(section_title)
+        if section_index != 0:
+            del self.section_list[section_index]
 
     def delete_component_in_form_main_panel(self, component_id):
         """Deletes a component from its drop-down menu"""
@@ -66,13 +72,11 @@ class FormMainPanelActions(FormMainPanelPage):
             logger.info("Clicking on middle drop-down button failed, "
                         "It will try clicking on one side of the button")
             self.action_chains.custom_click_element(drop_down_button)
-        time.sleep(2)
 
     def display_component_delete_menu_in_form_main_panel(self, component_id: str):
         """Displays component drop-down menu from its 3 dots button"""
         self.action_chains.move_to_an_element(self.get_component_dropdown(component_id))
         self.get_component_dropdown(component_id).click()
-        time.sleep(2)
 
     def obtain_section_error_message_in_form_main_panel(self, section_title: str, index=None):
         """Returns section error message displayed in main panel"""
@@ -96,3 +100,47 @@ class FormMainPanelActions(FormMainPanelPage):
     def select_component_delete_button_in_form_main_panel(self, component_id: str):
         """Clicks delete button from component drop-down menu"""
         self.get_component_delete_button(component_id).click()
+
+    def get_all_sections_title_in_form_main_panel(self) -> list:
+        """Returns all the sections title displayed in main panel"""
+        sections_title_list = []
+        for section_index in range(1, len(self.get_all_sections())+1):
+            sections_title_list.append(self.get_section_title(str(section_index)).text)
+        return sections_title_list
+
+    def get_all_components_title_in_a_section_in_form_main_panel(self, section_title) -> list:
+        """Returns all the components title displayed in a section"""
+        components_title_list = []
+        for component in self.get_all_components_in_a_section(section_title):
+            components_title_list.append(component.text)
+        return components_title_list
+
+    def click_on_close_button_in_form_main_panel_popup_message(self):
+        """Selects the button for close the popup message"""
+        self.pop_up_messages.click_to_close_popup_message()
+
+    def obtain_text_of_form_main_panel_pop_up_message(self):
+        """Gets the text displayed in the popup message"""
+        pop_up_content = self.pop_up_messages.get_popup_message_text()
+        return pop_up_content
+
+    def obtain_rgb_color_of_form_main_panel_pop_up_message(self):
+        """Gets the RGB color of the popup message background"""
+        pop_up_rgb_color = self.pop_up_messages.get_popup_message_color()
+        return pop_up_rgb_color
+
+    def obtain_section_error_message_rgb_color_in_form_main_panel(self, section_title: str, index=None):
+        """Gets the RGB color of the error message"""
+        rgb_color = self.get_section_error_message(section_title, index).value_of_css_property('color')
+        return rgb_color
+
+    def obtain_section_rgb_color_in_form_main_panel(self, index: str):
+        """Gets the RGB color of the section title"""
+        rgb_color = self.get_section_title(index).value_of_css_property('color')
+        return rgb_color
+
+    def delete_all_sections_created_in_form_main_panel(self):
+        """Deletes all the sections in form main panel, except the default one"""
+        section_list_to_delete = self.section_list[1:]
+        for section in section_list_to_delete:
+            self.delete_section_in_form_main_panel(section)
