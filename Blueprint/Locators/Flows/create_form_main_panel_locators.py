@@ -6,3 +6,4 @@ SECTION_ERROR_MESSAGE_LOCATOR = "//h2[normalize-space()='<<value>>']//following-
 COMPONENT_TITLE_LOCATOR = "//input[@id='<<value>>']//preceding::label[1]"
 COMPONENT_DROPDOWN_LOCATOR = "//input[@id='<<value>>']//following::button[1]"
 COMPONENT_DELETE_BUTTON_LOCATOR = "//input[@id='<<value>>']//following::button[1]//following-sibling::div"
+COMPONENTS_IN_SECTION = "//input[contains(@id,'<<value>>')]"

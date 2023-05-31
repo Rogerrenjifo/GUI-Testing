@@ -60,3 +60,8 @@ class MainMenuObjects(BasePage):
         """Finds and returns the new flow button element on the page."""
         element = self.find_element.by_xpath(locators.NEW_FLOW_BUTTON)
         return element
+
+    def get_main_menu_container(self) -> WebElement:
+        """Finds and returns the new main menu container."""
+        element = self.find_element.by_xpath(locators.MAIN_MENU_CONTAINER)
+        return element

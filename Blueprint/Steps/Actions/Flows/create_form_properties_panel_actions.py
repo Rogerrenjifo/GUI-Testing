@@ -243,3 +243,8 @@ class PropertiesPanelActions(PropertiesPanelObjects):
         except Exception:
             logger.info(f" The element '{component_id}'"
                         f" does not have user list default Value label")
+
+    def get_panel_title_in_form_properties(self):
+        """Gets the properties panel title"""
+        panel_title = self.get_panel_title().text
+        return panel_title
