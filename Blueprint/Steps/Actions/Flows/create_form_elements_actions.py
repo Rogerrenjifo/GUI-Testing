@@ -1,4 +1,4 @@
-from Blueprint.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.Flows.create_form_elements_objects import CreateFormElementsObjects
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
 
