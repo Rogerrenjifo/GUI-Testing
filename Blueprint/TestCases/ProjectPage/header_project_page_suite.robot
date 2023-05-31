@@ -29,7 +29,7 @@ Verify that the input label of the export dialog matches with “Filename”
     ${input_label}    Obtain Export Dialog Input Label Text In Project Page
     Verify Equal Ignore    ${input_label}    ${expected_label_text}
 
-Verify that the default value of the “Filename” label has the following pattern: “export_project_name_current_date”, e.g “export_AT19_-_RM_26_5_2023”
+Verify that the default value of the “Filename” label has the following pattern: “export_project_name_day_month_year”
     ${default_filename}    Obtain Export Dialog Input Value In Project Page
     Export File Name Should Follow The Format    ${default_filename}    ${project_name}
 
