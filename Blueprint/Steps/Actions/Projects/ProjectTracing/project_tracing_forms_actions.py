@@ -3,6 +3,7 @@ from Blueprint.Steps.Actions.CommonElements.date_actions import DateActions
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.keys import Keys
 
+
 class FormsActions(FormObjects):
     """This class represents the forms actions on the project tracing page."""
 

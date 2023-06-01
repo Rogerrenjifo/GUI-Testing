@@ -57,7 +57,7 @@ class Verification(object):
         with soft_assertions():
             logger.info("*****Expected******")
             logger.info("[]")
-            logger.info("*****Actual******")
+            logger.info('*****Actual******')
             logger.info(actual_result)
             assert_that(actual_result).is_empty()
 
