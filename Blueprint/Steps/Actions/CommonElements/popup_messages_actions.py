@@ -15,6 +15,7 @@ class PopUpMessagesActions(PopupMessagesObjects):
 
     def get_popup_message_text(self, index: str = "1") -> str:
         """Gets the text displayed in a popup message."""
+        self.wait_for_element.wait_for_result(self.get_popup_message(index))
         text = self.get_popup_message(index).text
         return text
 

@@ -73,3 +73,7 @@ class Browser(object):
             return self._driver.back()
         except Exception:
             raise Exception("It is not possible to go back")
+        
+    def reload_window(self):
+        """Reloads page"""
+        self._driver.refresh()

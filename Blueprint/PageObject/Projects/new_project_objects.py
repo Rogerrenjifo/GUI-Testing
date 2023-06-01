@@ -68,10 +68,14 @@ class NewProjectObjects(BasePage):
         locator = locators.LABEL_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
         element = self.find_element.by_xpath(locator)
         return element
-    
+
+    def get_tag_new(self) -> WebElement:
+        """Finds and returns the tag new web element"""
+        element = self.find_element.by_xpath(locators.TAG_NEW)
+        return element
+
     def get_element_options_dropdown_list(self) -> WebElement:
         """Returns the web element user option list"""
         locator = locators.LIST_OPTIONS_DROPDOWN
         element = self.find_element.by_xpath(locator)
         return element
-  
