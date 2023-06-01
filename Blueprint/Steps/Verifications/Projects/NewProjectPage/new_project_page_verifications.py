@@ -13,7 +13,7 @@ class NewProjectPageVerifications:
         self.verifications = Verification()
         self.new_request_objects = NewProjectObjects()
         self.popup_message = PopupMessagesObjects()
-        self.field_required_color = "rgba(255, 114, 105, 1)"
+        self.default_field_required_color = "rgba(255, 114, 105, 1)"
     
     def option_should_be_equal(self, actual_result: str, expected_result: str):
         """Verifies the actual string with expected string"""
@@ -60,7 +60,7 @@ class NewProjectPageVerifications:
         message = self.new_request_objects.get_locator_from_required_field_error_message()
         assert_that(message.is_displayed()).is_true()
         self.option_should_be_equal(message.text, "Field Required")
-        self.option_should_be_equal(message.value_of_css_property('color'), self.field_required_color)
+        self.option_should_be_equal(message.value_of_css_property('color'), self.default_field_required_color)
 
     def field_required_icon_should_be_displayed(self) -> None:
         """Verifies the 'field required' icon is displayed."""

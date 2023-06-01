@@ -107,7 +107,7 @@ class NewProjectActions(NewProjectObjects):
         
     def get_the_content_of_a_dropdown(self, section_name: str, label_name: str) -> str:
         """Gets the content present in the dropdown"""
-        dropdown_content = self.get_element_locator_from_Text_dropdown(section_name, label_name).get_attribute('textContent')
+        dropdown_content = self.get_element_locator_from_text_dropdown(section_name, label_name).get_attribute('textContent')
         return dropdown_content
 
     def click_in_the_drodown(self, section_name: str, label_name: str):
