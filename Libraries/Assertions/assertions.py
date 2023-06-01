@@ -98,4 +98,13 @@ class Verification(object):
             logger.info(expected_result)
             logger.info("*****Actual******")
             logger.info(actual_result)
-            assert_that(expected_result).contains_key(actual_result)    
+            assert_that(expected_result).contains_key(actual_result)
+
+    def verify_the_element_exist(self,expected_instance, actual_instance):
+        """Asserts the object is instance of a class"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(expected_instance)
+            logger.info("*****Actual******")
+            logger.info(actual_instance)
+            assert_that(actual_instance).is_instance_of(expected_instance)
