@@ -6,36 +6,31 @@ Library    Blueprint.Steps.Actions.Projects.ProjectTracing.Header.project_tracin
 Library    Blueprint.Steps.Actions.Projects.ProjectPage.export_dialog_actions.ExportDialogActions
 Library    Blueprint.Steps.Actions.CommonElements.delete_dialog_actions.DeleteDialogActions
 Library    Libraries.Assertions.assertions.Verification
-Resource    Blueprint/TestCasesResources/navigate.resource
+Library    Libraries.Resources.instance_manager.InstanceGenerator
 
 *** Variables ***
+${flow_name}    AT19-ProjectPage-137
 ${section_name}    Section 1
 ${component_name}   Title
-${project_page_url}    https://test.blueprint.ses-unit.com/project/40f2de7e-83ea-4eb2-a641-4939d958da6c
-${new_project_page}    https://test.blueprint.ses-unit.com/new-project/77a58eec-a584-4b57-a197-25a190a4f40a
 ${cancel_button_text}    Cancel
 ${expected_success_popup_color}    rgba(92, 184, 92, 1)
 
 *** Keywords ***
-Create New Instance
-    Click On New Request Button
-    Insert Text Or Number In A Component In New Request    Project to delete    ${section_name}    ${component_name}
-    Click Create Button In New Request
-    ${new_project_id}    Get Project Tag Text In Project Tracing
-    Navigate To Url    ${project_page_url}
-    Sleep    5
-    Set Test Variable    ${new_project_id}
 
-Search An Specific Project
-    [Arguments]    ${project_name}=AT19 - RM
+Create ${number} Instances And Open Delete Dialog
+    Create List Of Project Instance    ${flow_name}    ${number}
+    ${ids}    Get All Projects Ids Text In Project Page
+    ${project_id}   Obtain Random Id    ${ids}
+    Open Delete Dialog In Project Instance    ${project_id}
+    Set Suite Variable    ${project_id}
+
+
+Search An Specific Project And Open Export Dialog
+    [Arguments]    ${project_name}=${flow_name}
     Go To Project Process In Main Menu    ${project_name}
+    Click Export Button In Project Page
 
-Cancel Export Process
-    Click Cancel Export Dialog Button In Project Page
-    ${export_dialog}    Get Export Dialog
-    Set Test Variable    ${export_dialog}
-
-Close Export Dialog
-    ${export_dialog}    Get Export Dialog
-    Click Close Export Dialog Button In Project Page
-    Set Test Variable    ${export_dialog}
+Delete Created instances
+    ${ids}     Get All Projects Ids Text In Project Page
+    Log To Console    ${ids}
+    Delete List Of Instances    ${ids}

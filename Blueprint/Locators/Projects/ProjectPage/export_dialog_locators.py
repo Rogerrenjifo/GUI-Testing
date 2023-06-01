@@ -1,4 +1,5 @@
 EXPORT_DIALOG = "//app-export-csv"
+EXPORT_DIALOG_CONTAINER = "//div[@class='cdk-overlay-container']"
 EXPORT_DIALOG_CLOSE_BUTTON = "//app-export-csv//descendant::button[@class='close-modal-button']"
 EXPORT_DIALOG_TITLE = "//app-export-csv//descendant::h3"
 EXPORT_DIALOG_INPUT = "//app-export-csv//descendant::input[@name='name']"

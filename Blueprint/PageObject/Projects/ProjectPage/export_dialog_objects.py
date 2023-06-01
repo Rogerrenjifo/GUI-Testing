@@ -11,6 +11,11 @@ class ExportDialogObjects(BasePage):
         element = self.find_element.by_xpath(locators.EXPORT_DIALOG)
         return element
 
+    def get_export_dialog_father_container(self) -> WebElement:
+        """Finds and returns the Export dialog father container."""
+        element = self.find_element.by_xpath(locators.EXPORT_DIALOG_CONTAINER)
+        return element
+
     def get_cancel_export_dialog_button(self) -> WebElement:
         """Finds and returns the Cancel button element of the Export dialog."""
         element = self.find_element.by_xpath(locators.EXPORT_DIALOG_CANCEL_BUTTON)
@@ -23,7 +28,7 @@ class ExportDialogObjects(BasePage):
 
     def get_close_export_dialog_button(self) -> WebElement:
         """Finds and returns the close button element of the Export Process dialog."""
-        element = self.find_element.by_class(locators.EXPORT_DIALOG_CLOSE_BUTTON)
+        element = self.find_element.by_xpath(locators.EXPORT_DIALOG_CLOSE_BUTTON)
         return element
 
     def get_export_dialog_title(self) -> WebElement:

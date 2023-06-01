@@ -39,3 +39,8 @@ class NewRequestObject(BasePage):
         """Returns the css selector from create button"""
         element = self.find_element.by_css_selector(locators.CREATE_BUTTON_CSS_SELECTOR)
         return element
+
+    def get_tag_new(self) -> WebElement:
+        """Finds and returns the tag new web element"""
+        element = self.find_element.by_xpath(locators.TAG_NEW)
+        return element
