@@ -29,6 +29,10 @@ class FormsActions(FormObjects):
         """Puts the mouse hover a field with the given title in the given section."""
         self.action_chains.move_to_an_element(self.get_input_field(field_title, section_title))
     
+    def click_input_field_in_project_forms(self, field_title: str, section_title: str):
+        """Click input field of section with given title."""
+        self.get_input_field(field_title, section_title).click()
+    
     def select_field_to_edit_in_project_forms(self, field_title: str, section_title: str):
         """Selects a field with title given to be editable in the given section."""
         self.get_input_field(field_title, section_title).click()
@@ -38,6 +42,10 @@ class FormsActions(FormObjects):
         """Clears text field in the given section."""
         self.select_field_to_edit_in_project_forms(field_title, section_title)
         self.get_editable_text_input().clear()
+    
+    def get_editable_input_text_in_project_forms(self) -> str:
+        """Gets editable text input text."""
+        return self.get_editable_text_input().get_attribute('value')
     
     def set_text_input_in_project_forms(self, field_title: str, section_title: str, input_text: str):
         """Edits text field into given value in the given section."""
@@ -50,7 +58,7 @@ class FormsActions(FormObjects):
         self.select_field_to_edit_in_project_forms(field_title, section_title)
         self.get_editable_text_input().send_keys(Keys.CONTROL + "a")
         self.get_editable_text_input().send_keys(Keys.DELETE)
-
+    
     def click_save_changes_in_project_forms(self):
         """Saves changes made on the editing field."""
         self.get_save_button().click()
@@ -59,6 +67,10 @@ class FormsActions(FormObjects):
         """Cancels changes made on the editing field."""
         self.get_cancel_button().click()
 
+    def click_clear_all_dropdown_button_in_project_forms(self):
+        """Clicks clear all button on dropdown field."""
+        self.get_dropdown_clear_all_button().click()
+    
     def set_dropdown_value_in_project_forms(self, field_title: str, section_title: str, value: str):
         """Edits and selects dropdown value from dropdown field with given name and value in the given section."""
         self.select_field_to_edit_in_project_forms(field_title, section_title)
