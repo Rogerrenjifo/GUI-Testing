@@ -5,8 +5,8 @@ from selenium.webdriver.remote.webelement import WebElement
 
 class EndComponent(BaseComponent):
     """This class represents an end component"""
-    def __init__(self, id, canvas) -> None:
-        super().__init__(id, canvas)
+    def __init__(self, id) -> None:
+        super().__init__(id)
         self.type = "End"
     
     def delete(self) -> None:
@@ -55,3 +55,8 @@ class EndComponent(BaseComponent):
         self.action_chains.move_to_an_element(dropdown)
         color = dropdown.value_of_css_property('background-color')
         return color
+    
+    def connect_component(self, target: WebElement, number: int) -> None:
+        """Connect the end step with an action"""
+        source = self.get_connector_element(number)
+        self.action_chains.drag_and_drop_element(source, target)

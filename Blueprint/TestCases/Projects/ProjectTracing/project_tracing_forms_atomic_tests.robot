@@ -63,7 +63,7 @@ Verify save button is visible when edit button is clicked on multiline field
     Put mouse hover field with title    Multiline Box 1    Section 1
     Click edit button of field    Multiline Box 1    Section 1
     Save button should be visible
-    Click cancel button
+    Click cancel changes in project forms
 
 Verify save button is visible when edit button is clicked on userlist field
     Put mouse hover field with title    User List 1    Section 1
@@ -99,7 +99,7 @@ Verify cancel button is visible when edit button is clicked on multiline field
     Put mouse hover field with title    Multiline Box 1    Section 1
     Click edit button of field    Multiline Box 1    Section 1
     Cancel button should be visible
-    Click cancel button
+    Click cancel changes in project forms
 
 Verify cancel button is visible when edit button is clicked on userlist field
     Put mouse hover field with title    User List 1    Section 1
@@ -151,3 +151,42 @@ Verify user list field changes color when moused is hovered
 Verify text box is red when required field is empty
     Set empty text in field    Title    Section 1
     Editable text input border should be color    rgba(255, 114, 105, 1)
+
+Verify "Field required" warning message appears when required field is empty
+    Set empty text in field    Title    Section 1
+    Required field div should be visible
+
+Verify "Field required" warning message is red
+    Set empty text in field    Title    Section 1
+    Required field div should be color    rgba(255, 114, 105, 1)
+
+Verify save button turns red when a required field is empty
+    Set empty text in field    Title    Section 1
+    Save button should be color    rgb(255, 114, 105)
+
+Verify save button is disabled when a required field is empty
+    Set empty text in field    Title    Section 1
+    Save button should be disabled
+
+Verify cancel button is enabled when a required field is empty
+    Set empty text in field    Title    Section 1
+    Cancel button should be enabled
+
+Verify text fields can have alphanumeric characters
+    Set text input in project forms    Title    Section 1    qwertyuiopasdfghjklzxcvbnm123456789
+    Editable text input should be    qwertyuiopasdfghjklzxcvbnm123456789
+    Click cancel changes in project forms
+
+Verify text fields can have special characters
+    Set text input in project forms    Title    Section 1    ñ^*!¨!$%&/|@#~€¬
+    Editable text input should be    ñ^*!¨!$%&/|@#~€¬
+
+Verify dropdown field options are displayed when field is clicked while being edited
+    Select field to edit in project forms    Dropdown Box 1    Section 1
+    Click input field in project forms    Dropdown Box 1    Section 1
+    Dropdown box 1 options should be visible
+
+Verify that writing on cleared dropdown input field filters options correctly
+    Select field to edit in project forms    Dropdown Box 1    Section 1
+    Set text input in project forms    Dropdown Box 1    Section 1    x
+    Dropdown box 1 x options should be visible

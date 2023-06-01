@@ -2,6 +2,7 @@ from Blueprint.PageObject.Flows.flow_main_panel_object import FlowMainPanelObjec
 from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
 from Blueprint.PageObject.Flows.Elements.Components.action_component import ActionComponent
 from Blueprint.PageObject.Flows.Elements.Components.step_component import StepComponent
+from Blueprint.PageObject.Flows.Elements.Components.end_component import EndComponent
 from Blueprint.PageObject.Flows.Elements.Components.base_component import BaseComponent
 
 
@@ -32,7 +33,7 @@ class FlowMainPanelActions(FlowMainPanelObject):
         del self.index.component_dictionary[component_id]
 
     def clone_component_in_flow_main_panel(self, component_id) -> None:
-        """Clones 'actions' or 'steps' components."""
+        """Clones 'actions' or 'steps' or 'end steps' components."""
         component = self.index.component_dictionary[component_id]
         component.clone()
         if component.type == "Action":
@@ -43,6 +44,10 @@ class FlowMainPanelActions(FlowMainPanelObject):
             new_id = f"001Added{self.index.counter_step}"
             self.index.add_component(new_id, StepComponent(new_id))
             self.index.increment_counter_step()
+        if component.type == "End":
+            new_id = f"001END{self.index.counter_end}"
+            self.index.add_component(new_id, EndComponent(new_id))
+            self.index.increment_counter_end()
 
     def click_component(self, component_id: str) -> None:
         """Clicks a component"""
@@ -101,3 +106,12 @@ class FlowMainPanelActions(FlowMainPanelObject):
         component = self.index.component_dictionary[component_id]
         x_position, y_position = component.convert_pixel_to_percentage()
         return x_position, y_position
+
+    def clean_dictionary(self) -> None:
+        """Cleans the state of a dictionary"""
+        self.index.component_dictionary = {}
+        self.add_initial_step_to_dictionary()
+        self.add_start_component_to_dictionary()
+        self.index.counter_action = 1
+        self.index.counter_step = 1
+        self.index.counter_end = 1

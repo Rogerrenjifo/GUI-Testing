@@ -17,15 +17,14 @@ class Verification(object):
             logger.info(f"Are ignored: {list_ignore}")
             assert_that(actual_result).is_equal_to(expected_result, ignore=list_ignore)
 
-    def verify_is_not_equal_ignore(self, actual_result, expected_result, list_ignore=[]):
+    def verify_is_not_equal(self, actual_result, expected_result):
         """Asserts the actual is not equal to expected ignoring params"""
         with soft_assertions():
             logger.info("*****Expected******")
             logger.info(expected_result)
             logger.info("*****Actual******")
             logger.info(actual_result)
-            logger.info(f"Are ignored: {list_ignore}")
-            assert_that(actual_result).is_not_equal_to(expected_result, ignore=list_ignore)
+            assert_that(actual_result).is_not_equal_to(expected_result)
 
     def verify_subset(self, expected_result, actual_result):
         """Asserts the expected is subset of actual"""
@@ -59,7 +58,7 @@ class Verification(object):
         with soft_assertions():
             logger.info("*****Expected******")
             logger.info("[]")
-            logger.info("*****Actual******")
+            logger.info('*****Actual******')
             logger.info(actual_result)
             assert_that(actual_result).is_empty()
 
@@ -91,3 +90,12 @@ class Verification(object):
             logger.info("*****Actual******")
             logger.info(f"Element {element} displayed: ", is_displayed)
             assert_that(is_displayed).is_true()
+
+    def verify_a_dictionary_contains_key(self, expected_result, actual_result):
+        """Asserts the expected contains the dictionary of the actual"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(expected_result)
+            logger.info("*****Actual******")
+            logger.info(actual_result)
+            assert_that(expected_result).contains_key(actual_result)    

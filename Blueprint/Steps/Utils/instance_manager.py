@@ -2,14 +2,14 @@ import time
 import random
 from Blueprint.Steps.Actions.MainMenu.main_menu_actions import MainMenuActions
 from Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions import ProjectPageActions
-from Blueprint.Steps.Actions.Projects.new_request_actions import NewRequestActions
+from Blueprint.Steps.Actions.Projects.new_project_actions import NewProjectActions
 
 
 class InstanceManager:
     def __init__(self):
         self.main_menu = MainMenuActions()
         self.project_page = ProjectPageActions()
-        self.new_request = NewRequestActions()
+        self.new_project = NewProjectActions()
 
     def create_list_of_project_instance(self, project_name: str, number_of_instances: int):
         """Creates a list of projects with just a title and section"""
@@ -17,9 +17,9 @@ class InstanceManager:
             time.sleep(3)
             self.main_menu.go_to_project_process_in_main_menu(project_name)
             self.project_page.click_on_new_request_button()
-            self.new_request.insert_text_or_number_in_a_component_in_new_request(
-                f"Project to delete {i+1}", "Section 1", "Title")
-            self.new_request.click_create_button_in_new_request()
+            self.new_project.insert_text_or_number_in_a_component_in_new_project_page(
+                "Section 1", "Title", f"Project to delete {i+1}")
+            self.new_project.click_create_button_in_new_project_page()
         time.sleep(3)
         self.main_menu.go_to_project_process_in_main_menu(project_name)
 

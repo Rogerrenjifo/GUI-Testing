@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from Libraries.Assertions.assertions import Verification
 from Blueprint.Steps.Actions.Projects.ProjectPage.export_dialog_actions import ExportDialogActions
 from Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions import ProjectPageActions
-from Blueprint.Steps.Actions.Projects.new_request_actions import NewRequestObject
+from Blueprint.Steps.Actions.Projects.new_project_actions import NewProjectActions
 from Blueprint.Steps.Utils.generate_file_name import FileNameGenerator
 
 
@@ -40,5 +40,5 @@ class HeaderProjectPageVerifications:
 
     def current_page_should_be_new_project(self):
         """Verifies the actual page is new project"""
-        tag_new = NewRequestObject().get_tag_new()
+        tag_new = NewProjectActions().get_tag_new()
         self.assertions.element_should_be_displayed(tag_new)

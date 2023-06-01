@@ -1,12 +1,11 @@
 *** Settings ***
 Library    Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 Library    Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions.ProjectPageActions
-Library    Blueprint.Steps.Actions.Projects.new_request_actions.NewRequestActions
 Library    Blueprint.Steps.Actions.Projects.ProjectTracing.Header.project_tracing_header_actions.ProjectTracingHeaderActions
 Library    Blueprint.Steps.Actions.Projects.ProjectPage.export_dialog_actions.ExportDialogActions
 Library    Blueprint.Steps.Actions.CommonElements.delete_dialog_actions.DeleteDialogActions
-Library    Blueprint.Steps.Utils.instance_manager.InstanceManager
 Library    Libraries.Assertions.assertions.Verification
+Library    Blueprint.Steps.Utils.instance_manager.InstanceManager
 
 *** Variables ***
 ${flow_name}    AT19-ProjectPage-137
@@ -28,6 +27,7 @@ Create ${number} Instances And Open Delete Dialog
 Search An Specific Project And Open Export Dialog
     [Arguments]    ${project_name}=${flow_name}
     Go To Project Process In Main Menu    ${project_name}
+    Sleep    3
     Click Export Button In Project Page
 
 Delete Created instances
