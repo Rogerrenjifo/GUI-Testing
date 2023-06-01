@@ -40,7 +40,7 @@ class NewProjectObjects(BasePage):
         element = self.find_element.by_css_selector(locators.CREATE_BUTTON_CSS_SELECTOR)
         return element
     
-    def get_element_locator_from_Text_dropdown(self, section_name: str, label_name: str) -> WebElement:
+    def get_element_locator_from_text_dropdown(self, section_name: str, label_name: str) -> WebElement:
         """Returns the xpath of the content visible in the dropdown"""
         locator = locators.TEXT_IN_DROPDOWN.replace("<<section_name>>", section_name).replace("<<label_name>>",
                                                                                                        label_name)
@@ -74,4 +74,4 @@ class NewProjectObjects(BasePage):
         locator = locators.LIST_OPTIONS_DROPDOWN
         element = self.find_element.by_xpath(locator)
         return element
-    
+  

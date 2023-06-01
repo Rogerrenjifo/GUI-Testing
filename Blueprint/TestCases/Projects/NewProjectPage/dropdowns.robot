@@ -52,4 +52,3 @@ Verify that if the dropdown is a required field and it is empty error icon is di
 Verify that if the dropdown is a required field and it is empty its label change to red color
     remove_the_content_of_a_component_in_new_project_page    ${section_delivering}    ${label_Multiline Box 1 }
     the_rgb_color_of_a_label_should_be_as_expected    ${section_delivering}    ${label_Multiline Box 1 }   ${red_color}
-    

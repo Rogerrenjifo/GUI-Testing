@@ -91,5 +91,6 @@ class NewProjectPageVerifications:
         self.verifications.verify_equal_ignore(actual_text, expected_text)
     
     def the_options_list_in_dropdown_should_be_displayed(self) -> None:
+        """Verifies if the option list of a dropdown is displayed"""
         option_list = self.new_request_objects.get_element_options_dropdown_list().is_displayed()
         assert_that(option_list).is_true()
