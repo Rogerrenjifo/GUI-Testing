@@ -41,7 +41,7 @@ class NewProjectObjects(BasePage):
         return element
     
     def get_element_locator_from_Text_dropdown(self, section_name: str, label_name: str) -> WebElement:
-        """Returns the xpath of a specific textbox, number box, datebox or user list by section and label title."""
+        """Returns the xpath of the content visible in the dropdown"""
         locator = locators.TEXT_IN_DROPDOWN.replace("<<section_name>>", section_name).replace("<<label_name>>",
                                                                                                        label_name)
         element = self.find_element.by_xpath(locator)
@@ -68,10 +68,10 @@ class NewProjectObjects(BasePage):
         locator = locators.LABEL_LOCATOR.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
         element = self.find_element.by_xpath(locator)
         return element
-
-    def get_element_locator_from_Text_dropdown(self, section_name: str, label_name: str) -> WebElement:
-        """Returns the xpath of the content visible in the dropdown"""
-        locator = locators.TEXT_IN_DROPDOWN.replace("<<section_name>>", section_name).replace("<<label_name>>",
-                                                                                                       label_name)
+    
+    def get_element_options_dropdown_list(self) -> WebElement:
+        """Returns the web element user option list"""
+        locator = locators.LIST_OPTIONS_DROPDOWN
         element = self.find_element.by_xpath(locator)
         return element
+    

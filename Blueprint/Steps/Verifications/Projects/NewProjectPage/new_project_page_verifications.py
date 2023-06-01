@@ -13,8 +13,10 @@ class NewProjectPageVerifications:
         self.verifications = Verification()
         self.new_request_objects = NewProjectObjects()
         self.popup_message = PopupMessagesObjects()
+        self.field_required_color = "rgba(255, 114, 105, 1)"
     
     def option_should_be_equal(self, actual_result: str, expected_result: str):
+        """Verifies the actual string with expected string"""
         self.verifications.verify_equal_ignore(actual_result, expected_result)
 
     def the_content_of_a_component_should_be_empty(self, section_name: str, label_name: str) -> None:
@@ -55,13 +57,15 @@ class NewProjectPageVerifications:
 
     def field_required_message_should_be_displayed(self) -> None:
         """Verifies the 'field required' message is displayed."""
-        message = self.new_request_objects.get_locator_from_required_field_error_message().is_displayed()
-        assert_that(message).is_true()
+        message = self.new_request_objects.get_locator_from_required_field_error_message()
+        assert_that(message.is_displayed()).is_true()
+        self.option_should_be_equal(message.text, "Field Required")
+        self.option_should_be_equal(message.value_of_css_property('color'), self.field_required_color)
 
     def field_required_icon_should_be_displayed(self) -> None:
         """Verifies the 'field required' icon is displayed."""
-        message_icon = self.new_request_objects.get_locator_from_required_field_error_message().is_displayed()
-        assert_that(message_icon).is_true()
+        message_icon = self.new_request_objects.get_locator_from_error_message_icon()
+        assert_that(message_icon.is_displayed).is_true()
 
     def the_rgb_color_of_a_label_should_be_as_expected(self, section_name: str, label_name: str, expected_rgb_color: str) -> None:
         """Verifies the RGB background color of a label of each component is as expected."""
@@ -74,8 +78,18 @@ class NewProjectPageVerifications:
         self.new_request_actions.click_a_component_inside_a_section_in_new_project_page(section_name, label_name)
         actual_rgb_color = self.new_request_actions.get_the_rgb_border_color_of_each_component(section_name, label_name)
         self.verifications.verify_equal_ignore(actual_rgb_color, expected_rgb_color)
+    
+    def border_component_should_be_as_expected_when_mouse_over(self, section_name: str, label_name: str, expected_rgb_color: str) -> None:
+        """Verifies the RGB border color of an input is as expected when mouse over"""
+        self.new_request_actions.mouse_over_input_text_box_of_a_component_new_project_page(section_name, label_name)
+        actual_rgb_color = self.new_request_actions.get_the_rgb_border_color_of_each_component(section_name, label_name)
+        self.verifications.verify_equal_ignore(actual_rgb_color, expected_rgb_color)
 
     def the_title_of_a_flow_template_should_be_as_expected(self, expected_text: str) -> None:
         """Verifies that the title of a flow template in project page be the same as expected."""
         actual_text = self.new_request_actions.get_the_title_of_a_flow_template_in_project_page()
         self.verifications.verify_equal_ignore(actual_text, expected_text)
+    
+    def the_options_list_in_dropdown_should_be_displayed(self) -> None:
+        option_list = self.new_request_objects.get_element_options_dropdown_list().is_displayed()
+        assert_that(option_list).is_true()

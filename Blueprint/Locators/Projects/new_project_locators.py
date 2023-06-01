@@ -9,3 +9,4 @@ FIELD_REQUIRED_ERROR_MESSAGE_LOCATOR = "//span[contains(text(), ' Field Required
 ERROR_MESSAGE_ICON = "//app-warning-error-icon"
 LABEL_LOCATOR = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']"
 TEXT_IN_DROPDOWN = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']//following-sibling::div//child::span[@class='ng-value-label']"
+LIST_OPTIONS_DROPDOWN = "//div[@class='ng-dropdown-panel-items scroll-host']"
