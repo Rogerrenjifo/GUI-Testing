@@ -1,9 +1,13 @@
 from Blueprint.PageObject.Projects.new_project_objects import NewProjectObjects
 from selenium.webdriver.common.keys import Keys
+from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
 
 
 class NewProjectActions(NewProjectObjects):
     """This class represents the actions in new project page."""
+    def __init__(self):
+        super().__init__()
+        self.dropdown = Dropdownbox('projects_new_project')
 
     def click_create_button_in_new_project_page(self) -> None:
         """Clicks create button."""
@@ -20,16 +24,15 @@ class NewProjectActions(NewProjectObjects):
     def click_a_checkbox_inside_a_section_in_new_project_page(self, section_name: str, label_name: str) -> None:
         """Clicks on any checkbox inside a section."""
         self.get_checkbox_locator(section_name, label_name).click()
-
+        
     def select_user_from_the_dropdown_in_new_project_page(self, section_name: str, label_name: str, user: str) -> None:
         """Selects a user from the userlist dropdown."""
-        self.get_element_locator_from_each_section(section_name, label_name).click()
-        self.get_user_locator_from_dropdown(user).click()
-
-    def delete_user_or_group_selected_in_new_project_page(self, section_name: str, label_name: str) -> None:
+        self.dropdown.click_dropdown('TEXT_USER_NUMBER_DATE_BOX', section_name, label_name)
+        self.dropdown.scroll_down('SELECT_USER', user)
+        
+    def delete_option_of_the_dropdown_in_new_project_page(self, section_name: str, label_name: str) -> None:
         """Deletes the users or group selected by clicking on the 'x' icon."""
-        self.get_element_locator_from_each_section(section_name, label_name).click()
-        self.get_locator_from_remove_user(section_name, label_name).click()
+        self.dropdown.delete_all_options('REMOVE_USER_LOCATOR', section_name, label_name)
 
     def increase_numbericbox_value_in_new_project_page(self, section_name: str, label_name: str, number: int = 1) -> None:
         """Increases the number value in a numbericbox inside a section."""
@@ -96,3 +99,17 @@ class NewProjectActions(NewProjectObjects):
         """Positions the mouse pointer over the label of a component in a section in new project page."""
         label = self.get_locator_from_the_label_of_each_component(section_name, label_name)
         self.action_chains.move_to_an_element(label)
+        
+    def mouse_over_input_text_box_of_a_component_new_project_page(self, section_name: str, label_name: str) -> None:
+        """Positions the mouse pointer over the input text box of a component in a section in new project page."""
+        text_box = self.get_element_locator_from_each_section(section_name, label_name)
+        self.action_chains.move_to_an_element(text_box)
+        
+    def get_the_content_of_a_dropdown(self, section_name: str, label_name: str) -> str:
+        """Gets the content present in the dropdown"""
+        dropdown_content = self.get_element_locator_from_text_dropdown(section_name, label_name).get_attribute('textContent')
+        return dropdown_content
+
+    def click_in_the_drodown(self, section_name: str, label_name: str):
+        """Clicks in the specified dropdown"""
+        self.dropdown.click_dropdown('TEXT_USER_NUMBER_DATE_BOX', section_name, label_name)
