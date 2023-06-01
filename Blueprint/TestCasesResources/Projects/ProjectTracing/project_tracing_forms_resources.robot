@@ -29,12 +29,6 @@ Set empty text in field
     [Arguments]    ${field_title}    ${section_title}
     set_empty_input_in_project_forms    ${field_title}    ${section_title}
 
-Click save button
-    click_save_changes_in_project_forms
-
 Click section title
     [Arguments]    ${section_title}
     click_section_title_in_project_forms    ${section_title}
-
-Click cancel button
-    click_cancel_changes_in_project_forms
