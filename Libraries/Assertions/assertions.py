@@ -1,6 +1,7 @@
 from robot.api import logger
 from assertpy import soft_assertions
 from assertpy import assert_that
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class Verification(object):
@@ -60,6 +61,35 @@ class Verification(object):
             logger.info('*****Actual******')
             logger.info(actual_result)
             assert_that(actual_result).is_empty()
+
+    def verify_a_list_contains(self, elements_list, item):
+        """Asserts the expected does not contain of actual"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(elements_list)
+            logger.info("*****Actual******")
+            logger.info(item)
+            assert_that(elements_list).contains(item)
+
+    def verify_all_elements_are_different(self, element_list):
+        """Verifies all the elements in a list are different"""
+        element_set = list(set(element_list))
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(element_set.sort())
+            logger.info("*****Actual******")
+            logger.info(element_list.sort())
+            assert_that(element_list.sort()).is_equal_to(element_set.sort())
+
+    def element_should_be_displayed(self, element: WebElement):
+        """Verifies the element is displayed"""
+        with soft_assertions():
+            is_displayed = element.is_displayed()
+            logger.info("*****Expected******")
+            logger.info(f"Element {element} displayed: ", True)
+            logger.info("*****Actual******")
+            logger.info(f"Element {element} displayed: ", is_displayed)
+            assert_that(is_displayed).is_true()
 
     def verify_a_dictionary_contains_key(self, expected_result, actual_result):
         """Asserts the expected contains the dictionary of the actual"""

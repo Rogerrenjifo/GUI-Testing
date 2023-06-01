@@ -19,6 +19,11 @@ class ProjectPageObjects(BasePage):
         locator = locator_template.replace("<<value>>", project_id)
         return locator
 
+    def get_export_button(self) -> WebElement:
+        """Finds and returns the Export button element of the page."""
+        element = self.find_element.by_xpath(locators.EXPORT_BUTTON)
+        return element
+
     def get_project_name(self) -> WebElement:
         """Finds and returns the project name element of the page."""
         element = self.find_element.by_xpath(locators.PROJECT_NAME)
