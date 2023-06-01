@@ -1,6 +1,7 @@
 from robot.api import logger
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 
 
 class FormMainPanelActions(FormMainPanelPage):
@@ -8,6 +9,9 @@ class FormMainPanelActions(FormMainPanelPage):
     def __init__(self):
         super().__init__()
         self.pop_up_messages = PopUpMessagesActions()
+        self.element_storage = FormElementsStorage()
+        self.sections_list = self.element_storage.sections_list
+        self.components_list = self.element_storage.components_in_sections
 
     def select_component_in_form_main_panel(self, component_id: str):
         """Clicks a component from main panel for display its properties"""
@@ -51,16 +55,18 @@ class FormMainPanelActions(FormMainPanelPage):
 
     def delete_section_in_form_main_panel(self, section_title: str, index=None):
         """Deletes a section from its drop-down menu"""
+        section_index = self.element_storage.get_section_index(section_title)
+        if section_index != 0:
+            del self.sections_list[section_index]
         self.display_section_delete_menu_in_form_main_panel(section_title, index)
         self.select_section_delete_button_in_form_main_panel()
-        section_index = self.section_list.index(section_title)
-        if section_index != 0:
-            del self.section_list[section_index]
 
     def delete_component_in_form_main_panel(self, component_id):
         """Deletes a component from its drop-down menu"""
         self.display_component_delete_menu_in_form_main_panel(component_id)
         self.select_component_delete_button_in_form_main_panel(component_id)
+        for section in self.components_list:
+            del self.components_list[section][component_id]
 
     def display_section_delete_menu_in_form_main_panel(self, section_title: str, index=None):
         """Clicks drop-down button, if it does not display, clicks on its corner"""
@@ -108,7 +114,7 @@ class FormMainPanelActions(FormMainPanelPage):
             sections_title_list.append(self.get_section_title(str(section_index)).text)
         return sections_title_list
 
-    def get_all_components_title_in_a_section_in_form_main_panel(self, section_title) -> list:
+    def get_all_components_title_in_a_section_in_form_main_panel(self, section_title: str = "section-1") -> list:
         """Returns all the components title displayed in a section"""
         components_title_list = []
         for component in self.get_all_components_in_a_section(section_title):
@@ -141,6 +147,25 @@ class FormMainPanelActions(FormMainPanelPage):
 
     def delete_all_sections_created_in_form_main_panel(self):
         """Deletes all the sections in form main panel, except the default one"""
-        section_list_to_delete = self.section_list[1:]
+        section_list_to_delete = self.element_storage.get_sections_title()[1:]
         for section in section_list_to_delete:
             self.delete_section_in_form_main_panel(section)
+
+    def delete_components_added_in_section_in_form_main_panel(self, section: str = "section-1"):
+        """Deletes all the components created in a section"""
+        components_list_to_delete = list(self.components_list[section].keys())
+        for component in components_list_to_delete:
+            if component != "section-1_textbox-1":
+                self.delete_component_in_form_main_panel(component)
+
+    def delete_components_and_sections_added_in_form_main_panel(self):
+        """Deletes all the components and sections created in form main panel"""
+        section_list = self.element_storage.get_sections_title()
+        for section in section_list:
+            if section != "Section 1":
+                self.delete_section_in_form_main_panel(section)
+                section = section.lower().replace(" ", "-")
+                del self.components_list[section]
+            else:
+                section = section.lower().replace(" ", "-")
+                self.delete_components_added_in_section_in_form_main_panel(section)

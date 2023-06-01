@@ -2,6 +2,7 @@ from Blueprint.Steps.Actions.Flows.create_form_main_panel_actions import FormMai
 from Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions import PropertiesPanelActions
 from Libraries.Assertions.assertions import Verification
 from robot.api import logger
+from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 
 
 class CreateFormAddSectionVerifications:
@@ -11,11 +12,12 @@ class CreateFormAddSectionVerifications:
         self.main_panel = FormMainPanelActions()
         self.properties_panel = PropertiesPanelActions()
         self.verification = Verification()
+        self.elements_storage = FormElementsStorage()
 
     def new_section_should_be_displayed(self):
         """Verifies that a new section is displayed"""
         section_actual_list = self.main_panel.get_all_sections_title_in_form_main_panel()
-        section_expected_list = self.main_panel.section_list
+        section_expected_list = self.elements_storage.get_sections_title()
         self.verification.verify_equal_ignore(section_actual_list, section_expected_list)
 
     def new_section_should_be_displayed_above_selected(self, selected_section: str):
