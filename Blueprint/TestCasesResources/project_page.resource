@@ -5,8 +5,8 @@ Library    Blueprint.Steps.Actions.Projects.new_request_actions.NewRequestAction
 Library    Blueprint.Steps.Actions.Projects.ProjectTracing.Header.project_tracing_header_actions.ProjectTracingHeaderActions
 Library    Blueprint.Steps.Actions.Projects.ProjectPage.export_dialog_actions.ExportDialogActions
 Library    Blueprint.Steps.Actions.CommonElements.delete_dialog_actions.DeleteDialogActions
+Library    Blueprint.Steps.Utils.instance_manager.InstanceManager
 Library    Libraries.Assertions.assertions.Verification
-Library    Libraries.Resources.instance_manager.InstanceGenerator
 
 *** Variables ***
 ${flow_name}    AT19-ProjectPage-137

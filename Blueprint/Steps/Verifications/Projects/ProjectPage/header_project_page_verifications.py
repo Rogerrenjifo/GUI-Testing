@@ -1,10 +1,9 @@
-import time
 from selenium.webdriver.common.by import By
 from Libraries.Assertions.assertions import Verification
 from Blueprint.Steps.Actions.Projects.ProjectPage.export_dialog_actions import ExportDialogActions
 from Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions import ProjectPageActions
 from Blueprint.Steps.Actions.Projects.new_request_actions import NewRequestObject
-from Libraries.Utils.generate_file_name import FileNameGenerator
+from Blueprint.Steps.Utils.generate_file_name import FileNameGenerator
 
 
 class HeaderProjectPageVerifications:

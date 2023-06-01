@@ -1,12 +1,11 @@
 import time
 import random
-
 from Blueprint.Steps.Actions.MainMenu.main_menu_actions import MainMenuActions
 from Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions import ProjectPageActions
 from Blueprint.Steps.Actions.Projects.new_request_actions import NewRequestActions
 
 
-class InstanceGenerator:
+class InstanceManager:
     def __init__(self):
         self.main_menu = MainMenuActions()
         self.project_page = ProjectPageActions()

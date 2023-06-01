@@ -1,7 +1,7 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Libraries.Drivers.base_page import BasePage
 from Blueprint.Locators.Flows import flows_properties_locators as locators
-from Blueprint.PageObject.Flows.Elements.FlowsProperties.flow_elements import FlowElements
+from Blueprint.PageObject.Flows.Elements.flows_properties.flow_elements import FlowElements
 
 
 class FlowPropertiesObjects(BasePage):

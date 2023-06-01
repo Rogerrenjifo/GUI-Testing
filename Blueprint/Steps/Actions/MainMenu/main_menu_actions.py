@@ -1,4 +1,5 @@
 from Blueprint.PageObject.MainMenu.main_menu_objects import MainMenuObjects
+from robot.api import logger
 
 
 class MainMenuActions(MainMenuObjects):
@@ -51,9 +52,11 @@ class MainMenuActions(MainMenuObjects):
         self.click_on_projects_button()
         self.insert_project_name_into_the_search_bar(project_name)
         self.click_on_a_project_result()
+        self.click_on_projects_button()
 
     def go_to_flow_process_in_main_menu(self, flow_name: str):
         """Goes to a specific flow"""
         self.click_on_flows_button()
         self.insert_flow_name_into_the_search_bar(flow_name)
         self.click_on_first_flow_result()
+        self.click_on_flows_button()

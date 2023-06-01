@@ -41,6 +41,7 @@ class NewFlowActions(NewFlow):
         self.insert_new_flow_name(flow_name)
         self.insert_new_flow_code(flow_code)
         self.click_on_create_new_flow_button()
+        self.click_on_flows_drop_down_button()
 
     def cancel_create_new_flow_process_in_flow_page(self):
         """Cancels the creation of a new flow"""
@@ -62,10 +63,11 @@ class NewFlowActions(NewFlow):
         self.insert_new_flow_name(flow_name)
         self.click_on_create_new_flow_button()
 
-    def create_a_new_flow_with_random_code(self):
+    def create_a_new_flow_with_random_code(self) -> str:
         """Creates a new flow with a random code. If the code is in use, tries with other"""
         self.click_on_flows_drop_down_button()
         flow_was_created = False
+        flow_name = ""
         while not flow_was_created:
             flow_code = random_string_generator(3)
             flow_name = "AT19-GUITESTING-" + flow_code
@@ -76,3 +78,5 @@ class NewFlowActions(NewFlow):
             time.sleep(2)
             if self.pop_up_messages.get_popup_message_text() == "Process created":
                 flow_was_created = True
+        self.click_on_flows_drop_down_button()
+        return flow_name
