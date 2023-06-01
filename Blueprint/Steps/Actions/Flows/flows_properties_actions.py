@@ -1,11 +1,16 @@
 from Blueprint.PageObject.Flows.flows_properties_objects import FlowPropertiesObjects
+from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
+from Blueprint.PageObject.Flows.Elements.Components.end_component import EndComponent
 
 
 class FlowPropertiesActions(FlowPropertiesObjects):
     """Flow properties actions on elements."""
+    def __init__(self) -> None:
+        super().__init__()
+        self.index = ComponentStorage()
     
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
-        """Change component 'name'."""
+        """Changes component 'name'."""
         self.name_field.text_field.click()
         self.name_field.text_field.clear()
         self.name_field.text_field.send_keys(new_name)
@@ -19,9 +24,13 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         self.select_type_dropbox.combobox.click()
         self.select_type_dropbox.option.click()
     
-    def click_end_step_checkbox_in_flow_properties(self) -> None:
+    def click_end_step_checkbox_in_flow_properties(self, component_id: str) -> None:
         """Performs click on 'End Step' checkbox."""
         self.end_step_checkbox.checkbox.click()
+        new_id = f"001END{self.index.counter_end}"
+        self.index.component_dictionary.pop(component_id)
+        self.index.add_component(new_id, EndComponent(new_id))
+        self.index.increment_counter_end()
 
     def click_add_comment_checkbox_in_flow_properties(self) -> None:
         """Performs click on 'Force to add comment' checkbox."""
