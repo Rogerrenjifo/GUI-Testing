@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         DOCKERUSER='roretar' 
-        DOCKERPASSWORD=credentials('dockerhubpassword')
         PYTHONPATH = "${WORKSPACE}/GUI-Blueprint"
         SONAR_TOKEN=credentials('SQT')
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
