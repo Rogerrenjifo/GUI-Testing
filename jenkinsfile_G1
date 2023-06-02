@@ -3,7 +3,6 @@ pipeline {
     environment {
         DOCKERUSER='roretar' 
         PYTHONPATH = "${WORKSPACE}/GUI-Blueprint"
-        SONAR_TOKEN=credentials('SQT')
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
         USER="roger.renjifo"
