@@ -84,3 +84,13 @@ class NewFlowActions(NewFlow):
                 self.click_on_flows_drop_down_button()
             self.pop_up_messages.click_to_close_popup_message()
         return flow_code
+
+    def get_name_field_required_message_text(self) -> str:
+        """Returns the text of the required message for the name field."""
+        text = self.get_name_field_required_message().text
+        return text
+
+    def get_code_field_required_message_text(self) -> str:
+        """Returns the text of the required message for the code field"""
+        text = self.get_code_field_required_message().text
+        return text
