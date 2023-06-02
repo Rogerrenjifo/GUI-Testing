@@ -1,5 +1,6 @@
 from Blueprint.PageObject.Flows.header_objects import Header
 from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
+from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 
 
 class HeaderActions(Header):
@@ -8,6 +9,7 @@ class HeaderActions(Header):
     def __init__(self) -> None:
         super().__init__()
         self.delete_dialog = DeleteDialogActions()
+        self.form_storage = FormElementsStorage()
     
     def get_flow_status_text_in_flow_header(self) -> str:
         """Gets the text of the flow status"""
@@ -102,6 +104,8 @@ class HeaderActions(Header):
 
     def delete_flow_process_in_flow_header(self) -> None:
         """Executes the process to delete a flow"""
+        self.form_storage.components_in_sections.clear()
+        self.form_storage.sections_list.clear()
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
         self.click_delete_button_in_delete_dialog()
