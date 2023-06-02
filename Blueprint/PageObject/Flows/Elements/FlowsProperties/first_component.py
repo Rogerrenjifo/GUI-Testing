@@ -1,4 +1,4 @@
-from Blueprint.PageObject.Flows.Elements.flows_properties.flow_elements import FlowElements
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.flow_elements import FlowElements
 
 class FirstFlowsProperties(FlowElements):
     """'First' component properties, methods and attributes."""
