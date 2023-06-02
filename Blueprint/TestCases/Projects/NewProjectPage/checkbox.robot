@@ -16,7 +16,7 @@ ${label_has_identity_card}    Has identity card
 ${purple_color}    rgba(117, 105, 255, 1)
 
 *** Test Cases ***
-Verify that hover on the label of a checkbox the color change to purple
+Verify that hover on the label of a checkbox the color change to purple "rgba(117, 105, 255, 1)"
     The Rgb Color Of A Label Should Be As Expected    ${section_new_history}   ${label_go_to_school}   ${purple_color}
 
 Verify that a checkbox not marked like “Default Checked” in flow page is not marked by default
