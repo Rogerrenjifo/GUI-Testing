@@ -104,19 +104,19 @@ class HeaderActions(Header):
         """Executes the process to delete a flow"""
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
-        self.click_delete_button_in_flow_header()
+        self.click_delete_button_in_delete_dialog()
 
     def cancel_delete_flow_process_in_flow_header(self) -> None:
         """Cancels the process to delete a flow. The flow is not deleted"""
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
-        self.click_cancel_button_in_flow_header()
+        self.click_cancel_button_in_delete_dialog()
 
     def close_delete_flow_process_in_flow_header(self) -> None:
         """Closes the delete dialog while delete flow process is running. The flow is not deleted"""
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
-        self.click_close_button_in_flow_header()
+        self.click_close_button_in_delete_dialog()
 
     def change_flow_version_process_in_flow_header(self, version: str) -> None:
         """Changes the flow version selected"""
