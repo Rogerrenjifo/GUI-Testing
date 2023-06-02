@@ -8,7 +8,6 @@ from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage impo
 class CreateFormAddSectionVerifications:
     """This class represents the verifications of add a section in form tab"""
     def __init__(self):
-        super().__init__()
         self.main_panel = FormMainPanelActions()
         self.properties_panel = PropertiesPanelActions()
         self.verification = Verification()

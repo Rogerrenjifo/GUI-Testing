@@ -30,7 +30,7 @@ class MainMenuActions(MainMenuObjects):
         self.get_flows_button().click()
 
     def get_flows_button_label(self) -> str:
-        """Clicks on the 'Flows' button in the Main Menu."""
+        """Gets the label of 'Flows' button in the Main Menu."""
         label = self.get_flows_button().text
         return label
 
