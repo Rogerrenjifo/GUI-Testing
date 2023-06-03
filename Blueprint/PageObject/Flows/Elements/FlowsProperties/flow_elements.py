@@ -1,13 +1,13 @@
-from Blueprint.PageObject.Flows.Elements.flows_properties.name_field import NameField
-from Blueprint.PageObject.Flows.Elements.flows_properties.select_type_dropbox import SelectTypeDropbox
-from Blueprint.PageObject.Flows.Elements.flows_properties.end_checkbox import EndStepCheck
-from Blueprint.PageObject.Flows.Elements.flows_properties.add_comment_checkbox import AddCommentCheck
-from Blueprint.PageObject.Flows.Elements.flows_properties.update_fields_checkbox import UpdateFieldsCheck
-from Blueprint.PageObject.Flows.Elements.flows_properties.select_owner_dropbox import SelectOwnerDropbox
-from Blueprint.PageObject.Flows.Elements.flows_properties.req_update_fields import UpdateFieldsCommons
-from Blueprint.PageObject.Flows.Elements.flows_properties.error_message_display import ErrorMessage
-from Blueprint.PageObject.Flows.Elements.flows_properties.update_fields_combobox import ReqUpdateFields
-from Blueprint.PageObject.Flows.Elements.flows_properties.update_value_combobox import ReqUpdateValues
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.name_field import NameField
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.select_type_dropbox import SelectTypeDropbox
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.end_checkbox import EndStepCheck
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.add_comment_checkbox import AddCommentCheck
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.update_fields_checkbox import UpdateFieldsCheck
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.select_owner_dropbox import SelectOwnerDropbox
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.req_update_fields import UpdateFieldsCommons
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.error_message_display import ErrorMessage
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.update_fields_combobox import ReqUpdateFields
+from Blueprint.PageObject.Flows.Elements.FlowsProperties.update_value_combobox import ReqUpdateValues
 
 
 class FlowElements():

@@ -5,8 +5,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_secti
 Suite Setup        Create A New Flow With Random Code
 Suite Teardown     Delete Flow Process In Flow Header
 Test Teardown      Delete All Sections Created In Form Main Panel
-
-Force Tags       CREATE_FORM    ADD_SECTION
+Force Tags       CREATE_F0RM    ADD_SECTION
 
 *** Variables ***
 ${default_section_name}                         Section 1
