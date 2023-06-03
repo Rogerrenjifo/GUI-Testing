@@ -16,7 +16,7 @@ pipeline {
         stage('code inspection'){
             steps{
                 withSonarQubeEnv('SonarQube') {
-                    sh '/var/jenkins_home/sonarcito/bin/sonar-scanner -Dsonar.organization=at19 \
+                    sh '/var/jenkins_home/sonarcito/sonar-scanner/bin/sonar-scanner -Dsonar.organization=at19 \
                         -Dsonar.projectKey=at19_blueprint \
                         -Dsonar.sources=./GUI-Blueprint \
                         -Dsonar.branch.name=${BRANCH_NAME} \
