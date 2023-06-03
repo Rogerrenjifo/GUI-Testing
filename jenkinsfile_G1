@@ -16,7 +16,7 @@ pipeline {
         stage('code inspection'){
             steps{
                 withSonarQubeEnv('SonarQube') {
-                    sh '/var/jenkins_home/sonarcito/bin/sonar-scanner' 
+                    sh '/var/jenkins_home/sonarcito/sonar-scanner/bin/sonar-scanner --help' 
                 }
             }
         }
