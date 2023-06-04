@@ -21,6 +21,6 @@ class WaitForElement(object):
         """Waits (timeout) seconds for the text of an element."""
         WebDriverWait(self.driver, timeout).until(lambda x: len(result.text) > 0)
 
-    def wait_for_element_clickable_with_web_element(self, element, timeout: int = 10):
-        """Waits (timeout) seconds for element with given xpath to load."""
-        WebDriverWait(self.driver, timeout).until(expected_conditions.element_to_be_clickable(element))
+    def wait_for_element_to_not_exist(self, element: WebElement, timeout: int = 10):
+        """Waits (timeout) seconds for element to not exist, with a given web element."""
+        WebDriverWait(self.driver, timeout).until(expected_conditions.staleness_of(element))

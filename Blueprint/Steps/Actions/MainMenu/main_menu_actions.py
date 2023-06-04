@@ -1,5 +1,4 @@
 from Blueprint.PageObject.MainMenu.main_menu_objects import MainMenuObjects
-from robot.api import logger
 
 
 class MainMenuActions(MainMenuObjects):
