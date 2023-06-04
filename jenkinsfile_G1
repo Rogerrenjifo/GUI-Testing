@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKERUSER='roretar' 
         DOCKERPASSWORD=credentials('dockerhubpassword')
-        PYTHONPATH = "${WORKSPACE}/GUI-Blueprint"
+        PYTHONPATH = "${WORKSPACE}"
         SONAR_TOKEN = credentials('SONAR_TOKEN')
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'echo "Testing Connection"'
                 sh 'echo $SONAR_TOKEN'
-                sh 'echo $PWD'
+                sh 'echo $PYTHONPATH'
                 sh 'ls'
 
             }
