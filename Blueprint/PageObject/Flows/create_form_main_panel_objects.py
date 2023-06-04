@@ -1,7 +1,6 @@
 from Blueprint.Locators.Flows import create_form_main_panel_locators as locators
 from selenium.webdriver.remote.webelement import WebElement
 from Libraries.Drivers.base_page import BasePage
-from Blueprint.PageObject.Flows.Elements.sections_list import SectionsList
 
 
 class FormMainPanelPage(BasePage):
@@ -17,7 +16,6 @@ class FormMainPanelPage(BasePage):
         self.__component_title_locator = locators.COMPONENT_TITLE_LOCATOR
         self.__component_dropdown_locator = locators.COMPONENT_DROPDOWN_LOCATOR
         self.__component_delete_button_locator = locators.COMPONENT_DELETE_BUTTON_LOCATOR
-        self.section_list = SectionsList().sections_list
 
     @staticmethod
     def get_locator(locator_model: str, replacement_attribute: str, index=None):

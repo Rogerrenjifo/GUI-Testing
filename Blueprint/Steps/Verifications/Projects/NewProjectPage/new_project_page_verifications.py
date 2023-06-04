@@ -94,3 +94,13 @@ class NewProjectPageVerifications:
         """Verifies if the option list of a dropdown is displayed"""
         option_list = self.new_request_objects.get_element_options_dropdown_list().is_displayed()
         assert_that(option_list).is_true()
+    
+    def checkbox_should_be_marked(self, section_name: str, label_name: str) -> None:
+        """Verifies that the dropdown is marked"""
+        checkbox_marked = self.new_request_objects.get_checkbox_status_locator(section_name, label_name).is_selected()
+        assert_that(checkbox_marked).is_true()
+    
+    def checkbox_should_not_be_marked(self, section_name: str, label_name: str) -> None:
+        """Verifies that the dropdown is not marked"""
+        checkbox_marked = self.new_request_objects.get_checkbox_status_locator(section_name, label_name).is_selected()
+        assert_that(checkbox_marked).is_false()

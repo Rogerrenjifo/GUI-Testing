@@ -1,6 +1,6 @@
 CREATE_BUTTON = "//button[@class='bp-btn-action']"
 TEMPLATE_TITLE = "//h2[@class='overflow-project-instance']"
-CHECKBOX = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']"
+CHECKBOX_LABEL = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']"
 TEXT_USER_NUMBER_DATE_BOX = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']//following-sibling::div//child::input"
 SELECT_USER = "//span[@title='<<user>>'] | //label[@title='<<user>>'] | //div[@title='<<user>>']"
 REMOVE_USER_LOCATOR = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']//following-sibling::div//descendant::span[@title='Clear all']"
@@ -11,3 +11,5 @@ LABEL_LOCATOR = "//h3[@title='<<section_name>>']//following-sibling::div//descen
 TEXT_IN_DROPDOWN = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']//following-sibling::div//child::span[@class='ng-value-label']"
 LIST_OPTIONS_DROPDOWN = "//div[@class='ng-dropdown-panel-items scroll-host']"
 TAG_NEW = "//span[text()='New']"
+CHECKBOX_STATUS = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']/parent::div/div/input"
+CHECKBOX = "//h3[@title='<<section_name>>']//following-sibling::div//descendant::label[@title='<<label_name>>']/parent::div/div/label"

@@ -1,7 +1,6 @@
 from Blueprint.Steps.Actions.Flows.flow_page_actions import NewFlowActions
 from Blueprint.Steps.Actions.MainMenu.main_menu_actions import MainMenuActions
 from Libraries.Assertions.assertions import Verification
-from Blueprint.Steps.Resources.random_flow_code import RandomGenerator
 
 
 class MainMenuVerifications:
@@ -10,7 +9,6 @@ class MainMenuVerifications:
         self.main_menu = MainMenuActions()
         self.create_flow = NewFlowActions()
         self.verification = Verification()
-        self.random_generator = RandomGenerator()
 
     def flows_label_should_be(self, expected_result: str):
         """Verifies that the label of the flows button in the main menu matches the expected result."""
@@ -19,8 +17,7 @@ class MainMenuVerifications:
 
     def result_should_be_displayed(self):
         """Verifies that the flow result is displayed."""
-        index = self.random_generator.random_num_generator()
-        self.main_menu.get_flow_result(index).is_displayed()
+        self.verification.verify_element_is_displayed(self.main_menu.get_flow_result("1"))
 
     def message_not_data_match_found_should_be_displayed(self, expected_result: str):
         """Verifies that the message for no data match found matches the expected result."""
@@ -29,4 +26,8 @@ class MainMenuVerifications:
 
     def create_flow_dialog_should_be_displayed(self):
         """Verifies that the create flow dialog is displayed."""
-        self.main_menu.get_create_flow_dialog().is_displayed()
+        self.verification.verify_element_is_displayed(self.main_menu.get_create_flow_dialog())
+
+    def new_flow_button_should_be_displayed(self):
+        """Verifies that the create flow dialog is displayed."""
+        self.verification.verify_element_is_displayed(self.main_menu.get_new_flow_button())

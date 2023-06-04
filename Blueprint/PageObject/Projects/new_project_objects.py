@@ -16,9 +16,21 @@ class NewProjectObjects(BasePage):
         element = self.find_element.by_xpath(locators.TEMPLATE_TITLE)
         return element
     
+    def get_checkbox_label_locator(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of a specific checkbox label by section and label title."""
+        locator = locators.CHECKBOX_LABEL.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
+    
     def get_checkbox_locator(self, section_name: str, label_name: str) -> WebElement:
         """Returns the xpath of a specific checkbox by section and label title."""
         locator = locators.CHECKBOX.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
+    
+    def get_checkbox_status_locator(self, section_name: str, label_name: str) -> WebElement:
+        """Returns the xpath of a specific checkbox status by section and label title."""
+        locator = locators.CHECKBOX_STATUS.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
         element = self.find_element.by_xpath(locator)
         return element
     

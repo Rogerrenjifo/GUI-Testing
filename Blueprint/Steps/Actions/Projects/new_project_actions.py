@@ -21,6 +21,10 @@ class NewProjectActions(NewProjectObjects):
         """Clicks on a specific textbox, numberbox, datebox or userlist inside a section."""
         self.get_element_locator_from_each_section(section_name, label_name).click()
 
+    def click_a_checkbox_label_inside_a_section_in_new_project_page(self, section_name: str, label_name: str) -> None:
+        """Clicks on any checkbox inside a section."""
+        self.get_checkbox_label_locator(section_name, label_name).click()
+    
     def click_a_checkbox_inside_a_section_in_new_project_page(self, section_name: str, label_name: str) -> None:
         """Clicks on any checkbox inside a section."""
         self.get_checkbox_locator(section_name, label_name).click()
@@ -110,6 +114,6 @@ class NewProjectActions(NewProjectObjects):
         dropdown_content = self.get_element_locator_from_text_dropdown(section_name, label_name).get_attribute('textContent')
         return dropdown_content
 
-    def click_in_the_drodown(self, section_name: str, label_name: str):
+    def click_in_the_dropdown(self, section_name: str, label_name: str):
         """Clicks in the specified dropdown"""
         self.dropdown.click_dropdown('TEXT_USER_NUMBER_DATE_BOX', section_name, label_name)

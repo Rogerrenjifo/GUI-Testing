@@ -1,7 +1,7 @@
 from Blueprint.PageObject.Flows.new_flow import NewFlow
-import time
 from Libraries.Resources.random_flow_code import random_string_generator
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
+from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 
 
 class NewFlowActions(NewFlow):
@@ -9,6 +9,7 @@ class NewFlowActions(NewFlow):
     def __init__(self):
         super().__init__()
         self.pop_up_messages = PopUpMessagesActions()
+        self.success_pop_up_rgb_color = "rgba(92, 184, 92, 1)"
 
     def click_on_flows_drop_down_button(self):
         """Clicks on the 'Flows' drop-down button on the navigation bar."""
@@ -75,8 +76,22 @@ class NewFlowActions(NewFlow):
             self.insert_new_flow_name(flow_name)
             self.insert_new_flow_code(flow_code)
             self.click_on_create_new_flow_button()
-            time.sleep(2)
+            self.wait_for_element.wait_for_element_with_web_element(self.pop_up_messages.get_popup_message())
             if self.pop_up_messages.get_popup_message_text() == "Process created":
                 flow_was_created = True
-        self.click_on_flows_drop_down_button()
+                elements_storage = FormElementsStorage()
+                elements_storage.add_default_section()
+                elements_storage.add_default_component()
+                self.click_on_flows_drop_down_button()
+            self.pop_up_messages.click_to_close_popup_message()
         return flow_name
+
+    def get_name_field_required_message_text(self) -> str:
+        """Returns the text of the required message for the name field."""
+        text = self.get_name_field_required_message().text
+        return text
+
+    def get_code_field_required_message_text(self) -> str:
+        """Returns the text of the required message for the code field"""
+        text = self.get_code_field_required_message().text
+        return text
