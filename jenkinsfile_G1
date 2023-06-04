@@ -23,7 +23,7 @@ pipeline {
         stage('code inspection'){
             steps{
                 withSonarQubeEnv('SonarQube') {
-                    sh '/var/jenkins_home/sonarcito/sonar-scanner/bin/sonar-scanner --help
+                    sh '/var/jenkins_home/sonarcito/sonar-scanner/bin/sonar-scanner --help'
               }
           }
         }
