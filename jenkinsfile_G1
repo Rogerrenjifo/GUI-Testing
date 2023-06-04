@@ -3,7 +3,7 @@ pipeline {
     environment {
         DOCKERUSER='roretar' 
         DOCKERPASSWORD=credentials('dockerhubpassword')
-        PYTHONPATH = "${WORKSPACE}"
+        PYTHONPATH = "${WORKSPACE}/GUI-Blueprint"
         SONAR_TOKEN = credentials('SONAR_TOKEN')
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
@@ -17,11 +17,15 @@ pipeline {
         stage('Test Connection') {
             steps {
                 sh 'echo "Testing Connection"'
-                sh 'echo $SONAR_TOKEN'
-                sh 'echo $PYTHONPATH'
-                sh 'ls'
-
+                sh 'echo $SONAR_QUBE'
             }
+        }
+        stage('code inspection'){
+            steps{
+                withSonarQubeEnv('SonarQube') {
+                    sh '/var/jenkins_home/sonarcito/sonar-scanner/bin/sonar-scanner --help
+              }
+          }
         }
     }
 }
