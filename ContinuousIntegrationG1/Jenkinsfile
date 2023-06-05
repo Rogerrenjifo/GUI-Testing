@@ -20,9 +20,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'run the browser containers.'
-                sh 'echo roger'
-                sh 'echo $PWD'        
+                sh 'echo "run the browser containers."'
+                sh 'ls'
+                sh 'docker container ls'                
             }
             post {
                 always {
