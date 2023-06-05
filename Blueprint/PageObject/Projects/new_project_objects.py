@@ -91,3 +91,15 @@ class NewProjectObjects(BasePage):
         locator = locators.LIST_OPTIONS_DROPDOWN
         element = self.find_element.by_xpath(locator)
         return element
+
+    def get_element_datebox_datepicker(self) -> WebElement:
+        """Returns the web element user option list"""
+        locator = locators.DATEPICKER_DISPLAYED
+        element = self.find_element.by_id(locator)
+        return element
+
+    def get_element_delete_date_in_datebox(self, section_name: str, label_name: str) -> WebElement:
+        """Returns icon x element in a datebox"""
+        locator = locators.DELETE_DATE.replace("<<section_name>>", section_name).replace("<<label_name>>", label_name)
+        element = self.find_element.by_xpath(locator)
+        return element
