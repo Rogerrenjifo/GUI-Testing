@@ -118,3 +118,12 @@ class Verification(object):
             logger.info("*****Actual******")
             logger.info(actual_instance)
             assert_that(actual_instance).is_instance_of(expected_instance)
+
+    def verify_a_list_is_not_empty(self, actual_result):
+        """Asserts the expected does not contain of actual"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info("[]")
+            logger.info('*****Actual******')
+            logger.info(actual_result)
+            assert_that(actual_result).is_not_empty()

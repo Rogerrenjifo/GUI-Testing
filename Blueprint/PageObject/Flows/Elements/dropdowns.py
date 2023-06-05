@@ -121,6 +121,16 @@ class Dropdownbox(BasePage):
         users_selected = [user.text for user in users]
         return users_selected
 
+    def get_element(self, key: str, dropdown_index: str = None):
+        """Returns an element of the dropdown"""
+        try:
+            xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+            element = self.find_element.by_xpath(xpath)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
+
     def __xpath_selector(self, key: str, option: str = None, label_name: str = None, dropdown_index: str = None) -> str:
         """Selects the corresponding xpath"""
         valid_pages = ['permissions', 'projects_tracing_system', 'projects_new_project']
