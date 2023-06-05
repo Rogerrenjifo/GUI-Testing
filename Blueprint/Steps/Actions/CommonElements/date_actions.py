@@ -33,9 +33,9 @@ class DateActions(DateObjects):
         self.set_day(day)
     
     def click_to_display_year_in_datapicker(self):
-        """clicks to display year in datapicker"""
+        """Clicks to display year in datapicker"""
         self.get_date_default_year_select().click()
     
     def click_to_display_month_in_datapicker(self):
-        """clicks to display month in datapicker"""
+        """Clicks to display month in datapicker"""
         self.get_date_default_month_select().click()

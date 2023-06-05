@@ -120,11 +120,11 @@ class NewProjectActions(NewProjectObjects):
         self.dropdown.click_dropdown('TEXT_USER_NUMBER_DATE_BOX', section_name, label_name)
 
     def click_to_display_months_in_datepicker_new_project_page(self):
-        """clicks in month datapicker new project page"""
+        """Clicks in month datapicker new project page"""
         self.datebox.click_to_display_month_in_datapicker()
     
     def click_to_display_years_in_datepicker_new_project_page(self):
-        """clicks in year datapicker new project page"""
+        """Clicks in year datapicker new project page"""
         self.datebox.click_to_display_year_in_datapicker()
     
     def select_a_month_in_datepicker(self, month: str):

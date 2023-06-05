@@ -29,7 +29,7 @@ Verify that hover on the label of a datebox the color change to purple "rgba(117
     The Rgb Color Of A Label Should Be As Expected    ${section_delivering}   ${label_received_date}   ${purple_color_rgba}
 
 Verify That clicking into a datebox its border change to purple "rgb(117, 105, 255)"
-    border_of_a_component_should_be_highlighted    ${section_delivering}   ${label_received_date}   ${purple_color_rgb}
+    Border Of A Component Should Be Highlighted    ${section_delivering}   ${label_received_date}   ${purple_color_rgb}
 
 Verify that if the datebox is a required field and it is empty the Field Required message is displayed in red color
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_received_date}
