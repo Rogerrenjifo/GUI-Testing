@@ -119,6 +119,15 @@ class Verification(object):
             logger.info(actual_instance)
             assert_that(actual_instance).is_instance_of(expected_instance)
 
+    def verify_result_is_true(self, result):
+        """Asserts the result is true"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(f"Result is: ", True)
+            logger.info("*****Actual******")
+            logger.info(f"Result is: ", result)
+            assert_that(result).is_true()
+            
     def verify_a_list_is_not_empty(self, actual_result):
         """Asserts the expected does not contain of actual"""
         with soft_assertions():
