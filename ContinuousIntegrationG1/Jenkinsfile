@@ -16,6 +16,7 @@ pipeline {
         stage('Build Browser Environments') {
             steps {
                 sh 'pwd'
+                sh 'docker-compose -f ContinuousIntegrationG1/docker-compose.yml up -d'
                 sh 'ls'
             }
         }
@@ -36,6 +37,14 @@ pipeline {
                     archiveArtifacts artifacts: 'README.md', fingerprint: true
                 }
             }
-        }       
+        }
+        stage('Down Browser Environments') {
+            steps {
+                sh 'pwd'
+                sh 'docker container ls'
+                sh 'docker-compose -f ContinuousIntegrationG1/docker-compose.yml down'
+                sh 'ls'
+            }
+        }
     }
 }
