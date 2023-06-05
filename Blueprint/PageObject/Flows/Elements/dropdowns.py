@@ -1,4 +1,5 @@
 from Libraries.Drivers.base_page import BasePage
+from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import dropdown_locators as locators
 from robot.api import logger
 
@@ -113,7 +114,7 @@ class Dropdownbox(BasePage):
         available_options = [option.text for option in options]
         option_list = available_options[0].split("\n")
         return option_list
-    
+        
     def get_user_list(self, key: str, dropdown_index: str = None) -> list:
         """Returns a user list from text box"""
         xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
@@ -121,7 +122,7 @@ class Dropdownbox(BasePage):
         users_selected = [user.text for user in users]
         return users_selected
 
-    def get_element(self, key: str, dropdown_index: str = None):
+    def get_element(self, key: str, dropdown_index: str = None) -> WebElement:
         """Returns an element of the dropdown"""
         try:
             xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
@@ -130,6 +131,13 @@ class Dropdownbox(BasePage):
         except Exception:
             logger.info("Element not found")
             return False
+      
+    def get_characters_from_text_box(self, key: str, dropdown_index: str = None) -> str:
+        """Returns characters from text box"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        element = self.find_element.by_xpath(xpath)
+        characters = element.get_attribute('value')
+        return characters
 
     def __xpath_selector(self, key: str, option: str = None, label_name: str = None, dropdown_index: str = None) -> str:
         """Selects the corresponding xpath"""

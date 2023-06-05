@@ -1,5 +1,6 @@
 from Blueprint.PageObject.Flows.flow_permissions_objects import FlowPermissions
 from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class FlowPermissionsActions(FlowPermissions):
@@ -44,6 +45,16 @@ class FlowPermissionsActions(FlowPermissions):
         """Retrieves the list of selected users in a text box element in the flow admin section"""
         user_list = self.dropdown.get_user_list('USER_SELECTED', self.index_dropdown)
         return user_list
+    
+    def obtain_dropdown_options_in_flow_permissions(self) -> list:
+        """Retrieves the available options from the dropdown"""
+        dropdown_options = self.dropdown.get_available_options('DROPDOWN_LIST', self.index_dropdown)
+        return dropdown_options
+    
+    def obtain_visible_element_in_flow_permissions(self) -> WebElement:
+        """Retrieves the dropdown element"""
+        element = self.dropdown.get_element('DROPDOWN_LIST', self.index_dropdown)
+        return element
 
     def type_name_user_in_dropdown_in_flow_permissions(self, name: str):
         """Types into the dropdown text box"""
@@ -52,6 +63,12 @@ class FlowPermissionsActions(FlowPermissions):
     def delete_typed_name_in_dropdown_in_flow_permissions(self):
         """Deletes which was typed into the dropdown text box"""
         self.dropdown.delete_typed_characters_in_dropdown('INPUT_TEXT_BOX', self.index_dropdown)
+
+    def obtain_typed_characters_in_dropdown_in_flow_permissions(self) -> str:
+        """Retrieves the characters from the text box"""
+        character = self.dropdown.get_characters_from_text_box('INPUT_TEXT_BOX', self.index_dropdown)
+        self.delete_typed_name_in_dropdown_in_flow_permissions()
+        return character
 
     def select_user_from_dropdown_in_flow_permissions(self, user: str):
         """Selects an user of the dropdown"""

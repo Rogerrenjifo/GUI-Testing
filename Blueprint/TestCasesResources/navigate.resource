@@ -27,3 +27,11 @@ Navigate To Projects
 
 Navigate To A Flow
     Navigate To Url                ${flow}
+    
+Navigate to Flows-page-Permission
+    Create A New Flow With Random Code
+    Click Tab In Flow Header    Permissions
+
+Reload Permissions Tab
+    Reload Window
+    Click Tab In Flow Header    Permissions
