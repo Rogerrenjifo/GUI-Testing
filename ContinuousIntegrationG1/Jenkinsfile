@@ -13,7 +13,7 @@ pipeline {
         IMPLICIT_TIMEOUT="2"
     }
     stages {
-        stage('Build Browser Environments') {
+        stage('Build Browser Environments'){
             agent{
                 docker{
                     image 'roretar/gui-blueprint-environment:1.0.0'
