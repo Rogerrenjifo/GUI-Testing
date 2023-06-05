@@ -42,6 +42,7 @@ class NewFlowActions(NewFlow):
         self.insert_new_flow_name(flow_name)
         self.insert_new_flow_code(flow_code)
         self.click_on_create_new_flow_button()
+        self.click_on_flows_drop_down_button()
 
     def cancel_create_new_flow_process_in_flow_page(self):
         """Cancels the creation of a new flow"""
@@ -63,11 +64,11 @@ class NewFlowActions(NewFlow):
         self.insert_new_flow_name(flow_name)
         self.click_on_create_new_flow_button()
 
-    def create_a_new_flow_with_random_code(self):
+    def create_a_new_flow_with_random_code(self) -> str:
         """Creates a new flow with a random code. If the code is in use, tries with other"""
         self.click_on_flows_drop_down_button()
         flow_was_created = False
-        flow_code = ""
+        flow_name = ""
         while not flow_was_created:
             flow_code = random_string_generator(3)
             flow_name = "AT19-GUITESTING-" + flow_code
@@ -83,7 +84,7 @@ class NewFlowActions(NewFlow):
                 elements_storage.add_default_component()
                 self.click_on_flows_drop_down_button()
             self.pop_up_messages.click_to_close_popup_message()
-        return flow_code
+        return flow_name
 
     def get_name_field_required_message_text(self) -> str:
         """Returns the text of the required message for the name field."""
