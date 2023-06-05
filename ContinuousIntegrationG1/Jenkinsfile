@@ -21,7 +21,6 @@ pipeline {
             }
             steps {
                 sh 'run the browser containers.'
-                sh 'pwd'
                 sh 'ls'
                 sh 'docker container ls'                
             }
