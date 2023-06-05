@@ -1,3 +1,4 @@
+import time
 from Blueprint.PageObject.Flows.new_flow import NewFlow
 from Libraries.Resources.random_flow_code import random_string_generator
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
@@ -75,9 +76,9 @@ class NewFlowActions(NewFlow):
             self.insert_new_flow_name(flow_name)
             self.insert_new_flow_code(flow_code)
             self.click_on_create_new_flow_button()
-            self.wait_for_element.wait_for_element_with_web_element(
-                self.pop_up_messages.get_popup_message())
-            if self.pop_up_messages.get_popup_message_text() == "Process created":
+            self.wait_for_element.wait_for_result(self.pop_up_messages.get_popup_message())
+            time.sleep(3)
+            if self.pop_up_messages.get_popup_messages_text_list()[0] == "Process created":
                 flow_was_created = True
                 elements_storage = FormElementsStorage()
                 elements_storage.add_default_section()

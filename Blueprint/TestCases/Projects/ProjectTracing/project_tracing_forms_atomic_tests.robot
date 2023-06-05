@@ -1,9 +1,10 @@
 *** Settings ***
 Documentation    Tests to verify the functionality of each component
 ...              of the project tracing forms GUI.
-Resource         ../../../TestCasesResources/Projects/ProjectTracing/project_tracing_forms_resources.robot
+Resource         Blueprint/TestCasesResources/Projects/ProjectTracing/project_tracing_forms_resources.robot
 Suite Setup      Open project tracing forms webpage
 Suite Teardown   Close browser
+Test Teardown    Click section title in project forms    Section 1
 
 *** Test Cases ***
 Verify edit button is visible when mouse is hover text field
@@ -187,6 +188,55 @@ Verify dropdown field options are displayed when field is clicked while being ed
     Dropdown box 1 options should be visible
 
 Verify that writing on cleared dropdown input field filters options correctly
-    Select field to edit in project forms    Dropdown Box 1    Section 1
     Set text input in project forms    Dropdown Box 1    Section 1    x
     Dropdown box 1 x options should be visible
+
+Verify that typing not matching information displays "No items found" label
+    Set text input in project forms    Dropdown Box 1    Section 1    z
+    Dropdown no items found label should be visible
+
+Verify that typing not matching information disables save button
+    [Tags]    BG-245
+    Set text input in project forms    Dropdown Box 1    Section 1    z
+    Save button should be disabled
+
+Verify that only letter 'e' is allowed on a numeric field
+    [Tags]    BG-254
+    Set numeric input in project forms    Numeric Box 1    Section 1    abcdefghijklmnopqrstuvwxyz
+    Editable numeric input should be    e
+
+Verify that only '+' and '-' special character are allowed on a numeric field
+    [Tags]    BG-254
+    Set numeric input in project forms    Numeric Box 1    Section 1    +-ñ^*!¨!$%&/|@#~€¬
+    Editable numeric input should be    +-
+
+Verify that 'up' arrow adds 1 unit to the value on a numeric field
+    Set numeric input in project forms    Numeric Box 1    Section 1    2
+    Press up arrow on numeric field in project forms
+    Editable numeric input should be    3
+
+Verify that 'down' arrow adds 1 unit to the value on a numeric field
+    Set numeric input in project forms    Numeric Box 1    Section 1    2
+    Press down arrow on numeric field in project forms
+    Editable numeric input should be    1
+
+Verify that checkbox value changes when is clicked
+    Click checkbox label in project forms    CheckBox 1    Section 1
+    Checkbox value should be    CheckBox 1    Section 1    true
+
+Verify multiline fields can have special characters
+    Set multiline text input in project forms    Multiline Box 1    Section 1    ñ^*!¨!$%&/|@#~€¬
+    Multiline value should be    Multiline Box 1    Section 1    ñ^*!¨!$%&/|@#~€¬
+    
+Verify multiline fields can have alphanumeric characters
+    Set multiline text input in project forms    Multiline Box 1    Section 1    abcdefghijklmnopqrstuvwxyz0123456789
+    Multiline value should be    Multiline Box 1    Section 1    abcdefghijklmnopqrstuvwxyz0123456789  
+
+Verify multiline fields saves end of lines
+    Set multiline text input in project forms    Multiline Box 1    Section 1    xdasda\nadsad\nAKLDA\nfgfd
+    Multiline value should be    Multiline Box 1    Section 1    xdasda\nadsad\nAKLDA\nfgfd
+
+Verify 'Please select user from user list' message is displayed when the user list options are cleared
+    Select field to edit in project forms    User List 1    Section 1
+    Click clear all dropdown button in project forms
+    Please select user should be visible

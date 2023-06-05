@@ -34,6 +34,27 @@ class Dropdownbox(BasePage):
         xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         self.find_element.by_xpath(xpath).send_keys(characters)
 
+    def get_rgb_color_label(self, key: str, dropdown_index: str = None) -> str:
+        """Retrieves the RGB color value of a label element"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        element = self.find_element.by_xpath(xpath)
+        color = element.value_of_css_property('color')
+        return color
+    
+    def get_rgb_color_element_in_dropdown(self, key: str, dropdown_index: str = None) -> str:
+        """Retrieves the RGB color value of an element within a dropdown text box"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        element = self.find_element.by_xpath(xpath)
+        color = element.value_of_css_property('border-color')
+        return color
+    
+    def get_rgb_background_color_element(self, key: str, option: str,dropdown_index: str = None) -> str:
+        """Retrieves the RGB background color value of a specific button in dropdown text box"""
+        xpath = self.__xpath_selector(key, option=option, dropdown_index=dropdown_index)
+        element = self.find_element.by_xpath(xpath)
+        color = element.value_of_css_property('background-color')
+        return color
+
     def delete_typed_characters_in_dropdown(self, key: str, dropdown_index: str = None):
         """Deletes the typed name of the user in the dropdown"""
         xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
@@ -44,8 +65,20 @@ class Dropdownbox(BasePage):
         xpath = self.__xpath_selector(key, option=section_name, label_name=label_name, dropdown_index=dropdown_index)
         self.find_element.by_xpath(xpath).click()
 
+    def move_mouse_to_delete_a_user(self, key: str, option: str, dropdown_index: str = None):
+        """Moves the mouse pointer to the delete option"""
+        xpath = self.__xpath_selector(key, option=option, dropdown_index=dropdown_index)
+        element = self.find_element.by_xpath(xpath)
+        self.action_chains.move_to_an_element(element)
+
     def message_empty_in_dropdown(self, key: str, dropdown_index: str = None) -> str:
         """Gets the message when dropdown textbox is empty"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        message = self.find_element.by_xpath(xpath).text
+        return message
+    
+    def message_in_dropdown_text_box(self, key: str, dropdown_index: str = None) -> str:
+        """Gets the message displayed when the dropdown textbox is empty"""
         xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         message = self.find_element.by_xpath(xpath).text
         return message
@@ -75,11 +108,28 @@ class Dropdownbox(BasePage):
 
     def get_available_options(self, key: str, dropdown_index: str = None) -> list:
         """Returns a list of available options of the dropdown"""
-        xpath = self.__xpath_selector(key, dropdown_index)
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
         options = self.find_elements.by_xpath(xpath)
         available_options = [option.text for option in options]
         option_list = available_options[0].split("\n")
         return option_list
+    
+    def get_user_list(self, key: str, dropdown_index: str = None) -> list:
+        """Returns a user list from text box"""
+        xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+        users = self.find_elements.by_xpath(xpath)
+        users_selected = [user.text for user in users]
+        return users_selected
+
+    def get_element(self, key: str, dropdown_index: str = None):
+        """Returns an element of the dropdown"""
+        try:
+            xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)
+            element = self.find_element.by_xpath(xpath)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
 
     def __xpath_selector(self, key: str, option: str = None, label_name: str = None, dropdown_index: str = None) -> str:
         """Selects the corresponding xpath"""
