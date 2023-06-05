@@ -16,7 +16,7 @@ pipeline {
         stage('Build Browser Environments') {
             steps {
                 sh 'pwd'
-                sh 'docker-compose -f ContinuousIntegrationG1/docker-compose.yml up -d'
+                sh 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
                 sh 'ls'
             }
         }
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'docker container ls'
-                sh 'docker-compose -f ContinuousIntegrationG1/docker-compose.yml down'
+                sh 'docker container stop chrome'
                 sh 'ls'
             }
         }
