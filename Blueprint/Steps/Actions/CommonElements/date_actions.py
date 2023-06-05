@@ -39,4 +39,3 @@ class DateActions(DateObjects):
     def click_to_display_month_in_datapicker(self):
         """clicks to display month in datapicker"""
         self.get_date_default_month_select().click()
-        

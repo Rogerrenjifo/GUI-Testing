@@ -6,7 +6,6 @@ Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectAction
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/navigate.resource
 Suite Setup    Navigate To Projects
-Suite Teardown    Close Browser
 Force Tags     New_Project_Page    Checkbox 
 
 *** Variables ***

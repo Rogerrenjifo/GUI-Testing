@@ -6,7 +6,6 @@ Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectAction
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/navigate.resource
 Suite Setup    Navigate To Projects
-Suite Teardown    Close Browser
 Force Tags     New_Project_Page    Datebox
 
 *** Variables ***
@@ -55,13 +54,13 @@ Verify that clicking the input of datebox the calendar is displayed
 
 Verify that clicking the month in datapicker the month list is displayed 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
-    Click To Display Months In Datepicker
+    Click To Display Months In Datepicker New Project Page
     Month Or Year In Datapicker Should Be Displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
 
 Verify that clicking the year in datapicker the year list is displayed 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
-    Click To Display Years In Datepicker
+    Click To Display Years In Datepicker New Project Page
     Month Or Year In Datapicker Should Be Displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
 
