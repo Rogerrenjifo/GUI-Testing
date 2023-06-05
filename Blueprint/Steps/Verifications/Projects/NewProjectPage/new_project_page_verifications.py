@@ -1,6 +1,7 @@
 from Blueprint.Steps.Actions.Projects.new_project_actions import NewProjectActions
 from Blueprint.PageObject.Projects.new_project_objects import NewProjectObjects
 from Blueprint.PageObject.CommonElements.popup_messages_objects import PopupMessagesObjects
+from Blueprint.PageObject.CommonElements.date_objects import DateObjects
 from Libraries.Assertions.assertions import Verification
 from assertpy import assert_that
 
@@ -13,6 +14,7 @@ class NewProjectPageVerifications:
         self.verifications = Verification()
         self.new_request_objects = NewProjectObjects()
         self.popup_message = PopupMessagesObjects()
+        self.date_objects = DateObjects()
         self.default_field_required_color = "rgba(255, 114, 105, 1)"
     
     def option_should_be_equal(self, actual_result: str, expected_result: str):
@@ -95,6 +97,26 @@ class NewProjectPageVerifications:
         option_list = self.new_request_objects.get_element_options_dropdown_list().is_displayed()
         assert_that(option_list).is_true()
     
+    def the_datepicker_in_datebox_should_be_displayed(self) -> None:
+        """Verifies if the option list of a dropdown is displayed"""
+        option_list = self.new_request_objects.get_element_datebox_datepicker().is_displayed()
+        assert_that(option_list).is_true()
+    
+    def month_or_year_in_datapicker_should_be_displayed(self) -> None:
+        """Verifies if the month list in datapicker is displayed"""
+        month_list_in_datapicker = self.date_objects.get_month_or_year_list()
+        assert_that(month_list_in_datapicker).is_true()
+
+    def month_value_should_be_the_selected(self, expected_month: str) -> None:
+        """Verifies if the month value is the selected"""
+        actual_month = self.date_objects.get_month_value().text
+        self.option_should_be_equal(actual_month, expected_month)
+
+    def year_value_should_be_the_selected(self, expected_year: str) -> None:
+        """Verifies if the year value is the selected"""
+        actual_year = self.date_objects.get_year_value().text
+        self.option_should_be_equal(actual_year, expected_year)
+        
     def checkbox_should_be_marked(self, section_name: str, label_name: str) -> None:
         """Verifies that the dropdown is marked"""
         checkbox_marked = self.new_request_objects.get_checkbox_status_locator(section_name, label_name).is_selected()

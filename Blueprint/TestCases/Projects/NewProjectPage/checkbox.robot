@@ -1,4 +1,6 @@
 *** Settings ***
+Documentation    Atomic tests to verify the functionality of checkbox
+...              in new project page of Blueprint.
 Library    Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications

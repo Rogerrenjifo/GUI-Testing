@@ -51,3 +51,18 @@ class DateObjects(BasePage):
             return element
         except Exception:
             raise Exception("Day  " + day + " not found.")
+        
+    def get_month_or_year_list(self):
+        """Finds and returns the month list in datepicker"""
+        element = self.find_element.by_id(locators.MONTH_OR_YEAR_SELECTOR_LIST)
+        return element
+    
+    def get_month_value(self):
+        """Finds and returns the month value element"""
+        element = self.find_element.by_xpath(locators.MONTH_VALUE)
+        return element
+
+    def get_year_value(self):
+        """Finds and returns the year value element"""
+        element = self.find_element.by_xpath(locators.YEAR_VALUE)
+        return element
