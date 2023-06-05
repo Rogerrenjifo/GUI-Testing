@@ -23,7 +23,7 @@ class CreateFormMainPanelComponentsVerifications:
         actual_result = PropertiesPanelActions().get_panel_title_in_form_properties()
         self.verification.verify_equal_ignore(actual_result, expected_result)
 
-    def component_delete_option_should_be_displayed(self, expected_option: str, component_id):
+    def component_delete_option_should_be_displayed(self, expected_option: str, component_id: str):
         """Verifies that the component delete button is displayed"""
         actual_option = self.main_panel.get_component_delete_button(component_id).text
         self.verification.verify_equal_ignore(actual_option, expected_option)
