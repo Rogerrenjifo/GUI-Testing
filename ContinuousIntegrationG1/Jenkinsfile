@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    environment {
+        DOCKERUSER='roretar' 
+        DOCKERPASSWORD=credentials('dockerhubpassword')
+        PYTHONPATH = "${WORKSPACE}/GUI-Blueprint"
+        REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
+        PASSWORD="pasuconsumo"
+        USER="roger.renjifo"
+        BROWSER="chrome"
+        DEVICE="pc"
+        DRIVER_PATH="./"
+        IMPLICIT_TIMEOUT="2"
+    }
+    stages {
+        stage('Build Browser Environments') {
+            agent{
+                docker{
+                    image 'roretar/gui-blueprint-environment:1.0.0'
+                }
+            }
+            steps {
+                sh 'run the browser containers.'
+                sh 'pwd'
+                sh 'ls'
+                sh 'docker container ls'                
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'README.md', fingerprint: true
+                }
+            }
+        }
+        stage('Test Connection') {
+            steps {
+                sh 'echo "Testing Connection"'
+                sh 'docker image ls'
+            }
+        }        
+    }
+}
