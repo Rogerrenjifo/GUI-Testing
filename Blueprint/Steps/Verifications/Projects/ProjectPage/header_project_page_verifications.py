@@ -20,12 +20,12 @@ class HeaderProjectPageVerifications:
     def project_name_should_be_displayed(self):
         """Verifies the project name is displayed"""
         project_name = self.project_page.get_project_name()
-        self.assertions.element_should_be_displayed(project_name)
+        self.assertions.verify_element_is_displayed(project_name)
 
     def export_dialog_should_be_displayed(self):
         """Verifies the export dialog is displayed"""
         dialog = self.export_dialog.get_export_dialog()
-        self.assertions.element_should_be_displayed(dialog)
+        self.assertions.verify_element_is_displayed(dialog)
 
     def export_dialog_should_not_be_displayed(self):
         """Verifies the export dialog is not displayed"""
@@ -36,9 +36,9 @@ class HeaderProjectPageVerifications:
     def popup_message_should_be_displayed(self):
         """Verifies the popup message is displayed"""
         popup = self.project_page.obtain_popup_message_in_project_page()
-        self.assertions.element_should_be_displayed(popup)
+        self.assertions.verify_element_is_displayed(popup)
 
     def current_page_should_be_new_project(self):
         """Verifies the actual page is new project"""
         tag_new = NewProjectActions().get_tag_new()
-        self.assertions.element_should_be_displayed(tag_new)
+        self.assertions.verify_element_is_displayed(tag_new)

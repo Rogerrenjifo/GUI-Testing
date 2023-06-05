@@ -2,10 +2,11 @@
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.delete_dialog_project_page_verifications.DeleteDialogProjectPageVerifications
 Force Tags    DELETE_INSTANCE   PROJECT_PAGE
-Suite Setup    Create ${4} Instances And Open Delete Dialog
+Suite Setup    Search Project, Create Instances, And Open Delete Dialog    ${3}    ${project_name}
 Suite Teardown    Delete Created Instances
 
 *** Variables ***
+${project_name}    AT19-ProjectPage-X2P
 ${delete_dialog_title}    Delete Process Instance
 ${delete_dialog_question}    Do you want to delete this process instance?
 ${delete_button_text}    Delete

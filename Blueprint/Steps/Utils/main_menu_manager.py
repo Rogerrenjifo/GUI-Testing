@@ -31,7 +31,7 @@ class MainMenuManager:
 
     def go_to_existent_project(self, flow_exists: bool, flow_name: str) -> str:
         """Goes to an existent project. If the project does not exist,
-         creates a flow with its name, publish it, and redirects to its project page"""
+         creates a flow, publish it, and redirects to its project page"""
         if flow_exists:
             self.main_menu.go_to_project_process_in_main_menu(flow_name)
         else:
