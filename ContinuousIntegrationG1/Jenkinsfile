@@ -21,8 +21,7 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'ls'
-                sh 'docker container ls'                
+                sh 'ls'  
             }
             post {
                 always {
