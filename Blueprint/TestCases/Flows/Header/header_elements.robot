@@ -1,0 +1,61 @@
+*** Settings ***
+Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
+Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
+Resource           Blueprint/TestCasesResources/navigate.resource
+
+Suite Setup        Navigate To A Flow
+Force Tags         HEADER ELEMENTS
+
+*** Variables ***
+${flow_version}    v3
+${publish_tab}     Publish
+
+*** Test Cases ***
+Verify that flow status is displayed
+    Flow Status Should Be Displayed
+
+Verify that flow version is displayed
+    Flow Version Should Be Displayed
+
+Verify that flow name is displayed
+    Flow Name Should Be Displayed
+
+Verify that 'Delete' and 'Select Version' options are displayed when dropdown button is clicked
+    Display Header Dropdown In Flow Header
+    Delete Option Should Be Displayed
+    Select Version Option Should Be Displayed
+
+Verify version list is displayed when 'Select Version' option is hover from the dropdown menu
+    Display Header Dropdown In Flow Header
+    Display Select Version In Flow Header
+    Version List Should Be Displayed
+
+Verify that when a version is clicked from the version list, the flow version selected is displayed
+    Display Header Dropdown In Flow Header
+    Display Select Version In Flow Header
+    Click Version In Flow Header    ${flow_version}
+    Flow Version Should Be Equal    ${flow_version}
+
+Verify that last update text is displayed
+    Flow Last Updated Text Should Be Displayed
+
+Verify 'Save' button is displayed in white color (rgba(255, 255, 255, 1))
+    Save Button Should Be Displayed
+    Save Button Color Should Be Equal    rgba(255, 255, 255, 1)
+
+Verify 'Save' button color change to green (rgba(0, 217, 194, 1)) when is hovered
+    Hover Save Button In Flow Header
+    Save Button Color Should Be Equal    rgba(0, 217, 194, 1)
+
+Verify 'Save & next' button is displayed in green color (rgba(0, 217, 194, 1))
+    Save Next Button Should Be Displayed
+    Save Next Button Color Should Be Equal    rgba(0, 217, 194, 1)
+
+Verify 'Save & next' button color change to dark green (rgba(5, 176, 158, 1)) when is hovered
+    Hover Save Next Button In Flow Header
+    Save Next Button Color Should Be Equal    rgba(5, 176, 158, 1)
+
+Verify 'Publish' tab keeps marked when 'Save & next' button is clicked from 'Publish' tab
+    Click Tab In Flow Header     ${publish_tab}
+    Click Save Next Button In Flow Header
+    Flow Tab Should Be Marked    ${publish_tab}

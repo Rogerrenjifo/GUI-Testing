@@ -9,7 +9,7 @@ Force Tags        CREATE_F0RM   ADD_COMPONENT   NEW_SECTION
 
 *** Test Cases ***
 Verify that a component can be added after add a new section
-    [Tags]  BUG   BG-241
+    [Tags]   BUG   BG-241
     [Template]    Add Component In A New Section
     textbox        Text Box 1        section-2-columnB
     date           Date 1            section-2-columnB
