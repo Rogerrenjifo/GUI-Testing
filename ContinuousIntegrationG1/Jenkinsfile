@@ -43,6 +43,7 @@ pipeline {
                 sh 'pwd'
                 sh 'docker container ls'
                 sh 'docker container stop chrome'
+                sh 'docker container rm chrome'
                 sh 'ls'
             }
         }
