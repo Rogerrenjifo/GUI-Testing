@@ -48,6 +48,10 @@ class FormsActions(FormObjects):
         """Gets editable text input text."""
         return self.get_editable_text_input().get_attribute('value')
     
+    def get_editable_input_number_in_project_forms(self) -> str:
+        """Gets value on editable numeric input."""
+        return self.get_editable_number_input().get_attribute('value')
+        
     def set_text_input_in_project_forms(self, field_title: str, section_title: str, input_text: str):
         """Edits text field into given value in the given section."""
         self.select_field_to_edit_in_project_forms(field_title, section_title)
@@ -85,10 +89,18 @@ class FormsActions(FormObjects):
         self.get_editable_number_input().clear()
         self.get_editable_number_input().send_keys(value)
 
+    def press_up_arrow_on_numeric_field_in_project_forms(self):
+        """Presses the up arrow on a numeric field input."""
+        self.get_editable_number_input().send_keys(Keys.ARROW_UP)
+    
+    def press_down_arrow_on_numeric_field_in_project_forms(self):
+        """Presses the down arrow on a numeric field input."""
+        self.get_editable_number_input().send_keys(Keys.ARROW_DOWN)
+        
     def click_checkbox_label_in_project_forms(self, field_title: str, section_title: str):
         """Selects or des-selects a checkbox with field title given in the given section."""
         self.select_field_to_edit_in_project_forms(field_title, section_title)
-        self.get_checkbox_label(field_title).click()
+        self.get_checkbox_label(field_title, section_title).click()
 
     def edit_date_in_project_forms(self, field_title: str, section_title: str, year: str, month: str, day: str):
         """Selects a date on the field with the title given in the given section."""
