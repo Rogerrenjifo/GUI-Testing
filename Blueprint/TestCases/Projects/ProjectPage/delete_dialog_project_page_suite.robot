@@ -6,7 +6,7 @@ Suite Setup    Search Project, Create Instances, And Open Delete Dialog    ${3} 
 Suite Teardown    Delete Created Instances
 
 *** Variables ***
-${project_name}    AT19-ProjectPage-X2P
+${project_name}    AT19-ProjectPage-9D6
 ${delete_dialog_title}    Delete Process Instance
 ${delete_dialog_question}    Do you want to delete this process instance?
 ${delete_button_text}    Delete

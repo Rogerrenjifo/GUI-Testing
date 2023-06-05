@@ -9,7 +9,7 @@ Library    Blueprint.Steps.Utils.instance_manager.InstanceManager
 Library    Blueprint.Steps.Utils.main_menu_manager.MainMenuManager
 
 *** Variables ***
-${project_name}    AT19-ProjectPage-X2P
+#${project_name}    AT19-ProjectPage-X2P
 ${section_name}    Section 1
 ${component_name}   Title
 ${cancel_button_text}    Cancel
@@ -23,7 +23,7 @@ Search Project, Create Instances, And Open Delete Dialog
     Create ${number} Instances And Open Delete Dialog
 
 Search Project and Create Instances
-    [Arguments]    ${number}    ${project}=${project_name}
+    [Arguments]    ${number}    ${project}
     Search And Go To Existent Project   ${project}
     Create List Of Project Instance    ${flow_name}    ${number}
 

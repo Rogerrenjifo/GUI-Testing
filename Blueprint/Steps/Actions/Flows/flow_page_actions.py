@@ -64,19 +64,19 @@ class NewFlowActions(NewFlow):
         self.insert_new_flow_name(flow_name)
         self.click_on_create_new_flow_button()
 
-    def create_a_new_flow_with_random_code(self) -> str:
+    def create_a_new_flow_with_random_code(self, flow_name: str = "AT19-GUITESTING-"):
         """Creates a new flow with a random code. If the code is in use, tries with other"""
         self.click_on_flows_drop_down_button()
         flow_was_created = False
-        flow_name = ""
         while not flow_was_created:
             flow_code = random_string_generator(3)
-            flow_name = "AT19-GUITESTING-" + flow_code
+            flow_name = flow_name + flow_code
             self.click_on_new_flow_button()
             self.insert_new_flow_name(flow_name)
             self.insert_new_flow_code(flow_code)
             self.click_on_create_new_flow_button()
-            self.wait_for_element.wait_for_element_with_web_element(self.pop_up_messages.get_popup_message())
+            self.wait_for_element.wait_for_element_with_web_element(
+                self.pop_up_messages.get_popup_message())
             if self.pop_up_messages.get_popup_message_text() == "Process created":
                 flow_was_created = True
                 elements_storage = FormElementsStorage()
