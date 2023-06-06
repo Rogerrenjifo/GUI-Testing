@@ -12,9 +12,9 @@ class FlowMainPanelObject(BasePage):
     def __init__(self) -> None:
         super().__init__()
         self.index = ComponentStorage()
-        self.add_start = self.add_start_component_to_dictionary()
-        self.add_first = self.add_initial_step_to_dictionary()
-    
+        self.add_start_component_to_dictionary()
+        self.add_initial_step_to_dictionary()
+
     def generate_elements(self) -> List[WebElement]:
         """Generates all the components from canvas board."""
         elements = self.find_elements.by_xpath(locators.COMPONENT_LIST_XPATH)
@@ -28,12 +28,12 @@ class FlowMainPanelObject(BasePage):
             element_id = element.get_attribute('id')
             list_id.append(element_id)
         return list_id
-    
+
     def add_start_component_to_dictionary(self) -> None:
         """Adds the start component to the dictionary"""
         id = 'start'
         self.index.add_component(id, StartComponent(locators.START_ID))
-    
+
     def add_initial_step_to_dictionary(self) -> None:
         """Adds the initial step to the dictionary"""
         id = 'first'

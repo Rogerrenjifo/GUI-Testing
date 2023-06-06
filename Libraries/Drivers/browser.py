@@ -1,13 +1,16 @@
 from selenium import webdriver
 from os import getenv
-
+from selenium.webdriver.common.keys import Keys
 
 class Browser(object):
     """A class that provides a browser instance"""
     _driver = None
     _webdriver_map = {"edge": {"driver": webdriver.Edge, "options": webdriver.EdgeOptions()},
                       "chrome": {"driver": webdriver.Chrome, "options": webdriver.ChromeOptions()},
-                      "firefox": {"driver": webdriver.Firefox, "options": webdriver.FirefoxOptions()}}
+                      "firefox": {"driver": webdriver.Firefox, "options": webdriver.FirefoxOptions()},
+                      "remote_edge": {"driver": webdriver.Remote, "options": webdriver.EdgeOptions()},
+                      "remote_chrome": {"driver": webdriver.Remote, "options": webdriver.ChromeOptions()},
+                      "remote_firefox": {"driver": webdriver.Remote, "options": webdriver.FirefoxOptions()}}
     _devices = {
         "pixel s5": "--window-size=360,640",
         "iphone 12pro": "--window-size=390,844",
@@ -32,6 +35,7 @@ class Browser(object):
         device = getenv("DEVICE", "pc")
         driver_path = getenv("DRIVER_PATH", "./")
         implicit_timeout = int(getenv("IMPLICIT_TIMEOUT", 2))
+        remote_url = getenv("REMOTE_URL", "http://localhost:4444/wd/hub")
         if browser.lower() in cls._webdriver_map:
             browser_config = cls._webdriver_map.get(browser)
             driver_class = browser_config.get("driver")
@@ -39,7 +43,10 @@ class Browser(object):
         else:
             raise ValueError(f"Unsupported browser: {browser}")
         options.add_argument(cls._devices.get(device.lower()))
-        driver = driver_class(executable_path=driver_path, options=options)
+        if browser.lower().startswith("remote_"):
+            driver = driver_class(command_executor=remote_url, options=options)
+        else:
+            driver = driver_class(executable_path=driver_path, options=options)
         driver.implicitly_wait(implicit_timeout)
         cls._driver = driver
         return cls._driver
@@ -74,7 +81,7 @@ class Browser(object):
             return self._driver.back()
         except Exception:
             raise Exception("It is not possible to go back")
-        
+
     def reload_window(self):
         """Reloads page"""
         self._driver.refresh()
