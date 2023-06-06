@@ -15,9 +15,11 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
     
     def select_owner_in_menu_in_flow_properties(self):
+        """Selects an owner in drop menu"""
         self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
 
     def search_owner_in_menu_in_flow_properties(self, user: str):
+        """Searches an owner in drop menu"""
         self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
     
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
@@ -55,10 +57,6 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         """Performs click on 'select owner' combobox."""
         self.select_owner_dropbox.owner_combobox.click()
 
-    def click_select_owner_menu_in_flow_properties(self) -> None:
-        """Performs click on 'select owner' combobox."""
-        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
-
     def click_select_owner_combobox_item_in_flow_properties(self) -> None:
         """Performs click on 'select owner' combobox."""
         self.select_owner_dropbox.select_owner_listbox.click()
@@ -75,14 +73,6 @@ class FlowPropertiesActions(FlowPropertiesObjects):
     def click_owner_combobox_in_flow_properties(self) -> None:
         """Performs click on 'owner' combobox."""
         self.select_owner_dropbox.owner_combobox.click()
-
-    def select_owner_in_menu_in_flow_properties(self):
-        """Selects an owner in drop menu"""
-        self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
-
-    def search_owner_in_menu_in_flow_properties(self, user: str):
-        """Searches an owner in drop menu"""
-        self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
 
     def obtain_owner_default_item_in_flow_properties(self) -> str:
         """Returns the default owner from 'owner' list."""

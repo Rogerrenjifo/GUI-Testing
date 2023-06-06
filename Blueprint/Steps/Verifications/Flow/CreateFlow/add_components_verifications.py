@@ -30,4 +30,4 @@ class AddComponentsVerification:
         """Verifyes that the component has different titles"""
         title_1 = self.main_panel.obtain_component_title_in_flow_main_panel(id_1)
         title_2 = self.main_panel.obtain_component_title_in_flow_main_panel(id_2)
-        self.verification.verify_is_not_equal_ignore(title_1, title_2)
+        self.verification.verify_is_not_equal(title_1, title_2)
