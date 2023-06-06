@@ -1,3 +1,4 @@
+from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.Steps.Actions.Flows.create_form_main_panel_actions import FormMainPanelActions
 from Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions import PropertiesPanelActions
 from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
@@ -11,6 +12,7 @@ class CreateFormAddComponentVerifications:
         self.properties_panel = PropertiesPanelActions()
         self.verification = Verification()
         self.elements_storage = FormElementsStorage()
+        self.pop_up_messages = PopUpMessagesActions()
 
     def components_order_should_be(self, expected_result: list, section: str = "section-1"):
         """Verifies that the component order in a section is the expected"""
@@ -53,3 +55,8 @@ class CreateFormAddComponentVerifications:
         section = component_id.split('_')[0]
         actual_color = self.elements_storage.components_in_sections[section][component_id].obtain_component_rgb_color()
         self.verification.verify_equal_ignore(actual_color, expected_color)
+
+    def pop_up_message_text_should_be(self, expected_result: str):
+        """Gets the text displayed in the popup message"""
+        pop_up_content = self.pop_up_messages.get_popup_message_text()
+        self.verification.verify_equal_ignore(expected_result, pop_up_content)

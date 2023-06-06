@@ -61,6 +61,11 @@ class HeaderVerifications:
         actual_popup_text = self.popup.get_popup_message_text()
         self.verification.verify_equal_ignore(actual_popup_text, expected_popup_text)
 
+    def popups_messages_text_should_contains(self, expected_list: str):
+        """Verifies that the text of the popups message is the expected when 'Save' or 'Save & next' button is clicked"""
+        actual_list = self.popup.get_popup_messages_text_list()
+        self.verification.verify_a_list_contains(actual_list, expected_list)
+
     def save_next_button_should_be_displayed(self):
         """Verifies that the save & next button is displayed in the header."""        
         self.verification.verify_element_is_displayed(self.header.get_save_next_button())
