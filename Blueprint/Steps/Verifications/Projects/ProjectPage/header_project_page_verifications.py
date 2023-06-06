@@ -48,3 +48,8 @@ class HeaderProjectPageVerifications:
         """Verifies that project title is the expected"""
         actual_result = self.project_page.get_project_name_text_in_project_page()
         self.verification.verify_equal_ignore(actual_result, expected_result)
+
+    def project_name_should_be_as_expected(self, expected_name):
+        """Verifies the project name is displayed as expected"""
+        project_name = self.project_page.get_project_name().text
+        self.assertions.verify_equal_ignore(project_name, expected_name)
