@@ -12,7 +12,7 @@ ${expected_text_popup}    Flow AT19-Scenario-Scholarship-RM-6NC updated.
 ${user_group}   AT19-GUITESTING-SCENARIO-SCHOLARSHIP
 
 *** Test Cases ***
-Verify a form can be created and its elements properties modified
+Verify a flow can be created, from form creation, flow creation, and permissions assignation, to publish
     ${flow_name_for_edit}    Create A New Flow With Random Code    ${flow_name}
     Create Applicant Information Section
     Components Order Should Be    ${component_names_section_1}
