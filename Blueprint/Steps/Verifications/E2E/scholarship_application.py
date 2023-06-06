@@ -4,17 +4,21 @@ from Blueprint.Steps.Actions.Flows.header_actions import HeaderActions
 from Blueprint.Steps.Actions.Flows.flow_permissions_actions import FlowPermissionsActions
 from Blueprint.Steps.Actions.Flows.process_permissions_actions import ProcessPermissionsActions
 from Blueprint.Steps.Actions.Flows.section_visibility_permissions_actions import SectionsVisibilityActions
+from Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions import ProjectPageActions
+from Blueprint.Steps.Actions.Flows.publish_tab_actions import PublishTabActions
+from Blueprint.Steps.Actions.MainMenu.main_menu_actions import MainMenuActions
 from Libraries.Assertions.assertions import Verification
 from assertpy import soft_assertions
-from robot.api import logger
 
 
 class ScholarshipApplicationVerifications:
     """This class represents the verifications of scholarship application scenario"""
     def __init__(self):
+        self.main_menu = MainMenuActions()
         self.main_panel = FormMainPanelActions()
         self.assertions = Verification()
         self.flow_board = FlowMainPanelActions()
+        self.section_visibility = SectionsVisibilityActions()
 
     def components_type_in_section_should_be(self, component_types: list, section_title: str = "section-1"):
         """Verifies that the components types in a section are the expected"""
@@ -52,18 +56,21 @@ class ScholarshipApplicationVerifications:
         actual_user = FlowPermissionsActions().obtain_user_list_selected_in_text_box_in_flow_permissions()[0]
         self.assertions.verify_equal_ignore(actual_user, user)
 
-    def user_in_section_visibility_should_be(self, expected_result: str, dropdown_index: str = "3"):
-        actual_result = \
-        self.section_visibility.obtain_user_list_selected_in_text_box_in_section_visibility(
-            dropdown_index)[0]
-        self.verification.verify_equal_ignore(actual_result, expected_result)
+    def user_selected_in_process_permissions_should_be(self, user: str):
+        actual_user = ProcessPermissionsActions().obtain_user_list_selected_in_text_box_in_process_permissions()[0]
+        self.assertions.verify_equal_ignore(actual_user, user)
 
-    def user_in_process_permission_should_be(self, expected_result: str):
-        actual_result = \
-        self.process_permission.obtain_user_list_selected_in_text_box_in_process_permissions()[0]
-        self.verification.verify_equal_ignore(actual_result, expected_result)
+    def user_selected_in_section_visibility_should_be(self, user: str, section_index: str):
+        actual_user = self.section_visibility.obtain_user_list_selected_in_text_box_in_section_visibility(section_index)[0]
+        self.assertions.verify_equal_ignore(actual_user, user)
 
-    def user_in_flow_permission_should_be(self, expected_result: str):
-        actual_result = \
-        self.flow_permission.obtain_user_list_selected_in_text_box_in_flow_permissions()[0]
-        self.verification.verify_equal_ignore(actual_result, expected_result)
+    def section_visibility_title_should_be(self, expected_title: str, section_index: str):
+        actual_title = self.section_visibility.obtain_sections_title_dropdown_in_section_visibility(section_index)
+        self.assertions.verify_equal_ignore(actual_title, expected_title)
+
+    def new_project_should_exist(self, expected_project_name: str):
+        publishing_modal = PublishTabActions().get_publishing_modal()
+        self.main_menu.wait_for_element.wait_for_element_to_not_exist(publishing_modal)
+        self.main_menu.go_to_project_process_in_main_menu(expected_project_name)
+        actual_project_name = ProjectPageActions().get_project_name_text_in_project_page()
+        self.assertions.verify_equal_ignore(actual_project_name, expected_project_name)
