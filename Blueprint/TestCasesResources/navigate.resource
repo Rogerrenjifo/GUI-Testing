@@ -3,11 +3,12 @@ Library            Libraries.Drivers.browser.Browser
 Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
 Library            Blueprint.Steps.Actions.Flows.flow_page_actions.NewFlowActions
 Library            Blueprint.Steps.Actions.Flows.flow_main_panel_actions.FlowMainPanelActions
+Library            Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 
 *** Variables ***
 ${new_project_page}        https://test.blueprint.ses-unit.com/new-project/81da6abe-8ec6-439a-bfb4-90ab70f6d55d
-${flow}                    https://test.blueprint.ses-unit.com/designer/2f2f4494-96f1-4a39-8ee0-ec61da624112
-${project_tracing}    https://test.blueprint.ses-unit.com/project-tracing/ab0ded4d-9bcc-4734-9d09-889fe94b9507
+${project_tracing}         https://test.blueprint.ses-unit.com/project-tracing/ab0ded4d-9bcc-4734-9d09-889fe94b9507
+${search_flow}             AT19-CV
 
 *** Keywords ***
 Navigate To Flows-Page-Create-Flow
@@ -26,7 +27,9 @@ Navigate To Projects
     Navigate To Url                 ${new_project_page}
 
 Navigate To A Flow
-    Navigate To Url                ${flow}
+    Click On Flows Button
+    Insert Flow Name Into The Search Bar    ${search_flow}
+    Click On Flow Result
     
 Navigate to Flows-page-Permission
     Create A New Flow With Random Code

@@ -66,6 +66,11 @@ class Header(BasePage):
         bar_element = self.find_element.by_xpath(locators.BAR_TAB.replace('TAB_NAME', tab_name))
         return bar_element
     
+    def get_icon(self, tab_name: str) -> WebElement:
+        """Finds and returns the icon element from the selected tab."""
+        bar_element = self.find_element.by_xpath(locators.ICON_TAB.replace('TAB_NAME', tab_name))
+        return bar_element
+
     def is_marked_tab_elements(self, tab_name: str) -> WebElement:
         """Finds the marked bar and icon element from the selected tab."""
         try:

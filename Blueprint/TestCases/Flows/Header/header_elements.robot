@@ -1,14 +1,19 @@
 *** Settings ***
 Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
+Library            Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
+Library            Blueprint.Steps.Actions.Flows.create_form_main_panel_actions.FormMainPanelActions
 Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
-Force Tags         HEADER ELEMENTS
+Suite Teardown     Delete Flow Process In Flow Header
+Force Tags         HEADER_ELEMENTS
 
 *** Variables ***
-${flow_version}    v3
-${publish_tab}     Publish
+${flow_version}        v2
+${created_popup}       New version for flow AT19-CV created.
+${updated_popup}       Flow AT19-CV updated.
+${up-to-date_popup}    Flow AT19-CV is already up-to-date.
 
 *** Test Cases ***
 Verify that flow status is displayed
@@ -47,6 +52,21 @@ Verify 'Save' button color change to green (rgba(0, 217, 194, 1)) when is hovere
     Hover Save Button In Flow Header
     Save Button Color Should Be Equal    rgba(0, 217, 194, 1)
 
+Verify 'New version for flow created.' pop-up message is displayed when 'Save' button is clicked after a change was made in a published flow
+    Add Component To Column Section In Create Form    checkbox   section-2-columnB
+    Click Save Button In Flow Header
+    Popup Message Text Should Be Equal    ${created_popup}
+
+Verify 'Flow updated.' pop-up message is displayed when 'Save' button is clicked after a change was made
+    Add Component To Column Section In Create Form    numericbox   section-2-columnA
+    Click Save Button In Flow Header
+    Popup Message Text Should Be Equal    ${updated_popup}
+    Delete Flow Process In Flow Header
+
+Verify 'Flow is already up-to-date.' pop-up message is displayed when 'Save' button is clicked when no changes were made
+    Click Save Button In Flow Header
+    Popup Message Text Should Be Equal    ${up-to-date_popup}
+
 Verify 'Save & next' button is displayed in green color (rgba(0, 217, 194, 1))
     Save Next Button Should Be Displayed
     Save Next Button Color Should Be Equal    rgba(0, 217, 194, 1)
@@ -55,7 +75,18 @@ Verify 'Save & next' button color change to dark green (rgba(5, 176, 158, 1)) wh
     Hover Save Next Button In Flow Header
     Save Next Button Color Should Be Equal    rgba(5, 176, 158, 1)
 
-Verify 'Publish' tab keeps marked when 'Save & next' button is clicked from 'Publish' tab
-    Click Tab In Flow Header     ${publish_tab}
+Verify 'New version for flow created.' pop-up message is displayed when 'Save & next' button is clicked after a change was made in a published flow
+    Add Component To Column Section In Create Form    checkbox   section-2-columnB
     Click Save Next Button In Flow Header
-    Flow Tab Should Be Marked    ${publish_tab}
+    Popup Message Text Should Be Equal    ${created_popup}
+
+Verify 'Flow updated.' pop-up message is displayed when 'Save & next' button is clicked after a change was made
+    Click Tab In Flow Header    Create Form
+    Add Component To Column Section In Create Form    numericbox   section-2-columnA
+    Click Save Next Button In Flow Header
+    Popup Message Text Should Be Equal    ${updated_popup}
+    Delete Flow Process In Flow Header
+
+Verify 'Flow is already up-to-date.' pop-up message is displayed when 'Save & next' button is clicked when no changes were made
+    Click Save Next Button In Flow Header
+    Popup Message Text Should Be Equal    ${up-to-date_popup}
