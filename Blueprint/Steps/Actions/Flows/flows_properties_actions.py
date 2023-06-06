@@ -1,6 +1,7 @@
 from Blueprint.PageObject.Flows.flows_properties_objects import FlowPropertiesObjects
 from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
 from Blueprint.PageObject.Flows.Elements.Components.end_component import EndComponent
+from Blueprint.Locators.Flows import flows_properties_locators as locators
 
 
 class FlowPropertiesActions(FlowPropertiesObjects):
@@ -194,3 +195,13 @@ class FlowPropertiesActions(FlowPropertiesObjects):
             self.get_calendar_day(day).click()
         else:
             raise Exception("Invalid date.")
+
+    def click_select_owner_menu_in_flow_properties(self) -> None:
+        """Performs click on 'select owner' combobox."""
+        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
+
+    def select_owner_in_menu_in_flow_properties(self):
+        self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
+
+    def search_owner_in_menu_in_flow_properties(self, user: str):
+        self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)

@@ -69,6 +69,7 @@ class MainMenuManager:
     def go_to_flow_for_edit(self, flow_exists: bool, flow_name: str):
         if flow_exists:
             self.main_menu.go_to_flow_process_in_main_menu(flow_name)
+            time.sleep(10)
             elements_storage = FormElementsStorage()
             elements_storage.add_default_section()
             elements_storage.add_default_component()

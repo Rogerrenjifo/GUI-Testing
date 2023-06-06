@@ -1,5 +1,5 @@
 *** Settings ***
-Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.Resource
+Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.resource
 Suite Setup         Navigate To Flows-Page-Create-Flow
 Suite Teardown      Delete Flow Process In Flow Header
 Test Teardown       Clean Components Added
