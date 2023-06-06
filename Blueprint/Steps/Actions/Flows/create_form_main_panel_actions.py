@@ -3,6 +3,7 @@ from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPa
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 from Blueprint.PageObject.Flows.create_form_elements_objects import CreateFormElementsObjects
+from Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions import PropertiesPanelActions
 
 
 class FormMainPanelActions(FormMainPanelPage):
@@ -13,6 +14,7 @@ class FormMainPanelActions(FormMainPanelPage):
         self.element_storage = FormElementsStorage()
         self.sections_list = self.element_storage.sections_list
         self.components_list = self.element_storage.components_in_sections
+        self.properties = PropertiesPanelActions()
 
     def select_component_in_form_main_panel(self, component_id: str):
         """Clicks a component from main panel for display its properties"""
@@ -190,3 +192,16 @@ class FormMainPanelActions(FormMainPanelPage):
         main_panel = CreateFormElementsObjects().get_drop_area()
         component = self.get_component(component_id)
         self.action_chains.custom_drag_and_drop(component, main_panel)
+
+    def get_all_components_type_in_a_section_in_form_main_panel(self, section_title: str = "section-1") -> list:
+        """Returns all the components types displayed in properties panel"""
+        components_type_list = []
+        if section_title == "section-1":
+            components_in_section = self.get_all_components_in_a_section(section_title)[1:]
+        else:
+            components_in_section = self.get_all_components_in_a_section(section_title)
+        for component in components_in_section:
+            component.click()
+            self.wait_for_element.wait_for_element_with_web_element(self.properties.get_field_type_select())
+            components_type_list.append(self.properties.get_field_type_select().text)
+        return components_type_list

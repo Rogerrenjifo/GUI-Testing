@@ -1,3 +1,4 @@
+import time
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.UsersAndGroups.available_users_objects import AvailableUsersObjects
 
@@ -48,3 +49,10 @@ class AvailableUsersActions(AvailableUsersObjects):
     def close_pop_up(self):
         """Clicks on 'X' button of the popup message"""
         self.pop_up_messages.click_to_close_popup_message()
+
+    def add_users_searched_in_a_group(self, users_list: list):
+        """Adds to a group the users of a list"""
+        for user in users_list:
+            self.insert_username_into_the_search_user_bar(user)
+            self.click_on_add_button_of_user_result_by_index()
+            time.sleep(3)
