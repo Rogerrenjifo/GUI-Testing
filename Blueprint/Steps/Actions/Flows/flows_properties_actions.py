@@ -1,15 +1,29 @@
 from Blueprint.PageObject.Flows.flows_properties_objects import FlowPropertiesObjects
+from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
+from Blueprint.PageObject.Flows.Elements.Components.end_component import EndComponent
+from Blueprint.Locators.Flows import flows_properties_locators as locators
 
 
 class FlowPropertiesActions(FlowPropertiesObjects):
     """Flow properties actions on elements."""
+    def __init__(self) -> None:
+        super().__init__()
+        self.index = ComponentStorage()
     
-    def click_on_component_in_flow_properties(self) -> None:
-        """Performs click on provided component."""
-        self.component.click()
+    def click_select_owner_menu_in_flow_properties(self) -> None:
+        """Performs click on 'select owner' combobox."""
+        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
+    
+    def select_owner_in_menu_in_flow_properties(self):
+        """Selects an owner in drop menu"""
+        self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
 
+    def search_owner_in_menu_in_flow_properties(self, user: str):
+        """Searches an owner in drop menu"""
+        self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
+    
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
-        """Change component 'name'."""
+        """Changes component 'name'."""
         self.name_field.text_field.click()
         self.name_field.text_field.clear()
         self.name_field.text_field.send_keys(new_name)
@@ -23,9 +37,13 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         self.select_type_dropbox.combobox.click()
         self.select_type_dropbox.option.click()
     
-    def click_end_step_checkbox_in_flow_properties(self) -> None:
+    def click_end_step_checkbox_in_flow_properties(self, component_id: str) -> None:
         """Performs click on 'End Step' checkbox."""
         self.end_step_checkbox.checkbox.click()
+        new_id = f"001END{self.index.counter_end}"
+        self.index.component_dictionary.pop(component_id)
+        self.index.add_component(new_id, EndComponent(new_id))
+        self.index.increment_counter_end()
 
     def click_add_comment_checkbox_in_flow_properties(self) -> None:
         """Performs click on 'Force to add comment' checkbox."""
@@ -55,7 +73,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
     def click_owner_combobox_in_flow_properties(self) -> None:
         """Performs click on 'owner' combobox."""
         self.select_owner_dropbox.owner_combobox.click()
-    
+
     def obtain_owner_default_item_in_flow_properties(self) -> str:
         """Returns the default owner from 'owner' list."""
         default_owner = self.select_owner_dropbox.owner_default_item.text
@@ -94,6 +112,10 @@ class FlowPropertiesActions(FlowPropertiesObjects):
     def click_field_combobox_arrow_in_flow_properties(self) -> None:
         """Performs click on dropdown arrow in combobox 'field'."""
         self.update_fields.form_field_combobox_arrow.click()
+
+    def select_result_in_field_combobox_arrow_in_flow_properties(self, index: str = "1") -> None:
+        """Click on dropdown arrow result in combobox 'field'."""
+        self.get_result_field(index).click()
 
     def click_value_combobox_in_flow_properties(self) -> None:
         """Performs click on 'value' combobox."""
@@ -189,3 +211,11 @@ class FlowPropertiesActions(FlowPropertiesObjects):
             self.get_calendar_day(day).click()
         else:
             raise Exception("Invalid date.")
+
+    def set_owner_process_in_flow_properties(self, user: str, position: int = "1"):
+        """Selects an owner for a component"""
+        self.click_select_owner_menu_in_flow_properties()
+        self.select_owner_from_list_in_flow_properties(position=position)
+        self.click_owner_combobox_in_flow_properties()
+        self.search_owner_in_menu_in_flow_properties(user)
+        self.select_owner_in_menu_in_flow_properties()

@@ -83,3 +83,15 @@ class FormMainPanelPage(BasePage):
         locator = self.get_locator(self.__component_delete_button_locator, component_id)
         element = self.find_element.by_xpath(locator)
         return element
+
+    def get_all_sections(self) -> list:
+        """Finds and returns all the sections of the page."""
+        elements = self.find_elements.by_xpath(self.__section_title_locator)
+        return elements
+
+    def get_all_components_in_a_section(self, section_title: str) -> list:
+        """Finds and returns all the components in a section of the page."""
+        section = section_title.lower().replace(" ", "-")
+        locator = self.get_locator(locators.COMPONENTS_IN_SECTION, section)
+        elements = self.find_elements.by_xpath(locator)
+        return elements

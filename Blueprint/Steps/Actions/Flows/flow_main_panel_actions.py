@@ -2,6 +2,7 @@ from Blueprint.PageObject.Flows.flow_main_panel_object import FlowMainPanelObjec
 from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
 from Blueprint.PageObject.Flows.Elements.Components.action_component import ActionComponent
 from Blueprint.PageObject.Flows.Elements.Components.step_component import StepComponent
+from Blueprint.PageObject.Flows.Elements.Components.end_component import EndComponent
 from Blueprint.PageObject.Flows.Elements.Components.base_component import BaseComponent
 
 
@@ -32,7 +33,7 @@ class FlowMainPanelActions(FlowMainPanelObject):
         del self.index.component_dictionary[component_id]
 
     def clone_component_in_flow_main_panel(self, component_id) -> None:
-        """Clones 'actions' or 'steps' components."""
+        """Clones 'actions' or 'steps' or 'end steps' components."""
         component = self.index.component_dictionary[component_id]
         component.clone()
         if component.type == "Action":
@@ -43,6 +44,10 @@ class FlowMainPanelActions(FlowMainPanelObject):
             new_id = f"001Added{self.index.counter_step}"
             self.index.add_component(new_id, StepComponent(new_id))
             self.index.increment_counter_step()
+        if component.type == "End":
+            new_id = f"001END{self.index.counter_end}"
+            self.index.add_component(new_id, EndComponent(new_id))
+            self.index.increment_counter_end()
 
     def click_component(self, component_id: str) -> None:
         """Clicks a component"""
@@ -60,3 +65,53 @@ class FlowMainPanelActions(FlowMainPanelObject):
         component = self.index.component_dictionary[component_id]
         title = component.get_component_title()
         return title
+    
+    def obtain_dictionary_status_in_flow_main_panel(self) -> list:
+        """Returns the dictionary with the current components"""
+        dictionary = self.index.component_dictionary
+        return dictionary
+    
+    def obtain_component_dot_status_in_flow_main_panel(self, component_id :str, component_number: int) -> bool:
+        """Returns status of a dot component"""
+        target_component = self.index.component_dictionary[component_id]
+        target_endpoint = target_component.get_connector_element(component_number)
+        dot_status = target_component.get_dot_status(target_endpoint)
+        return dot_status
+    
+    def obtain_dots_list_of_start_component_in_flow_main_panel(self) -> list:
+        """Returns a list of dots associated with the start component"""
+        dots_list = self.get_dots_list_of_start_component()
+        return dots_list
+    
+    def is_dropdown_not_found_in_flow_main_panel(self, component_id :str) -> bool:
+        """Checks if a dropdown component is not found"""
+        component = self.index.component_dictionary[component_id]
+        is_found = component.is_element_not_found()
+        return is_found
+    
+    def obtains_dropdown_options_in_flow_main_panel(self, component_id :str) -> list:
+        """Returns a list of options available in a dropdown"""
+        component = self.index.component_dictionary[component_id]
+        options = component.get_dropdown_menu_options()
+        return options
+    
+    def obtain_dropdown_color_in_flow_main_panel(self, component_id :str) -> str:
+        """Returns the color of dropdown"""
+        component = self.index.component_dictionary[component_id]
+        color = component.get_color_dropdown()
+        return color
+    
+    def obtain_x_and_y_position_component_in_flow_main_panel(self, component_id :str) -> list:
+        """Returns a list of component positions"""
+        component = self.index.component_dictionary[component_id]
+        x_position, y_position = component.convert_pixel_to_percentage()
+        return x_position, y_position
+
+    def clean_dictionary(self) -> None:
+        """Cleans the state of a dictionary"""
+        self.index.component_dictionary = {}
+        self.add_initial_step_to_dictionary()
+        self.add_start_component_to_dictionary()
+        self.index.counter_action = 1
+        self.index.counter_step = 1
+        self.index.counter_end = 1

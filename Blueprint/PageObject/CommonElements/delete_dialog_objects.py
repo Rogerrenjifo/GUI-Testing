@@ -30,3 +30,13 @@ class DeleteDialogObjects(BasePage):
         """Finds and returns the question text element of the delete dialog."""
         element = self.find_element.by_xpath(locators.DIALOG_QUESTION)
         return element
+
+    def get_father_dialog_container(self) -> WebElement:
+        """Finds and returns the father container element of the delete dialog."""
+        element = self.find_element.by_xpath(locators.FATHER_DIALOG_CONTAINER)
+        return element
+    
+    def get_delete_dialog(self) -> WebElement:
+        """Finds and returns the delete dialog element."""
+        element = self.find_element.by_class(locators.DELETE_DIALOG)
+        return element

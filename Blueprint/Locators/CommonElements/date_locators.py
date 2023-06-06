@@ -5,3 +5,6 @@ DEFAULT_DATE_YEAR_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[
 DEFAULT_DATE_MONTH_SELECT_LOCATOR = "//div[@class='calendar-header']//child::div[@class='dropdown-selector'][1]"
 PREV_MONTH_BUTTON_LOCATOR = "//button[text() = '<']"
 NEXT_MONTH_BUTTON_LOCATOR = "//button[text() = '>']"
+MONTH_OR_YEAR_SELECTOR_LIST = "selector"
+MONTH_VALUE = "(//p[@class='mx-1'])[1]"
+YEAR_VALUE = "(//p[@class='mx-1'])[2]"

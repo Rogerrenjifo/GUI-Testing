@@ -1,0 +1,5 @@
+CLOSE_OVERWRITE_DIALOG_BUTTON="close-modal-button"
+CANCEL_OVERWRITE_DIALOG_BUTTON="//button[contains(@class,'secondary')]"
+CONFIRM_OVERWRITE_DIALOG_BUTTON="//button[contains(@class,'primary')]"
+OVERWRITE_DIALOG_TITLE="//h3[contains(@class,'text-3xl')]"
+OVERWRITE_DIALOG_QUESTION="//p[contains(@class,'text-lg')]"

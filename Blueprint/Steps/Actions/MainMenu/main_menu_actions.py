@@ -29,12 +29,17 @@ class MainMenuActions(MainMenuObjects):
         """Clicks on the 'Flows' button in the Main Menu."""
         self.get_flows_button().click()
 
+    def get_flows_button_label(self) -> str:
+        """Gets the label of 'Flows' button in the Main Menu."""
+        label = self.get_flows_button().text
+        return label
+
     def insert_flow_name_into_the_search_bar(self, name: str):
         """Inserts the provided flow name into the search input."""
         self.get_search_flows_input().clear()
         self.get_search_flows_input().send_keys(name)
 
-    def click_on_first_flow_result(self, index: str = "1"):
+    def click_on_flow_result(self, index: str = "1"):
         """Clicks on a flow result by index (default: 1)"""
         self.get_flow_result(index).click()
 
@@ -42,18 +47,21 @@ class MainMenuActions(MainMenuObjects):
         """Clicks on the 'Users and Groups' button in the Main Menu."""
         self.get_users_and_groups_button().click()
 
-    def click_on_new_flow_button(self):
-        """Clicks on the 'New Flow' button in the Main Menu."""
-        self.get_new_flow_button().click()
-
     def go_to_project_process_in_main_menu(self, project_name: str):
         """Goes to a specific project"""
         self.click_on_projects_button()
         self.insert_project_name_into_the_search_bar(project_name)
         self.click_on_a_project_result()
+        self.click_on_projects_button()
 
     def go_to_flow_process_in_main_menu(self, flow_name: str):
         """Goes to a specific flow"""
         self.click_on_flows_button()
         self.insert_flow_name_into_the_search_bar(flow_name)
-        self.click_on_first_flow_result()
+        self.click_on_flow_result()
+        self.click_on_flows_button()
+
+    def get_no_data_match_found_message_text(self) -> str:
+        """Returns the text of the message 'No data match found'."""
+        message = self.get_no_data_match_found_message().text
+        return message

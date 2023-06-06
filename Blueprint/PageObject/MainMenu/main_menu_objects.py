@@ -60,3 +60,23 @@ class MainMenuObjects(BasePage):
         """Finds and returns the new flow button element on the page."""
         element = self.find_element.by_xpath(locators.NEW_FLOW_BUTTON)
         return element
+
+    def get_no_data_match_found_message(self) -> WebElement:
+        """Finds and returns the no data match found message on the page."""
+        element = self.find_element.by_xpath(locators.NO_DATA_MATCH_FOUND)
+        return element
+
+    def get_create_flow_dialog(self) -> WebElement:
+        """Finds and returns the Create Flow dialog on the page."""
+        element = self.find_element.by_xpath(locators.CREATE_FLOW_DIALOG)
+        return element
+
+    def get_main_menu_container(self) -> WebElement:
+        """Finds and returns the new main menu container."""
+        element = self.find_element.by_xpath(locators.MAIN_MENU_CONTAINER)
+        return element
+
+    def get_flow_results_container(self):
+        """Finds and returns the flow results container."""
+        element = self.find_element.by_xpath(locators.FLOW_RESULTS_CONTAINER)
+        return element

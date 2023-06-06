@@ -22,11 +22,11 @@ class ActionsChains(object):
         if direction.lower() == "down":
             self.action_chains.click_and_hold(source).move_to_element(target).\
                 move_by_offset(0, 10).release().perform()
-            logger.info(f"The element {source.text} is moved under of {target.text}")
+            logger.info(f"The source was dropped bellow the target")
         elif direction.lower() == "up":
             self.action_chains.click_and_hold(source).move_to_element(target).\
                 move_by_offset(0, -10).release().perform()
-            logger.info(f"The element {source.text} is moved up to {target.text}")
+            logger.info(f"The source was dropped above the target")
         else:
             logger.info(f"The input '{direction}' is an invalid direction, "
                         f"please send 'up' or 'down'")
@@ -57,3 +57,17 @@ class ActionsChains(object):
     def custom_scroll(self, option: WebElement):
         """Scrolls and selects option"""
         self.action_chains.scroll_to_element(option).click(option).perform()
+
+    def click_and_hold_element(self, source: WebElement):
+        """Clicks and holds an element"""
+        self.action_chains.click_and_hold(source).perform()
+
+    def move_element_to(self, target: WebElement, x_percentage: int, y_percentage: int):
+        """Moves the element to a target position"""
+        x_position, y_position = self.__convert_percent_to_pixel(x_percentage, y_percentage, target)
+        self.action_chains.move_to_element(target).perform()
+        self.action_chains.move_by_offset(x_position, y_position).perform()
+
+    def drop_element(self):
+        """Drops element where the mouse is located"""
+        self.action_chains.release().perform()

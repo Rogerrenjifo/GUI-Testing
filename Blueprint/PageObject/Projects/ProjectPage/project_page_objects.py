@@ -19,6 +19,11 @@ class ProjectPageObjects(BasePage):
         locator = locator_template.replace("<<value>>", project_id)
         return locator
 
+    def get_export_button(self) -> WebElement:
+        """Finds and returns the Export button element of the page."""
+        element = self.find_element.by_xpath(locators.EXPORT_BUTTON)
+        return element
+
     def get_project_name(self) -> WebElement:
         """Finds and returns the project name element of the page."""
         element = self.find_element.by_xpath(locators.PROJECT_NAME)
@@ -34,6 +39,7 @@ class ProjectPageObjects(BasePage):
         project = {
             "project_row": self.projects_table.get_table_row_by_project_id(project_id),
             "project_checkbox": self.projects_table.get_project_checkbox_by_project_id(project_id),
+            "project_checkbox_label": self.projects_table.get_project_checkbox_label_by_project_id(project_id),
             "project_title": self.projects_table.get_project_title_by_project_id(project_id),
             "project_current_step": self.projects_table
             .get_project_current_step_by_project_id(project_id),

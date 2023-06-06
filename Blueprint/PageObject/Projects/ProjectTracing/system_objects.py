@@ -12,7 +12,7 @@ class ProjectSystemObject(BasePage):
         element = self.find_element.by_xpath(locators.SYSTEM_TITLE)
         return element
     
-    def get_label_current_step(self) -> WebElement:
+    def get_current_step_title(self) -> WebElement:
         """Finds and returns the label element of the current step"""
         element = self.find_element.by_xpath(locators.LABEL_CURRENT_STEP)
         return element
@@ -22,17 +22,17 @@ class ProjectSystemObject(BasePage):
         element = self.find_element.by_xpath(locators.LABEL_ACTION_OWNER)
         return element
     
-    def get_label_creation_date(self) -> WebElement:
+    def get_creation_date_title(self) -> WebElement:
         """Finds and returns the label element of the creation date"""
         element = self.find_element.by_xpath(locators.LABEL_CREATION_DATE)
         return element
     
-    def get_label_last_update(self) -> WebElement:
+    def get_last_update_title(self) -> WebElement:
         """Finds and returns the label element of the last update"""
         element = self.find_element.by_xpath(locators.LABEL_LAST_UPDATE)
         return element
     
-    def get_label_closure_date(self) -> WebElement:
+    def get_closure_date_title(self) -> WebElement:
         """Finds and returns the label element of the closure date"""
         element = self.find_element.by_xpath(locators.LABEL_CLOSURE_DATE)
         return element
@@ -55,20 +55,6 @@ class ProjectSystemObject(BasePage):
                 return element
             except Exception:
                 logger.info("Action owner element not found")
-    
-    def get_arrow_element(self) -> WebElement:
-        """Finds and returns the arrow element"""
-        element = self.find_element.by_xpath(locators.ARROW_LOCATOR)
-        return element
-    
-    def get_option_selected_element(self, option: str) -> WebElement:
-        """Finds and returns the option element of the dropdown"""
-        try:
-            xpath = locators.OPTION.replace("<<option>>", option)
-            element = self.find_element.by_xpath(xpath)
-            return element
-        except Exception:
-            logger.info(f"'{option}' is not an available option")
     
     def get_creation_date_element(self) -> WebElement:
         """Finds and returns the creation date value element"""
@@ -97,32 +83,46 @@ class ProjectSystemObject(BasePage):
     
     def get_save_button_element(self) -> WebElement:
         """Finds and returns the save button element"""
-        element = self.find_element.by_xpath(locators.SAVE_LOCATOR)
-        return element
-    
+        try:
+            element = self.find_element.by_xpath(locators.SAVE_LOCATOR)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
+
     def get_cancel_button_element(self) -> WebElement:
         """Finds and returns the cancel button element"""
-        element = self.find_element.by_xpath(locators.CANCEL_LOCATOR)
-        return element
-    
-    def get_clear_all_button_element(self) -> WebElement:
-        """Finds and returns the clear all button element"""
-        element = self.find_element.by_xpath(locators.CLEAR_LOCATOR)
-        return element
+        try:
+            element = self.find_element.by_xpath(locators.CANCEL_LOCATOR)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
+
+    def get_clear_button_element(self) -> WebElement:
+        """Finds and returns the clear button element"""
+        try:
+            element = self.find_element.by_xpath(locators.CLEAR_LOCATOR)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
     
     def get_field_required_element(self) -> WebElement:
         """Finds and returns the message element"""
         element = self.find_element.by_xpath(locators.FIELD_REQUIRED)
         return element
-    
-    def get_dropdown_elements(self) -> WebElement:
-        """Finds and returns the dropdown element"""
-        elements = self.find_elements.by_xpath(locators.DROPDOWN_LOCATOR)
-        return elements
-    
-    def get_available_options(self) ->list:
-        """Return a list of available options of the dropdown"""
-        options = self.get_dropdown_elements()
-        available_options = [option.text for option in options]
-        option_list = available_options[0].split("\n")
-        return option_list
+
+    def get_css_selector_from_current_step(self) -> str:
+        """Returns the css selector from current step input field"""
+        element = self.find_element.by_xpath(locators.CURRENT_STEP_DROPDOWN)
+        self.action_chains.move_to_an_element(element)
+        rgb_color = element.value_of_css_property('border-color')
+        return rgb_color
+
+    def get_css_selector_from_action_owner(self) -> str:
+        """Returns the css selector from action owner input field"""
+        element = self.find_element.by_xpath(locators.ACTION_OWNER_DROPDOWN)
+        self.action_chains.move_to_an_element(element)
+        rgb_color = element.value_of_css_property('border-color')
+        return rgb_color
