@@ -4,6 +4,7 @@ Documentation    Atomic tests to verify the functionality of checkbox
 Library    Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
+Library    Blueprint.Steps.Utils.main_menu_manager.MainMenuManager
 Resource    Blueprint/TestCasesResources/navigate.resource
 Suite Setup    Navigate To Projects
 Force Tags     New_Project_Page    Checkbox 
