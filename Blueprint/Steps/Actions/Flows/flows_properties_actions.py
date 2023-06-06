@@ -10,6 +10,16 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         super().__init__()
         self.index = ComponentStorage()
     
+    def click_select_owner_menu_in_flow_properties(self) -> None:
+        """Performs click on 'select owner' combobox."""
+        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
+    
+    def select_owner_in_menu_in_flow_properties(self):
+        self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
+
+    def search_owner_in_menu_in_flow_properties(self, user: str):
+        self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
+    
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
         """Changes component 'name'."""
         self.name_field.text_field.click()
