@@ -1,3 +1,4 @@
+import time
 from Blueprint.Steps.Actions.Flows.create_form_main_panel_actions import FormMainPanelActions
 from Blueprint.Steps.Actions.Flows.flow_main_panel_actions import FlowMainPanelActions
 from Blueprint.Steps.Actions.Flows.header_actions import HeaderActions
@@ -30,6 +31,7 @@ class ScholarshipApplicationVerifications:
         self.assertions.verify_equal_ignore(actual_title, expected_title)
 
     def popup_message_should_be_displayed(self):
+        time.sleep(2)
         popup_message = self.main_panel.pop_up_messages.get_popup_message()
         self.assertions.verify_element_is_displayed(popup_message)
 
@@ -71,6 +73,7 @@ class ScholarshipApplicationVerifications:
     def new_project_should_exist(self, expected_project_name: str):
         publishing_modal = PublishTabActions().get_publishing_modal()
         self.main_menu.wait_for_element.wait_for_element_to_not_exist(publishing_modal)
+        self.main_menu.driver.refresh()
         self.main_menu.go_to_project_process_in_main_menu(expected_project_name)
         actual_project_name = ProjectPageActions().get_project_name_text_in_project_page()
         self.assertions.verify_equal_ignore(actual_project_name, expected_project_name)

@@ -51,5 +51,6 @@ Verify a form can be created and its elements properties modified
     Popup Message Text Should Be    Flow permissions of ${flow_name_for_edit} updated.
     Click Tab In Flow Header    Publish
     Click Save Publish Button
+    Log To Console    ${flow_name_for_edit}
     New Project Should Exist    ${flow_name_for_edit}
 
