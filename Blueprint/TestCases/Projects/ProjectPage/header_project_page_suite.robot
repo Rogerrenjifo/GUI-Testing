@@ -1,11 +1,10 @@
 *** Settings ***
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.header_project_page_verifications.HeaderProjectPageVerifications
-Suite Setup    Search An Specific Project And Open Export Dialog    ${project_name}
+Suite Setup    Search An Specific Project And Open Export Dialog
 Force Tags    HEADER    PROJECT_PAGE
 
 *** Variables ***
-${project_name}    AT19-ProjectPage-X2P
 ${expected_export_dialog_title}    Export to CSV
 ${expected_label_text}    Filename
 ${expected_popup_text}    CSV exported.

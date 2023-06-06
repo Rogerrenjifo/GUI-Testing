@@ -7,7 +7,6 @@ from Blueprint.Steps.Actions.Flows.flow_components_actions import FlowComponents
 from Blueprint.Steps.Actions.Flows.flow_main_panel_actions import FlowMainPanelActions
 from Blueprint.Steps.Actions.Flows.flows_properties_actions import FlowPropertiesActions
 from Blueprint.Steps.Actions.Flows.publish_tab_actions import PublishTabActions
-from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 from robot.api import logger
 
 
@@ -32,7 +31,7 @@ class MainMenuManager:
 
     def go_to_existent_project(self, flow_exists: bool, flow_name: str) -> str:
         """Goes to an existent project. If the project does not exist,
-         creates a flow, publish it, and redirects to its project page"""
+         creates a flow with its name, publish it, and redirects to its project page"""
         if flow_exists:
             self.main_menu.go_to_project_process_in_main_menu(flow_name)
         else:
@@ -64,17 +63,4 @@ class MainMenuManager:
         self.publish_tab.click_save_publish_button()
         publishing_modal = self.publish_tab.get_publishing_modal()
         self.main_menu.wait_for_element.wait_for_element_to_not_exist(publishing_modal)
-        return flow_name
-
-    def go_to_flow_for_edit(self, flow_exists: bool, flow_name: str):
-        if flow_exists:
-            self.main_menu.go_to_flow_process_in_main_menu(flow_name)
-            time.sleep(10)
-            elements_storage = FormElementsStorage()
-            elements_storage.add_default_section()
-            elements_storage.add_default_component()
-        else:
-            flow_name = self.new_flow.create_a_new_flow_with_random_code(flow_name)
-            self.main_menu.driver.refresh()
-            self.main_menu.go_to_flow_process_in_main_menu(flow_name)
         return flow_name

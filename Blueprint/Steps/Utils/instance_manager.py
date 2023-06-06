@@ -1,5 +1,6 @@
 import time
 import random
+
 from Blueprint.Steps.Actions.MainMenu.main_menu_actions import MainMenuActions
 from Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions import ProjectPageActions
 from Blueprint.Steps.Actions.Projects.new_project_actions import NewProjectActions

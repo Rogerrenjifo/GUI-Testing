@@ -48,7 +48,7 @@ Verify a form can be created and its elements properties modified
     Click Save Button In Flow Header
     Popup Message Should Be Displayed
     Pop Up Message Should Be Displayed In Expected Color    ${expected_success_popup_color}
-    Popup Message Text Should Be    Flow permissions ${flow_name_for_edit} updated.
+    Popup Message Text Should Be    Flow permissions of ${flow_name_for_edit} updated.
     Click Tab In Flow Header    Publish
     Click Save Publish Button
     New Project Should Exist    ${flow_name_for_edit}
