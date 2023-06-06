@@ -248,3 +248,18 @@ class PropertiesPanelActions(PropertiesPanelObjects):
         """Gets the properties panel title"""
         panel_title = self.get_panel_title().text
         return panel_title
+
+    def set_name_and_placeholder_from_properties_panel(self, name: str, placeholder: str):
+        """Sets name and placeholder of a component in properties panel"""
+        self.set_name_in_form_properties_panel(name)
+        self.set_placeholder_in_form_properties_panel(placeholder)
+
+    def set_name_and_check_as_required_from_properties_panel(self, name: str):
+        """Sets name and check as required a component in properties panel"""
+        self.set_name_in_form_properties_panel(name)
+        self.click_required_field_label_in_form_properties_panel()
+
+    def set_name_and_user_values_from_main_panel(self, name: str, user: str):
+        """Sets name and user of a component in properties panel"""
+        self.set_name_in_form_properties_panel(name)
+        self.select_userlist_value_in_form_properties_panel(user)

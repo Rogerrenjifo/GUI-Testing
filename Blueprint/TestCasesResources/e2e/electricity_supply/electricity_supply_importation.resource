@@ -1,0 +1,23 @@
+*** Settings ***
+Library      Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
+Library      Blueprint.Steps.Actions.Flows.create_form_main_panel_actions.FormMainPanelActions
+Library      Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions.PropertiesPanelActions
+Library      Blueprint.Steps.Actions.Flows.flow_page_actions.NewFlowActions
+Library      Blueprint.Steps.Actions.Flows.flow_main_panel_actions.FlowMainPanelActions
+Library      Blueprint.Steps.Actions.Flows.flows_properties_actions.FlowPropertiesActions
+Library      Blueprint.Steps.Actions.Flows.flow_components_actions.FlowComponentsActions
+Library      Blueprint.Steps.Actions.Flows.flow_permissions_actions.FlowPermissionsActions
+Library      Blueprint.Steps.Actions.Flows.section_visibility_permissions_actions.SectionsVisibilityActions
+Library      Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
+Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_elements_verification.CreateFormElementsVerifications
+Library      Blueprint.Steps.Utils.groups_manager.GroupManager
+Library      Blueprint.Steps.Utils.main_menu_manager.MainMenuManager
+Library      Blueprint.Steps.Verifications.e2e.electricity_supply_verification.ElectricitySupplyVerifications
+Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_main_panel_components_verifications.CreateFormMainPanelComponentsVerifications
+Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_main_panel_section_verification.CreateFormMainPanelSectionsVerifications
+Library      Blueprint.Steps.Verifications.Flow.Header.flow_tabs_verifications.FlowTabsVerifications
+Library      Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
+Library      Blueprint.Steps.Actions.Flows.process_permissions_actions.ProcessPermissionsActions
+Library      Blueprint.Steps.Actions.Flows.publish_tab_actions.PublishTabActions
+Library      Blueprint.Steps.Actions.CommonElements.popup_messages_actions.PopUpMessagesActions
+Library      Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions

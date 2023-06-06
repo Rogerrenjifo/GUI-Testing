@@ -47,10 +47,6 @@ class MainMenuActions(MainMenuObjects):
         """Clicks on the 'Users and Groups' button in the Main Menu."""
         self.get_users_and_groups_button().click()
 
-    def click_on_new_flow_button(self):
-        """Clicks on the 'New Flow' button in the Main Menu."""
-        self.get_new_flow_button().click()
-
     def go_to_project_process_in_main_menu(self, project_name: str):
         """Goes to a specific project"""
         self.click_on_projects_button()
