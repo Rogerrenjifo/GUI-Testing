@@ -11,6 +11,7 @@ class HeaderProjectPageVerifications:
         self.assertions = Verification()
         self.export_dialog = ExportDialogActions()
         self.project_page = ProjectPageActions()
+        self.verification = Verification()
 
     def export_file_name_should_follow_the_format(self, actual_result: str, project_name: str):
         """Verifies the default file name has the expected format"""
@@ -42,3 +43,8 @@ class HeaderProjectPageVerifications:
         """Verifies the actual page is new project"""
         tag_new = NewProjectActions().get_tag_new()
         self.assertions.verify_element_is_displayed(tag_new)
+
+    def project_title_should_be(self, expected_result: str):
+        """Verifies that project title is the expected"""
+        actual_result = self.project_page.get_project_name_text_in_project_page()
+        self.verification.verify_equal_ignore(actual_result, expected_result)

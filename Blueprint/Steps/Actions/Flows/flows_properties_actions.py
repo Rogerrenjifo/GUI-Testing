@@ -113,6 +113,10 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         """Performs click on dropdown arrow in combobox 'field'."""
         self.update_fields.form_field_combobox_arrow.click()
 
+    def select_result_in_field_combobox_arrow_in_flow_properties(self, index: str = "1") -> None:
+        """Click on dropdown arrow result in combobox 'field'."""
+        self.get_result_field(index).click()
+
     def click_value_combobox_in_flow_properties(self) -> None:
         """Performs click on 'value' combobox."""
         self.update_values.form_value_combobox.click()
