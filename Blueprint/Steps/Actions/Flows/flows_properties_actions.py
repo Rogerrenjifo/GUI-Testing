@@ -201,7 +201,9 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
 
     def select_owner_in_menu_in_flow_properties(self):
+        """Searches an owner in drop menu"""
         self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
 
     def search_owner_in_menu_in_flow_properties(self, user: str):
+        """Selects an owner in drop menu"""
         self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
