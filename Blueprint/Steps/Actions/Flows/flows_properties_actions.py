@@ -73,7 +73,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
     def click_owner_combobox_in_flow_properties(self) -> None:
         """Performs click on 'owner' combobox."""
         self.select_owner_dropbox.owner_combobox.click()
-    
+
     def obtain_owner_default_item_in_flow_properties(self) -> str:
         """Returns the default owner from 'owner' list."""
         default_owner = self.select_owner_dropbox.owner_default_item.text
@@ -207,3 +207,11 @@ class FlowPropertiesActions(FlowPropertiesObjects):
             self.get_calendar_day(day).click()
         else:
             raise Exception("Invalid date.")
+
+    def set_owner_process_in_flow_properties(self, user: str, position: int = "1"):
+        """Selects an owner for a component"""
+        self.click_select_owner_menu_in_flow_properties()
+        self.select_owner_from_list_in_flow_properties(position=position)
+        self.click_owner_combobox_in_flow_properties()
+        self.search_owner_in_menu_in_flow_properties(user)
+        self.select_owner_in_menu_in_flow_properties()

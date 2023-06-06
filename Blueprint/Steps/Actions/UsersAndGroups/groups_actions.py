@@ -14,7 +14,7 @@ class GroupsActions(GroupsObjects):
     def create_new_group(self, name: str):
         """Creates a new group with the specified name."""
         self.click_on_new_group_button()
-        self.insert_group_name_into_the_create_new_group_page(name)
+        self.insert_group_name_into_the_create_group_dialog(name)
         self.click_on_create_button()
 
     def edit_group(self, name: str, new_name: str, index: str = "1"):

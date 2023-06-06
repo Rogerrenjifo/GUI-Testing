@@ -193,9 +193,8 @@ class FormMainPanelActions(FormMainPanelPage):
         component = self.get_component(component_id)
         self.action_chains.custom_drag_and_drop(component, main_panel)
 
-    def get_all_components_type_in_a_section_in_form_main_panel(self,
-                                                                section_title: str = "section-1") -> list:
-        """Returns all the components title displayed in a section"""
+    def get_all_components_type_in_a_section_in_form_main_panel(self, section_title: str = "section-1") -> list:
+        """Returns all the components types displayed in properties panel"""
         components_type_list = []
         if section_title == "section-1":
             components_in_section = self.get_all_components_in_a_section(section_title)[1:]
@@ -203,7 +202,6 @@ class FormMainPanelActions(FormMainPanelPage):
             components_in_section = self.get_all_components_in_a_section(section_title)
         for component in components_in_section:
             component.click()
-            self.wait_for_element.wait_for_element_with_web_element(
-                self.properties.get_field_type_select())
+            self.wait_for_element.wait_for_element_with_web_element(self.properties.get_field_type_select())
             components_type_list.append(self.properties.get_field_type_select().text)
         return components_type_list

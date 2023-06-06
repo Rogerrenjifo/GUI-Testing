@@ -131,7 +131,7 @@ class Dropdownbox(BasePage):
         except Exception:
             logger.info("Element not found")
             return False
-      
+
     def get_characters_from_text_box(self, key: str, dropdown_index: str = None) -> str:
         """Returns characters from text box"""
         xpath = self.__xpath_selector(key, dropdown_index=dropdown_index)

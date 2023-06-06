@@ -1,6 +1,7 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Projects.ProjectTracing.Header import project_tracing_header_locators as locators
 from Libraries.Drivers.base_page import BasePage
+from robot.api import logger
 
 
 class ProjectTracingHeader(BasePage):
@@ -30,3 +31,30 @@ class ProjectTracingHeader(BasePage):
         """Finds and returns the 'No more available actions' text element of the project tracing header."""
         element = self.find_element.by_class(locators.NO_ACTIONS_TEXT)
         return element
+
+    def get_popup_delete_process_instance(self) -> WebElement:
+        """Finds and returns the popup delete process instance element of the project tracing header."""
+        try:
+            element = self.find_element.by_xpath(locators.POPUP_DELETE_PROCESS_INSTANCE)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
+
+    def get_cancel_button_from_delete_process_instance(self) -> WebElement:
+        """Finds and returns the cancel button on the popup delete process instance element"""
+        try:
+            element = self.find_element.by_xpath(locators.CANCEL_POPUP)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
+
+    def get_delete_button_from_delete_process_instance(self) -> WebElement:
+        """Finds and returns the delete button on the popup delete process instance element"""
+        try:
+            element = self.find_element.by_xpath(locators.CANCEL_POPUP)
+            return element
+        except Exception:
+            logger.info("Element not found")
+            return False
