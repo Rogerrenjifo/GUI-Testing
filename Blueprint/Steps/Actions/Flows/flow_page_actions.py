@@ -22,6 +22,7 @@ class NewFlowActions(NewFlow):
 
     def insert_new_flow_name(self, name: str):
         """Inserts the given name into the 'Code' input field on the 'New Flow' page."""
+        self.get_input_new_flow_name().clear()
         self.get_input_new_flow_name().send_keys(name)
 
     def insert_new_flow_code(self, code: str):

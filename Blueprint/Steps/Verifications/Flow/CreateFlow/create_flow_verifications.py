@@ -1,4 +1,5 @@
 from Blueprint.Steps.Actions.Flows.flow_page_actions import NewFlowActions
+from Blueprint.Steps.Actions.Flows.header_actions import HeaderActions
 from Libraries.Assertions.assertions import Verification
 
 
@@ -7,15 +8,16 @@ class CreateFlowVerifications:
     def __init__(self):
         self.create_flow = NewFlowActions()
         self.verification = Verification()
+        self.header = HeaderActions()
 
-    def name_label_should_be_displayed(self, expected_result: str):
+    def name_label_should_be(self, expected_result: str):
         """Verifies that the name label is displayed correctly."""
-        actual_result = self.create_flow.get_label_name()
+        actual_result = self.create_flow.get_label_name().text
         self.verification.verify_equal_ignore(actual_result, expected_result)
 
-    def code_label_should_be_displayed(self, expected_result: str):
+    def code_label_should_be(self, expected_result: str):
         """Verifies that the code label is displayed correctly."""
-        actual_result = self.create_flow.get_label_code()
+        actual_result = self.create_flow.get_label_code().text
         self.verification.verify_equal_ignore(actual_result, expected_result)
 
     def name_field_required_message_should_be_displayed(self):
@@ -37,3 +39,7 @@ class CreateFlowVerifications:
     def pop_up_message_a_flow_with_code_already_exists_should_be_displayed(self):
         """Verifies that the pop-up message for a flow with an existing code is displayed."""
         self.verification.verify_element_is_displayed(self.create_flow.pop_up_messages.get_popup_message())
+
+    def flow_name_should_be_displayed(self):
+        """Verifies that the flow name is displayed."""
+        self.verification.verify_element_is_displayed(self.header.get_flow_name())

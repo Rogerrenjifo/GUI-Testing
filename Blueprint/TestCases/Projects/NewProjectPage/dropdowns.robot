@@ -1,10 +1,11 @@
 *** Settings ***
+Documentation    Atomic tests to verify the functionality of dropdowns
+...              in new project page of Blueprint.
 Library    Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/navigate.resource
 Suite Setup    Navigate To Projects
-Suite Teardown    Close Browser
 Force Tags     New_Project_Page    Dropdowns 
 
 *** Variables ***

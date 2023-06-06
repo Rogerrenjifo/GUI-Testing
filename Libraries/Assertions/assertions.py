@@ -132,7 +132,7 @@ class Verification(object):
         """Asserts the expected does not contain of actual"""
         with soft_assertions():
             logger.info("*****Expected******")
-            logger.info("[]")
+            logger.info("Not empty")
             logger.info('*****Actual******')
             logger.info(actual_result)
             assert_that(actual_result).is_not_empty()
