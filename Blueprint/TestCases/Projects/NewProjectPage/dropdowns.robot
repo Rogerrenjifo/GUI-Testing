@@ -4,12 +4,11 @@ Documentation    Atomic tests to verify the functionality of dropdowns
 Library    Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
-Resource    Blueprint/TestCasesResources/navigate.resource
-Suite Setup    Navigate To Projects
+Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
+Suite Setup    Search An Specific Project And Click On New Request Button
 Force Tags     New_Project_Page    Dropdowns 
 
 *** Variables ***
-${default_value}    Maria Mamani
 ${value}    Roger Renjifo
 ${value2}    Carolina Vacaflor
 ${section_new_history}    New history
@@ -22,7 +21,7 @@ ${red_color}    rgba(255, 114, 105, 1)
 *** Test Cases ***
 Verify that dropdownbox has the default value
     ${content}    Get The Content Of A Dropdown    ${section_new_history}   ${label_responsible}
-    Option Should Be Equal   ${content}    ${default_value} 
+    Option Should Be Equal   ${content}    ${value2} 
 
 Verify that hover on the label of a dropdown the color change to purple
     The Rgb Color Of A Label Should Be As Expected    ${section_new_history}   ${label_responsible}   ${purple_color}
