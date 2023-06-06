@@ -119,6 +119,6 @@ class FlowMainPanelActions(FlowMainPanelObject):
     def connect_components_by_title(self, source_title: str, target_title: str, source_point_number: int,
                                                 target_point_number: int) -> None:
         """Connect two components.using the title"""
-        source_id = self.get_component_by_title(source_title).get_attribute('id')
-        target_id = self.get_component_by_title(target_title).get_attribute('id')
+        source_id = self.get_component_id_by_title(source_title)
+        target_id = self.get_component_id_by_title(target_title)
         self.connect_components_in_flow_main_panel(source_id, target_id, source_point_number, target_point_number)
