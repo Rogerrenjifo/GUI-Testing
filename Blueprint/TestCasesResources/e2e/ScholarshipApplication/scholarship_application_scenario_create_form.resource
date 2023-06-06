@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    Blueprint/TestCasesResources/E2E/scholarship_application_scenario_importations.resource
+Resource    Blueprint/TestCasesResources/e2e/ScholarshipApplication/scholarship_application_scenario_importations.resource
 
 *** Variables ***
 @{universities}    University 1    University 2    University 3    University 4
