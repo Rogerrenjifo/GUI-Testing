@@ -127,7 +127,7 @@ class Verification(object):
             logger.info("*****Actual******")
             logger.info(f"Result is: ", result)
             assert_that(result).is_true()
-            
+
     def verify_a_list_is_not_empty(self, actual_result):
         """Asserts the expected does not contain of actual"""
         with soft_assertions():
@@ -136,3 +136,13 @@ class Verification(object):
             logger.info('*****Actual******')
             logger.info(actual_result)
             assert_that(actual_result).is_not_empty()
+
+    def element_should_be_displayed(self, element: WebElement):
+        """Verifies the element is displayed"""
+        with soft_assertions():
+            is_displayed = element.is_displayed()
+            logger.info("*****Expected******")
+            logger.info(f"Element {element} displayed: ", True)
+            logger.info("*****Actual******")
+            logger.info(f"Element {element} displayed: ", is_displayed)
+            assert_that(is_displayed).is_true()
