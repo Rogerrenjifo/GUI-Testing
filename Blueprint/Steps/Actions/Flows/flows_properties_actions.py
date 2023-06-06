@@ -15,9 +15,11 @@ class FlowPropertiesActions(FlowPropertiesObjects):
         self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
     
     def select_owner_in_menu_in_flow_properties(self):
+        """Selects an owner in drop menu"""
         self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
 
     def search_owner_in_menu_in_flow_properties(self, user: str):
+        """Searches an owner in drop menu"""
         self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
     
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
@@ -205,15 +207,3 @@ class FlowPropertiesActions(FlowPropertiesObjects):
             self.get_calendar_day(day).click()
         else:
             raise Exception("Invalid date.")
-
-    def click_select_owner_menu_in_flow_properties(self) -> None:
-        """Performs click on 'select owner' combobox."""
-        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
-
-    def select_owner_in_menu_in_flow_properties(self):
-        """Searches an owner in drop menu"""
-        self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
-
-    def search_owner_in_menu_in_flow_properties(self, user: str):
-        """Selects an owner in drop menu"""
-        self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
