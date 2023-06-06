@@ -43,3 +43,9 @@ class FlowMainPanelObject(BasePage):
         """Return a dots list of the start component"""
         elements = self.find_elements.by_xpath(locators.DOT_START)
         return elements
+    
+    def get_component_by_title(self, title) -> WebElement:
+        """Returns the element search by title"""
+        xpath = locators.TITLE_LOCATOR.replace("<<data>>", title).replace
+        elements = self.find_elements.by_xpath(xpath)
+        return elements

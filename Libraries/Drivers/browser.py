@@ -15,7 +15,8 @@ class Browser(object):
         "galaxy s20 ultra": "--window-size=412,915",
         "ipad air": "--window-size=820,1180",
         "hub max": "--window-size=820,1180",
-        "pc": "--start-maximized"}
+        "pc": "--start-maximized",
+        "zoom out": "--start-maximized --force-device-scale-factor=.80"}
 
     @classmethod
     def get_driver(cls):
