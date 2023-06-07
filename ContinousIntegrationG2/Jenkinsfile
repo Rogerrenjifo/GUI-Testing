@@ -19,7 +19,7 @@ pipeline {
     stage('Test'){
       steps{
         bat 'python --help'
-        bat 'robot --help'
+        bat '.\\venv\\Scripts\\robot --help'
       }
     }
   }
