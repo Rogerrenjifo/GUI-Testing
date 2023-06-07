@@ -2,7 +2,7 @@
 Documentation    E2E Scenario that reprecents the process of a scholraship application
 Resource    Blueprint/TestCasesResources/E2E/ScholarshipApplication/scholarship_application_scenario_importations.resource
 
-Force Tags    SCHOLARSHIP_APPLICATION
+Force Tags    SCHOLARSHIP_APPLICATION   E2E
 Suite Setup    Set Steps and Actions Dictionaries
 Suite Teardown    Delete Storage
 

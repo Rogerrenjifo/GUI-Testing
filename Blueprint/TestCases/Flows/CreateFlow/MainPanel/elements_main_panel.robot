@@ -12,7 +12,7 @@ ${already_connected_message}    These elements are already connected.
 
 *** Test Cases ***
 Verify that a button dropdown color changes when the cursor is over it
-    [Tags]    BG-237
+    [Tags]    BG-237   BUG
     ${color_dropdown}    Obtain Dropdown Color In Flow Main Panel    001Added1
     Component Rgb Color Should Be Equal    ${color_dropdown}    ${dropdown_color}
 

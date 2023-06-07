@@ -27,7 +27,12 @@ class AddComponentsVerification:
         self.verification.verify_equal_ignore(element.text, title)
 
     def component_should_have_different_title(self, id_1: str, id_2: str):
-        """Verifyes that the component has different titles"""
+        """Verifies that the component has different titles"""
         title_1 = self.main_panel.obtain_component_title_in_flow_main_panel(id_1)
         title_2 = self.main_panel.obtain_component_title_in_flow_main_panel(id_2)
         self.verification.verify_is_not_equal(title_1, title_2)
+
+    def component_title_should_be(self, component_id, expected_title):
+        """Verifies the title is equal as expected"""
+        actual_title = self.main_panel.obtain_component_title_in_flow_main_panel(component_id)
+        self.verification.verify_equal_ignore(actual_title, expected_title)

@@ -5,6 +5,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Force Tags         FLOW_TABS   FLOW
+Suite Teardown     Click On Flows Button
 
 *** Variables ***
 ${create_form_tab}     Create Form

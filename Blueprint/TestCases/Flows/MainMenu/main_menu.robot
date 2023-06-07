@@ -1,8 +1,8 @@
 *** Settings ***
 Resource    Blueprint/TestCasesResources/Flow/MainMenu/main_menu_imports.resource
 Library     Blueprint.Steps.Verifications.Flow.MainMenu.main_menu_verifications.MainMenuVerifications
-Force Tags    MAIN_MENU
-Suite Setup      Click On Flows Button   FLOW
+Force Tags    MAIN_MENU      FLOW
+Suite Setup      Click On Flows Button
 
 
 *** Variables ***

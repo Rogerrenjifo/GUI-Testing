@@ -6,7 +6,7 @@ Library            Blueprint.Steps.Verifications.Flow.Header.header_verification
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
-Suite Teardown     Delete Flow Process In Flow Header
+Suite Teardown     Click On Flows Button
 Force Tags         HEADER_ELEMENTS   FLOW
 
 *** Variables ***
@@ -29,11 +29,13 @@ Verify that 'Delete' and 'Select Version' options are displayed when dropdown bu
     Display Header Dropdown In Flow Header
     Delete Option Should Be Displayed
     Select Version Option Should Be Displayed
+    Display Header Dropdown In Flow Header
 
 Verify version list is displayed when 'Select Version' option is hover from the dropdown menu
     Display Header Dropdown In Flow Header
     Display Select Version In Flow Header
     Version List Should Be Displayed
+    Display Header Dropdown In Flow Header
 
 Verify that when a version is clicked from the version list, the flow version selected is displayed
     Display Header Dropdown In Flow Header

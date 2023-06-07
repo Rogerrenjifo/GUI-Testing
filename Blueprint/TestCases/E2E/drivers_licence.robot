@@ -1,7 +1,7 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/common.imports.resource
 
-Force Tags    Scenario   BUG
+Force Tags    Scenario   BUG   E2E
 Suite Teardown    Delete Storage
 
 *** Variables ***

@@ -6,6 +6,8 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Force Tags         DELETE_DIALOG   FLOW
+Test Teardown      Click Cancel Button In Delete Dialog
+Suite Teardown     Click On Flows Button
 
 *** Test Cases ***
 Verify that delete dialog is displayed when 'Delete' option is clicked from the dropdown menu
