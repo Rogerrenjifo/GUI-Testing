@@ -47,7 +47,19 @@ pipeline {
     }
     stage('Run Projects Test Cases'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
+        }
+      }
+    }
+    stage('Run Test Mobile Device'){
+      steps{
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
       }
       post {
         always {
