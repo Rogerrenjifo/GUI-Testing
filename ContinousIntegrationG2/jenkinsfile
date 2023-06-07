@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages{
+    stage('Test'){
+      steps{
+        bat 'echo hello world'
+      }
+    }
+    stage('Code Inspection'){
+      steps{
+        bat 'echo Test stage'
+      }
+    }
+  }
+}
