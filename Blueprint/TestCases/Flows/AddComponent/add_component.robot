@@ -10,7 +10,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To Flows-Page-Create-Flow
 Suite Teardown     Delete Flow Process In Flow Header
-Force Tags         ADD_COMPONENTS    CREATE_FLOW   FLOW
+Force Tags         ADD_COMPONENTS    CREATE_FLOW   FLOWS
 
 *** Test Cases ***
 Verify that the "Step" component can be added to 0%, 0% position on canvas board.

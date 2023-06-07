@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    Blueprint/TestCasesResources/Flow/MainMenu/main_menu_imports.resource
 Library     Blueprint.Steps.Verifications.Flow.MainMenu.main_menu_verifications.MainMenuVerifications
-Force Tags    MAIN_MENU      FLOWS   HOLI
+Force Tags    MAIN_MENU      FLOWS
 Suite Setup      Click On Flows Button
 Suite Teardown    Close Dialog Adn Menu
 

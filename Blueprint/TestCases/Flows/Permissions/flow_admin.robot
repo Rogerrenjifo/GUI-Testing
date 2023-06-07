@@ -3,7 +3,7 @@ Resource            Blueprint/TestCasesResources/Flow/Permissions/common_flow_ad
 Suite Setup         Navigate to Flows-page-Permission
 Test Teardown       Reload Permissions Tab
 Suite Teardown      Delete Flow Process In Flow Header
-Force Tags          PERMISSIONS   FLOWS   HOLI
+Force Tags          PERMISSIONS   FLOWS
 
 *** Variables ***
 ${red_label_color}        rgba(255, 114, 105, 1)
