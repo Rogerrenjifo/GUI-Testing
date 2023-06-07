@@ -16,24 +16,15 @@ pipeline {
     stages {
         stage('Build Browser Environments') {
             steps {
-                sh 'pwd'
-                sh 'docker network create grid'
-                sh 'docker run -d -p 4444:4444 --net grid --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
-                sh 'ls'
+                bat 'docker network create grid'
+                bat 'docker run -d -p 4444:4444 --net grid --name chrome -p 7900:7900 --batm-size="2g" selenium/standalone-chrome:latest'
             }
         }
         stage('Run Test Cases'){
-            agent{
-                docker{
-                    image 'roretar/gui-blueprint-environment:1.0.0'
-                    args '--net grid'
-                }
-            }
             steps {
-                sh 'echo "run the browser containers."'
-                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
-                sh 'pwd'
-                sh 'pip list'  
+                bat 'python --help'  
+                bat 'echo "run the browser containers."'
+                bat 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
             }
             post {
                 always {
@@ -43,18 +34,15 @@ pipeline {
         }
         stage('Down Browser Environments') {
             steps {
-                sh 'pwd'
-                sh 'docker container ls'
-                sh 'ls'
+                bat 'docker container ls'
             }
         }
     }
     post{
         always{
-            sh 'docker container stop chrome'
-            sh 'docker container rm chrome'
-            sh 'docker network rm -f grid'
-            sh 'ls '
+            bat 'docker container stop chrome'
+            bat 'docker container rm chrome'
+            bat 'docker network rm -f grid'
         }
     }
 }
