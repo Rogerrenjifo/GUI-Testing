@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Test'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i PROJECT_PAGE .\\Blueprint\\TestCases'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i CREATE_FLOW .\\Blueprint\\TestCases'
       }
     }
   }
