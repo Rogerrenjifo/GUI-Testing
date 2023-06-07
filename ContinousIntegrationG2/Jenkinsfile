@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Test'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports .\\Blueprint\\TestCases'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
       }
       post {
         always {
