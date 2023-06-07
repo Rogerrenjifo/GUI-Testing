@@ -3,7 +3,6 @@ pipeline {
     environment {
         DOCKERUSER='roretar' 
         DOCKERPASSWORD=credentials('dockerhubpassword')
-        PATH = "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python38\\"
         PYTHONPATH = "${WORKSPACE}"
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
