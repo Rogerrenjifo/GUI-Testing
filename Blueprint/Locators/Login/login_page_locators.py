@@ -1,5 +1,5 @@
 HEADER_LOCATOR = "kc-header"
-INPUT_LOCATOR = "username"
+INPUT_LOCATOR = "userna"
 PASSWORD_LOCATOR = "password"
 SIGN_IN_BUTTON_LOCATOR = "kc-login"
 TITLE_LOCATOR = "kc-page-title"
