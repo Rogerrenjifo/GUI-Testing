@@ -3,7 +3,7 @@ Documentation    This suite verifies the functionalities in the header of the pr
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.header_project_page_verifications.HeaderProjectPageVerifications
 Suite Setup    Search An Specific Project And Open Export Dialog    ${project_name}
-Force Tags    HEADER_PROJECT_PAGE    PROJECT_PAGE
+Force Tags    HEADER_PROJECT_PAGE    PROJECT_PAGE    PROJECT
 
 *** Variables ***
 ${project_name}    AT19-ProjectPage-X2P

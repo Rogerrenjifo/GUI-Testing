@@ -4,7 +4,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_elements_
 
 Suite Setup       Create A New Flow With Random Code
 Suite Teardown    Delete Flow Process In Flow Header
-Force Tags        CREATE_F0RM    TAB_ELEMENTS
+Force Tags        CREATE_F0RM    TAB_ELEMENTS   FLOWS
 
 *** Test Cases ***
 Verify that text input is displayed in Create Form tab
