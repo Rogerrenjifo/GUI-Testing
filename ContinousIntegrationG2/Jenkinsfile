@@ -6,7 +6,7 @@ pipeline {
     USER="rocío.morales"
     BROWSER=chrome
     DEVICE=pc
-    DRIVER_PATH=./
+    DRIVER_PATH=".\\"
     IMPLICIT_TIMEOUT=10
   }
   stages{
