@@ -2,13 +2,13 @@ pipeline {
   agent any
   environment {
     PYTHONPATH = "${WORKSPACE}\\"
-    PASSWORD="mcp123!"
-    USER="celeste.palet"
+    PASSWORD="roc1o76246"
+    USER="Rocio.Morales@jala.university"
     BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
     IMPLICIT_TIMEOUT="25"
-    CI_EXECUTION="True"
+    CI_EXECUTION="False"
   }
   stages{
     stage('Instalar dependencias') {
