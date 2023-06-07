@@ -27,7 +27,6 @@ pipeline {
     }
     stage('Test'){
       steps{
-        bat ''
         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i PROJECT_PAGE .\\Blueprint\\TestCases'
       }
     }
