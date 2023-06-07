@@ -15,7 +15,7 @@ Create "ID" Numericbox
     Select Component In Form Main Panel    section-1_numericbox-1
     Set Name In Form Properties Panel    ID
 
-Create "Sex" Dropdown
+Create "Gender" Dropdown
     Add Component To Column Section In Create Form    dropdown    section-1-columnA
     Select Component In Form Main Panel    section-1_dropdown-1
     Set Name In Form Properties Panel    Gender   
@@ -58,7 +58,7 @@ Create Applicant Information Section
     Change Name From "section 1" To "Applicant Information"
     Change The Title Of The Default Textbox To "Name"
     Create "ID" Numericbox 
-    Create "Sex" Dropdown
+    Create "Gender" Dropdown
     Create "Age" Numericbox 
 
 Create Swimming Styles Section
