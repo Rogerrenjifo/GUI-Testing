@@ -1,7 +1,6 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/Flow/CreateForm/common_imports.resource
 Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_properties_panel_verifications.CreateFormPropertiesPanelVerifications
-
 Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_elements_verification.CreateFormElementsVerifications
 Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_component_verification.CreateFormAddComponentVerifications
 
@@ -39,3 +38,16 @@ Verify that the multilinebox fields are enabled
 Verify that the dropdown fields are enabled
     Add Component Down Existent Component In Create Form     dropdown  section-1_numericbox-1
     Dropdown Box Should Has Its Appropriate Fields    Dropdwon1    ${Placeholder}   ${dropdown[1]}    section-1_dropdown-1   ${dropdown}
+
+Verify that the date fields are enabled
+    Add Component Down Existent Component In Create Form     date    section-1_multilinebox-1
+    Date Should Has Its Appropriate Fields            Date1    2023   June   9    MMMM DD, YYYY
+
+Verify that the userlist fields are enabled
+    Add Component Down Existent Component In Create Form     userlist    section-1_dropdown-1
+    User List Should Has Its Appropriate Fields              Userlist1    ${Placeholder}   Martin Alvarez  section-1_userlist-1   Martin Alvarez
+
+Verify that the Section field is enabled
+    Add New Section In Create Form
+    Select Section In Form Main Panel    Section 2
+    Section Should Has Its Appropriate Field    This is a new Section
