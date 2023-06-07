@@ -1,60 +1,50 @@
 pipeline {
     agent any
     environment {
-        DOCKERUSER='roretar' 
-        DOCKERPASSWORD=credentials('dockerhubpassword')
         PYTHONPATH = "${WORKSPACE}"
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
-        PASSWORD="pasuconsumo"
-        REMOTE_URL="http://0.0.0.0:4444/wd/hub"
-        USER="roger.renjifo"
+        PASSWORD=credentials('user')
+        USER=credentials('password')
         BROWSER="remote_chrome"
         DEVICE="pc"
-        DRIVER_PATH="./"
-        IMPLICIT_TIMEOUT="20"
+        IMPLICIT_TIMEOUT="30"
     }
-    stages {                                                                    
-        stage('Run Test Cases'){
-            agent {
-                docker {
-                    image 'roretar/gui-blueprint-environment:1.0.0'
-                    args '--net docker_default'
+    stages {          
+        stage('Build Browser Environments') {    
+            steps {
+                bat 'docker run -d -p 4444:4444 --net docker_default --name chrome -p 7900:7900 --batm-size="2g" selenium/standalone-chrome:latest'
+            }
+        }
+        stage('Instalar dependencias') {
+            steps {
+                script {
+                        bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
+                    virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
+                        bat ".\\venv\\Scripts\\activate"
+                        bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
                 }
             }
+        }                                                          
+        stage('Run Test Cases'){
             steps {
-                sh 'pip list'
-                sh 'ls'
-                sh 'pwd'
-                sh 'export PYTHONPATH=$PWD/'
-                sh 'echo $PYTHONPATH'
-                sh 'echo $REMOTE_URL'
-                sh 'echo $BROWSER'
-                sh 'echo "run the browser containers."'
-                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
+                bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i TAB_ELEMENTS .\\Blueprint\\TestCases'
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'reports/', fingerprint: true
+                    archiveArtifacts artifacts: 'Bluprint/Reports/', fingerprint: true
                 }
             }
         }
-        stage('Build Browser Environments') {    
+        stage('Down Browser Environments') {    
             steps {
-                
-                sh 'docker run -d -p 4444:4444 --net docker_default --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
-                sh 'docker network inspect docker_default'
+                bat 'docker container ls'
             }
         }
-        stage('Down Browser Environments') {
-            steps {
-                sh 'docker container ls'
-            }
-            post{
-                always{
-                sh 'docker container stop chrome'
-                sh 'docker container rm chrome'
-                }
-            }
+    }
+    post{
+        always{
+            bat 'docker container stop chrome'
+            bat 'docker container rm chrome'
         }
     }
 }
