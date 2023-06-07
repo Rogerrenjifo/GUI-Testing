@@ -25,7 +25,8 @@ pipeline {
         stage('Run Test Cases'){
             steps {
                 bat 'python --help'
-                bat 'pip --version'
+                bat 'C:\\Users\\User\\Desktop\\Newfolder\\GUI-Blueprint\\venv\\Scripts\\activate'
+                bat 'si logro activar'
                 bat 'pip list'
                 bat 'echo "run the browser containers."'
                 bat 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
