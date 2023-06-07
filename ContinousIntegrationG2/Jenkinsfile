@@ -7,7 +7,7 @@ pipeline {
     BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
-    IMPLICIT_TIMEOUT="60"
+    IMPLICIT_TIMEOUT="120"
     CI_EXECUTION="True"
   }
   stages{
@@ -21,8 +21,8 @@ pipeline {
         script {
           virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
           bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
-          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
           bat ".\\venv\\Scripts\\activate"
+          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
         }
       }
     }
