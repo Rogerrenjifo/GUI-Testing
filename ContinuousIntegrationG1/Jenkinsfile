@@ -29,13 +29,14 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
+                sh 'curl http://localhost:4444'
                 sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'reports/', fingerprint: true
+                    archiveArtifacts artifacts: 'reports', fingerprint: true
                 }
             }
         }
@@ -50,7 +51,7 @@ pipeline {
     post{
         always{
             sh 'docker container stop chrome'
-            sh 'docker container rm chrome'
+            sh 'docker container stop chrome'
             sh 'ls '
         }
     }
