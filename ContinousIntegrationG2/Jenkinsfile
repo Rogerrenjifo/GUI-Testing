@@ -2,12 +2,12 @@ pipeline {
   agent any
   environment {
     PYTHONPATH = "${WORKSPACE}\\"
-    PASSWORD="roc1o76"
+    PASSWORD="roc1o76246"
     USER="Rocío.Morales"
     BROWSER="remote_chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
-    IMPLICIT_TIMEOUT="120"
+    IMPLICIT_TIMEOUT="25"
     CI_EXECUTION="True"
   }
   stages{
