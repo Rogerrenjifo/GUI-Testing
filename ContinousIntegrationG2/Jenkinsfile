@@ -2,8 +2,8 @@ pipeline {
   agent any
   environment {
     PYTHONPATH = "${WORKSPACE}\\"
-    PASSWORD="roc1o76246"
-    USER="Rocio.Morales@jala.university"
+    PASSWORD=credentials('PASSWORD')
+    USER=credentials('USER')
     BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
@@ -11,19 +11,24 @@ pipeline {
     CI_EXECUTION="False"
   }
   stages{
-    stage('Instalar dependencias') {
+    stage('Install Dependencies') {
       steps {
         script {
-          virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
-          bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
+          virtualenvDir = "${WORKSPACE}\\venv"
+          bat "python -m venv ${virtualenvDir}"
           bat ".\\venv\\Scripts\\activate"
-          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
+          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
         }
       }
     }
     stage('Test'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i TAB_ELEMENTS .\\Blueprint\\TestCases'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports .\\Blueprint\\TestCases'
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: '.\\Blueprint\\Reports', fingerprint: true
+        }
       }
     }
   }
