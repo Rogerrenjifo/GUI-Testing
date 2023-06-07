@@ -2,11 +2,11 @@
 Documentation       Atomic test to verify the functionality of the header in project tracing page of Blueprint
 Resource            Blueprint/TestCasesResources/Projects/ProjectTracing/common_header_imports.resource
 Suite Setup         Navigate to Project Tracing
-Force Tags          PROJECT_TRACING    HEADER
+Force Tags          PROJECT_TRACING    HEADER   PROJECT
 
 *** Variables ***
-${url}  https://test.blueprint.ses-unit.com/project-tracing/686fd7ee-88a2-4ff9-b75b-83096c58b4e0
-${expected_tag_tex}     847-1
+${url}  https://test.blueprint.ses-unit.com/project-tracing/11acde1d-0e77-4322-b10d-fb8dc1c05c2a
+${expected_tag_tex}     847-7
 ${expected_project_name_text}      AT19-DC
 ${expected_rgb_delete_color}  rgba(0, 217, 194, 1)
 ${button_text}   action 2

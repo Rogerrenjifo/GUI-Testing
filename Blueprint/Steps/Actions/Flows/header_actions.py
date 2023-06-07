@@ -1,3 +1,5 @@
+import time
+
 from Blueprint.PageObject.Flows.header_objects import Header
 from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
 from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
@@ -121,6 +123,7 @@ class HeaderActions(Header):
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
         self.click_delete_button_in_delete_dialog()
+        time.sleep(3)
 
     def cancel_delete_flow_process_in_flow_header(self) -> None:
         """Cancels the process to delete a flow. The flow is not deleted"""

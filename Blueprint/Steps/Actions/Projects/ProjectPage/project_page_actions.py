@@ -225,3 +225,7 @@ class ProjectPageActions(ProjectPageObjects):
         """Obtains the text of the export button in the project page"""
         text = self.get_export_button().text
         return text
+
+    def close_pop_up_message_in_project_page(self):
+        """Close the popup message"""
+        self.popup.click_to_close_popup_message()

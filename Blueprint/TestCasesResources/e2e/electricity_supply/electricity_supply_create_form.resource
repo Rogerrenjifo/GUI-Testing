@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_importation.resource
+Resource    Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_importation.resource
 
 *** Keywords ***
 Set First Section In Create Form
@@ -19,19 +19,19 @@ Set First Section In Create Form
 
 First Section Components Should Be Displayed
     ${expected_titles}=   Create List    User  Date of application presentation   Due date for submission of documents   Plans   Inscription Form   House Deeds
-    Components Order Should Be    ${expected_titles}
+    Component Order Should Be    ${expected_titles}
     ${expected_types}=   Create List   Date   Date   Checkbox   Checkbox   Checkbox
     Component type should be   ${expected_types}
 
 Second Section Components Should Be Displayed
     ${expected_titles}=   Create List    Inspector Selection   Notes
-    Components Order Should Be    ${expected_titles}   section-2
+    Component Order Should Be    ${expected_titles}   section-2
     ${expected_types}=   Create List   Userlist   Multi
     Component type should be   ${expected_types}   section-2
 
 Third Section Components Should Be Displayed
     ${expected_titles}=   Create List    Folio   User Number   Date of supply discharge   Technician selection
-    Components Order Should Be    ${expected_titles}   section-3
+    Component Order Should Be    ${expected_titles}   section-3
     ${expected_types}=   Create List   Text   Number   Date   Userlist
     Component type should be   ${expected_types}   section-3
 

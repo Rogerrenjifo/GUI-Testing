@@ -1,0 +1,19 @@
+*** Settings ***
+Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
+Library            Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
+Library            Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions.PropertiesPanelActions
+Library            Blueprint.Steps.Actions.Flows.create_form_main_panel_actions.FormMainPanelActions
+Library            Blueprint.Steps.Actions.Flows.flow_components_actions.FlowComponentsActions
+Library            Blueprint.Steps.Actions.Flows.flows_properties_actions.FlowPropertiesActions
+Library            Blueprint.Steps.Actions.Flows.flow_permissions_actions.FlowPermissionsActions
+Library            Blueprint.Steps.Actions.Flows.process_permissions_actions.ProcessPermissionsActions
+Library            Blueprint.Steps.Actions.Flows.section_visibility_permissions_actions.SectionsVisibilityActions
+Library            Blueprint.Steps.Verifications.Flow.Header.flow_tabs_verifications.FlowTabsVerifications
+Library            Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_component_verification.CreateFormAddComponentVerifications
+Library            Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_section_verification.CreateFormAddSectionVerifications
+Library            Blueprint.Steps.Verifications.Flow.CreateForm.create_form_main_panel_section_verification.CreateFormMainPanelSectionsVerifications
+Library            Blueprint.Steps.Verifications.Flow.Permissions.sections_visibility_verifications.SectionsVisibilityVerifications
+Library            Blueprint.Steps.Actions.Flows.publish_tab_actions.PublishTabActions
+Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
+Library            Blueprint.Steps.Verifications.Projects.ProjectPage.header_project_page_verifications.HeaderProjectPageVerifications
+Resource           Blueprint/TestCasesResources/navigate.resource

@@ -9,7 +9,7 @@ class CreateFormMainPanelComponentsVerifications:
         self.main_panel = FormMainPanelActions()
         self.verification = Verification()
 
-    def components_order_should_be(self, expected_result: list, section: str = "section-1"):
+    def component_order_should_be(self, expected_result: list, section: str = "section-1"):
         """Verifies that the component order in a section is the expected"""
         actual_result = self.main_panel.get_all_components_title_in_a_section_in_form_main_panel(section)
         self.verification.verify_equal_ignore(actual_result, expected_result)

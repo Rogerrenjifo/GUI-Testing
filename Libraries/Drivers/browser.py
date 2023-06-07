@@ -19,7 +19,7 @@ class Browser(object):
         "ipad air": "--window-size=820,1180",
         "hub max": "--window-size=820,1180",
         "pc": "--start-maximized",
-        "zoom out": "--start-maximized --force-device-scale-factor=.80"}
+        "zoom out": "--start-maximized --force-device-scale-factor=.70"}
 
     @classmethod
     def get_driver(cls):

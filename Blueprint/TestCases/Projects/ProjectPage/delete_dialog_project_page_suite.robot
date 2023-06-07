@@ -1,11 +1,13 @@
 *** Settings ***
+Documentation    This suite verifies the funcitonalities of the "Delete process instance" dialog
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.delete_dialog_project_page_verifications.DeleteDialogProjectPageVerifications
-Force Tags    DELETE_INSTANCE   PROJECT_PAGE
-Suite Setup    Create ${4} Instances And Open Delete Dialog
+Force Tags    DELETE_INSTANCE   PROJECT_PAGE    PROJECT
+Suite Setup    Search Project, Create Instances, And Open Delete Dialog    ${3}    ${project_name}
 Suite Teardown    Delete Created Instances
 
 *** Variables ***
+${project_name}    AT19-ProjectPage-9D6
 ${delete_dialog_title}    Delete Process Instance
 ${delete_dialog_question}    Do you want to delete this process instance?
 ${delete_button_text}    Delete
@@ -54,6 +56,7 @@ verify that the delete pop up message color is green
 Verify the text of the pop up message matches “Process instance deleted”
     ${popup_text}    Obtain Popup Message Text In Project Page
     Verify Equal Ignore    ${popup_text}    ${popup_message_text}
+    Close Pop Up Message In Project Page
 
 Verify that when deleting a project instance, it is no longer found on any of the pages
     ${ids}     Get All Projects Ids Text In Project Page

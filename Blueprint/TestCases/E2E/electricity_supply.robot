@@ -1,9 +1,10 @@
 *** Settings ***
-Resource   Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_create_form.resource
-Resource   Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_create_flow.resource
-Resource   Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_permissions.resource
+Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_create_form.resource
+Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_create_flow.resource
+Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_permissions.resource
 
-Force Tags        e2e
+Force Tags        E2E   FLOWS
+Suite Teardown    Delete Storage
 
 *** Variables ***
 ${flow_name}   Electricity Supply-GUI DEMO
@@ -33,7 +34,7 @@ Verify that user is able to create and publish a complete flow process
     Selected Groups Should Be Displayed
     Flow Tab Should Be Marked    ${permission_tab}
     Click Tab In Flow Header    ${publish_tab}
-    Click Save Publish Button
+    Click Save And Publish Button
     Go To Project Process In Main Menu   ${flow_name}
     Project Title Should Be    ${flow_name}
 
@@ -58,3 +59,11 @@ Set And Conect Actions And Steps In Board
     Set Components In Board
     Conect Components In Board
     Set End Step
+
+Click Save And Publish Button
+    Click Save Publish Button
+    Sleep    5
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

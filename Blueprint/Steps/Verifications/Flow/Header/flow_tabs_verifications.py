@@ -25,3 +25,13 @@ class FlowTabsVerifications:
         """Verifies that a flow tab is not marked"""
         unmarked_tab = self.header.get_unmarked_tab_in_flow_header(tab_name)
         self.verification.verify_result_is_true(unmarked_tab)
+
+    def flow_tab_error_should_be_marked(self, tab_name: str):
+        """Verifies that a flow tab with the error icon is marked"""
+        marked_tab = self.header.get_error_marked_tab_in_flow_header(tab_name)
+        self.verification.verify_result_is_true(marked_tab)
+
+    def flow_tab_error_should_not_be_marked(self, tab_name: str):
+        """Verifies that a flow tab with the error icon is not marked"""
+        unmarked_tab = self.header.get_error_unmarked_tab_in_flow_header(tab_name)
+        self.verification.verify_result_is_true(unmarked_tab)

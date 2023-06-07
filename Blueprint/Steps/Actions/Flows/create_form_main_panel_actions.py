@@ -205,3 +205,8 @@ class FormMainPanelActions(FormMainPanelPage):
             self.wait_for_element.wait_for_element_with_web_element(self.properties.get_field_type_select())
             components_type_list.append(self.properties.get_field_type_select().text)
         return components_type_list
+
+    def delete_form_storage(self):
+        """Clean the elements storage in create form tab"""
+        self.element_storage.components_in_sections = {}
+        self.element_storage.sections_list = []
