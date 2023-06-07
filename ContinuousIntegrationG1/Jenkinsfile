@@ -42,9 +42,13 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'docker container ls'
+                sh 'ls'
+            }
+        }
+        post{
+            always{
                 sh 'docker container stop chrome'
                 sh 'docker container rm chrome'
-                sh 'ls'
             }
         }
     }
