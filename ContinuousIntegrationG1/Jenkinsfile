@@ -31,7 +31,6 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'curl http://0.0.0.0:4444'
                 sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
