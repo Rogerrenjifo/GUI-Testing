@@ -15,7 +15,7 @@ pipeline {
       steps {
         script {
           virtualenvDir = "${WORKSPACE}/venv"  // Directorio del entorno virtual
-          bat "python3 -m venv ${virtualenvDir}"  // Crear el entorno virtual
+          bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
           bat "${virtualenvDir}/bin/pip install -r requirements.txt"  // Instalar las dependencias en el entorno virtual
         }
       }
