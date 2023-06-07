@@ -17,9 +17,9 @@ pipeline {
         }
         stage('Instalar dependencias') {
             steps {
-                script {
+                script{
+                        virtualenvDir = "${WORKSPACE}\\venv"
                         bat "python -m venv ${virtualenvDir}"
-                    virtualenvDir = "${WORKSPACE}\\venv"
                         bat ".\\venv\\Scripts\\activate"
                         bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
                 }
