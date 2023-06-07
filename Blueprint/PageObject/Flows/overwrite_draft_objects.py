@@ -1,11 +1,22 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.Flows import overwrite_draft_locators as locators
 from Libraries.Drivers.base_page import BasePage
+from robot.api import logger
 
 
 class OverwriteDraftDialogObjects(BasePage):
     """This class represents the Overwrite draft dialog in flows page."""
     
+    def get_overwrite_dialog(self) -> WebElement:
+        """Finds and returns the Overwrite draft dialog elemet."""
+        try:
+            self.driver.implicitly_wait(2)
+            element = self.find_element.by_class(locators.OVERWRITE_DIALOG)
+            return element
+        except:
+            logger.info("It returns False if the element is not found.")
+            return False
+            
     def get_overwrite_dialog_cancel_button(self) -> WebElement:
         """Finds and returns the Cancel button element of the Overwrite draft dialog."""
         element = self.find_element.by_xpath(locators.CANCEL_OVERWRITE_DIALOG_BUTTON)

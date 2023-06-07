@@ -1,8 +1,8 @@
 import time
-
 from Blueprint.Steps.Actions.Flows.header_actions import HeaderActions
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Libraries.Assertions.assertions import Verification
+from time import sleep
 
 
 class HeaderVerifications:
@@ -42,6 +42,7 @@ class HeaderVerifications:
 
     def flow_version_should_be_equal(self, expected_version: str):
         """Verifies that the flow version displayed is the expected."""        
+        sleep(2)
         actual_version = self.header.get_flow_version_text_in_flow_header()
         self.verification.verify_equal_ignore(actual_version, expected_version.capitalize())
 
@@ -71,9 +72,11 @@ class HeaderVerifications:
 
     def save_next_button_should_be_displayed(self):
         """Verifies that the save & next button is displayed in the header."""        
+        sleep(2)
         self.verification.verify_element_is_displayed(self.header.get_save_next_button())
 
     def save_next_button_color_should_be_equal(self, expected_color: str):
         """Verifies that the save button is displayed in the expected color"""
+        sleep(2)
         actual_color = self.header.obtain_save_next_button_rgb_color_in_flow_header()
         self.verification.verify_equal_ignore(actual_color, expected_color)
