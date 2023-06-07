@@ -6,20 +6,26 @@ pipeline {
     PASSWORD=credentials('password')
     USER=credentials('user')
     BROWSER="remote_chrome"
-    DEVICE="pc"
     IMPLICIT_TIMEOUT="30"
   }
   stages {          
-    stage('Build Browser Environments') {    
+    stage('Build Browser Environments') {
+      environment {
+        DEVICE="pc"
+      }
       steps {
         script {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat 'echo $DEVICE'
             bat 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
           }    
         }
       }
     }
     stage('Instalar dependencias') {
+      environment {
+        DEVICE="pc"
+      }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -32,6 +38,9 @@ pipeline {
       }
     }                                                          
     stage('Happy Path Test Cases'){
+      environment {
+        DEVICE="pc"
+      }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -41,11 +50,14 @@ pipeline {
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true, allowEmptyArchive: true
         }
       }
     }
     stage('Regretions Test'){
+      environment {
+        DEVICE="pc"
+      }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -55,11 +67,14 @@ pipeline {
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true, allowEmptyArchive: true
         }
       }
     }
     stage('Regretions Test iphone'){
+      environment {
+        DEVICE="pc"
+      }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -69,7 +84,7 @@ pipeline {
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true, allowEmptyArchive: true
         }
       }
     }
