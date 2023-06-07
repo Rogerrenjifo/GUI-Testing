@@ -11,7 +11,7 @@ pipeline {
         BROWSER="remote_chrome"
         DEVICE="pc"
         DRIVER_PATH="./"
-        IMPLICIT_TIMEOUT="2"
+        IMPLICIT_TIMEOUT="20"
     }
     stages {
         stage('Build Browser Environments') {
@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'robot -d reportes -i ADD_COMPONENTS Blueprint/TestCases'
+                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
             }
@@ -51,6 +51,7 @@ pipeline {
         always{
             sh 'docker container stop chrome'
             sh 'docker container rm chrome'
+            sh 'ls '
         }
     }
 }
