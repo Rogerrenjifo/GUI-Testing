@@ -22,12 +22,6 @@ pipeline {
             }
         }
         stage('Run Test Cases'){
-            agent{
-                docker{
-                    image 'roretar/gui-blueprint-environment:1.0.0'
-                    args '--net grid'
-                }
-            }
             steps {
                 bat 'echo "run the browser containers."'
                 bat 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
