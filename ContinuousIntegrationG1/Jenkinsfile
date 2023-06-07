@@ -7,7 +7,7 @@ pipeline {
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
         USER="roger.renjifo"
-        BROWSER="chrome"
+        BROWSER="remote_chrome"
         DEVICE="pc"
         DRIVER_PATH="./"
         IMPLICIT_TIMEOUT="2"
@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'ls'
+                sh 'robot -d reportes -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
             }
