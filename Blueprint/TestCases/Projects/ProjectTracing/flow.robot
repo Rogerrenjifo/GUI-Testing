@@ -2,7 +2,7 @@
 Documentation       Atomic test to verify the functionality of the flow in project tracing page of Blueprint
 Resource            Blueprint/TestCasesResources/Projects/ProjectTracing/common_flow_imports.resource
 Suite Setup         Navigate to Project Tracing
-Force Tags          PROJECT_TRACING    FLOW
+Force Tags          PROJECT_TRACING    FLOW       PROJECT
 
 *** Variables ***
 ${url}  https://test.blueprint.ses-unit.com/project-tracing/e686e021-c399-4351-a450-975cab9c25df

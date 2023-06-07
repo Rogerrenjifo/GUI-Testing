@@ -2,7 +2,7 @@
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.header_project_page_verifications.HeaderProjectPageVerifications
 Suite Setup    Search An Specific Project And Open Export Dialog
-Force Tags    HEADER    PROJECT_PAGE
+Force Tags    HEADER    PROJECT_PAGE       PROJECT
 
 *** Variables ***
 ${expected_export_dialog_title}    Export to CSV

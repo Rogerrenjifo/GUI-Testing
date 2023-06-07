@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectAction
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/navigate.resource
 Suite Setup    Navigate To Projects
-Force Tags     New_Project_Page    Checkbox 
+Force Tags     New_Project_Page    Checkbox    PROJECT   holi
 
 *** Variables ***
 ${section_new_history}    New history

@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.delete_dialog_project_page_verifications.DeleteDialogProjectPageVerifications
-Force Tags    DELETE_INSTANCE   PROJECT_PAGE
+Force Tags    DELETE_INSTANCE   PROJECT_PAGE       PROJECT
 Suite Setup    Create ${4} Instances And Open Delete Dialog
 Suite Teardown    Delete Created Instances
 

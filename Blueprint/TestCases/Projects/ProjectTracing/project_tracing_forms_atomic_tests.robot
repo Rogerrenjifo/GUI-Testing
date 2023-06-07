@@ -5,7 +5,7 @@ Resource         Blueprint/TestCasesResources/Projects/ProjectTracing/project_tr
 Suite Setup      Open project tracing forms webpage
 Suite Teardown   Close browser
 Test Teardown    Click section title in project forms    Section 1
-
+Force Tags        PROJECT
 *** Test Cases ***
 Verify edit button is visible when mouse is hover text field
     Put mouse hover field with title    Title    Section 1

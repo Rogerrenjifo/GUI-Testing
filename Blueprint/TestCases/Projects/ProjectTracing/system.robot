@@ -2,7 +2,7 @@
 Documentation    Atomic test to verify the functionality of the system in project tracing page of Blueprint
 Resource         Blueprint/TestCasesResources/Projects/ProjectTracing/common_system_imports.resource
 Suite Setup      Navigate to Project Tracing
-Force Tags       PROJECT_TRACING    SYSTEM
+Force Tags       PROJECT_TRACING    SYSTEM       PROJECT
 
 *** Variables ***
 ${url}                          https://test.blueprint.ses-unit.com/project-tracing/026f3bb0-fcc7-4b44-bbbe-6f531f2484ea
