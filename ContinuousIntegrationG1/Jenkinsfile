@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
+                sh 'robot -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
             }
