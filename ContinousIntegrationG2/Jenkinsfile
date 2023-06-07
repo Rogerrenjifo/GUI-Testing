@@ -3,12 +3,12 @@ pipeline {
   stages{
     stage('Test'){
       steps{
-        sh 'echo hello world'
+        bat 'echo hello world'
       }
     }
     stage('Code Inspection'){
       steps{
-        sh 'echo Test stage'
+        bat 'echo Test stage'
       }
     }
   }
