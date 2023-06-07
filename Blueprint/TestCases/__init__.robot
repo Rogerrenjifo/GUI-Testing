@@ -12,3 +12,4 @@ Login To Blueprint
     Get Driver
     Navigate To Url   ${url}
     Login
+    Log To Console    entró al init
