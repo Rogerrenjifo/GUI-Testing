@@ -21,6 +21,18 @@ pipeline {
         }
       }
     }
+    stage('Project Page'){
+      steps{
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i PROJECT_PAGE .\\Blueprint\\TestCases'
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
+        }
+      }
+    }
     stage('Run Happy Path Test Cases'){
       steps{
         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
