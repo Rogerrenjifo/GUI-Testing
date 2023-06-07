@@ -13,7 +13,7 @@ pipeline {
         DRIVER_PATH="./"
         IMPLICIT_TIMEOUT="20"
     }
-    stages {
+    stages {                                                                    
         stage('Build Browser Environments') {    
             steps {
                 sh 'docker network create grid'
@@ -29,6 +29,8 @@ pipeline {
             }
             steps {
                 sh 'pip list'
+                sh 'ls'
+                sh 'pwd'
                 sh 'echo "run the browser containers."'
                 sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
             }
