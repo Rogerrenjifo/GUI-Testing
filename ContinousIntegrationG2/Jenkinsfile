@@ -8,6 +8,7 @@ pipeline {
     DEVICE="pc"
     DRIVER_PATH=".\\"
     IMPLICIT_TIMEOUT="10"
+    CI_EXECUTION="True"
   }
   stages{
     stage('Code Inspection'){

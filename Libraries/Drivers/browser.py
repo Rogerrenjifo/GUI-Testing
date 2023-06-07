@@ -24,6 +24,25 @@ class Browser(object):
             cls._driver = cls.__create_instance()
         return cls._driver
 
+    # @classmethod
+    # def __create_instance(cls):
+    #     """Creates an WebDriver customized instance"""
+    #     browser = getenv("BROWSER", "chrome")
+    #     device = getenv("DEVICE", "pc")
+    #     driver_path = getenv("DRIVER_PATH", "./")
+    #     implicit_timeout = int(getenv("IMPLICIT_TIMEOUT", 2))
+    #     if browser.lower() in cls._webdriver_map:
+    #         browser_config = cls._webdriver_map.get(browser)
+    #         driver_class = browser_config.get("driver")
+    #         options = browser_config.get("options")
+    #     else:
+    #         raise ValueError(f"Unsupported browser: {browser}")
+    #     options.add_argument(cls._devices.get(device.lower()))
+    #     driver = driver_class(executable_path=driver_path, options=options)
+    #     driver.implicitly_wait(implicit_timeout)
+    #     cls._driver = driver
+    #     return cls._driver
+
     @classmethod
     def __create_instance(cls):
         """Creates an WebDriver customized instance"""
@@ -31,10 +50,14 @@ class Browser(object):
         device = getenv("DEVICE", "pc")
         driver_path = getenv("DRIVER_PATH", "./")
         implicit_timeout = int(getenv("IMPLICIT_TIMEOUT", 2))
+        ci_execution = getenv("CI_EXECUTION", "False")
         if browser.lower() in cls._webdriver_map:
             browser_config = cls._webdriver_map.get(browser)
             driver_class = browser_config.get("driver")
             options = browser_config.get("options")
+            if bool(ci_execution):
+                options.add_argument("--headless")
+                options.add_argument("--no-sandbox")
         else:
             raise ValueError(f"Unsupported browser: {browser}")
         options.add_argument(cls._devices.get(device.lower()))
