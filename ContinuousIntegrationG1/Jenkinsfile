@@ -3,8 +3,8 @@ pipeline {
     environment {
         PYTHONPATH = "${WORKSPACE}"
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
-        PASSWORD=credentials('user')
-        USER=credentials('password')
+        PASSWORD=credentials('password')
+        USER=credentials('user')
         BROWSER="remote_chrome"
         DEVICE="pc"
         IMPLICIT_TIMEOUT="30"
