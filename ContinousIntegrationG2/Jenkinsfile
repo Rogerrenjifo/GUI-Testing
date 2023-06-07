@@ -2,8 +2,8 @@ pipeline {
   agent any
   environment {
     PYTHONPATH = "${WORKSPACE}\\"
-    PASSWORD=credentials('PASSWORD')
-    USER="rocío.morales"
+    PASSWORD="roc1o76246"
+    USER="Rocío.Morales"
     BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
