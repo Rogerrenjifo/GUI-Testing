@@ -5,6 +5,8 @@ Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_create
 Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_create_flow.resource
 Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_permissions.resource
 
+Force Tags    E2E    Swimming_Competition
+
 *** Variables ***
 ${flow_name_without_code}   AT19-SWIMMING
 
