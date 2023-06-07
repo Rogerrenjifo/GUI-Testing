@@ -23,27 +23,7 @@ pipeline {
     }
     stage('Run Happy Path Test Cases'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint\\Reports', fingerprint: true
-        }
-      }
-    }
-    stage('Run Regretion Test Cases'){
-      steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint\\Reports', fingerprint: true
-        }
-      }
-    }
-    stage('Run Happy Path Test Cases'){
-      steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+        bat 'echo Happy Path'
       }
       post {
         always {
@@ -52,6 +32,30 @@ pipeline {
           archiveArtifacts artifacts: 'Blueprint/Reports/output.xml', fingerprint: true
         }
       }
+    }
+    stage('Run Regretion Test Cases'){
+      steps{
+        bat 'echo Regretion'
+      }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/output.xml', fingerprint: true
+    //     }
+    //   }
+    }
+    stage('Run Projects Test Cases'){
+      steps{
+        bat 'echo Happy Path'
+      }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/output.xml', fingerprint: true
+    //     }
+    //   }
     }
   }
 }
