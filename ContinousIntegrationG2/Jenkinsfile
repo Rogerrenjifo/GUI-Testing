@@ -25,5 +25,4 @@ pipeline {
         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i TAB_ELEMENTS .\\Blueprint\\TestCases'
       }
     }
-  }
 }
