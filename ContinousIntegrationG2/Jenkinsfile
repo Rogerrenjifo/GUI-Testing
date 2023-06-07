@@ -23,39 +23,39 @@ pipeline {
     }
     stage('Run Happy Path Test Cases'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/output.xml', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
         }
       }
     }
     stage('Run Regretion Test Cases'){
       steps{
-        bat 'echo Regretion'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsRegretion -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
       }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/Reports/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/Reports/output.xml', fingerprint: true
-    //     }
-    //   }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/output.xml', fingerprint: true
+        }
+      }
     }
     stage('Run Projects Test Cases'){
       steps{
-        bat 'echo Happy Path'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
       }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/Reports/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/Reports/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/Reports/output.xml', fingerprint: true
-    //     }
-    //   }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
+        }
+      }
     }
   }
 }
