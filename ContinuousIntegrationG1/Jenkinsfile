@@ -24,9 +24,9 @@ pipeline {
         stage('Run Test Cases'){
             steps {
                 bat 'echo "run the browser containers."'
-                bat 'dir'
                 bat 'pip list'  
-                bat 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
+                bat 'dir'
+                bat 'robot --help'
             }
             post {
                 always {
@@ -36,6 +36,7 @@ pipeline {
         }
         stage('Down Browser Environments') {
             steps {
+                bat 'pwd'
                 bat 'docker container ls'
             }
         }
