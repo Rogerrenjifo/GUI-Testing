@@ -31,7 +31,7 @@ pipeline {
                 sh 'pip list'
                 sh 'ls'
                 sh 'pwd'
-                sh 'echo $PYTHON_PATH'
+                sh 'export PYTHON_PATH=$PWD'
                 sh 'echo "run the browser containers."'
                 sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
             }
