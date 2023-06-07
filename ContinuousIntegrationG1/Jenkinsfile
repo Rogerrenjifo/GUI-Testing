@@ -29,10 +29,10 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo "run the browser containers."'
-                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
-                sh 'pwd'
-                sh 'pip list'  
+                bat 'echo "run the browser containers."'
+                bat 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
+                bat 'dir'
+                bat 'pip list'  
             }
             post {
                 always {
@@ -42,17 +42,16 @@ pipeline {
         }
         stage('Down Browser Environments') {
             steps {
-                sh 'pwd'
-                sh 'docker container ls'
-                sh 'ls'
+                bat 'pwd'
+                bat 'docker container ls'
             }
         }
     }
     post{
         always{
-            sh 'docker container stop chrome'
-            sh 'docker container rm chrome'
-            sh 'docker network rm -f grid'
+            bat 'docker container stop chrome'
+            bat 'docker container rm chrome'
+            bat 'docker network rm -f grid'
         }
     }
 }
