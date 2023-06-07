@@ -3,7 +3,7 @@ Resource            Blueprint/TestCasesResources/Flow/Permissions/sections_visib
 Suite Setup         Navigate to Flows-page-Permission
 Test Teardown       Reload Permissions Tab
 Suite Teardown      Delete Flow Process In Flow Header
-Force Tags          PERMISSIONS    SECTION_VISIBILITY
+Force Tags          PERMISSIONS    FLOWS
 
 *** Variables ***
 ${red_border_color}       rgb(255, 114, 105)
