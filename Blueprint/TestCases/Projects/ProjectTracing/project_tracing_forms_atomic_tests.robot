@@ -3,7 +3,6 @@ Documentation    Tests to verify the functionality of each component
 ...              of the project tracing forms GUI.
 Resource         Blueprint/TestCasesResources/Projects/ProjectTracing/project_tracing_forms_resources.robot
 Suite Setup      Open project tracing forms webpage
-Suite Teardown   Close browser
 Test Teardown    Click section title in project forms    Section 1
 Force Tags        PROJECT
 *** Test Cases ***

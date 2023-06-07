@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_pag
 Resource    Blueprint/TestCasesResources/Projects/projects.resource
 
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     holi
+Force Tags     PROJECT
 *** Variables ***
 ${section_name}    New history
 ${label_new_child}    New Child

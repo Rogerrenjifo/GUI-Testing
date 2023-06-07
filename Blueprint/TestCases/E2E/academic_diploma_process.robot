@@ -31,7 +31,6 @@ Verify that is posible create Academic Diploma process flow and publish it
     Set Users In Sections Visibility
     Users Selected should be visible
     Click Save Next Button In Flow Header
-    Sleep    4s
     Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Sleep    5s
     Click Save Publish Button

@@ -2,10 +2,10 @@
 Documentation       Atomic test to verify the functionality of the flow in project tracing page of Blueprint
 Resource            Blueprint/TestCasesResources/Projects/ProjectTracing/common_flow_imports.resource
 Suite Setup         Navigate to Project Tracing
-Force Tags          PROJECT_TRACING    FLOW       PROJECT
+Force Tags          PROJECT_TRACING    FLOW    PROJECT
 
 *** Variables ***
-${url}  https://test.blueprint.ses-unit.com/project-tracing/e686e021-c399-4351-a450-975cab9c25df
+${url}  https://test.blueprint.ses-unit.com/project-tracing/c4b5e409-fdc9-48cd-9564-24e06ade5316
 ${expected_flow_title}      Flow
 ${expected_start_text_component}  Start
 ${expected_final_text_component}  end step
@@ -47,4 +47,3 @@ Verify that when hovering on the “Actions” label its background color change
 *** Keywords ***
 Navigate to Project Tracing
     Navigate To Url    ${url}
-    Sleep    10s

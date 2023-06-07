@@ -6,11 +6,14 @@ Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_pag
 Resource    Blueprint/TestCasesResources/Projects/projects.resource
 
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags        PROJECT   holi
+Force Tags     PROJECT
 
 *** Variables ***
 ${create_button_color}    rgba(0, 217, 194, 1)
 ${template_title}    AT-19 Test-fc
+${section_name}    New history
+${label_name}    New Child
+${new_value}    Maria Eugenia
 ${new_section}    Delivering
 ${new_component}    Multiline Box 1
 ${new_component_2}    received Date

@@ -1,7 +1,6 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/common.imports.resource
-
-Force Tags    Scenario   E2E
+Force Tags    E2E   DRIVERS_LICENSE
 Suite Teardown    Delete Storage
 
 *** Variables ***
