@@ -11,19 +11,19 @@ pipeline {
         bat 'echo Test stage'
       }
     }
-    // stage('Instalar dependencias') {
-    //   steps {
-    //     script {
-    //       virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
-    //       bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
-    //       bat "${virtualenvDir}\\bin\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
-    //     }
-    //   }
-    // }
+    stage('Instalar dependencias') {
+      steps {
+        script {
+          virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
+          bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
+        //   bat "${virtualenvDir}\\bin\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
+        }
+      }
+    }
     stage('Verificar carpeta') {
       steps {
         script {
-          def folderPath = "${WORKSPACE}\\requeriments.txt"
+          def folderPath = "${WORKSPACE}\\venv"
 
           if (isFileExist(folderPath)) {
             echo "La carpeta existe."
