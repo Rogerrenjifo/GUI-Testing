@@ -1,9 +1,10 @@
 *** Settings ***
 Documentation    E2E Scenario that reprecents the process of a scholraship application
-Resource    Blueprint/TestCasesResources/e2e/ScholarshipApplication/scholarship_application_scenario_importations.resource
+Resource    Blueprint/TestCasesResources/E2E/ScholarshipApplication/scholarship_application_scenario_importations.resource
 
-Force Tags    SCHOLARSHIP_APPLICATION
+Force Tags    SCHOLARSHIP_APPLICATION   E2E
 Suite Setup    Set Steps and Actions Dictionaries
+Suite Teardown    Delete Storage
 
 *** Variables ***
 ${expected_success_popup_color}    rgba(92, 184, 92, 1)
@@ -54,4 +55,3 @@ Verify a flow can be created, from form creation, flow creation, and permissions
     Click Save Publish Button
     Log To Console    ${flow_name_for_edit}
     New Project Should Exist    ${flow_name_for_edit}
-

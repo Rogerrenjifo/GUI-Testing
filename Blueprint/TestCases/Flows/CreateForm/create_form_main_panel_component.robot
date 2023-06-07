@@ -6,7 +6,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_compo
 
 Suite Setup       Create A New Flow With Random Code
 Suite Teardown    Delete Flow Process In Flow Header
-Force Tags        CREATE_F0RM    MAIN_PANEL   COMPONENT
+Force Tags        CREATE_F0RM    MAIN_PANEL   COMPONENT   FLOWS
 
 *** Test Cases ***
 Verify that hovering a component change its color
@@ -21,7 +21,7 @@ Verify that default component cannot be moved
     Add Component To Column Section In Create Form   date   section-1-columnB
     Move Component Up Other In Form Main Panel   section-1_date-1   section-1_textbox-1
     ${expected_result}   Create List    Title   Date 1
-    Components Order Should Be   ${expected_result}
+    Component Order Should Be   ${expected_result}
     Delete Components Added In Section In Form Main Panel
 
 Verify that hovering a component, its 3-dots button is displayed
@@ -49,14 +49,14 @@ Verify that a component can be moved above another
     Add Component To Column Section In Create Form    textbox   section-2-columnB
     Move Component Up Other In Form Main Panel    section-2_textbox-1   section-2_date-1
     ${expected_result}   Create List    Text Box 1   Date 1
-    Components Order Should Be   ${expected_result}   section-2
+    Component Order Should Be   ${expected_result}   section-2
     Delete Components And Sections Added In Form Main Panel
 
 Verify that a component cannot be moved above default component
     Add Component To Column Section In Create Form   date   section-1-columnB
     Move Component Up Other In Form Main Panel    section-1_date-1    section-1_textbox-1
     ${expected_result}   Create List    Title   Date 1
-    Components Order Should Be   ${expected_result}
+    Component Order Should Be   ${expected_result}
     Delete Components Added In Section In Form Main Panel
 
 Verify that a component cannot be moved outside a section

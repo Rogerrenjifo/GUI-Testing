@@ -18,6 +18,7 @@ class FlowComponentsActions(FlowComponentObjects):
         id = f"002Added{self.index.counter_action}"
         self.index.add_component(id, ActionComponent(id))
         self.index.increment_counter_action()
+        return id
 
     def move_step_to_board_position(self, x_percentage: int, y_percentage: int) -> None:
         """Drags and drops a step to the center of the board"""
@@ -27,6 +28,7 @@ class FlowComponentsActions(FlowComponentObjects):
         component_id = f"001Added{self.index.counter_step}"
         self.index.add_component(component_id, StepComponent(component_id))
         self.index.increment_counter_step()
+        return component_id
 
     def move_action_to_main_menu_position(self, x_percentage: int, y_percentage: int) -> None:
         """Drags and drops an action to specific position of the main menu"""

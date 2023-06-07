@@ -38,7 +38,7 @@ class HeaderProjectPageVerifications:
 
     def popup_message_should_be_displayed(self):
         """Verifies the popup message is displayed"""
-        time.sleep(3)
+        time.sleep(2)
         popup = self.project_page.obtain_popup_message_in_project_page()
         self.assertions.verify_element_is_displayed(popup)
 
