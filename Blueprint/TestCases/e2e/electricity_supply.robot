@@ -1,7 +1,7 @@
 *** Settings ***
-Resource   Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_create_form.resource
-Resource   Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_create_flow.resource
-Resource   Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_permissions.resource
+Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_create_form.resource
+Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_create_flow.resource
+Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_permissions.resource
 
 Force Tags        e2e
 

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    Blueprint/TestCasesResources/e2e/electricity_supply/electricity_supply_importation.resource
+Resource    Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_importation.resource
 
 *** Keywords ***
 Set First Section In Create Form
