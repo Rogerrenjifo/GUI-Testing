@@ -3,9 +3,10 @@ Documentation    Atomic tests to verify the functionality of a text box and
 ...              a numberic box in new project page of Blueprint.
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
-Resource    Blueprint/TestCasesResources/Projects/projects.resource
+Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 
-Suite Setup    Login To Blueprint
+Suite Setup    Search An Specific Project And Click On New Request Button
+Force Tags    PROJECT
 
 *** Variables ***
 ${section_name}    New history
@@ -75,7 +76,7 @@ Verify the number can be updated in a numberic box
     The Text Or Number Should Be As Expected    ${section_name}    ${label_age}    ${number_updated}
 
 Verify the label of a component changes color when the mouse is over
-    The Rgb Color Of A Label Should Be As Expected     ${section_name}    ${label_new_child}    ${highlighted_label_color}
+    The Rgb Color Of A Label Should Be As Expected     ${section_name}    ${label_lastname}    ${highlighted_label_color}
     Border Of A Component Should Be Highlighted    ${section_name}    ${label_email}     ${highlighted_border_color}
 
 Verify that an error message is displayed when the required field is empty

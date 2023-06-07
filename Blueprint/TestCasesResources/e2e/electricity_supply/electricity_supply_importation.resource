@@ -12,7 +12,7 @@ Library      Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
 Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_elements_verification.CreateFormElementsVerifications
 Library      Blueprint.Steps.Utils.groups_manager.GroupManager
 Library      Blueprint.Steps.Utils.main_menu_manager.MainMenuManager
-Library      Blueprint.Steps.Verifications.e2e.electricity_supply_verification.ElectricitySupplyVerifications
+Library      Blueprint.Steps.Verifications.E2E.electricity_supply_verification.ElectricitySupplyVerifications
 Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_main_panel_components_verifications.CreateFormMainPanelComponentsVerifications
 Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_main_panel_section_verification.CreateFormMainPanelSectionsVerifications
 Library      Blueprint.Steps.Verifications.Flow.Header.flow_tabs_verifications.FlowTabsVerifications
