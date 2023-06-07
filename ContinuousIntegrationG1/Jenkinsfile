@@ -12,16 +12,16 @@ pipeline {
     stages {          
         stage('Build Browser Environments') {    
             steps {
-                bat 'docker run -d -p 4444:4444 --net docker_default --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+                bat 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
             }
         }
         stage('Instalar dependencias') {
             steps {
                 script {
-                        bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
-                    virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
+                        bat "python -m venv ${virtualenvDir}"
+                    virtualenvDir = "${WORKSPACE}\\venv"
                         bat ".\\venv\\Scripts\\activate"
-                        bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
+                        bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
                 }
             }
         }                                                          
