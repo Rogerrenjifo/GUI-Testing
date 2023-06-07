@@ -6,7 +6,7 @@ pipeline {
         PYTHONPATH = "${WORKSPACE}"
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
-        REMOTE_URL="http://localhost:4444"
+        REMOTE_URL="http://0.0.0.0:4444"
         USER="roger.renjifo"
         BROWSER="remote_chrome"
         DEVICE="pc"
@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'curl http://localhost:4444'
+                sh 'curl http://0.0.0.0:4444'
                 sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
