@@ -45,11 +45,11 @@ pipeline {
                 sh 'ls'
             }
         }
-        post{
-            always{
-                sh 'docker container stop chrome'
-                sh 'docker container rm chrome'
-            }
+    }
+    post{
+        always{
+            sh 'docker container stop chrome'
+            sh 'docker container rm chrome'
         }
     }
 }
