@@ -207,5 +207,6 @@ class FormMainPanelActions(FormMainPanelPage):
         return components_type_list
 
     def delete_form_storage(self):
+        """Clean the elements storage in create form tab"""
         self.element_storage.components_in_sections = {}
         self.element_storage.sections_list = []
