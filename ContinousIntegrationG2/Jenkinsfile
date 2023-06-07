@@ -10,6 +10,7 @@ pipeline {
     IMPLICIT_TIMEOUT="25"
     CI_EXECUTION="True"
   }
+  stages{
     stage('Instalar dependencias') {
       steps {
         script {
@@ -25,4 +26,5 @@ pipeline {
         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i TAB_ELEMENTS .\\Blueprint\\TestCases'
       }
     }
+  }
 }
