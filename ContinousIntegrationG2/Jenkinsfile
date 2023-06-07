@@ -10,12 +10,6 @@ pipeline {
     IMPLICIT_TIMEOUT="25"
     CI_EXECUTION="True"
   }
-  stages{
-    stage('Code Inspection'){
-      steps{
-        bat 'echo Test stage'
-      }
-    }
     stage('Instalar dependencias') {
       steps {
         script {
