@@ -17,7 +17,8 @@ pipeline {
         stage('Build Browser Environments') {
             steps {
                 sh 'pwd'
-                sh 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+                sh 'docker network create grid'
+                sh 'docker run -d -p 4444:4444 --net grid --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
                 sh 'ls'
             }
         }
@@ -25,6 +26,7 @@ pipeline {
             agent{
                 docker{
                     image 'roretar/gui-blueprint-environment:1.0.0'
+                    network 'grid'
                 }
             }
             steps {
@@ -51,7 +53,7 @@ pipeline {
     post{
         always{
             sh 'docker container stop chrome'
-            sh 'docker container stop chrome'
+            sh 'docker container rm chrome'
             sh 'ls '
         }
     }
