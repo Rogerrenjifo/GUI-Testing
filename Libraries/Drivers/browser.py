@@ -35,11 +35,15 @@ class Browser(object):
         device = getenv("DEVICE", "pc")
         driver_path = getenv("DRIVER_PATH", "./")
         implicit_timeout = int(getenv("IMPLICIT_TIMEOUT", 2))
+        ci_execution = getenv("CI_EXECUTION", "False")
         remote_url = getenv("REMOTE_URL", "http://localhost:4444/wd/hub")
         if browser.lower() in cls._webdriver_map:
             browser_config = cls._webdriver_map.get(browser)
             driver_class = browser_config.get("driver")
             options = browser_config.get("options")
+            if bool(ci_execution):
+                options.add_argument("--headless")
+                options.add_argument("--no-sandbox")
         else:
             raise ValueError(f"Unsupported browser: {browser}")
         options.add_argument(cls._devices.get(device.lower()))

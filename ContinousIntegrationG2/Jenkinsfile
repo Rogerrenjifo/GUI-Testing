@@ -4,7 +4,7 @@ pipeline {
     PYTHONPATH = "${WORKSPACE}\\"
     PASSWORD="mcp123!"
     USER="celeste.palet"
-    BROWSER="remote_chrome"
+    BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
     IMPLICIT_TIMEOUT="25"
