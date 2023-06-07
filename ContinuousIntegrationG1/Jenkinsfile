@@ -17,8 +17,8 @@ pipeline {
         stage('Build Browser Environments') {    
             steps {
                 
-                sh 'docker network inspect docker_default'
                 sh 'docker run -d -p 4444:4444 --net docker_default --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+                sh 'docker network inspect docker_default'
             }
         }
         stage('Run Test Cases'){
