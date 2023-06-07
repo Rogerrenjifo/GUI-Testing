@@ -1,6 +1,5 @@
 from Blueprint.PageObject.Projects.ProjectTracing.project_tracing_forms_objects import FormObjects
 from Blueprint.Steps.Actions.CommonElements.date_actions import DateActions
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.keys import Keys
 
 

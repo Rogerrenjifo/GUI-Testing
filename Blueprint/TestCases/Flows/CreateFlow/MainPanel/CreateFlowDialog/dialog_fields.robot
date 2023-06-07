@@ -4,7 +4,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateFlow.create_flow_verificat
 
 Suite Setup      Click On Flows Button
 Test Teardown    Click On Cancel New Flow Button
-Force Tags       CREATE_FLOW    DIALOG_FIELDS    CREATE_FLOW_DIALOG
+Force Tags       CREATE_FLOW    DIALOG_FIELDS    CREATE_FLOW_DIALOG   FLOWS
 
 *** Variables ***
 ${name_label}    Name

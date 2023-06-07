@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectAction
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     New_Project_Page    Dropdowns 
+Force Tags     New_Project_Page    Dropdowns    PROJECT
 
 *** Variables ***
 ${user_to_select}    Roger Renjifo

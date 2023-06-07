@@ -21,7 +21,7 @@ class DeleteDialogProjectPageVerifications:
 
     def project_instance_should_not_exist(self, project_id: str):
         """Verifies the project instance does not exist"""
-        time.sleep(2)
+        time.sleep(5)
         project_id_list = self.project_page.get_all_projects_ids_text_in_project_page()
         self.assertions.verify_a_list_does_not_contain(project_id_list, project_id)
 

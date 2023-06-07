@@ -4,7 +4,7 @@ Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.table_project_page_verifications.TableProjectPageVerifications
 Suite Setup    Search Project and Create Instances    ${3}    ${project_name}
 Suite Teardown    Delete Created Instances
-Force Tags    INSTANCES_TABLE    PROJECT_PAGE
+Force Tags    INSTANCES_TABLE    PROJECT_PAGE    PROJECT
 
 *** Variables ***
 ${project_name}    AT19-ProjectPage-9D6

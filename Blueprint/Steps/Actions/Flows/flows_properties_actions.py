@@ -1,3 +1,5 @@
+import time
+
 from Blueprint.PageObject.Flows.flows_properties_objects import FlowPropertiesObjects
 from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
 from Blueprint.PageObject.Flows.Elements.Components.end_component import EndComponent
@@ -24,6 +26,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
     
     def change_component_name_in_flow_properties(self, new_name: str = "") -> None:
         """Changes component 'name'."""
+        time.sleep(2)
         self.name_field.text_field.click()
         self.name_field.text_field.clear()
         self.name_field.text_field.send_keys(new_name)
@@ -39,6 +42,7 @@ class FlowPropertiesActions(FlowPropertiesObjects):
     
     def click_end_step_checkbox_in_flow_properties(self, component_id: str) -> None:
         """Performs click on 'End Step' checkbox."""
+        time.sleep(2)
         self.end_step_checkbox.checkbox.click()
         new_id = f"001END{self.index.counter_end}"
         self.index.component_dictionary.pop(component_id)

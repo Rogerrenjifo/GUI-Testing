@@ -1,6 +1,7 @@
 *** Settings ***
-Resource      Blueprint/TestCasesResources/e2e/AcademicDiploma/academic_diploma_imports.resource
-Force Tags    e2e
+Resource      Blueprint/TestCasesResources/E2E/AcademicDiploma/academic_diploma_imports.resource
+Force Tags    E2E   FLOWS
+Suite Teardown    Delete Storage
 
 *** Variables ***
 @{first_section_list}    Student Name    Start Process Form    Score Certify    Due date for receipt of requirements
@@ -37,7 +38,6 @@ Verify that is posible create Academic Diploma process flow and publish it
     Popups Messages Text Should Contains    Flow ${flow_name} published.
     Go To Project Process In Main Menu   ${flow_name}
     Project Name Should Be As Expected    ${flow_name}
-    Sleep    10s
 
 *** Keywords ***
 Set Documentation Section
@@ -81,51 +81,38 @@ Move Components to Main Panel
     Click Component    first
     Change Component Name In Flow Properties   Request Requirements
     Move Action To Board Position   33   30
-    Sleep    2
     Change Component Name In Flow Properties   Bill Payment
     Set select owner and owner    1    Telma Rios
     Move Action To Board Position   83   30
-    Sleep    2
     Change Component Name In Flow Properties   Not meet requirements
     Set select owner and owner    1    Fabian Cabrejo
     Move Action To Board Position   60   40
-    Sleep    2
     Change Component Name In Flow Properties   Meet requirements
     Set select owner and owner    1    Fabian Cabrejo
     Move Action To Board Position   20   50
-    Sleep    2
     Change Component Name In Flow Properties   Verify the Kardex
     Set select owner and owner    1    Fabian Cabrejo
     Move Action To Board Position   64   60
-    Sleep    2
     Change Component Name In Flow Properties   First Signature
     Set select owner and owner    1    Denisse Cordova
     Move Action To Board Position   68   70
-    Sleep    2
     Change Component Name In Flow Properties   Second Signature
     Set select owner and owner    1    Roger Renjifo
     Move Action To Board Position   20   80
-    Sleep    2
     Change Component Name In Flow Properties   Request Academic Diploma
     Set select owner and owner    1    Telma Rios
     Move Step To Board Position   40   90
-    Sleep    2
     Change Component Name In Flow Properties   Receive Academic Diploma
     Click End Step Checkbox In Flow Properties    001Added1
     Move Step To Board Position   60   28
-    Sleep    2
     Change Component Name In Flow Properties   Review documents
     Move Step To Board Position   33   40
-    Sleep    2
     Change Component Name In Flow Properties   Generate report
     Move Step To Board Position   39   57
-    Sleep    2
     Change Component Name In Flow Properties   Print Academic Diploma
     Move Step To Board Position   90   65
-    Sleep    2
     Change Component Name In Flow Properties   Receive and review signatures
     Move Step To Board Position   39   71
-    Sleep    2
     Change Component Name In Flow Properties   Save Academic Diploma
 
 Connect the components
@@ -240,3 +227,7 @@ Users Selected should be visible
     Users Selected List In Section Visibility Should Contain    Fabian Cabrejo    3
     Users Selected List In Section Visibility Should Contain    Roger Renjifo    4
     Users Selected List In Section Visibility Should Contain    Denisse Cordova    4
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

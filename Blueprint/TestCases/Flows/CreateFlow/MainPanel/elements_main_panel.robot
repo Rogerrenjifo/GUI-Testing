@@ -1,10 +1,10 @@
 *** Settings ***
-Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.Resource
+Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.resource
 Suite Setup         Navigate To Flows-Page-Create-Flow
 Suite Teardown      Delete Flow Process In Flow Header
 Test Teardown       Clean Components Added
 Test Setup          Redirect and move components to the main panel
-Force Tags          CREATE_FLOW
+Force Tags          CREATE_FLOW   FLOWS
 
 *** Variables ***
 ${dropdown_color}    rgb(117, 105, 255)
@@ -12,7 +12,7 @@ ${already_connected_message}    These elements are already connected.
 
 *** Test Cases ***
 Verify that a button dropdown color changes when the cursor is over it
-    [Tags]    BG-237
+    [Tags]    BG-237   BUG
     ${color_dropdown}    Obtain Dropdown Color In Flow Main Panel    001Added1
     Component Rgb Color Should Be Equal    ${color_dropdown}    ${dropdown_color}
 

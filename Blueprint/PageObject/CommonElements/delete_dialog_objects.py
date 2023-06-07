@@ -1,6 +1,7 @@
 from selenium.webdriver.remote.webelement import WebElement
 from Blueprint.Locators.CommonElements import delete_dialog_locators as locators
 from Libraries.Drivers.base_page import BasePage
+from robot.api import logger
 
 
 class DeleteDialogObjects(BasePage):
@@ -38,5 +39,10 @@ class DeleteDialogObjects(BasePage):
     
     def get_delete_dialog(self) -> WebElement:
         """Finds and returns the delete dialog element."""
-        element = self.find_element.by_class(locators.DELETE_DIALOG)
-        return element
+        try:
+            self.driver.implicitly_wait(2)
+            element = self.find_element.by_class(locators.DELETE_DIALOG)            
+            return element
+        except:
+            logger.info("It returns False if the element is not found.")
+            return False
