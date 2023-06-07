@@ -22,7 +22,6 @@ pipeline {
             }
         }
         stage('Run Test Cases'){
-            }
             steps {
                 bat 'echo "run the browser containers."'
                 bat 'dir'
