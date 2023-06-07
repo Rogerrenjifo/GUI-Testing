@@ -1,6 +1,5 @@
 from selenium import webdriver
 from os import getenv
-from robot.api import logger
 
 
 class Browser(object):
@@ -57,7 +56,6 @@ class Browser(object):
             driver_class = browser_config.get("driver")
             options = browser_config.get("options")
             if bool(ci_execution):
-                logger.console("entró al ci execution")
                 options.add_argument("--headless")
                 options.add_argument("--no-sandbox")
         else:
