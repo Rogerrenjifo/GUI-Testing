@@ -14,13 +14,6 @@ pipeline {
         IMPLICIT_TIMEOUT="20"
     }
     stages {                                                                    
-        stage('Build Browser Environments') {    
-            steps {
-                
-                sh 'docker run -d -p 4444:4444 --net docker_default --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
-                sh 'docker network inspect docker_default'
-            }
-        }
         stage('Run Test Cases'){
             agent {
                 docker {
@@ -41,6 +34,13 @@ pipeline {
                 always {
                     archiveArtifacts artifacts: 'reports/', fingerprint: true
                 }
+            }
+        }
+        stage('Build Browser Environments') {    
+            steps {
+                
+                sh 'docker run -d -p 4444:4444 --net docker_default --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+                sh 'docker network inspect docker_default'
             }
         }
         stage('Down Browser Environments') {
