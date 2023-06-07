@@ -9,8 +9,8 @@ Suite Setup    Search An Specific Project And Click On New Request Button
 Force Tags     New_Project_Page    Dropdowns 
 
 *** Variables ***
-${value}    Roger Renjifo
-${value2}    Carolina Vacaflor
+${user_to_select}    Roger Renjifo
+${user_by_default}    Carolina Vacaflor
 ${section_new_history}    New history
 ${label_responsible}    responsible
 ${section_delivering}    Delivering
@@ -21,21 +21,21 @@ ${red_color}    rgba(255, 114, 105, 1)
 *** Test Cases ***
 Verify that dropdownbox has the default value
     ${content}    Get The Content Of A Dropdown    ${section_new_history}   ${label_responsible}
-    Option Should Be Equal   ${content}    ${value2} 
+    Option Should Be Equal   ${content}    ${user_by_default} 
 
 Verify that hover on the label of a dropdown the color change to purple
     The Rgb Color Of A Label Should Be As Expected    ${section_new_history}   ${label_responsible}   ${purple_color}
 
 verify that it is possible to select one of the available options
-    Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${value}
+    Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${user_to_select}
     ${content}    Get The Content Of A Dropdown    ${section_new_history}   ${label_responsible}
-    Option Should Be Equal   ${content}    ${value}
+    Option Should Be Equal   ${content}    ${user_to_select}
 
 Verify that it is not possible to select two options
-    Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${value2}
-    Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${value}
+    Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${user_by_default}
+    Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${user_to_select}
     ${content}    Get The Content Of A Dropdown    ${section_new_history}   ${label_responsible}
-    Option Should Be Equal   ${content}    ${value}
+    Option Should Be Equal   ${content}    ${user_to_select}
 
 Verify when the box is clicked the list with the option is displayed 
     Click In The Dropdown    ${section_new_history}    ${label_responsible}
