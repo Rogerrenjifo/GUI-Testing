@@ -17,8 +17,6 @@ pipeline {
         stage('Build Browser Environments') {
             steps {
                 sh 'pwd'
-                sh 'docker network create grid'
-                sh 'docker run -d -p 4444:4444 --net grid --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
                 sh 'ls'
             }
         }
@@ -31,7 +29,7 @@ pipeline {
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
+                sh 'robot -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
             }
@@ -51,9 +49,6 @@ pipeline {
     }
     post{
         always{
-            sh 'docker container stop chrome'
-            sh 'docker container rm chrome'
-            sh 'docker network rm -f grid'
             sh 'ls '
         }
     }
