@@ -6,7 +6,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_compo
 
 Suite Setup       Create A New Flow With Random Code
 Suite Teardown    Delete Flow Process In Flow Header
-Force Tags        CREATE_F0RM    MAIN_PANEL   COMPONENT
+Force Tags        CREATE_F0RM    MAIN_PANEL   COMPONENT   FLOW
 
 *** Test Cases ***
 Verify that hovering a component change its color

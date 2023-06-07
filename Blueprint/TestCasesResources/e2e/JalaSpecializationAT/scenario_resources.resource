@@ -169,3 +169,7 @@ Search for project and go
     click_on_projects_button
     insert_project_name_into_the_search_bar    ${title}
     click_on_a_project_result
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

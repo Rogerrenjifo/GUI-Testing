@@ -99,3 +99,7 @@ Add user to a group
     Insert Username Into The Search User Bar    ${username}
     Sleep    1s
     Click On Add Button Of User Result By Index
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

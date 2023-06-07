@@ -1,10 +1,10 @@
 *** Settings ***
-Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.Resource
+Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.resource
 Suite Setup         Navigate To Flows-Page-Create-Flow
 Suite Teardown      Delete Flow Process In Flow Header
 Test Setup          Move actions and steps to the main panel
 Test Teardown       Clean Components Added
-Force Tags          CREATE_FLOW
+Force Tags          CREATE_FLOW   FLOW   holi
 
 *** Variables ***
 ${red_color}          rgb(255, 114, 105)
@@ -27,6 +27,7 @@ Verify that a final step border changes to turquoise color when it has incoming 
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Connect Components In Flow Main Panel    002Added1    001END1    2    12
+    Click Component    002Added1
     ${color}    Obtain Component Color In Flow Main Panel    001END1
     Component Rgb Color Should Be Equal    ${color}    ${turquoise_color}
 

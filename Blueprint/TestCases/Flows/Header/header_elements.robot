@@ -7,7 +7,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Suite Teardown     Delete Flow Process In Flow Header
-Force Tags         HEADER_ELEMENTS
+Force Tags         HEADER_ELEMENTS   FLOW
 
 *** Variables ***
 ${flow_version}        v2

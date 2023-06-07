@@ -5,7 +5,7 @@ Library            Blueprint.Steps.Verifications.Flow.Header.delete_dialog_verif
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
-Force Tags         DELETE_DIALOG
+Force Tags         DELETE_DIALOG   FLOW
 
 *** Test Cases ***
 Verify that delete dialog is displayed when 'Delete' option is clicked from the dropdown menu

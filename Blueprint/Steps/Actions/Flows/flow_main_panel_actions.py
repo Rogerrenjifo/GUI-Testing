@@ -53,6 +53,7 @@ class FlowMainPanelActions(FlowMainPanelObject):
         """Clicks a component"""
         component: BaseComponent = self.index.component_dictionary[component_id]
         component.select_component()
+
     
     def obtain_component_color_in_flow_main_panel(self, component_id :str) -> str:
         """Returns the component color"""

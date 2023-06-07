@@ -3,7 +3,7 @@ Resource     Blueprint/TestCasesResources/Flow/CreateFlow/common_imports.resourc
 Library      Blueprint.Steps.Verifications.Flow.CreateFlow.create_flow_verifications.CreateFlowVerifications
 
 Test Teardown    Click On Flows Button
-Force Tags       CREATE_FLOW    CREATE_FLOW_DIALOG
+Force Tags       CREATE_FLOW    CREATE_FLOW_DIALOG   FLOW
 
 *** Variables ***
 ${flow_name}     my_flow_name_1

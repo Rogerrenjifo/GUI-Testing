@@ -4,6 +4,7 @@ Resource    Blueprint/TestCasesResources/E2E/ScholarshipApplication/scholarship_
 
 Force Tags    SCHOLARSHIP_APPLICATION
 Suite Setup    Set Steps and Actions Dictionaries
+Suite Teardown    Delete Storage
 
 *** Variables ***
 ${expected_success_popup_color}    rgba(92, 184, 92, 1)
@@ -54,4 +55,3 @@ Verify a flow can be created, from form creation, flow creation, and permissions
     Click Save Publish Button
     Log To Console    ${flow_name_for_edit}
     New Project Should Exist    ${flow_name_for_edit}
-

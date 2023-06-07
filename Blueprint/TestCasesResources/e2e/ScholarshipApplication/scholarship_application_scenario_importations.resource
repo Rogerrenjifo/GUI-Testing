@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    Blueprint/TestCasesResources/Flow/CreateForm/common_imports.resource
-Resource    Blueprint/TestCasesResources/e2e/ScholarshipApplication/scholarship_application_scenario_create_form.resource
-Resource    Blueprint/TestCasesResources/e2e/ScholarshipApplication/scholarship_application_scenario_create_flow.resource
+Resource    Blueprint/TestCasesResources/E2E/ScholarshipApplication/scholarship_application_scenario_create_form.resource
+Resource    Blueprint/TestCasesResources/E2E/ScholarshipApplication/scholarship_application_scenario_create_flow.resource
 Library    Blueprint.Steps.Actions.Flows.flow_permissions_actions.FlowPermissionsActions
 Library    Blueprint.Steps.Actions.Flows.process_permissions_actions.ProcessPermissionsActions
 Library    Blueprint.Steps.Actions.Flows.section_visibility_permissions_actions.SectionsVisibilityActions
@@ -50,8 +50,11 @@ Set Visibility Section In Applicant Information, Documentation And Academic Perf
     Delete All Users In Section Visibility    5
     Add User To Section Visibility By Scrolling Process In Section Visibility    ${user_group}   5
 
-
 Verify Dropdown Titles For Sections Applicant Information, Documentation And Academic Performance
     Section Visibility Title Should Be    ${section_name_1}    3
     Section Visibility Title Should Be    ${section_name_2}    4
     Section Visibility Title Should Be    ${section_name_3}    5
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

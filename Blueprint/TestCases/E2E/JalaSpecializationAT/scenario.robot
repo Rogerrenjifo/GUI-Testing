@@ -2,7 +2,8 @@
 Documentation    E2E test to simulate the use of Blueprint to implement a flow of the process
 ...              of the application to enter Jala's AT specialization.
 Resource         Blueprint/TestCasesResources/E2E/JalaSpecializationAT/scenario_resources.resource
-Suite Setup      Login to blueprint
+Suite Teardown    Delete Storage
+Force Tags    e2e
 
 *** Test Cases ***
 E2E Scenario: Application for Jala AT Specialization

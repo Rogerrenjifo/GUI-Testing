@@ -5,7 +5,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_secti
 
 Suite Setup       Create A New Flow With Random Code
 Suite Teardown    Delete Flow Process In Flow Header
-Force Tags        CREATE_F0RM   ADD_COMPONENT   NEW_SECTION
+Force Tags        CREATE_F0RM   ADD_COMPONENT   NEW_SECTION   FLOW
 
 *** Test Cases ***
 Verify that a component can be added after add a new section
