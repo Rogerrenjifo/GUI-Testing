@@ -1,12 +1,12 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/common.imports.resource
 
-Force Tags    Scenario   BUG   E2E
+Force Tags    Scenario   E2E
 Suite Teardown    Delete Storage
 
 *** Variables ***
 ${flow_name}    DL-GUI-10
-${group_name}   DL-GUI-Group-11
+${group_name}   DL-GUI-Group-10
 @{age_dropdown}      Yes, I am      No, I am not
 @{exam_dropdown}     Yes, I passed the exam      No, I did not pass the exam
 @{expected_section_1_components}    Name  Are you more than 18 years old?   Age
