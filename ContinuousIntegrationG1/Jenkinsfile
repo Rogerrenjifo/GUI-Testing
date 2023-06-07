@@ -26,7 +26,7 @@ pipeline {
             agent{
                 docker{
                     image 'roretar/gui-blueprint-environment:1.0.0'
-                    network 'grid'
+                    args '--net grid'
                 }
             }
             steps {
