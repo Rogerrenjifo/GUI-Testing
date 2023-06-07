@@ -35,3 +35,9 @@ pipeline {
     }
   }
 }
+
+def isFileExist(filePath) {
+  def command = "IF EXIST ${filePath} (exit 0) ELSE (exit 1)"
+  def result = bat returnStatus: true, script: command
+  return result == 0
+}
