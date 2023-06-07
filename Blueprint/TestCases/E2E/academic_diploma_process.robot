@@ -1,6 +1,6 @@
 *** Settings ***
 Resource      Blueprint/TestCasesResources/E2E/AcademicDiploma/academic_diploma_imports.resource
-Force Tags    E2E   FLOWS
+Force Tags    E2E   FLOW
 Suite Teardown    Delete Storage
 
 *** Variables ***
