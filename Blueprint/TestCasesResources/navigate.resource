@@ -22,6 +22,12 @@ Clean Components Added
 Navigate To Project Tracing
     Navigate To Url                ${project_tracing}
 
+Navigate To Projects
+    Navigate To Url                 ${new_project_page}
+
+Return to previous page
+    Go Back To Previous Page
+
 Navigate To A Flow
     Click On Flows Button
     Insert Flow Name Into The Search Bar    ${search_flow}

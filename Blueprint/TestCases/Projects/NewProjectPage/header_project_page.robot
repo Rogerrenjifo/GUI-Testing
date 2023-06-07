@@ -3,10 +3,10 @@ Documentation    Atomic tests to verify the functionality of the create
 ...              button in new project page of Blueprint.
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
-Resource    Blueprint/TestCasesResources/Projects/projects.resource
+Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     PROJECT
+Force Tags    PROJECT
 
 *** Variables ***
 ${create_button_color}    rgba(0, 217, 194, 1)
@@ -38,6 +38,9 @@ Verify the text of Create button
 
 Verify the create button goes to the next page
     Insert Text Or Number In A Component In New Project Page    ${section_name}    ${label_name}    ${new_value}
+    Select User From The Dropdown In New Project Page    ${new_section}    ${new_component}    1
+    Click A Component Inside A Section In New Project Page    ${new_section}    ${new_component_2}
+    Select A Complete Date In Datepicker    ${year}    ${month}    ${day}
     Click Create Button In New Project Page
     Popup Message Should Be Displayed
     Select User From The Dropdown In New Project Page    ${new_section}    ${new_component}    1

@@ -3,10 +3,11 @@ Documentation    Atomic tests to verify the functionality of a text box and
 ...              a numberic box in new project page of Blueprint.
 Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectActions
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
-Resource    Blueprint/TestCasesResources/Projects/projects.resource
+Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 
 Suite Setup    Search An Specific Project And Click On New Request Button
 Force Tags     PROJECT
+
 *** Variables ***
 ${section_name}    New history
 ${label_new_child}    New Child
