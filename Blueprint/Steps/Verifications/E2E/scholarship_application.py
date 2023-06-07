@@ -35,6 +35,10 @@ class ScholarshipApplicationVerifications:
         popup_message = self.main_panel.pop_up_messages.get_popup_message()
         self.assertions.verify_element_is_displayed(popup_message)
 
+    def popup_message_text_should_be(self, expected_message_text: str):
+        actual_message_text = self.main_panel.obtain_text_of_form_main_panel_pop_up_message()
+        self.assertions.verify_equal_ignore(actual_message_text, expected_message_text)
+
     def component_title_should_be(self, expected_result, component_id):
         actual_result = self.flow_board.obtain_component_title_in_flow_main_panel(component_id)
         self.assertions.verify_equal_ignore(actual_result, expected_result)
