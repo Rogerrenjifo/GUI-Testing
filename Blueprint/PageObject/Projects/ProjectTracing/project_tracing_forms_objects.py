@@ -102,13 +102,23 @@ class FormObjects(BasePage):
             return element
         except Exception:
             raise Exception("Option with value  " + value + " not found.")
+    
+    def get_no_items_found_dropdown_option(self) -> WebElement:
+        """Finds and returns the 'No items found' option on the dropdown."""
+        element = self.find_element.by_xpath(locators.DROPDOWN_NO_ITEMS_FOUND_LOCATOR)
+        return element
         
     def get_checkbox_label(self, title: str, section_title: str) -> WebElement:
         """Finds and returns the clickable checkbox label with the title field given in the section given."""
-        new_xpath = locators.CHECKBOX_LABEL_LOCATOR.replace("<<value>>", title)
-        new_xpath = new_xpath.replace("<<section_title>>", section_title)
+        new_xpath = locators.CHECKBOX_LABEL_LOCATOR.replace("<<value>>", title).replace("<<section_title>>", section_title)
         element = self.find_element.by_xpath(new_xpath)
         return element
+    
+    def get_checkbox_value(self, title: str, section_title: str) -> str:
+        """Returns the value of a checkbox with the title field given in the section given."""
+        new_xpath = locators.CHECKBOX_LABEL_VALUE_LOCATOR.replace("<<value>>", title).replace("<<section_title>>", section_title)
+        value = self.find_element.by_xpath(new_xpath).get_attribute('checked')
+        return value
     
     def get_select_date_input(self) -> WebElement:
         """Finds and returns select date input."""
@@ -128,6 +138,16 @@ class FormObjects(BasePage):
     def get_multiline_editable_input(self) -> WebElement:
         """Finds and returns editable multiline text input."""
         element = self.find_element.by_xpath(locators.EDITABLE_MULTILINE_INPUT_LOCATOR)
+        return element
+    
+    def get_multiline_value(self, title: str, section_title: str) -> str:
+        """Returns the value assigned to a multiline text with given title and section names."""
+        value = self.get_multiline_input_field(title, section_title).get_attribute('value')
+        return value
+    
+    def get_please_select_user_div(self) -> WebElement:
+        """Finds and returns div containing the 'Please select a user form user list' message."""
+        element = self.find_element.by_xpath(locators.PLEASE_SELECT_USER_LOCATOR)
         return element
     
     def get_user_list_email_button(self, title: str, section_title: str) -> WebElement:

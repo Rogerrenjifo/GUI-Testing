@@ -34,6 +34,8 @@ class CreateFormElementsActions(CreateFormElementsObjects):
 
     def add_component_to_column_section_in_create_form(self, component_type: str, section_column_id: str, component_number: str = "1"):
         """Adds a new element in a section form column, according the selected type"""
+        if not self.element_storage.components_in_sections:
+            self.element_storage.add_default_component()
         section = self.main_panel.get_section_column(section_column_id)
         component = self.select_component_type_in_create_form(component_type)
         self.action_chains.custom_drag_and_drop(component, section)
@@ -42,6 +44,8 @@ class CreateFormElementsActions(CreateFormElementsObjects):
 
     def add_component_down_existent_component_in_create_form(self, component_type: str, existent_component_id: str, component_number: str = "1"):
         """Adds a new element under an existing one, according to the selected type"""
+        if not self.element_storage.components_in_sections:
+            self.element_storage.add_default_component()
         target = self.main_panel.get_component(existent_component_id)
         source = self.select_component_type_in_create_form(component_type)
         self.action_chains.drag_and_drop_element(source, target)
@@ -57,6 +61,10 @@ class CreateFormElementsActions(CreateFormElementsObjects):
 
     def add_new_section_in_create_form(self):
         """Adds a new section at the end of a form"""
+        if not self.element_storage.sections_list:
+            self.element_storage.add_default_section()
+        if not self.element_storage.components_in_sections:
+            self.element_storage.add_default_component()
         target = self.main_panel.get_section(self.element_storage.get_sections_title()[-1])
         source = self.get_section_element()
         self.action_chains.drag_and_drop_element(source, target)
@@ -72,6 +80,10 @@ class CreateFormElementsActions(CreateFormElementsObjects):
 
     def add_section_down_other_in_create_form(self, existing_section_title: str):
         """Adds a new section under an existing one"""
+        if not self.element_storage.sections_list:
+            self.element_storage.add_default_section()
+        if not self.element_storage.components_in_sections:
+            self.element_storage.add_default_component()
         existing_section_index = self.element_storage.get_section_index(existing_section_title)
         source = self.get_section_element()
         target = self.main_panel.get_section(existing_section_title)

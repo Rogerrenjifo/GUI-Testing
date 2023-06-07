@@ -58,3 +58,21 @@ class FlowPropertiesObjects(BasePage):
         xpath = self.locators.DATE_PICKER_DAY.replace("<<day>>", self.space_handler(str(day)))
         element = self.find_element.by_xpath(xpath)
         return element
+
+    def get_result_field(self, index: str = "1"):
+        """Returns element result from update field dropdown menu (default:1)"""
+        result = locators.RESULT_UPDATE_FIELD + "[" + index + "]"
+        element = self.find_element.by_xpath(result)
+        return element
+
+    def click_select_owner_menu_in_flow_properties(self) -> None:
+        """Performs click on 'select owner' combobox."""
+        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
+
+    def select_owner_in_menu_in_flow_properties(self):
+        """Clicks on select owner in menu in flow properties"""
+        self.find_element.by_xpath(locators.SELECT_FIRST_USER).click()
+
+    def search_owner_in_menu_in_flow_properties(self, user: str):
+        """Search owner in select owner in menu in flow properties"""
+        self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)

@@ -62,6 +62,16 @@ class Verification(object):
             logger.info(actual_result)
             assert_that(actual_result).is_empty()
 
+    def verify_element_is_displayed(self, element: WebElement):
+        """Verifies the element is displayed"""
+        is_displayed = element.is_displayed()
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(f"Element {element} displayed: {True}")
+            logger.info("*****Actual******")
+            logger.info(f"Element {element} displayed: {is_displayed}")
+            assert_that(is_displayed).is_true()
+
     def verify_a_list_contains(self, elements_list, item):
         """Asserts the expected does not contain of actual"""
         with soft_assertions():
@@ -81,15 +91,15 @@ class Verification(object):
             logger.info(element_list.sort())
             assert_that(element_list.sort()).is_equal_to(element_set.sort())
 
-    def element_should_be_displayed(self, element: WebElement):
-        """Verifies the element is displayed"""
+    def verify_element_is_not_displayed(self, element: WebElement):
+        """Verifies the element is not displayed"""
+        is_displayed = element.is_displayed()
         with soft_assertions():
-            is_displayed = element.is_displayed()
             logger.info("*****Expected******")
-            logger.info(f"Element {element} displayed: ", True)
+            logger.info(f"Element {element} displayed: ", False)
             logger.info("*****Actual******")
             logger.info(f"Element {element} displayed: ", is_displayed)
-            assert_that(is_displayed).is_true()
+            assert_that(is_displayed).is_false()
 
     def verify_a_dictionary_contains_key(self, expected_result, actual_result):
         """Asserts the expected contains the dictionary of the actual"""
@@ -108,3 +118,31 @@ class Verification(object):
             logger.info("*****Actual******")
             logger.info(actual_instance)
             assert_that(actual_instance).is_instance_of(expected_instance)
+
+    def verify_result_is_true(self, result):
+        """Asserts the result is true"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(f"Result is: {True}")
+            logger.info("*****Actual******")
+            logger.info(f"Result is: {result}")
+            assert_that(result).is_true()
+
+    def verify_a_list_is_not_empty(self, actual_result):
+        """Asserts the expected does not contain of actual"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info("Not empty")
+            logger.info('*****Actual******')
+            logger.info(actual_result)
+            assert_that(actual_result).is_not_empty()
+
+    def element_should_be_displayed(self, element: WebElement):
+        """Verifies the element is displayed"""
+        with soft_assertions():
+            is_displayed = element.is_displayed()
+            logger.info("*****Expected******")
+            logger.info(f"Element {element} displayed: ", True)
+            logger.info("*****Actual******")
+            logger.info(f"Element {element} displayed: ", is_displayed)
+            assert_that(is_displayed).is_true()

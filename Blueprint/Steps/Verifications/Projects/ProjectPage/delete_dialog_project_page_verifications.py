@@ -28,7 +28,7 @@ class DeleteDialogProjectPageVerifications:
     def popup_message_should_be_displayed(self):
         """Verifies the popup message is displayed"""
         popup = self.project_page.obtain_popup_message_in_project_page()
-        self.assertions.element_should_be_displayed(popup)
+        self.assertions.verify_element_is_displayed(popup)
 
     def delete_dialog_should_not_be_displayed(self):
         """Verifies the delete dialog is not displayed"""

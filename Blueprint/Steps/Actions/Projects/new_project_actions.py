@@ -1,13 +1,14 @@
 from Blueprint.PageObject.Projects.new_project_objects import NewProjectObjects
 from selenium.webdriver.common.keys import Keys
 from Blueprint.PageObject.Flows.Elements.dropdowns import Dropdownbox
-
+from Blueprint.Steps.Actions.CommonElements.date_actions import DateActions
 
 class NewProjectActions(NewProjectObjects):
     """This class represents the actions in new project page."""
     def __init__(self):
         super().__init__()
         self.dropdown = Dropdownbox('projects_new_project')
+        self.datebox = DateActions()
 
     def click_create_button_in_new_project_page(self) -> None:
         """Clicks create button."""
@@ -21,6 +22,10 @@ class NewProjectActions(NewProjectObjects):
         """Clicks on a specific textbox, numberbox, datebox or userlist inside a section."""
         self.get_element_locator_from_each_section(section_name, label_name).click()
 
+    def click_a_checkbox_label_inside_a_section_in_new_project_page(self, section_name: str, label_name: str) -> None:
+        """Clicks on any checkbox inside a section."""
+        self.get_checkbox_label_locator(section_name, label_name).click()
+    
     def click_a_checkbox_inside_a_section_in_new_project_page(self, section_name: str, label_name: str) -> None:
         """Clicks on any checkbox inside a section."""
         self.get_checkbox_locator(section_name, label_name).click()
@@ -110,6 +115,38 @@ class NewProjectActions(NewProjectObjects):
         dropdown_content = self.get_element_locator_from_text_dropdown(section_name, label_name).get_attribute('textContent')
         return dropdown_content
 
-    def click_in_the_drodown(self, section_name: str, label_name: str):
+    def click_in_the_dropdown(self, section_name: str, label_name: str):
         """Clicks in the specified dropdown"""
         self.dropdown.click_dropdown('TEXT_USER_NUMBER_DATE_BOX', section_name, label_name)
+
+    def click_to_display_months_in_datepicker_new_project_page(self):
+        """Clicks in month datapicker new project page"""
+        self.datebox.click_to_display_month_in_datapicker()
+    
+    def click_to_display_years_in_datepicker_new_project_page(self):
+        """Clicks in year datapicker new project page"""
+        self.datebox.click_to_display_year_in_datapicker()
+    
+    def select_a_month_in_datepicker(self, month: str):
+        """Selects the selected month in datepicker"""
+        self.datebox.set_month(month)
+    
+    def select_a_year_in_datepicker(self, year: str):
+        """Selects the selected year in datepicker"""
+        self.datebox.set_year(year)
+    
+    def select_a_complete_date_in_datepicker(self, year: str, month: str, day: str):
+        """Selects the selected year in datepicker"""
+        self.datebox.set_date(year, month, day)
+
+    def delete_date_in_a_datebox(self, section_name: str, label_name: str):
+        """Clicks 'x' icon to delete a date in a datebox"""
+        self.get_element_delete_date_in_datebox(section_name, label_name).click()
+        
+    def click_to_next_month_button(self):
+        """Clicks on '>' button in datepicker"""
+        self.datebox.go_next_month()
+    
+    def click_to_previous_month_button(self):
+        """Clicks on '<' button in datepicker"""
+        self.datebox.go_prev_month()
