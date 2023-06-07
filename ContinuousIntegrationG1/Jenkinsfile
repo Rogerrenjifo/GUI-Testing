@@ -15,9 +15,7 @@ pipeline {
     stages {
         stage('Build Browser Environments') {
             steps {
-                sh 'pwd'
                 sh 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
-                sh 'ls'
             }
         }
         stage('Run Test Cases'){
