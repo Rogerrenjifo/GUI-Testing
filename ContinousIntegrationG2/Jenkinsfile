@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages{
-    stage('Test'){
-      steps{
-        bat 'python --help'
-      }
-    }
     stage('Code Inspection'){
       steps{
         bat 'echo Test stage'
@@ -19,6 +14,12 @@ pipeline {
           bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
           bat ".\\venv\\Scripts\\activate"
         }
+      }
+    }
+    stage('Test'){
+      steps{
+        bat 'python --help'
+        bat 'robot --help'
       }
     }
   }
