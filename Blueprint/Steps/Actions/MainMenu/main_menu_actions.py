@@ -30,7 +30,7 @@ class MainMenuActions(MainMenuObjects):
         self.get_flows_button().click()
 
     def get_flows_button_label(self) -> str:
-        """Clicks on the 'Flows' button in the Main Menu."""
+        """Gets the label of 'Flows' button in the Main Menu."""
         label = self.get_flows_button().text
         return label
 
@@ -46,10 +46,6 @@ class MainMenuActions(MainMenuObjects):
     def click_on_users_and_groups_button(self):
         """Clicks on the 'Users and Groups' button in the Main Menu."""
         self.get_users_and_groups_button().click()
-
-    def click_on_new_flow_button(self):
-        """Clicks on the 'New Flow' button in the Main Menu."""
-        self.get_new_flow_button().click()
 
     def go_to_project_process_in_main_menu(self, project_name: str):
         """Goes to a specific project"""

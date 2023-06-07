@@ -75,3 +75,8 @@ class MainMenuObjects(BasePage):
         """Finds and returns the new main menu container."""
         element = self.find_element.by_xpath(locators.MAIN_MENU_CONTAINER)
         return element
+
+    def get_flow_results_container(self):
+        """Finds and returns the flow results container."""
+        element = self.find_element.by_xpath(locators.FLOW_RESULTS_CONTAINER)
+        return element

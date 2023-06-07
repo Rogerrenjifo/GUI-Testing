@@ -41,6 +41,24 @@ class ProjectFlowObject(BasePage):
             logger.info(f"'{number}' is not an available option")
 
     def get_popup_action(self) -> WebElement:
-        """Finds and returns the popup of the actions"""
+        """Finds and returns the popup of the actions on the flow"""
         element = self.find_element.by_xpath(locators.ACTION_POPUP)
         return element
+
+    def get_start_component_in_flow(self) -> WebElement:
+        """Finds and returns the start component on the flow"""
+        try:
+            element = self.find_element.by_xpath(locators.START_ACTION)
+            return element
+        except Exception:
+            logger.info("element not find")
+            return False
+
+    def get_last_component_in_flow(self) -> WebElement:
+        """Finds and returns the last component on the flow"""
+        try:
+            element = self.find_element.by_xpath(locators.FINAL_STEP)
+            return element
+        except Exception:
+            logger.info("Element not find")
+            return False

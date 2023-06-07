@@ -36,9 +36,14 @@ class Header(BasePage):
         element = self.find_element.by_xpath(locators.SELECT_VERSION)
         return element
     
+    def get_version_list(self) -> WebElement:
+        """Finds and returns the version list element in the dropdown of the header."""
+        element = self.find_element.by_xpath(locators.VERSIONS_LIST)
+        return element
+    
     def get_specific_version(self, version: str) -> WebElement:
         """Finds and returns a version from the select version list."""
-        element = self.find_element.by_xpath(locators.VERSIONS.replace('v1', version))
+        element = self.find_element.by_xpath(locators.VERSIONS.replace('<<value>>', version))
         return element
     
     def get_last_updated(self) -> WebElement:
@@ -61,6 +66,11 @@ class Header(BasePage):
         bar_element = self.find_element.by_xpath(locators.BAR_TAB.replace('TAB_NAME', tab_name))
         return bar_element
     
+    def get_icon(self, tab_name: str) -> WebElement:
+        """Finds and returns the icon element from the selected tab."""
+        bar_element = self.find_element.by_xpath(locators.ICON_TAB.replace('TAB_NAME', tab_name))
+        return bar_element
+
     def is_marked_tab_elements(self, tab_name: str) -> WebElement:
         """Finds the marked bar and icon element from the selected tab."""
         try:

@@ -3,36 +3,41 @@ pipeline {
     environment {
         DOCKERUSER='roretar' 
         DOCKERPASSWORD=credentials('dockerhubpassword')
-        PYTHONPATH = "${WORKSPACE}/GUI-Blueprint"
+        PYTHONPATH = "${WORKSPACE}"
         REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
         PASSWORD="pasuconsumo"
+        REMOTE_URL="http://0.0.0.0:4444"
         USER="roger.renjifo"
-        BROWSER="chrome"
+        BROWSER="remote_chrome"
         DEVICE="pc"
         DRIVER_PATH="./"
-        IMPLICIT_TIMEOUT="2"
+        IMPLICIT_TIMEOUT="20"
     }
     stages {
         stage('Build Browser Environments') {
             steps {
-                sh 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+                sh 'pwd'
+                sh 'docker network create grid'
+                sh 'docker run -d -p 4444:4444 --net grid --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+                sh 'ls'
             }
         }
         stage('Run Test Cases'){
             agent{
                 docker{
                     image 'roretar/gui-blueprint-environment:1.0.0'
+                    args '--net grid'
                 }
             }
             steps {
                 sh 'echo "run the browser containers."'
-                sh 'ls'
+                sh 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
                 sh 'pwd'
                 sh 'pip list'  
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'README.md', fingerprint: true
+                    archiveArtifacts artifacts: 'reports/', fingerprint: true
                 }
             }
         }
@@ -40,10 +45,16 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'docker container ls'
-                sh 'docker container stop chrome'
-                sh 'docker container rm chrome'
                 sh 'ls'
             }
+        }
+    }
+    post{
+        always{
+            sh 'docker container stop chrome'
+            sh 'docker container rm chrome'
+            sh 'docker network rm -f grid'
+            sh 'ls '
         }
     }
 }

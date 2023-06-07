@@ -2,6 +2,8 @@ from robot.api import logger
 from Blueprint.PageObject.Flows.create_form_main_panel_objects import FormMainPanelPage
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
+from Blueprint.PageObject.Flows.create_form_elements_objects import CreateFormElementsObjects
+from Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions import PropertiesPanelActions
 
 
 class FormMainPanelActions(FormMainPanelPage):
@@ -12,6 +14,7 @@ class FormMainPanelActions(FormMainPanelPage):
         self.element_storage = FormElementsStorage()
         self.sections_list = self.element_storage.sections_list
         self.components_list = self.element_storage.components_in_sections
+        self.properties = PropertiesPanelActions()
 
     def select_component_in_form_main_panel(self, component_id: str):
         """Clicks a component from main panel for display its properties"""
@@ -58,6 +61,11 @@ class FormMainPanelActions(FormMainPanelPage):
         section_index = self.element_storage.get_section_index(section_title)
         if section_index != 0:
             del self.sections_list[section_index]
+            section_key = section_title.lower().replace(" ", "-")
+            try:
+                del self.components_list[section_key]
+            except:
+                logger.info(f"Not component in section: {section_key}")
         self.display_section_delete_menu_in_form_main_panel(section_title, index)
         self.select_section_delete_button_in_form_main_panel()
 
@@ -66,7 +74,10 @@ class FormMainPanelActions(FormMainPanelPage):
         self.display_component_delete_menu_in_form_main_panel(component_id)
         self.select_component_delete_button_in_form_main_panel(component_id)
         for section in self.components_list:
-            del self.components_list[section][component_id]
+            try:
+                del self.components_list[section][component_id]
+            except:
+                logger.info(f"Not component in section: {section}")
 
     def display_section_delete_menu_in_form_main_panel(self, section_title: str, index=None):
         """Clicks drop-down button, if it does not display, clicks on its corner"""
@@ -164,8 +175,33 @@ class FormMainPanelActions(FormMainPanelPage):
         for section in section_list:
             if section != "Section 1":
                 self.delete_section_in_form_main_panel(section)
-                section = section.lower().replace(" ", "-")
-                del self.components_list[section]
             else:
                 section = section.lower().replace(" ", "-")
                 self.delete_components_added_in_section_in_form_main_panel(section)
+
+    def hover_section_in_form_main_panel(self, section_title: str):
+        """Moves to a section in form main panel"""
+        self.action_chains.move_to_an_element(self.get_section(section_title))
+
+    def hover_component_in_form_main_panel(self, component_id: str):
+        """Moves to a component in form main panel"""
+        self.action_chains.move_to_an_element(self.get_component(component_id))
+
+    def move_component_in_main_panel_in_create_form(self, component_id: str):
+        """Tries to move a component in the main panel"""
+        main_panel = CreateFormElementsObjects().get_drop_area()
+        component = self.get_component(component_id)
+        self.action_chains.custom_drag_and_drop(component, main_panel)
+
+    def get_all_components_type_in_a_section_in_form_main_panel(self, section_title: str = "section-1") -> list:
+        """Returns all the components types displayed in properties panel"""
+        components_type_list = []
+        if section_title == "section-1":
+            components_in_section = self.get_all_components_in_a_section(section_title)[1:]
+        else:
+            components_in_section = self.get_all_components_in_a_section(section_title)
+        for component in components_in_section:
+            component.click()
+            self.wait_for_element.wait_for_element_with_web_element(self.properties.get_field_type_select())
+            components_type_list.append(self.properties.get_field_type_select().text)
+        return components_type_list

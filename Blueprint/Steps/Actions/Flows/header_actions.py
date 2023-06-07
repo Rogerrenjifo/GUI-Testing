@@ -1,5 +1,6 @@
 from Blueprint.PageObject.Flows.header_objects import Header
 from Blueprint.Steps.Actions.CommonElements.delete_dialog_actions import DeleteDialogActions
+from Blueprint.PageObject.Flows.Elements.FormElements.form_elements_storage import FormElementsStorage
 
 
 class HeaderActions(Header):
@@ -8,6 +9,7 @@ class HeaderActions(Header):
     def __init__(self) -> None:
         super().__init__()
         self.delete_dialog = DeleteDialogActions()
+        self.form_storage = FormElementsStorage()
     
     def get_flow_status_text_in_flow_header(self) -> str:
         """Gets the text of the flow status"""
@@ -48,7 +50,19 @@ class HeaderActions(Header):
         """Clicks on the close button of the Delete Process dialog. The "click_delete_option" method needs to be
         executed before."""
         self.delete_dialog.click_close_dialog_button()    
-   
+    
+    def obtain_title_text_in_delete_dialog(self) -> str:
+        """Gets the text of the dialog title in the Delete Process dialog. The "click_delete_option" method needs to be
+        executed before."""
+        title_text = self.delete_dialog.get_dialog_title_text()
+        return title_text
+    
+    def obtain_question_text_in_delete_dialog(self) -> str:
+        """Gets the text of the dialog question in the Delete Process dialog. The "click_delete_option" method needs to be
+        executed before."""
+        question_text = self.delete_dialog.get_dialog_question_text()
+        return question_text
+
     def display_select_version_in_flow_header(self) -> None:
         """Displays the Select Version option. The "deploy_header_dropdown" method needs to be executed before."""
         select_version = self.get_select_version_option()
@@ -102,6 +116,8 @@ class HeaderActions(Header):
 
     def delete_flow_process_in_flow_header(self) -> None:
         """Executes the process to delete a flow"""
+        self.form_storage.components_in_sections.clear()
+        self.form_storage.sections_list.clear()
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
         self.click_delete_button_in_delete_dialog()
