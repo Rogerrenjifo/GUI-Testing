@@ -1,7 +1,7 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/common.imports.resource
 
-Force Tags    Scenario
+Force Tags    E2E   DRIVERS_LICENSE
 
 *** Variables ***
 ${flow_name}    DL-GUI-10

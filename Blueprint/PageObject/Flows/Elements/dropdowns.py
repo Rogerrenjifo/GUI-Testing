@@ -100,7 +100,7 @@ class Dropdownbox(BasePage):
             self.action_chains.custom_scroll(user)
         except Exception:
             logger.info(f" option '{option}' does not exist")
-            self.click_drop_arrow()
+            self.click_drop_arrow(key)
 
     def click_drop_arrow(self, key: str, dropdown_index: str = None):
         """Clicks on the dropdown arrow"""
