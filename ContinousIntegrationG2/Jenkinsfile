@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     PYTHONPATH = "${WORKSPACE}\\"
-    PASSWORD="roc1o76246"
+    PASSWORD="roc1o76"
     USER="Rocío.Morales"
     BROWSER="chrome"
     DEVICE="pc"
