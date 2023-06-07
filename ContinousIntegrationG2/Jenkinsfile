@@ -16,7 +16,7 @@ pipeline {
         script {
           virtualenvDir = "${WORKSPACE}\\venv"  // Directorio del entorno virtual
           bat "python -m venv ${virtualenvDir}"  // Crear el entorno virtual
-        //   bat "${virtualenvDir}\\bin\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
+          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"  // Instalar las dependencias en el entorno virtual
         }
       }
     }
@@ -34,10 +34,4 @@ pipeline {
       }
     }
   }
-}
-
-def isFileExist(filePath) {
-  def command = "IF EXIST ${filePath} (exit 0) ELSE (exit 1)"
-  def result = bat returnStatus: true, script: command
-  return result == 0
 }
