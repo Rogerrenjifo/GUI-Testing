@@ -4,10 +4,10 @@ pipeline {
     PYTHONPATH = "${WORKSPACE}\\"
     PASSWORD=credentials('PASSWORD')
     USER="rocío.morales"
-    BROWSER=chrome
-    DEVICE=pc
+    BROWSER="chrome"
+    DEVICE="pc"
     DRIVER_PATH=".\\"
-    IMPLICIT_TIMEOUT=10
+    IMPLICIT_TIMEOUT="10"
   }
   stages{
     stage('Code Inspection'){
