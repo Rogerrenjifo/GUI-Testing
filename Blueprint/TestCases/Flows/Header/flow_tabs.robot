@@ -4,7 +4,7 @@ Library            Blueprint.Steps.Verifications.Flow.Header.flow_tabs_verificat
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
-Force Tags         FLOW_TABS   FLOWS
+Force Tags         FLOWS    FLOW_TABS
 Suite Teardown     Click On Flows Button
 
 *** Variables ***
