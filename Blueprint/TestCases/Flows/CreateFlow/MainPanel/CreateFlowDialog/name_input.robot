@@ -2,7 +2,7 @@
 Resource     Blueprint/TestCasesResources/Flow/CreateFlow/common_imports.resource
 Library      Blueprint.Steps.Verifications.Flow.CreateFlow.create_flow_verifications.CreateFlowVerifications
 
-Force Tags       CREATE_FLOW    NAME_FLOW_INPUT   CREATE_FLOW_DIALOG   FLOW
+Force Tags       CREATE_FLOW    NAME_FLOW_INPUT   CREATE_FLOW_DIALOG   FLOWS
 Suite Setup      Click On New Flow Button
 Suite Teardown    Close Dialog And Menu
 

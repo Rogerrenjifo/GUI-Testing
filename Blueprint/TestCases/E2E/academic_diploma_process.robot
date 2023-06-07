@@ -1,6 +1,6 @@
 *** Settings ***
 Resource      Blueprint/TestCasesResources/E2E/AcademicDiploma/academic_diploma_imports.resource
-Force Tags    E2E   FLOW
+Force Tags    E2E   FLOWS
 Suite Teardown    Delete Storage
 
 *** Variables ***
@@ -31,6 +31,7 @@ Verify that is posible create Academic Diploma process flow and publish it
     Set Users In Sections Visibility
     Users Selected should be visible
     Click Save Next Button In Flow Header
+    Sleep    2s
     Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Sleep    5s
     Click Save Publish Button

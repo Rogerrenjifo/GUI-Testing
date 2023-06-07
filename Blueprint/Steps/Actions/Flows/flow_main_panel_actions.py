@@ -1,3 +1,5 @@
+import time
+
 from Blueprint.PageObject.Flows.flow_main_panel_object import FlowMainPanelObject
 from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
 from Blueprint.PageObject.Flows.Elements.Components.action_component import ActionComponent

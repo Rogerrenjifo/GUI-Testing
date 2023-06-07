@@ -7,7 +7,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Suite Teardown     Click On Flows Button
-Force Tags         HEADER_ELEMENTS   FLOW
+Force Tags         HEADER_ELEMENTS   FLOWS   holi
 
 *** Variables ***
 ${flow_version}        v2

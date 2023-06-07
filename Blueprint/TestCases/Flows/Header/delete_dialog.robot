@@ -5,7 +5,7 @@ Library            Blueprint.Steps.Verifications.Flow.Header.delete_dialog_verif
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
-Force Tags         DELETE_DIALOG   FLOW
+Force Tags         DELETE_DIALOG   FLOWS
 Test Teardown      Click Cancel Button In Delete Dialog
 Suite Teardown     Click On Flows Button
 

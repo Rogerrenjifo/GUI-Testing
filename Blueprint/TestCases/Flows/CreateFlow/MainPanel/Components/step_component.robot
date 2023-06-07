@@ -4,7 +4,7 @@ Suite Setup         Navigate To Flows-Page-Create-Flow
 Suite Teardown      Delete Flow Process In Flow Header
 Test Teardown       Clean Components Added
 Test Setup          Enter Create Flow tab and move components to the main panel
-Force Tags          CREATE_FLOW   FLOW
+Force Tags          CREATE_FLOW   FLOWS
 
 *** Variables ***
 ${red_color}    rgb(255, 114, 105)

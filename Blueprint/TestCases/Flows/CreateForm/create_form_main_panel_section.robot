@@ -5,7 +5,7 @@ Library      Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_secti
 
 Suite Setup       Create A New Flow With Random Code
 Suite Teardown    Delete Flow Process In Flow Header
-Force Tags        CREATE_F0RM    MAIN_PANEL   SECTION   FLOW
+Force Tags        CREATE_F0RM    MAIN_PANEL   SECTION   FLOWS
 
 *** Test Cases ***
 Verify that default section cannot be deleted from main panel
