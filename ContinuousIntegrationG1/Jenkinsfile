@@ -54,6 +54,7 @@ pipeline {
         always{
             sh 'docker container stop chrome'
             sh 'docker container rm chrome'
+            sh 'docker network rm -f grid'
             sh 'ls '
         }
     }
