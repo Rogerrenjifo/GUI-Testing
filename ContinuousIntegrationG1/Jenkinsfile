@@ -26,7 +26,7 @@ pipeline {
             steps {
                 bat 'python --help'
                 bat 'pip --version'
-                bat 'pip --list'
+                bat 'pip list'
                 bat 'echo "run the browser containers."'
                 bat 'robot -d reports -i ADD_COMPONENTS Blueprint/TestCases'
             }
