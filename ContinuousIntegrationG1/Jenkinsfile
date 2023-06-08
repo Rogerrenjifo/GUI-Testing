@@ -34,9 +34,6 @@ pipeline {
           script {
             stepName = "RegretionTestPC"
             folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
-            if (!fileExists(folderPath)) {
-              bat "mkdir ${folderPath}"
-            }
             bat 'move .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html'
             bat 'move .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml'
             bat 'move .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html'
@@ -47,7 +44,7 @@ pipeline {
   } 
   post{
     always{
-      archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true, allowEmptyArchive: true
+      archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true
       bat 'docker container stop chrome'
       bat 'docker container rm chrome'
     }
