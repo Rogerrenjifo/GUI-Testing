@@ -40,3 +40,8 @@ Navigate to Flows-page-Permission
 Reload Permissions Tab
     Reload Window
     Click Tab In Flow Header    Permissions
+
+Navigate to Flows-page-Publish
+    Create A New Flow With Random Code
+    Click Tab In Flow Header    Publish
+    Sleep    5

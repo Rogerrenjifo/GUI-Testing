@@ -1,3 +1,4 @@
+OVERWRITE_DIALOG="modal-body"
 CLOSE_OVERWRITE_DIALOG_BUTTON="close-modal-button"
 CANCEL_OVERWRITE_DIALOG_BUTTON="//button[contains(@class,'secondary')]"
 CONFIRM_OVERWRITE_DIALOG_BUTTON="//button[contains(@class,'primary')]"

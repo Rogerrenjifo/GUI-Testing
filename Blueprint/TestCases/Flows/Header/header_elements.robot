@@ -2,15 +2,16 @@
 Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
 Library            Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
 Library            Blueprint.Steps.Actions.Flows.create_form_main_panel_actions.FormMainPanelActions
+Library            Blueprint.Steps.Actions.CommonElements.popup_messages_actions.PopUpMessagesActions
 Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Suite Teardown     Click On Flows Button
-Force Tags         HEADER_ELEMENTS   FLOWS
+Force Tags         FLOWS    HEADER_ELEMENTS
 
 *** Variables ***
-${flow_version}        v2
+${flow_version}        v1
 ${created_popup}       New version for flow AT19-CV created.
 ${updated_popup}       Flow AT19-CV updated.
 ${up-to-date_popup}    Flow AT19-CV is already up-to-date.
@@ -63,11 +64,13 @@ Verify 'Flow updated.' pop-up message is displayed when 'Save' button is clicked
     Add Component To Column Section In Create Form    numericbox   section-2-columnA
     Click Save Button In Flow Header
     Popup Message Text Should Be Equal    ${updated_popup}
-    Delete Flow Process In Flow Header
+    Click To Close Popup Message
 
 Verify 'Flow is already up-to-date.' pop-up message is displayed when 'Save' button is clicked when no changes were made
     Click Save Button In Flow Header
     Popup Message Text Should Be Equal    ${up-to-date_popup}
+    Delete Flow Process In Flow Header
+    Click To Close Popup Message
 
 Verify 'Save & next' button is displayed in green color (rgba(0, 217, 194, 1))
     Save Next Button Should Be Displayed
@@ -87,8 +90,9 @@ Verify 'Flow updated.' pop-up message is displayed when 'Save & next' button is 
     Add Component To Column Section In Create Form    numericbox   section-2-columnA
     Click Save Next Button In Flow Header
     Popup Message Text Should Be Equal    ${updated_popup}
-    Delete Flow Process In Flow Header
+    Click To Close Popup Message 
 
-Verify 'Flow is already up-to-date.' pop-up message is displayed when 'Save & next' button is clicked when no changes were made
+Verify 'Flow is already up-to-date.' pop-up message is displayed when 'Save & next' button is clicked when no changes were made  
     Click Save Next Button In Flow Header
     Popup Message Text Should Be Equal    ${up-to-date_popup}
+    Delete Flow Process In Flow Header
