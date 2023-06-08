@@ -15,7 +15,7 @@ ${label_title_number}    Grade
 ${text_number}    MariaE2345
 ${chars}    !"#$%&/?¡¡*¨_:;
 ${numbers}    5678098
-${chars_text}    !"#$%&/?¡¡*¨_:;newtext
+${chars_text}    !"#$%&/?¡¡*_:;newtext
 ${highlighted_label_color}    rgba(117, 105, 255, 1)
 ${highlighted_border_color}    rgb(117, 105, 255)
 ${label_grade}    Grade
