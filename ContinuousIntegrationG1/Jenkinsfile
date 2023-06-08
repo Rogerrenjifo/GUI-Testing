@@ -25,7 +25,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS .\\Blueprint\\TestCases"
           }
         }
       }
@@ -36,7 +36,7 @@ pipeline {
             folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
             bat "xcopy /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
             bat "xcopy /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
-            bat "xcopy /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+            bat "xcopy /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\b  report.html"
           }
         }
       }
