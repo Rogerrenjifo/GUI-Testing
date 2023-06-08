@@ -33,7 +33,7 @@ pipeline {
         always {
           script {
             stepName = "RegretionTestPC"
-            folderPath = "${env.WORKSPACE}\\${stepName}"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
             bat "mkdir ${folderPath}"
             bat "move .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
             bat "move .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
@@ -45,7 +45,7 @@ pipeline {
   } 
   post{
     always{
-      archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true, allowEmptyArchive: true
+      archiveArtifacts artifacts: "Blueprint/Reports", fingerprint: true, allowEmptyArchive: true
       bat 'docker container stop chrome'
       bat 'docker container rm chrome'
     }
