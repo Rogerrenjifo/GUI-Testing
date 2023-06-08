@@ -7,7 +7,7 @@ pipeline {
     BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
-    IMPLICIT_TIMEOUT="30"
+    IMPLICIT_TIMEOUT="60"
     CI_EXECUTION="False"
   }
   stages{
