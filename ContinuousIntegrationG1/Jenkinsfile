@@ -18,24 +18,24 @@ pipeline {
         }
       }
     }
-    stage('Regretions Test iphone'){
+    stage('Regretions Test pc'){
       environment {
-        DEVICE="pixel s5"
+        DEVICE="pc"
       }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases'
+            bat './venv/Scripts/robot  --outputdir ./Blueprint/Reports -i ROGER ./Blueprint/TestCases'
           }
         }
       }
       post {
         always {
           script {
-            stepName = "Regretions Test"
-            artifactPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}.html"
+            stepName = "RegretionsTest"
+            artifactPath = "${env.WORKSPACE}/Blueprint/Reports/${stepName}.html"
             archiveArtifacts artifacts: artifactPath, fingerprint: true, allowEmptyArchive: true
-            bat "move .\\Blueprint\\Reports\\log.html ${artifactPath}"
+            bat "move ./Blueprint/Reports/log.html ${artifactPath}"
           }
         }
       }
