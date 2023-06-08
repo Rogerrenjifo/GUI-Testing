@@ -47,11 +47,11 @@ class FlowProjectTracingVerifications:
         """Verifies the RGB border color of an action is highlighted"""
         actual_color = self.main_panel.get_the_rgb_border_popup_in_project_flow(number)
         self.verification.verify_equal_ignore(actual_color, expected_color)
-
-    def data_text_from_popup_action(self, number: int):
+        
+    def data_text_from_popup_action(self, number: int, expected_result = False):
         """Verifies that start component is displayed"""
         actual_result = self.main_panel.get_data_popup_in_project_flow(number)
-        self.verification.verify_is_not_equal(actual_result)
+        self.verification.verify_is_not_equal(actual_result, expected_result)
 
     def actions_components_are_displayed_by_order(self, number: int):
         """Verifies that the components are displayed by order"""
