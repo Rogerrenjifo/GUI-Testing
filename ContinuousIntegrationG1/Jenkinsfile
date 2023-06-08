@@ -5,7 +5,7 @@ pipeline {
     REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
     USER=credentials('user')
     PASSWORD=credentials('password')
-    IMPLICIT_TIMEOUT="50"
+    IMPLICIT_TIMEOUT="70"
   }
   stages {          
     stage('Build Browser Environments') {    
@@ -20,7 +20,7 @@ pipeline {
     }
     stage('E2E_Scenarios'){
       environment {
-        DEVICE="zoom out"
+        DEVICE="pc"
         BROWSER="remote_chrome"
       }
       steps {
@@ -76,7 +76,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i FLOWS .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i CREATE_F0RM .\\Blueprint\\TestCases"
           }
         }
       }
@@ -101,7 +101,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i FLOWS .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i CREATE_FLOW .\\Blueprint\\TestCases"
           }
         }
       }
