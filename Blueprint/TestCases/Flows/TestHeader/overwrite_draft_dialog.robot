@@ -9,7 +9,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Create Draft Version
 Force Tags         FLOWS    OVERWRITE_DRAFT_DIALOG
-Suite Teardown    Sleep    5
+Suite Teardown     Sleep    5
 
 *** Variables ***
 ${deprecated_flow_version}      v1

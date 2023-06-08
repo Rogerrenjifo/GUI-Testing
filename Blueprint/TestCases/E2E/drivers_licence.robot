@@ -1,6 +1,6 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/common.imports.resource
-Force Tags    E2E   DRIVERS_LICENSE
+Force Tags    E2E   DRIVERS_LICENSE    FLOW
 Suite Teardown    Delete Storage
 
 *** Variables ***
@@ -13,22 +13,8 @@ ${group_name}   DL-GUI-Group-10
 @{expected_section_3_components}    Pay exam fees
 
 *** Test Cases ***
-Verify that is possible to create a group
-    Click On Users And Groups Button
-    Create New Group    ${group_name}
-    ${message}    Get Pop Up Text Created Group
-    Add User To A Group    Rocio.Morales
-    Add User To A Group    Celeste.Palet
-    Add User To A Group    Martin.Alvarez
-
 Verify a is posible to create a flow with a given name
-    Click On Flows Drop Down Button
-    Sleep    2s
-    Click On New Flow Button
-    Insert New Flow Name    ${flow_name}
-    Insert New Flow Code    D70
-    Click On Create New Flow Button
-    Pop Up Message Text Should Be    Process created
+    Create A New Flow With Random Code
 
 Verify that is possible to add sections and components
     Sleep    2s

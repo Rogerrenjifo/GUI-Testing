@@ -3,7 +3,7 @@ Resource           Blueprint/TestCasesResources/E2E/UniversityAdmisionProcess/un
 
 Suite Setup        Create A New Flow With Random Code
 Suite Teardown     Delete Storage
-Force Tags         E2E    UNIVERSITY_ADMISION
+Force Tags         E2E    UNIVERSITY_ADMISION    FLOWS
 
 *** Variables ***
 @{first_section_list}    Full Name    Identity Card    Nationality    Phone Number    Date of birth    Gender    Home Address

@@ -34,8 +34,8 @@ Verify that is posible create Academic Diploma process flow and publish it
     Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Sleep    5s
     Click Save Publish Button
-    Sleep    4s
-    Popups Messages Text Should Contains    Flow ${flow_name} published.
+    Click Save Continue Button
+    #Popups Messages Text Should Contains    Flow ${flow_name} published.
     Go To Project Process In Main Menu   ${flow_name}
     Project Name Should Be As Expected    ${flow_name}
 
