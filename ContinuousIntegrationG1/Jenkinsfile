@@ -61,7 +61,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports-i -e E2E FLOWS .\\Blueprint\\TestCases'
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i FLOWS .\\Blueprint\\TestCases'
           }
         }
       }
