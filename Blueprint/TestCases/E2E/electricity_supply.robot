@@ -21,21 +21,20 @@ ${publish_tab}   Publish
 Verify that user is able to create and publish a complete flow process
     ${flow_name}=   Create A New Flow With Random Code    ${flow_name}
     Flow Page Should Be Displayed   ${flow_name}
-    #Set Sections In Create Form
-    #Sections And Components Should Be Displayed
-    #Flow Tab Should Be Marked   ${create_form_tab}
+    Set Sections In Create Form
+    Sections And Components Should Be Displayed
+    Flow Tab Should Be Marked   ${create_form_tab}
     Click Tab In Flow Header    ${create_flow_tab}
     Set And Conect Actions And Steps In Board
-    #Actions And Steps Should Be Displayed
-    #Flow Tab Should Be Marked    ${create_flow_tab}
+    Actions And Steps Should Be Displayed
+    Flow Tab Should Be Marked    ${create_flow_tab}
     Click Tab In Flow Header    ${permission_tab}
     Set Users In Permissions
-    #Selected Groups Should Be Displayed
+    Selected Groups Should Be Displayed
     Flow Tab Should Be Marked    ${permission_tab}
     Click Tab In Flow Header    ${publish_tab}
     Click Save And Publish Button
     Click Save Continue Button
-    Sleep    300
     Go To Project Process In Main Menu   ${flow_name}
     Project Title Should Be    ${flow_name}
 
