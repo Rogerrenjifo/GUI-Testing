@@ -34,8 +34,8 @@ pipeline {
           script {
             stepName = "RegretionTestPC"
             artifactPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}.html"
-            archiveArtifacts artifacts: artifactPath, fingerprint: true, allowEmptyArchive: true
             bat "copy .\\Blueprint\\Reports\\log.html ${artifactPath}"
+            archiveArtifacts artifacts: artifactPath, fingerprint: true, allowEmptyArchive: true
           }
         }
       }
