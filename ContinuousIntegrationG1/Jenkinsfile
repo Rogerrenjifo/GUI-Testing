@@ -10,9 +10,7 @@ pipeline {
   }
   stages {          
     stage('Build Browser Environments') {
-      environment {
-        DEVICE="pc"
-      }
+    
       steps {
         script {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -30,7 +28,7 @@ pipeline {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             virtualenvDir = "${WORKSPACE}\\venv"
-            bat "python -m venv ${virtualenvDir}"
+            bat "C:/Users/Roger/AppData/Local/Programs/Python/Python38/python -m venv ${virtualenvDir}"
             bat ".\\venv\\Scripts\\activate"
             bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
           }
