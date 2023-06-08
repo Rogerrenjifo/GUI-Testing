@@ -6,7 +6,7 @@ pipeline {
     USER=credentials('user')
     PASSWORD=credentials('password')
     BROWSER="remote_chrome"
-    IMPLICIT_TIMEOUT="45"
+    IMPLICIT_TIMEOUT="60"
   }
   stages {          
     stage('Build Browser Environments') {    
@@ -35,7 +35,7 @@ pipeline {
             stepName = "RegretionTestPC"
             artifactPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}.html"
             bat "copy .\\Blueprint\\Reports\\log.html ${artifactPath}"
-            archiveArtifacts artifacts: artifactPath, fingerprint: true, allowEmptyArchive: true
+            archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true, allowEmptyArchive: true
           }
         }
       }
