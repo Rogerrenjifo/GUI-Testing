@@ -17,7 +17,7 @@ pipeline {
         }
       }
     }
-    stage('RegretionTestPC'){
+    stage('Regretion_Test_PC'){
       environment {
         DEVICE="pc"
         BROWSER="remote_chrome"
@@ -32,7 +32,32 @@ pipeline {
       post {
         always {
           script {
-            stepName = "RegretionTestPC"
+            stepName = "Regretion_Test_PC"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
+    stage('Regretion_Test_Ipad_Air'){
+      environment {
+        DEVICE="ipad air"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "Regretion_Test_Ipad_Air"
             folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
             bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
             bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
