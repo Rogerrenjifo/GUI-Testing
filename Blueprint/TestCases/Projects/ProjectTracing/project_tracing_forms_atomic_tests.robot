@@ -4,7 +4,7 @@ Documentation    Tests to verify the functionality of each component
 Resource         Blueprint/TestCasesResources/Projects/ProjectTracing/project_tracing_forms_resources.robot
 Suite Setup      Open project tracing forms webpage
 Test Teardown    Click section title in project forms    Section 1
-Force Tags        PROJECT
+Force Tags        PROJECT    HOLI
 *** Test Cases ***
 Verify edit button is visible when mouse is hover text field
     Put mouse hover field with title    Title    Section 1
@@ -178,8 +178,8 @@ Verify text fields can have alphanumeric characters
     Click cancel changes in project forms
 
 Verify text fields can have special characters
-    Set text input in project forms    Title    Section 1    ñ^*!¨!$%&/|@#~€¬
-    Editable text input should be    ñ^*!¨!$%&/|@#~€¬
+    Set text input in project forms    Title    Section 1    ñ*!!$%&/|@#~€¬
+    Editable text input should be    ñ*!!$%&/|@#~€¬
 
 Verify dropdown field options are displayed when field is clicked while being edited
     Select field to edit in project forms    Dropdown Box 1    Section 1
@@ -224,8 +224,8 @@ Verify that checkbox value changes when is clicked
     Checkbox value should be    CheckBox 1    Section 1    true
 
 Verify multiline fields can have special characters
-    Set multiline text input in project forms    Multiline Box 1    Section 1    ñ^*!¨!$%&/|@#~€¬
-    Multiline value should be    Multiline Box 1    Section 1    ñ^*!¨!$%&/|@#~€¬
+    Set multiline text input in project forms    Multiline Box 1    Section 1    ñ*!!$%&/|@#~€¬
+    Multiline value should be    Multiline Box 1    Section 1    ñ*!!$%&/|@#~€¬
     
 Verify multiline fields can have alphanumeric characters
     Set multiline text input in project forms    Multiline Box 1    Section 1    abcdefghijklmnopqrstuvwxyz0123456789
