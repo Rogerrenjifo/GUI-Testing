@@ -1,0 +1,85 @@
+pipeline {
+  agent any
+  environment {
+    PYTHONPATH = "${WORKSPACE}\\"
+    PASSWORD=credentials('PASSWORD')
+    USER=credentials('USER')
+    BROWSER="chrome"
+    DEVICE="pc"
+    DRIVER_PATH=".\\"
+    IMPLICIT_TIMEOUT="30"
+    CI_EXECUTION="False"
+  }
+  stages{
+    stage('Install Dependencies') {
+      steps {
+        script {
+          virtualenvDir = "${WORKSPACE}\\venv"
+          bat "C:\\Users\\MARIA\\AppData\\Local\\Programs\\Python\\Python38\\python -m venv ${virtualenvDir}"
+          bat ".\\venv\\Scripts\\activate"
+          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
+        }
+      }
+    }
+    stage('Project Page'){
+      steps{
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsPROJECTPAGE -i PROJECT -e BUG .\\Blueprint\\TestCases'
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
+        }
+      }
+    }
+    // stage('Run Happy Path Test Cases'){
+    //   steps{
+    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+    //   }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
+    //     }
+    //   }
+    // }
+    // stage('Run Regretion Test Cases'){
+    //   steps{
+    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsRegretion -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+    //   }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/output.xml', fingerprint: true
+    //     }
+    //   }
+    // }
+    // stage('Run Projects Test Cases'){
+    //   steps{
+    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
+    //   }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
+    //     }
+    //   }
+    // }
+    // stage('Run Test Mobile Device'){
+    //   steps{
+    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
+    //   }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
+    //     }
+    //   }
+    // }
+  }
+}
