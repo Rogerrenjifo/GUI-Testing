@@ -15,3 +15,8 @@ class PublishTabObjects(BasePage):
         """Finds and returns the publishing modal."""
         element = self.find_element.by_xpath(locators.PUBLISHING_MODAL)
         return element
+    
+    def get_save_continue_button(self) -> WebElement:
+        """Finds and returns the save and continue button in dialog."""
+        element = self.find_element.by_xpath(locators.SAVE_CONTINUE_BUTTON)
+        return element

@@ -19,7 +19,6 @@ ${publish_tab}   Publish
 
 *** Test Cases ***
 Verify that user is able to create and publish a complete flow process
-    Create Groups If Not Exist
     ${flow_name}=   Create A New Flow With Random Code    ${flow_name}
     Flow Page Should Be Displayed   ${flow_name}
     Set Sections In Create Form
@@ -35,6 +34,7 @@ Verify that user is able to create and publish a complete flow process
     Flow Tab Should Be Marked    ${permission_tab}
     Click Tab In Flow Header    ${publish_tab}
     Click Save And Publish Button
+    Click Save Continue Button
     Go To Project Process In Main Menu   ${flow_name}
     Project Title Should Be    ${flow_name}
 
