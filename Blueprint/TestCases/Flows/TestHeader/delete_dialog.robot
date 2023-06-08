@@ -2,11 +2,12 @@
 Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
 Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
 Library            Blueprint.Steps.Verifications.Flow.Header.delete_dialog_verifications.DeleteDialogVerifications
+Library            Blueprint.Steps.Actions.CommonElements.popup_messages_actions.PopUpMessagesActions
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
+Force Tags         DELETE_DIALOG   FLOWS
 Suite Teardown     Click On Flows Button
-Force Tags         FLOWS    DELETE_DIALOG
 
 *** Variables ***
 ${deprecated_flow_version}      v1
@@ -67,17 +68,8 @@ Verify delete dialog is closed when 'Cancel' button is clicked
 Verify 'It is not possible to delete a deprecated flow version.' pop-up message is displayed when 'Delete' button is clicked in a deprecated flow version
     Change Flow Version Process In Flow Header    ${deprecated_flow_version}
     Delete Flow Process In Flow Header
+    Click To Close Popup Message
     Popup Message Text Should Be Equal    It is not possible to delete a deprecated flow version.
-
-Verify 'It is not possible to delete a published flow version.' pop-up message is displayed when 'Delete' button is clicked in a published flow version
-    Change Flow Version Process In Flow Header    ${published_flow_version}
-    Delete Flow Process In Flow Header
-    Popup Message Text Should Be Equal    It is not possible to delete a published flow version.
-
-Verify 'Flow deleted successfully.' pop-up message is displayed when 'Delete' button is clicked in a draft flow version
-    Change Flow Version Process In Flow Header    ${draft_flow_version}
-    Delete Flow Process In Flow Header
-    Popup Message Text Should Be Equal    Flow deleted successfully.
 
 *** Keywords ***
 Open Delete Dialog

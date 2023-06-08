@@ -21,3 +21,4 @@ Library      Blueprint.Steps.Actions.Flows.process_permissions_actions.ProcessPe
 Library      Blueprint.Steps.Actions.Flows.publish_tab_actions.PublishTabActions
 Library      Blueprint.Steps.Actions.CommonElements.popup_messages_actions.PopUpMessagesActions
 Library      Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
+Library      Libraries.Drivers.browser.Browser

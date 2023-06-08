@@ -18,33 +18,33 @@ Verify that a component can be added after add a new section
     multilinebox   Multiline Box 1   section-2-columnB
     numericbox     Numeric Box 1     section-2-columnB
     userlist       User List 1       section-2-columnB
+    userlist       User List 1
     textbox        Text Box 1
     date           Date 1
     checkbox       CheckBox 1
     dropdown       Dropdown Box 1
     multilinebox   Multiline Box 1
     numericbox     Numeric Box 1
-    userlist       User List 1
 
 Verify that a component can be added above another
     [Template]    Add Component Above Another
+    userlist       section-2_userlist-1       User List 1       User List 2
     textbox        section-2_textbox-1        Text Box 1        Text Box 2
     date           section-2_date-1           Date 1            Date 2
     checkbox       section-2_checkbox-1       CheckBox 1        CheckBox 2
     dropdown       section-2_dropdown-1       Dropdown Box 1    Dropdown Box 2
     multilinebox   section-2_multilinebox-1   Multiline Box 1   Multiline Box 2
     numericbox     section-2_numericbox-1     Numeric Box 1     Numeric Box 2
-    userlist       section-2_userlist-1       User List 1       User List 2
 
 Verify that a component can be added below another
     [Template]    Add Component Bellow Another
+    userlist       section-2_userlist-1       User List 1       User List 2
     textbox        section-2_textbox-1        Text Box 1        Text Box 2
     date           section-2_date-1           Date 1            Date 2
     checkbox       section-2_checkbox-1       CheckBox 1        CheckBox 2
     dropdown       section-2_dropdown-1       Dropdown Box 1    Dropdown Box 2
     multilinebox   section-2_multilinebox-1   Multiline Box 1   Multiline Box 2
     numericbox     section-2_numericbox-1     Numeric Box 1     Numeric Box 2
-    userlist       section-2_userlist-1       User List 1       User List 2
 
 Verify that a component cannot be dropped in the page header
     [Template]    Try To Add A Component In Header

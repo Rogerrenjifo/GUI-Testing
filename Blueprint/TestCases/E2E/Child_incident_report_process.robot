@@ -2,6 +2,7 @@
 Resource     Blueprint/TestCasesResources/E2E/ChildIncidentReportProcess/child_incident_report_process.resource
 
 Force Tags    RESIZED SCREEN TEST
+Suite Teardown    Delete Storage
 
 *** Variables ***
 ${flow_name}    Child Incident Report Process
@@ -133,6 +134,7 @@ Give Permissions For A Flow Template
 Save and publish A Flow Template
     Click Tab In Flow Header    Publish
     Click Save Publish Button
+    Click Save Continue Button
     Sleep    10  
     
 Add Action To The Flow
@@ -188,3 +190,7 @@ Create A New Project Using The Flow Template Created
     Insert Text Or Number In A Component In New Project Page    Child incident report    Type of incident    Child had an accident
     Click Create Button In New Project Page
     Sleep    8
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

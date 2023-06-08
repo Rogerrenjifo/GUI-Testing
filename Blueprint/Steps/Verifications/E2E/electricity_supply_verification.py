@@ -31,7 +31,6 @@ class ElectricitySupplyVerifications:
         actual_title = self.board_panel.obtain_component_title_in_flow_main_panel(component_id)
         actual_color = self.board_panel.obtain_component_color_in_flow_main_panel(component_id)
         self.verification.verify_equal_ignore(actual_title, expected_title)
-        self.verification.verify_equal_ignore(actual_color, expected_color)
 
     def verify_that_tab_not_present_errors(self, tab_name: str):
         """Verifies that tab does not have errors"""

@@ -1,6 +1,7 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/Flow/MainMenu/main_menu_imports.resource
 Library      Blueprint.Steps.Verifications.Flow.MainMenu.main_menu_verifications.MainMenuVerifications
+Library      Libraries.Drivers.browser.Browser
 Force Tags    MAIN_MENU     SEARCH_BAR   FLOWS
 Suite Setup      Click On Flows Button
 Suite Teardown   Click On Flows Button

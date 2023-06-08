@@ -21,6 +21,7 @@ Library      Blueprint.Steps.Actions.Flows.flow_permissions_actions.FlowPermissi
 Library      Blueprint.Steps.Actions.Flows.publish_tab_actions.PublishTabActions
 Library      Blueprint.Steps.Verifications.Projects.ProjectTracing.flow_project_tracing_verification.FlowProjectTracingVerifications
 Library      Blueprint.Steps.Verifications.Projects.ProjectPage.header_project_page_verifications.HeaderProjectPageVerifications
+Library      Libraries.Drivers.browser.Browser
 
 *** Keywords ***
 Add components to section 1 and verify order of them
@@ -103,3 +104,4 @@ Add user to a group
 Delete Storage
     Clean Dictionary
     Delete Form Storage
+    Reload Window

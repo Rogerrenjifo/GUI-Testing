@@ -8,7 +8,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Suite Teardown     Click On Flows Button
-Force Tags         FLOWS    HEADER_ELEMENTS
+Force Tags         HEADER_ELEMENTS   FLOWS
 
 *** Variables ***
 ${flow_version}        v1
@@ -58,6 +58,7 @@ Verify 'Save' button color change to green (rgba(0, 217, 194, 1)) when is hovere
 Verify 'New version for flow created.' pop-up message is displayed when 'Save' button is clicked after a change was made in a published flow
     Add Component To Column Section In Create Form    checkbox   section-2-columnB
     Click Save Button In Flow Header
+    Close Pop Up On Create Form Elements
     Popup Message Text Should Be Equal    ${created_popup}
 
 Verify 'Flow updated.' pop-up message is displayed when 'Save' button is clicked after a change was made

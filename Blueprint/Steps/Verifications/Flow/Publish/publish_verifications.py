@@ -17,6 +17,6 @@ class PublishVerifications:
 
     def popup_message_should_be_in_list(self, expected_message: str):
         """Verifies that the expected message is in the popups displayed."""        
-        sleep(2)
+        sleep(5)
         actual_list = self.popup.get_popup_messages_text_list()
         self.verification.verify_a_list_contains(actual_list, expected_message)

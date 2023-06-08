@@ -32,6 +32,7 @@ Verify that is posible create an Order Reception process flow and publish it
     Click Save Next Button In Flow Header
     Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Click Save Publish Button
+    Click Save Continue Button
     Popups Messages Text Should Contains    Flow ${flow_name} published.
     Go To Project Process In Main Menu   ${flow_name}
     Project Name Should Be As Expected    ${flow_name}

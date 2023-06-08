@@ -1,3 +1,4 @@
+import time
 from Blueprint.Steps.Actions.Flows.flow_permissions_actions import FlowPermissionsActions
 from Libraries.Assertions.assertions import Verification
 
@@ -25,6 +26,7 @@ class FlowAdminPermissionsVerifications:
 
     def users_selected_list_should_contain(self, name: str):
         """Verifies that the users selected list contains a user"""
+        time.sleep(2)
         users_list = self.actions.obtain_user_list_selected_in_text_box_in_flow_permissions()
         self.verification.verify_a_list_contains(users_list, name)
     

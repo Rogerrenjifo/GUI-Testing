@@ -1,5 +1,4 @@
 import time
-
 from Blueprint.Steps.Actions.Flows.header_actions import HeaderActions
 from Blueprint.Steps.Actions.CommonElements.popup_messages_actions import PopUpMessagesActions
 from Libraries.Assertions.assertions import Verification
@@ -62,7 +61,7 @@ class HeaderVerifications:
 
     def popup_message_text_should_be_equal(self, expected_popup_text: str):
         """Verifies that the text of the popup message is the expected when 'Save' button is clicked"""
-        sleep(2)
+        time.sleep(2)
         actual_popup_text = self.popup.get_popup_message_text()
         self.verification.verify_equal_ignore(actual_popup_text, expected_popup_text)
 

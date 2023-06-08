@@ -123,7 +123,6 @@ class HeaderActions(Header):
         self.display_header_dropdown_in_flow_header()
         self.click_delete_option_in_flow_header()
         self.click_delete_button_in_delete_dialog()
-        time.sleep(3)
 
     def cancel_delete_flow_process_in_flow_header(self) -> None:
         """Cancels the process to delete a flow. The flow is not deleted"""

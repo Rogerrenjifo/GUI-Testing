@@ -4,10 +4,12 @@ Library            Blueprint.Steps.Actions.Flows.overwrite_dialog_actions.Overwr
 Library            Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
 Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
 Library            Blueprint.Steps.Verifications.Flow.Header.overwrite_draft_dialog_verifications.OverwriteDraftDialogVerifications
+Library            Blueprint.Steps.Actions.CommonElements.popup_messages_actions.PopUpMessagesActions
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Create Draft Version
 Force Tags         FLOWS    OVERWRITE_DRAFT_DIALOG
+Suite Teardown     Sleep    5
 
 *** Variables ***
 ${deprecated_flow_version}      v1
@@ -65,6 +67,7 @@ Verify 'Flow updated.' pop-up message is displayed when 'Confirm' button is clic
     Make A Change In Create Form
     Click Save Button In Flow Header
     Click Confirm Button In Overwrite Draft Dialog
+    Close Pop Up On Create Form Elements
     Popup Message Text Should Be Equal    Flow AT19-CV updated.
 
 *** Keywords ***
@@ -75,6 +78,7 @@ Create Draft Version
     Click Save Button In Flow Header
 
 Make A Change In Create Form
+    Sleep    2
     Display Header Dropdown In Flow Header
     Display Select Version In Flow Header
     Click Version In Flow Header    ${deprecated_flow_version}

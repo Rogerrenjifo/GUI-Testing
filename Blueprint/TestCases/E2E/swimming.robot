@@ -37,6 +37,7 @@ Verify Permissions can be set
 Verify project is created
     Click Tab In Flow Header    Publish
     Click Save Publish Button
+    Click Save Continue Button
     Time To Save The Flow
     Go To Project Process In Main Menu    ${flow_name_with_code}    
     Project Title Should Be    ${flow_name_with_code}

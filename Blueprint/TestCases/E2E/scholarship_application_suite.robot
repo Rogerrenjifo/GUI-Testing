@@ -53,5 +53,6 @@ Verify a flow can be created, from form creation, flow creation, and permissions
     Popup Message Text Should Be    Flow permissions of ${flow_name_for_edit} updated.
     Click Tab In Flow Header    Publish
     Click Save Publish Button
+    Click Save Continue Button
     Log To Console    ${flow_name_for_edit}
     New Project Should Exist    ${flow_name_for_edit}
