@@ -5,7 +5,6 @@ pipeline {
     REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
     USER=credentials('user')
     PASSWORD=credentials('password')
-    BROWSER="remote_chrome"
     IMPLICIT_TIMEOUT="60"
   }
   stages {          
@@ -21,11 +20,12 @@ pipeline {
     stage('RegretionTestPC'){
       environment {
         DEVICE="pc"
+        BROWSER="remote_chrome"
       }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases"
           }
         }
       }
