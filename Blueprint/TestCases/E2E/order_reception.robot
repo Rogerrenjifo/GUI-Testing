@@ -1,6 +1,6 @@
 *** Settings ***
 Resource      Blueprint/TestCasesResources/E2E/OrderReception/order_reception_imports.resource
-Force Tags    E2E   PROJECT
+Force Tags    E2E   PROJECTS
 
 *** Variables ***
 @{first_section_list}    Customer name    Name of product    Number of order     Date of customer order     Product quantity

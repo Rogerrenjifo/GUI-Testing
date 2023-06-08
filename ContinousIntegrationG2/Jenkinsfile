@@ -23,7 +23,7 @@ pipeline {
         }
       }
     }
-    stage('Run Happy Path Test Cases'){
+    stage('Run Functional'){
       steps{
         dir("${WORKSPACE}"){
           bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'

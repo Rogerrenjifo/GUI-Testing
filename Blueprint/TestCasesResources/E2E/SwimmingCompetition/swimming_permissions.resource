@@ -2,7 +2,7 @@
 Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_importations.resource
 
 *** Variables ***
-${flow_permission_user}   AT19-GUI_Testing-dv
+${flow_permission_user}   Fabian Cabrejo
 ${process_permission_user}   Fabian Cabrejo
 ${applicant_information_section_user}   Rocío Morales 
 ${swimming_styles_section_user}    Denisse Cordova 
@@ -10,9 +10,9 @@ ${swimming_styles_section_user}    Denisse Cordova
 *** Keywords ***
 Set Permissions
     Click Tab In Flow Header    Permissions
-    Sleep    1
-    Delete All Users In Dropdown In Flow Permissions
-    Add New Flow Admin By Typing Process In Flow Permission    ${flow_permission_user}
+#    Sleep    1
+#    Delete All Users In Dropdown In Flow Permissions
+#    Add New Flow Admin By Typing Process In Flow Permission    ${flow_permission_user}
     Delete All Users In Dropdown In Process Permission
     Add User To Initiate Process By Typing Process In Process Permissions    ${process_permission_user}
     Delete All Users In Section Visibility     3
