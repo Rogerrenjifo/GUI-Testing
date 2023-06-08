@@ -9,77 +9,72 @@ pipeline {
     DRIVER_PATH=".\\"
     IMPLICIT_TIMEOUT="60"
     CI_EXECUTION="False"
+    virtualenvDir = "${WORKSPACE}\\venv"
   }
   stages{
     stage('Install Dependencies') {
       steps {
-        script {
-          virtualenvDir = "${WORKSPACE}\\venv"
-          bat "C:\\Users\\MARIA\\AppData\\Local\\Programs\\Python\\Python38\\python -m venv ${virtualenvDir}"
-          bat ".\\venv\\Scripts\\activate"
-          bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
+        dir("${WORKSPACE}"){
+          script {
+            bat "python -m venv ${virtualenvDir}"
+            bat ".\\venv\\Scripts\\activate"
+            bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
+          }
         }
       }
     }
-    stage('Project Page'){
+    stage('Run Happy Path Test Cases'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsPROJECTPAGE -i PROJECT -e BUG .\\Blueprint\\TestCases'
+        dir("${WORKSPACE}"){
+          bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'
+        }
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/output.xml', fingerprint: true
         }
       }
     }
-    // stage('Run Happy Path Test Cases'){
-    //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
-    //   }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
-    //     }
-    //   }
-    // }
-    // stage('Run Regretion Test Cases'){
-    //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsRegretion -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
-    //   }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsRegretion/output.xml', fingerprint: true
-    //     }
-    //   }
-    // }
-    // stage('Run Projects Test Cases'){
-    //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
-    //   }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
-    //     }
-    //   }
-    // }
-    // stage('Run Test Mobile Device'){
-    //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
-    //   }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
-    //     }
-    //   }
-    // }
+    stage('Run Regretion Test Cases'){
+      steps{
+        dir("${WORKSPACE}"){
+          bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion -i PROJECT .\\Blueprint\\TestCases'
+        }
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/output.xml', fingerprint: true
+        }
+      }
+    }
+    stage('Run Test Mobile Device'){
+      environment {
+        DEVICE='galaxy s20 ultra'
+        IMPLICIT_TIMEOUT="30"
+      }
+      steps{
+        dir("${WORKSPACE}"){
+          bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\MobileDevice -i PROJECT .\\Blueprint\\TestCases'
+        }
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/output.xml', fingerprint: true
+        }
+      }
+    }
   }
+  // post {
+  //   always {
+  //     script {
+  //       bat "rmdir /s /q ${virtualenvDir}"
+  //     }
+  //   }
+  // }
 }

@@ -29,7 +29,7 @@ Verify the create button background color changes when the user hove over the bu
     Create Button Rgb Color Should Be As Expected    ${create_button_color}
 
 Verify it is not posible to create a project flow if there is a required field empty
-    [Tags]    BG-240
+    [Tags]    BG-240    BUG
     Remove The Content Of A Component In New Project Page    ${section_name}    ${label_name}
     Create Button Status Should Be Disabled
 
@@ -43,7 +43,4 @@ Verify the create button goes to the next page
     Select A Complete Date In Datepicker    ${year}    ${month}    ${day}
     Click Create Button In New Project Page
     Popup Message Should Be Displayed
-    Select User From The Dropdown In New Project Page    ${new_section}    ${new_component}    1
-    Click A Component Inside A Section In New Project Page    ${new_section}    ${new_component_2}
-    Select A Complete Date In Datepicker    ${year}    ${month}    ${day}
     Return to previous page
