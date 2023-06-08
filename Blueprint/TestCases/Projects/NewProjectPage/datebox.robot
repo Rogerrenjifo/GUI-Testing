@@ -52,11 +52,16 @@ Verify that clicking the input of datebox the calendar is displayed
     The Datepicker In Datebox Should Be Displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
 
-Verify that clicking the month in datapicker the month list is displayed 
+Verify that clicking the month in datapicker the month list is displayed
+    Sleep    5 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
+    Sleep    5 
     Click To Display Months In Datepicker New Project Page
+    Sleep    5 
     Month Or Year In Datapicker Should Be Displayed
+    Sleep    5 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
+    Sleep    5 
 
 Verify that clicking the year in datapicker the year list is displayed 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
