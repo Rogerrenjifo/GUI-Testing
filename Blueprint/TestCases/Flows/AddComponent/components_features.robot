@@ -10,7 +10,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To Flows-Page-Create-Flow And Add Components
 Suite Teardown     Delete Flow Process In Flow Header
-Force Tags         ADD_COMPONENTS    CREATE_FLOW   FLOWS
+Force Tags         ADD_COMPONENT    CREATE_FLOW   FLOWS
 
 *** Variables ***
 ${red_color}              rgb(255, 114, 105)
@@ -19,42 +19,42 @@ ${action_id}              002Added1
 
 *** Test Cases ***
 Verify that the color of the "step" dropped is red.
-    [Tags]    P3
+    
     ${color}    Obtain Component Color In Flow Main Panel    ${step_id}
     Component Rgb Color Should Be Equal    ${color}    ${red_color}
 
 Verify that the color of the "action" dropped is red.
-    [Tags]    P3
+    
     ${color}    Obtain Component Color In Flow Main Panel    ${action_id}
     Component Rgb Color Should Be Equal    ${color}    ${red_color}        
 
 Verify that "step properties" are displayed when an step is dropped on a canvas board.
-    [Tags]    P1
+    [Tags]    SMOKE
     Click Component    ${step_id}
     The Component Properties Should Be Displayed    New Step 1
 
 Verify that "action properties" are displayed when an action is dropped on a canvas board.
-    [Tags]    P1
+    [Tags]    SMOKE
     Click Component    ${action_id}
     The Component Properties Should Be Displayed    New Action 1
 
 Verify that "the step name" is not repeated when an step is dropped on a canvas board.
-    [Tags]    P2
+    
     Move Step To Board Position           0    0
     Component Should Have Different Title   001Added1    001Added2
     
 Verify that "the action name" is not repeated when an action is dropped on a canvas board.
-    [Tags]    P2
+    
     Move Action To Board Position         100    100
     Component Should Have Different Title   002Added1    002Added2
 
 Verify that the "step" component can be dropped over other component.
-    [Tags]    P2
+    
     Move Step To Board Position           50    30
     The Component Should Be Added To The Main Board        001Added3
 
 Verify that the "Action" component can be dropped over other component.
-    [Tags]    P2
+    
     Move Action To Board Position         80    60
     The Component Should Be Added To The Main Board        002Added3
 

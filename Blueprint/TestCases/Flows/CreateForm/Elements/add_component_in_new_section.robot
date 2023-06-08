@@ -9,7 +9,7 @@ Force Tags        CREATE_F0RM   ADD_COMPONENT   NEW_SECTION   FLOWS
 
 *** Test Cases ***
 Verify that a component can be added after add a new section
-    [Tags]   BUG   BG-241   P1
+    [Tags]      BUG_BG-241   SMOKE
     [Template]    Add Component In A New Section
     textbox        Text Box 1        section-2-columnB
     date           Date 1            section-2-columnB
@@ -27,7 +27,7 @@ Verify that a component can be added after add a new section
     numericbox     Numeric Box 1
 
 Verify that a component can be added above another
-    [Tags]    P1
+    [Tags]    SMOKE
     [Template]    Add Component Above Another
     userlist       section-2_userlist-1       User List 1       User List 2
     textbox        section-2_textbox-1        Text Box 1        Text Box 2
@@ -38,7 +38,7 @@ Verify that a component can be added above another
     numericbox     section-2_numericbox-1     Numeric Box 1     Numeric Box 2
 
 Verify that a component can be added below another
-    [Tags]    P1
+    [Tags]    SMOKE
     [Template]    Add Component Bellow Another
     userlist       section-2_userlist-1       User List 1       User List 2
     textbox        section-2_textbox-1        Text Box 1        Text Box 2
@@ -49,7 +49,7 @@ Verify that a component can be added below another
     numericbox     section-2_numericbox-1     Numeric Box 1     Numeric Box 2
 
 Verify that a component cannot be dropped in the page header
-    [Tags]    P3
+    
     [Template]    Try To Add A Component In Header
     textbox        Text Box 2
     date           Date 1
@@ -60,7 +60,7 @@ Verify that a component cannot be dropped in the page header
     userlist       User List 1
 
 Verify that a component cannot be dropped in the page menu
-    [Tags]    P3
+    
     [Template]    Try To Add A Component Main Menu
     textbox        Text Box 2
     date           Date 1
@@ -71,7 +71,7 @@ Verify that a component cannot be dropped in the page menu
     userlist       User List 1
 
 Verify that a component cannot be added in main panel
-    [Tags]    P3
+    
     [Template]    Try To Add A Component In Main Panel
     textbox        Text Box 1
     date           Date 1

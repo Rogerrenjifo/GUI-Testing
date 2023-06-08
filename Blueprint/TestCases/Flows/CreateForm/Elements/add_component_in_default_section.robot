@@ -9,7 +9,7 @@ Force Tags        CREATE_F0RM    ADD_COMPONENT   DEFAULT_SECTION   FLOWS
 
 *** Test Cases ***
 Verify that a component can be dropped in default section
-    [Tags]    P1
+    [Tags]    SMOKE
     [Template]    Add Component In Default Section
     textbox        section-1-columnB   2
     date           section-1-columnB
@@ -27,7 +27,7 @@ Verify that a component can be dropped in default section
     userlist       section-1-columnA
 
 Verify that adding a component in a section, its properties are displayed
-    [Tags]    P3
+    
     [Template]    Adding Component Shows Its Properties
     textbox        Text Box 2        2
     date           Date 1
@@ -38,7 +38,7 @@ Verify that adding a component in a section, its properties are displayed
     userlist       User List 1
 
 Verify that a component cannot be added above default component in the main panel
-    [Tags]    P1
+    [Tags]    SMOKE
     [Template]    Try to Add Component Above Default
     textbox        Text Box 2        2
     date           Date 1
@@ -49,7 +49,7 @@ Verify that a component cannot be added above default component in the main pane
     userlist       User List 1
 
 Verify that adding a component above default component a popup error message is displayed in the main panel
-    [Tags]    P3
+    
     [Template]    Try to Add Component Above Default Show A Popup Message
     textbox        2
     date
@@ -60,7 +60,7 @@ Verify that adding a component above default component a popup error message is 
     userlist
 
 Verify that adding a component above default component the popup error message is displayed in orange. (rgba(240, 173, 78, 1))
-    [Tags]    P3
+    
     [Template]    Try To Add Component Above Default Show A Popup Message In Orange
     textbox        2
     date
@@ -71,7 +71,7 @@ Verify that adding a component above default component the popup error message i
     userlist
 
 Verify that adding a component in a section, the component is displayed in expected color
-    [Tags]    P3
+    
     [Template]    Adding Component Is Displayed In Expected Color
     textbox        section-1_textbox-2        2
     date           section-1_date-1

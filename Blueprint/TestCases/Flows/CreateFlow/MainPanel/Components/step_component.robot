@@ -15,41 +15,41 @@ ${already_connected_message}    These elements are already connected.
 
 *** Test Cases ***
 Verify that a step cannot connect to another step
-    [Tags]    P1
+    [Tags]    SMOKE
     Connect Components In Flow Main Panel    001Added1    001Added2    5    4
     ${text}    Get Popup Message Text
     Message Pop Up Should Be Equal    ${text}    ${step_to_step_message} 
 
 Verify that a step without connections has a red border
-    [Tags]    P3
+    
     ${color}    Obtain Component Color In Flow Main Panel    001Added1
     Component Rgb Color Should Be Equal    ${color}    ${red_color}
 
 Verify that a step border changes to turquoise color when it has incoming and outgoing connections
-    [Tags]    P3
+    
     Connect Components In Flow Main Panel    002Added1    001Added1    5    4
     Connect Components In Flow Main Panel    001Added1    002Added2    2    12
     ${color}    Obtain Component Color In Flow Main Panel    001Added1
     Component Rgb Color Should Be Equal    ${color}    ${turquoise_color}
 
 Verify that a step can clone
-    [Tags]    P2
+    
     Clone Component In Flow Main Panel    001Added1
     ${dictionary}    Obtain Dictionary Status In Flow Main Panel
     Dictionary Should Contain Component    ${dictionary}    001Added3
 
 Verify that a step has a button dropdown
-    [Tags]    P2
+    
     ${found_result}    Is Dropdown Not Found In Flow Main Panel    001Added1
     Component Should Have A Button Dropdown    ${found_result}
 
 Verify that a step can connect to an action
-    [Tags]    P1
+    [Tags]    SMOKE
     Connect Components In Flow Main Panel    001Added1    002Added2    5    9
     Component Dot Should Be Connected    001Added1    5
 
 Verify that a step can have more than one incoming and outgoing connections
-    [Tags]    P1
+    [Tags]    SMOKE
     Connect Components In Flow Main Panel    002Added1    001Added1    5    6
     Connect Components In Flow Main Panel    001Added1    002Added2    2    12
     Connect Components In Flow Main Panel    002Added3    001Added1    5    8
@@ -60,7 +60,7 @@ Verify that a step can have more than one incoming and outgoing connections
     Component Dot Should Be Connected    001Added1    4
 
 Verify that a step can move in the canvas
-    [Tags]    P1
+    [Tags]    SMOKE
     ${x_source}    ${y_source}    Obtain X And Y Position Component In Flow Main Panel    001Added1
     Move Component To Specific Position In Flow Main Panel    001Added1    20    100
     ${x_target}    ${y_target}    Obtain X And Y Position Component In Flow Main Panel    001Added1
@@ -68,13 +68,13 @@ Verify that a step can move in the canvas
     Component Should Have Different Positions    ${y_source}    ${y_target}
 
 Verify that a step cannot connect to itself
-    [Tags]    P1
+    [Tags]    SMOKE
     Connect Components In Flow Main Panel    001Added1    001Added1    4    9
     ${text}    Get Popup Message Text
     Message Pop Up Should Be Equal    ${text}    ${connect_itself_message}
 
 Verify that a step can delete
-    [Tags]    P2
+    
     Delete Component In Flow Main Panel    001Added1
     ${dictionary}    Obtain Dictionary Status In Flow Main Panel
     Dictionary Should Not Contain Component    ${dictionary}    001Added1

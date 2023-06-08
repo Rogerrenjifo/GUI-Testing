@@ -29,7 +29,7 @@ Verify the create button background color changes when the user hove over the bu
     Create Button Rgb Color Should Be As Expected    ${create_button_color}
 
 Verify it is not posible to create a project flow if there is a required field empty
-    [Tags]    BG-240
+    [Tags]    BUG_BG-240
     Remove The Content Of A Component In New Project Page    ${section_name}    ${label_name}
     Create Button Status Should Be Disabled
 

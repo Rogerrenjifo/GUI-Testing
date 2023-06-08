@@ -11,27 +11,27 @@ ${turquoise_color}    rgb(0, 217, 194)
 
 *** Test Cases ***
 Verify that the Start component does not have a button dropdown  
-    [Tags]    P2
+    
     ${found_result}    Is Dropdown Not Found In Flow Main Panel    start
     Component Should Not Have A Button Dropdown    ${found_result}
 
 Verify that the Start component has turquoise border
-    [Tags]    P3
+    
     ${color}    ObtaiN Component Color In Flow Main Panel    start
     Component Rgb Color Should Be Equal    ${color}    ${turquoise_color}
 
 Verify that the Start component can only have a single outgoing connection
-    [Tags]    P1
+    [Tags]    SMOKE
     ${dots_list}    Obtain Dots List Of Start Component In Flow Main Panel 
     Component Should Have A Single Dot    ${dots_list}
 
 Verify that the Start component cannot disconnect from the Initial Step
-    [Tags]    P1
+    [Tags]    SMOKE
     Connect Components In Flow Main Panel    first    first    4    9
     Component Dot Should Be Connected    first    4
 
 Verify that the Start component can move in the canvas
-    [Tags]    P1
+    [Tags]    SMOKE
     ${x_source}    ${y_source}    Obtain X And Y Position Component In Flow Main Panel    start
     Move Component To Specific Position In Flow Main Panel    start    0    0
     ${x_target}    ${y_target}    Obtain X And Y Position Component In Flow Main Panel    start

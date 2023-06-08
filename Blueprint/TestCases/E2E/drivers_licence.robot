@@ -1,6 +1,6 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/common.imports.resource
-Force Tags    E2E   DRIVERS_LICENSE    FLOW
+Force Tags    E2E_DRIVERS_LICENCE   DRIVERS_LICENSE    FLOW
 Suite Teardown    Delete Storage
 
 *** Variables ***

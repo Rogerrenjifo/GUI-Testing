@@ -5,7 +5,7 @@ Documentation      This 2e2 create a flow proccess to request a new internet con
 Resource           Blueprint/TestCasesResources/E2E/e2e.resource
 Suite Setup        Create A New Flow
 Suite Teardown     Delete Storage
-Force Tags         E2E    INTERNET_CONECTION   FLOWS
+Force Tags         E2E_INTERNET_CONECTION   FLOWS
 
 *** Variables ***
 ${start_id}                start
