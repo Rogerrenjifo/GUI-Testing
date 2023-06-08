@@ -13,7 +13,6 @@ ${flow_name_without_code}   AT19-SWIMMING
 
 *** Test Cases ***
 Verify a new flow can be created
-    Sleep    10
     ${flow_name_with_code}    Create A New Flow With Random Code    ${flow_name_without_code}
     Flow Page Title Should Be Displayed    ${flow_name_with_code}
     Set Suite Variable    ${flow_name_with_code}

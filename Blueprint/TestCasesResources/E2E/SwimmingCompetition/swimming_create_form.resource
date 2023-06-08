@@ -55,6 +55,7 @@ Create "Chest" Checkbox
     Set Name In Form Properties Panel    Chest
 
 Create Applicant Information Section
+    Sleep    10
     Change Name From "section 1" To "Applicant Information"
     Change The Title Of The Default Textbox To "Name"
     Create "ID" Numericbox 
