@@ -2,7 +2,6 @@
 Library    Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
 Library    Blueprint.Steps.Actions.Projects.ProjectPage.project_page_actions.ProjectPageActions
 Library    Libraries.Drivers.browser.Browser
-Resource    ../../../TestCases/prueba.robot
 
 *** Variables ***
 ${flow_name}    AT-19 Test-fc
