@@ -6,7 +6,7 @@ pipeline {
     PASSWORD=credentials('password')
     USER=credentials('user')
     BROWSER="remote_chrome"
-    IMPLICIT_TIMEOUT="30"
+    IMPLICIT_TIMEOUT="45"
   }
   stages {          
     stage('Build Browser Environments') {
