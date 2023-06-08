@@ -34,12 +34,10 @@ pipeline {
           script {
             stepName = "RegretionTestPC"
             folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
-            if (!fileExists(folderPath)) {
-              bat "mkdir ${folderPath}"
             }
-            bat 'move .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html'
-            bat 'move .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml'
-            bat 'move .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html'
+            bat "xcopy /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "xcopy /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "xcopy /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
           }
         }
       }
