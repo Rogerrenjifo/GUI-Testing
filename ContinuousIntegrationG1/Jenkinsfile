@@ -18,6 +18,31 @@ pipeline {
         }
       }
     }
+    stage('E2E_Scenarios'){
+      environment {
+        DEVICE="zoom out"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS -i E2E .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "E2E_Scenarios"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
     stage('Regretion_Test_PC'){
       environment {
         DEVICE="pc"
@@ -51,7 +76,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i FLOWS .\\Blueprint\\TestCases"
           }
         }
       }
@@ -76,7 +101,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i FLOWS .\\Blueprint\\TestCases"
           }
         }
       }
