@@ -28,7 +28,7 @@ Verify that the input label of the export dialog matches with “Filename”
 
 Verify that the default value of the “Filename” label has the following pattern: “export_project_name_day_month_year”
     ${default_filename}    Obtain Export Dialog Input Value In Project Page
-    Export File Name Should Follow The Format    ${default_filename}    ${flow_name}
+    Export File Name Should Follow The Format    ${default_filename}    ${project_name}
 
 Verify the export dialog contains a “Cancel” button
     ${button_text}    Obtain Export Dialog Cancel Button Text In Project Page
