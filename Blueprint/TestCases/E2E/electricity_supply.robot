@@ -19,7 +19,6 @@ ${publish_tab}   Publish
 
 *** Test Cases ***
 Verify that user is able to create and publish a complete flow process
-    Create Groups If Not Exist
     ${flow_name}=   Create A New Flow With Random Code    ${flow_name}
     Flow Page Should Be Displayed   ${flow_name}
     Set Sections In Create Form
