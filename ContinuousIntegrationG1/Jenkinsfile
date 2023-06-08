@@ -25,7 +25,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases'
+            bat './venv/Scripts/robot  --outputdir ./Blueprint/Reports -i ROGER ./Blueprint/TestCases'
           }
         }
       }
@@ -35,7 +35,7 @@ pipeline {
             stepName = "RegretionTestPC"
             artifactPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}.html"
             archiveArtifacts artifacts: artifactPath, fingerprint: true, allowEmptyArchive: true
-            bat "move .\\Blueprint\\Reports\\log.html ${artifactPath}"
+            bat "copy .\\Blueprint\\Reports\\log.html ${artifactPath}"
           }
         }
       }
