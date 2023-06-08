@@ -2,7 +2,7 @@
 Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_importations.resource
 
 *** Variables ***
-${flow_permission_user}   Fabian Cabrejo
+${flow_permission_user}   Rocío Morales
 ${process_permission_user}   Fabian Cabrejo
 ${applicant_information_section_user}   Rocío Morales 
 ${swimming_styles_section_user}    Denisse Cordova 
