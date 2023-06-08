@@ -76,6 +76,7 @@ Verify that clear button deletes assigned value
     Field Required Should Be Displayed    ${field_required}
 
 Verify that “Field requirement element“ is displayed when the dropdown box is empty
+    [Tags]    NEGATIVE
     Click Edit Current Step Button In Project System
     Delete Current Value In Project System
     ${field_required}  Get The Field Requirement Message

@@ -195,12 +195,12 @@ Verify that typing not matching information displays "No items found" label
     Dropdown no items found label should be visible
 
 Verify that typing not matching information disables save button
-    [Tags]    BG-245    BUG
+    [Tags]    BG-245    BUG    NEGATIVE
     Set text input in project forms    Dropdown Box 1    Section 1    z
     Save button should be disabled
 
 Verify that only letter 'e' is allowed on a numeric field
-    [Tags]    BG-254    BUG
+    [Tags]    BG-254    BUG    NEGATIVE
     Set numeric input in project forms    Numeric Box 1    Section 1    abcdefghijklmnopqrstuvwxyz
     Editable numeric input should be    e
 

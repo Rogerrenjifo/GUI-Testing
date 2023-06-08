@@ -67,6 +67,7 @@ Verify the spin button increase a numberic value in a numberic box
     The Numberic Box Value Should Change    ${section_name}    ${label_grade}   ${increased_number}
 
 Verify the spin button decrease a numberic value in a numberic box
+    [Tags]    NEGATIVE
     Decrease Numbericbox Value In New Project Page    ${section_name}    ${label_grade}   ${decreased_number}
     The Numberic Box Value Should Change    ${section_name}    ${label_grade}    ${final_number}   
 
@@ -80,6 +81,7 @@ Verify the label of a component changes color when the mouse is over
     Border Of A Component Should Be Highlighted    ${section_name}    ${label_email}     ${highlighted_border_color}
 
 Verify that an error message is displayed when the required field is empty
+    [Tags]    NEGATIVE
     Remove The Content Of A Component In New Project Page    ${section_name}    ${label_new_child}
     Field Required Message Should Be Displayed
     Field Required Icon Should Be Displayed
