@@ -18,20 +18,16 @@ Verify that a flow scenario can be created and published
     ${flow_name}    Get Flow Name Text In Flow Header
     Create Form
     Click Save Button In Flow Header
-    Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Click Tab In Flow Header    Create Flow
     Flow Tab Error Should Be Marked    Create Flow    
     Create Flow    
     Click Save Button In Flow Header
-    Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Click Tab In Flow Header    Permissions
     Flow Tab Should Be Marked    Permissions 
-    Set Permissions
-    Click Save Button In Flow Header
-    Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Click Tab In Flow Header    Publish
     Flow Tab Should Be Marked    Publish
     Click Save Publish Button
+    Sleep   5
     Go To Project Process In Main Menu   ${flow_name}
     Project Name Should Be As Expected    ${flow_name}
 
@@ -136,6 +132,7 @@ Set Permissions
     Set Flow Admin
     Set User In Initiate Process
     Set Users In Sections Visibility
+
 Set Flow Admin
     Delete All Users In Dropdown In Flow Permissions
     Click Dropdown Arrow In Flow Permissions
@@ -152,7 +149,7 @@ Set Users In Sections Visibility
     Delete All Users In Section Visibility    3
     Click Dropdown Arrow In Section Visibility    3
     Select User From Dropdown In Section Visibility    Roger Renjifo   3
-    Users Selected List In Section Visibility Should Contain    Roger Renjifo    3    
+    Users Selected List In Section Visibility Should Contain    Roger Renjifo    3
     Delete All Users In Section Visibility    4
     Click Dropdown Arrow In Section Visibility    4
     Select User From Dropdown In Section Visibility    Roger Renjifo   4

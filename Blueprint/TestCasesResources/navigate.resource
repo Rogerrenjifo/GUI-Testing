@@ -4,6 +4,7 @@ Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
 Library            Blueprint.Steps.Actions.Flows.flow_page_actions.NewFlowActions
 Library            Blueprint.Steps.Actions.Flows.flow_main_panel_actions.FlowMainPanelActions
 Library            Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
+Library            Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
 
 *** Variables ***
 ${project_tracing}         https://test.blueprint.ses-unit.com/project-tracing/ab0ded4d-9bcc-4734-9d09-889fe94b9507

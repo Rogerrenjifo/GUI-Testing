@@ -3,7 +3,7 @@ Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_suppl
 Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_create_flow.resource
 Resource   Blueprint/TestCasesResources/E2E/electricity_supply/electricity_supply_permissions.resource
 
-Force Tags        E2E   FLOWS   cele
+Force Tags        E2E   FLOWS
 Suite Teardown    Delete Storage
 
 *** Variables ***

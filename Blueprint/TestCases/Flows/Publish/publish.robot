@@ -11,7 +11,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate to Flows-page-Publish
 Suite Teardown     Delete Flow Process In Flow Header
-Force Tags         FLOWS    PUBLISH
+Force Tags         FLOWS    PUBLISH    holi2
 
 
 *** Test Cases ***
@@ -20,7 +20,7 @@ Verify that 'Save and Publish' button is displayed
 
 Verify 'Flow was not published.' pop-up message is displayed when 'Save and Publish' button is clicked and the flow has errors
     Click Save Publish Button
-    Popup Message Should Be In List    Flow was not published. 
+    Popup Message Should Be In List    Flow was not published.
 
 Verify 'Publish error: Create Flow tab has errors. Missing end step' pop-up message is displayed when 'Save and Publish' button is clicked
     Click Save Publish Button
@@ -72,6 +72,7 @@ Prepare Flow For Publish
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Click Save Button In Flow Header
+
 Click Publish Tab
     Click Tab In Flow Header    Publish
     Sleep    5

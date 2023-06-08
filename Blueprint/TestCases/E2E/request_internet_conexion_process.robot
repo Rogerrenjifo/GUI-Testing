@@ -22,7 +22,7 @@ Verify that a Template Can Be Created, Published, and Used.
     Add Permitions
     Click Tab In Flow Header        Publish
     Click Save Publish Button
-    Click Save Continue Button
+    Sleep    5s
     Verify The Flow Was Created
 
 *** Keywords ***

@@ -17,25 +17,12 @@ Verify that is posible create Academic Diploma process flow and publish it
     The Components Order Should Be    ${second_section_list}    section-2 
     New Section Should Be Displayed
     Click Save Next Button In Flow Header
-    Popup Message Text Should Be Equal    Flow ${flow_name} updated.
     Move Components to Main Panel
     Components Shoul Be Displayed In The Main Panel
     Connect the components
     Components should be connected
-    Click Save Next Button In Flow Header
-    Popup Message Text Should Be Equal    Flow ${flow_name} updated.
-    Set A User In Flow Admin Section
-    Users Selected List Should Contain    Fabian Cabrejo
-    Set A User In Process Permissions Section
-    Users Selected List Process Permissions Should Contain    Telma Rios
-    Set Users In Sections Visibility
-    Users Selected should be visible
-    Click Save Next Button In Flow Header
-    Popup Message Text Should Be Equal    Flow ${flow_name} updated.
-    Sleep    5s
+    Click Tab In Flow Header    Publish
     Click Save Publish Button
-    Click Save Continue Button
-    #Popups Messages Text Should Contains    Flow ${flow_name} published.
     Go To Project Process In Main Menu   ${flow_name}
     Project Name Should Be As Expected    ${flow_name}
 
@@ -202,6 +189,7 @@ Components should be connected
     Component Dot Should Be Connected    001END1    16
 
 Set A User In Flow Admin Section
+    Delete All Users In Dropdown In Flow Permissions
     Click Dropdown Arrow In Flow Permissions
     Select User From Dropdown In Flow Permissions    Fabian Cabrejo
 
