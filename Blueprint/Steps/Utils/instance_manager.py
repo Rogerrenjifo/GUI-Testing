@@ -28,7 +28,7 @@ class InstanceManager:
         """Deletes a list of instances"""
         if len(instance_ids) != 0:
             for instance_id in instance_ids:
-                time.sleep(3)
+                time.sleep(5)
                 self.project_page.delete_project_instance_process_in_project_page(instance_id)
 
     def obtain_random_id(self, instance_ids: list):
