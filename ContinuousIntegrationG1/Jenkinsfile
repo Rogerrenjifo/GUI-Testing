@@ -43,7 +43,7 @@ pipeline {
         }
       }
     }
-    stage('Regretion_Test_PC'){
+    stage('Regression_Test_PC'){
       environment {
         DEVICE="pc"
         BROWSER="remote_chrome"
@@ -68,7 +68,7 @@ pipeline {
         }
       }
     }
-    stage('Regretion_Test_Ipad_Air'){
+    stage('Regression_Test_Ipad_Air'){
       environment {
         DEVICE="ipad air"
         BROWSER="remote_chrome"
@@ -93,7 +93,7 @@ pipeline {
         }
       }
     }
-  stage('Regretion_Test_Galaxy_S20_Ultra'){
+  stage('Regression_Test_Galaxy_S20_Ultra'){
       environment {
         DEVICE="galaxy s20 ultra"
         BROWSER="remote_chrome"
