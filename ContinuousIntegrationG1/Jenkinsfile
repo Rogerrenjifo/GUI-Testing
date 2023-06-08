@@ -34,9 +34,9 @@ pipeline {
           script {
             stepName = "RegretionTestPC"
             folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
-            bat "xcopy /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
-            bat "xcopy /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
-            bat "xcopy /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\b  report.html"
+            bat "robocopy .\\Blueprint\\Reports\\log.html ${folderPath} log.html /E"
+            bat "robocopy .\\Blueprint\\Reports\\output.xml ${folderPath} output.xml /E"
+            bat "robocopy .\\Blueprint\\Reports\\report.html ${folderPath} report.html /E"
           }
         }
       }
