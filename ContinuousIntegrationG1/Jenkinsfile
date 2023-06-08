@@ -25,7 +25,7 @@ pipeline {
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat 'venv/Scripts/robot  --outputdir Blueprint/Reports -i ROGER Blueprint/TestCases'
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases'
           }
         }
       }
