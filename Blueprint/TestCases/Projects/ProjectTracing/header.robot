@@ -2,7 +2,7 @@
 Documentation       Atomic test to verify the functionality of the header in project tracing page of Blueprint
 Resource            Blueprint/TestCasesResources/Projects/ProjectTracing/common_header_imports.resource
 Suite Setup         Navigate to Project Tracing
-Force Tags          PROJECT_TRACING    HEADER   PROJECT
+Force Tags          PROJECT_TRACING    HEADER_PROJECT_TRACING   PROJECT
 
 *** Variables ***
 ${url}  https://test.blueprint.ses-unit.com/project-tracing/11acde1d-0e77-4322-b10d-fb8dc1c05c2a
@@ -40,15 +40,16 @@ Verify that the Delete button is visible in the pop-up window Delete process ins
     Click Delete Button In Project Tracing
     Delete Button Of Delete Process Instance Should Be Displayed
 
+Verify that you can cancel the deletion of a process instance in the Delete Process Instance pop-up window
+    Click Delete Button In Project Tracing
+    Click Cancel Button From Delete Dialog In Project Tracing
+    Delete Button Should Be Displayed
+
 Verify that an instance of the process can be deleted in the Delete Process Instance pop-up window.
     Click Delete Button In Project Tracing
     Click Delete Button From Delete Dialog In Project Tracing
     Delete Button Should Be Displayed
 
-Verify that you can cancel the deletion of a process instance in the Delete Process Instance pop-up window
-    Click Delete Button In Project Tracing
-    Click Cancel Button From Delete Dialog In Project Tracing
-    Delete Button Should Be Displayed
 
 *** Keywords ***
 Navigate to Project Tracing

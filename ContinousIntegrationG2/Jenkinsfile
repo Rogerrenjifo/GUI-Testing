@@ -7,7 +7,7 @@ pipeline {
     BROWSER="chrome"
     DEVICE="pc"
     DRIVER_PATH=".\\"
-    IMPLICIT_TIMEOUT="25"
+    IMPLICIT_TIMEOUT="30"
     CI_EXECUTION="False"
   }
   stages{
@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Project Page'){
       steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i PROJECT .\\Blueprint\\TestCases'
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsPROJECTPAGE -i PROJECT -e BUG .\\Blueprint\\TestCases'
       }
       post {
         always {
