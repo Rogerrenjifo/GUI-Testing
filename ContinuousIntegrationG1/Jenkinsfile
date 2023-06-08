@@ -45,7 +45,7 @@ pipeline {
   } 
   post{
     always{
-      archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true, allowEmptyArchive: true
+      archiveArtifacts artifacts: "Blueprint/Reports", fingerprint: true, allowEmptyArchive: true
       bat 'docker container stop chrome'
       bat 'docker container rm chrome'
     }
