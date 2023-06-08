@@ -11,6 +11,7 @@ ${string_with_more_than_51_characters}   Believeinyourselfandpursueyourpassionwi
 
 *** Test Cases ***
 Verify an error message is not displayed when entering special chracters in 'Name' field in 'Create Flow' dialog
+    [Tags]    P2
     [Template]  Error Message Should Not Be Displayed
     @
     $

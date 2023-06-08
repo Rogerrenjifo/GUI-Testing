@@ -15,25 +15,30 @@ ${flow_name}     my_flow_test1
 
 *** Test Cases ***
 Verify the 'Create flow' dialog contains the Name field label
+    [Tags]    P2
     Click On New Flow Button
     Name Label Should Be    ${name_label}
 
 Verify the 'Create flow' dialog contains the Code field label
+    [Tags]    P2
     Click On New Flow Button
     Code Label Should Be    ${code_label}
 
 Verify a error message is displayed when try to create a flow with empty fields in the 'Create Flow' dialog
+    [Tags]    P2
     Click On New Flow Button
     Click On Create New Flow Button
     Name Field Required Message Should Be Displayed
     Code Field Required Message Should Be Displayed
 
 Verify a error message is displayed when try to create a flow with empty name in the 'Create flow dialog'
+    [Tags]    P2
     Click On Flows Button
     Create New Flow Without Name Process In Flow Page   ${flow_code}
     Name Field Required Message Should Be Displayed
 
 Verify a error message is displayed when try to create a flow with empty code in the 'Create flow dialog'
+    [Tags]    P2
     Click On Flows Button
     Create New Flow Without Code Process In Flow Page   ${flow_name}
     Code Field Required Message Should Be Displayed

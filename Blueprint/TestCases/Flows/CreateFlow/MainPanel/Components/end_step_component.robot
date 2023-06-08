@@ -12,18 +12,21 @@ ${turquoise_color}    rgb(0, 217, 194)
 
 *** Test Cases ***
 Verify that a final step has a button dropdown
+    [Tags]    P2
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     ${found_result}    Is Dropdown Not Found In Flow Main Panel    001END1
     Component Should Have A Button Dropdown    ${found_result}
 
 Verify that a final step is red border color when it does not have incoming and outgoing connections
+    [Tags]    P3
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     ${color}    Obtain Component Color In Flow Main Panel    001END1
     Component Rgb Color Should Be Equal    ${color}    ${red_color}
 
 Verify that a final step border changes to turquoise color when it has incoming connection
+    [Tags]    P3
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Connect Components In Flow Main Panel    002Added1    001END1    2    12
@@ -32,12 +35,14 @@ Verify that a final step border changes to turquoise color when it has incoming 
     Component Rgb Color Should Be Equal    ${color}    ${turquoise_color}
 
 Verify that a final step cannot have an outgoing connection    
+    [Tags]    P1
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Connect Components In Flow Main Panel    001END1    002Added1    5    8
     Component Dot Should Be Connected    001END1    5    False
 
 Verify that a final step can have more than one incoming connection
+    [Tags]    P1
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Connect Components In Flow Main Panel    002Added1    001END1    5    6
@@ -45,7 +50,8 @@ Verify that a final step can have more than one incoming connection
     Component Dot Should Be Connected    001END1    6
     Component Dot Should Be Connected    001END1    8
 
-Verify that a final step can clone 
+Verify that a final step can clone
+    [Tags]    P2 
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Clone Component In Flow Main Panel    001END1
@@ -53,6 +59,7 @@ Verify that a final step can clone
     Dictionary Should Contain Component    ${dictionary}    001END2
 
 Verify that a final step can delete
+    [Tags]    P2
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     Delete Component In Flow Main Panel    001END1
@@ -60,6 +67,7 @@ Verify that a final step can delete
     Dictionary Should Not Contain Component    ${dictionary}    001END1
 
 Verify that a final step can move in the canvas
+    [Tags]    P1
     Click Component    001Added1
     Click End Step Checkbox In Flow Properties    001Added1
     ${x_source}    ${y_source}    Obtain X And Y Position Component In Flow Main Panel    001END1
