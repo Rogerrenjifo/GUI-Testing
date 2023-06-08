@@ -13,19 +13,24 @@ ${no_data_match_found_message}    No data match found
 
 *** Test Cases ***
 Verify the Flows label is "Flows" in the Main Menu
+    [Tags]    P3
     Flows Label Should Be    ${Flows_label}
 
 Verify the flow search bar input display the results when is empty
+    [Tags]    P1
     Result Should Be Displayed
 
 Verify that the message 'No data match found' is displayed when there is no coincidences results in flow search bar
+    [Tags]    P2
     Insert Flow Name Into The Search Bar    ${search_without_match}
     Message Not Data Match Found Should Be Displayed    ${no_data_match_found_message}
 
 Verify that the 'New flow' button is displayed
+    [Tags]    P1
     New Flow Button Should Be Displayed
 
 Verify that click on 'New flow' button displays the 'Create flow' dialog
+    [Tags]    P1
     Click On New Flow Button
     Create Flow Dialog Should Be Displayed
 
