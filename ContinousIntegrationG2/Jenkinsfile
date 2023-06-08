@@ -21,21 +21,9 @@ pipeline {
         }
       }
     }
-    stage('Project Page'){
-      steps{
-        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsPROJECTPAGE -i PROJECT -e BUG .\\Blueprint\\TestCases'
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/ReportsHappyPath/output.xml', fingerprint: true
-        }
-      }
-    }
     // stage('Run Happy Path Test Cases'){
     //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsHappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'
     //   }
     //   post {
     //     always {
@@ -47,7 +35,7 @@ pipeline {
     // }
     // stage('Run Regretion Test Cases'){
     //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsRegretion -i HEADER_PROJECT_PAGE .\\Blueprint\\TestCases'
+    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsRegretion -i PROJECT .\\Blueprint\\TestCases'
     //   }
     //   post {
     //     always {
@@ -57,29 +45,20 @@ pipeline {
     //     }
     //   }
     // }
-    // stage('Run Projects Test Cases'){
-    //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
-    //   }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
-    //     }
-    //   }
-    // }
-    // stage('Run Test Mobile Device'){
-    //   steps{
-    //     bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
-    //   }
-    //   post {
-    //     always {
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
-    //       archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
-    //     }
-    //   }
-    // }
+    stage('Run Test Mobile Device'){
+      environment {
+        NOMBRE_VARIABLE = 'galaxy s20 ultra'
+      }
+      steps{
+        bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/ReportsProjects/output.xml', fingerprint: true
+        }
+      }
+    }
   }
 }
