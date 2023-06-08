@@ -10,9 +10,9 @@ Add Steps And Actions To Diagram
     Change Component Name In Flow Properties    Scholarship Application
     Add Action With Name To Board    Application form is not complete    ${5}    ${17}    1
     Add Step With Name To Board    Ask applicant for send complete form    ${5}    ${30}    1
-    Add Action With Name To Board   Documentiation is not complete    ${85}    ${17}    2
+    Add Action With Name To Board   Application form is complete    ${85}    ${17}    2
     Add Step With Name To Board    Review Documentation    ${85}    ${30}   2
-    Add Action With Name To Board   Application form is complete    ${85}    ${45}    3
+    Add Action With Name To Board   Documentiation is not complete    ${85}    ${45}    3
     Add Step With Name To Board    Ask appliant for send the complete documentation    ${85}    ${55}    3
     Add Action With Name To Board   Documentiation is complete    ${43}    ${33}    4
     Add Step With Name To Board    Review Applicant's Academic Performance    ${43}    ${43}    4

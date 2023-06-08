@@ -1,7 +1,7 @@
 *** Settings ***
 Resource     Blueprint/TestCasesResources/E2E/ChildIncidentReportProcess/child_incident_report_process.resource
 
-Force Tags    RESIZED SCREEN TEST
+Force Tags    RESIZED SCREEN TEST   PROJECT
 
 *** Variables ***
 ${flow_name}    Child Incident Report Process

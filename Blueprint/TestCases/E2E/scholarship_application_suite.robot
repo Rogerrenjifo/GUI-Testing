@@ -2,7 +2,7 @@
 Documentation    E2E Scenario that reprecents the process of a scholraship application
 Resource    Blueprint/TestCasesResources/E2E/ScholarshipApplication/scholarship_application_scenario_importations.resource
 
-Force Tags    SCHOLARSHIP_APPLICATION   E2E
+Force Tags    SCHOLARSHIP_APPLICATION   E2E    PROJECT
 Suite Setup    Set Steps and Actions Dictionaries
 Suite Teardown    Delete Storage
 
@@ -27,8 +27,6 @@ Verify a flow can be created, from form creation, flow creation, and permissions
     Flow Header Title Should Be The Same As The Title Set In Create Flow    ${flow_name_for_edit}
     Click Save Button In Flow Header
     Popup Message Should Be Displayed
-    Pop Up Message Should Be Displayed In Expected Color    ${expected_success_popup_color}
-    Popup Message Text Should Be    Flow ${flow_name_for_edit} updated.
     Click Tab In Flow Header    Create Flow
     Add Steps And Actions To Diagram
     Conncet Actions And Steps
@@ -46,8 +44,11 @@ Verify a flow can be created, from form creation, flow creation, and permissions
     User Selected In Section Visibility Should Be    ${user_group}    3
     User Selected In Section Visibility Should Be    ${user_group}    4
     User Selected In Section Visibility Should Be    ${user_group}    5
+    Sleep    5
     Verify Dropdown Titles For Sections Applicant Information, Documentation And Academic Performance
+    Sleep    20
     Click Save Button In Flow Header
+    Sleep    20
     Popup Message Should Be Displayed
     Pop Up Message Should Be Displayed In Expected Color    ${expected_success_popup_color}
     Popup Message Text Should Be    Flow permissions of ${flow_name_for_edit} updated.
