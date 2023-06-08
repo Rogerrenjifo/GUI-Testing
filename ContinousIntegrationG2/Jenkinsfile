@@ -15,7 +15,7 @@ pipeline {
       steps {
         script {
           virtualenvDir = "${WORKSPACE}\\venv"
-          bat "C:\\Users\\MARIA\\AppData\\Local\\Programs\\Python\\Python38\\python -m venv ${virtualenvDir}"
+          bat "python -m venv ${virtualenvDir}"
           bat ".\\venv\\Scripts\\activate"
           bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
         }
