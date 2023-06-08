@@ -12,6 +12,7 @@ ${no_data_match_found_message}    No data match found
 
 *** Test Cases ***
 Verify the results are displayed when enter special characters in the flow search bar input
+    [Tags]    P2
     [Template]    Test Flow Search Bar Input
     @
     $
@@ -33,7 +34,7 @@ Verify the results are displayed when enter special characters in the flow searc
     ?
 
 Verify the flow search bar input has no limit characters
-    [Tags]    BUG-235
+    [Tags]    BUG-235    P2
     Insert Flow Name Into The Search Bar     ${String_with_more_than_51_characters}
     Message Not Data Match Found Should Be Displayed     ${no_data_match_found_message}
 

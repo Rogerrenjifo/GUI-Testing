@@ -16,17 +16,21 @@ Force Tags         FLOWS    PUBLISH    holi2
 
 *** Test Cases ***
 Verify that 'Save and Publish' button is displayed
+    [Tags]    P1
     Save And Publish Button Should Be Displayed
 
 Verify 'Flow was not published.' pop-up message is displayed when 'Save and Publish' button is clicked and the flow has errors
+    [Tags]    P2
     Click Save Publish Button
     Popup Message Should Be In List    Flow was not published.
 
 Verify 'Publish error: Create Flow tab has errors. Missing end step' pop-up message is displayed when 'Save and Publish' button is clicked
+    [Tags]    P2
     Click Save Publish Button
     Popup Message Should Be In List    Publish error: Create Flow tab has errors. Missing end step 
 
 Verify 'Flow published.' pop-up message is displayed when 'Save and Publish' button is clicked in a draft version
+    [Tags]    P2
     ${flow_name}    Get Flow Name Text In Flow Header
     Prepare Flow For Publish
     Click Publish Tab
@@ -34,12 +38,14 @@ Verify 'Flow published.' pop-up message is displayed when 'Save and Publish' but
     Popup Message Should Be In List    Flow ${flow_name} published.
 
 Verify 'Flow is already up-to-date.' pop-up message is displayed when 'Save and Publish' button is clicked in a published version
+    [Tags]    P2
     ${flow_name}    Get Flow Name Text In Flow Header
     Click Publish Tab
     Click Save Publish Button
     Popup Message Should Be In List    Flow ${flow_name} is already up-to-date.
 
 Verify 'Publish error: Create Form tab has errors.' pop-up message is displayed when 'Save and Publish' button is clicked and Create Form tab has errors
+    [Tags]    P2
     Click Tab In Flow Header    Create Form
     Add New Section In Create Form
     Click Publish Tab
@@ -47,6 +53,7 @@ Verify 'Publish error: Create Form tab has errors.' pop-up message is displayed 
     Popup Message Should Be In List    Publish error: Create Form tab has errors.
 
 Verify 'Publish error: Create Flow tab has errors.' pop-up message is displayed when 'Save and Publish' button is clicked and Create Flow tab has errors
+    [Tags]    P2
     Click Tab In Flow Header    Create Flow
     Move Action To Board Position    70    70
     Click Publish Tab
@@ -54,6 +61,7 @@ Verify 'Publish error: Create Flow tab has errors.' pop-up message is displayed 
     Popup Message Should Be In List    Publish error: Create Flow tab has errors.
 
 Verify 'Publish error: Permissions tab has errors.' pop-up message is displayed when 'Save and Publish' button is clicked and Permissions tab has errors
+    [Tags]    P2
     Click Tab In Flow Header    Permissions
     Delete All Users In Section Visibility    3
     Click Publish Tab
