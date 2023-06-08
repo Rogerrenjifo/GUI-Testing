@@ -28,7 +28,7 @@ pipeline {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             virtualenvDir = "${WORKSPACE}\\venv"
-            bat "C:/Users/Roger/AppData/Local/Programs/Python/Python38/python -m venv ${virtualenvDir}"
+            bat "python -m venv ${virtualenvDir}"
             bat ".\\venv\\Scripts\\activate"
             bat "${virtualenvDir}\\Scripts\\pip install -r ${WORKSPACE}\\requeriments.txt"
           }
