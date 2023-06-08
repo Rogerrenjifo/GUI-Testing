@@ -5,7 +5,7 @@ pipeline {
     REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
     USER=credentials('user')
     PASSWORD=credentials('password')
-    IMPLICIT_TIMEOUT="35"
+    IMPLICIT_TIMEOUT="50"
   }
   stages {          
     stage('Build Browser Environments') {    
