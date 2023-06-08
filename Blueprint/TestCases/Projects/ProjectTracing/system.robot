@@ -27,6 +27,7 @@ Verify its possible edit the current step
     Click Edit Current Step Button In Project System
     ${obtain_save_button}   Obtain Save Button Element
     Button Should Be Visible    ${obtain_save_button}
+    Sleep    3
 
 Verify options are displayed when dropdown field is clicked
     Click Edit Current Step Button In Project System
@@ -34,25 +35,23 @@ Verify options are displayed when dropdown field is clicked
     ${option_list}  Get Options In Dropdown
     Log To Console    ${option_list}
     Dropdown List Should Not Be Empty         ${option_list}
+    Display Dropdown In Project System
 
 Verify options are displayed when click down arrow button
-    Click Edit Current Step Button In Project System
     Display Dropdown In Project System
     ${option_list}  Get Options In Dropdown
     Log To Console    ${option_list}
     Dropdown List Should Not Be Empty       ${option_list}
 
 Verify options are not displayed when click up arrow button
-    Click Edit Current Step Button In Project System
     Display Dropdown In Project System
     Display Dropdown In Project System
     ${dropdown_list}    Obtain All The Components Of The Dropdown
     Dropdown List Should Not Be Displayed    ${dropdown_list}
 
 Verify selected step is displayed on the dropdown
-    Click Edit Current Step Button In Project System
     Display Dropdown In Project System
-    Select Specific Option In Project System    end step
+    Select Specific Option In Project System    final step
 
 Verify that save button is visible when edit button is clicked
     Click Edit Current Step Button In Project System
