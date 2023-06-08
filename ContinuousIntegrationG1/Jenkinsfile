@@ -45,7 +45,7 @@ pipeline {
         }
       }
     }
-    stage('Regretions tests'){
+    stage('Regretions Test'){
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -59,7 +59,7 @@ pipeline {
         }
       }
     }
-    stage('Regretions tests'){
+    stage('Regretions Test iphone'){
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
