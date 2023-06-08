@@ -10,3 +10,7 @@ class PublishTabActions(PublishTabObjects):
     def click_save_publish_button(self):
         """Clicks save and publish button."""
         self.get_save_and_publish_button().click()
+    
+    def click_save_continue_button(self):
+        """Clicks save and continue button."""
+        self.get_save_continue_button().click()
