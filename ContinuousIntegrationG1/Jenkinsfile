@@ -13,6 +13,7 @@ pipeline {
         script {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             bat 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+            sleep time: 20, unit: 'MILLISECONDS'
           }    
         }
       }
