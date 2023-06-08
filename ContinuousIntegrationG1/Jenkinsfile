@@ -18,24 +18,24 @@ pipeline {
         }
       }
     }
-    stage('Regretions Test pc'){
+    stage('RegretionTestPC'){
       environment {
         DEVICE="pc"
       }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat './venv/Scripts/robot  --outputdir ./Blueprint/Reports -i ROGER ./Blueprint/TestCases'
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i ROGER .\\Blueprint\\TestCases'
           }
         }
       }
       post {
         always {
           script {
-            stepName = "RegretionsTest"
-            artifactPath = "${env.WORKSPACE}/Blueprint/Reports/${stepName}.html"
+            stepName = "RegretionTestPC"
+            artifactPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}.html"
             archiveArtifacts artifacts: artifactPath, fingerprint: true, allowEmptyArchive: true
-            bat "move ./Blueprint/Reports/log.html ${artifactPath}"
+            bat "move .\\Blueprint\\Reports\\log.html ${artifactPath}"
           }
         }
       }
