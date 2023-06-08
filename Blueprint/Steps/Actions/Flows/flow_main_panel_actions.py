@@ -1,3 +1,5 @@
+import time
+
 from Blueprint.PageObject.Flows.flow_main_panel_object import FlowMainPanelObject
 from Blueprint.PageObject.Flows.Elements.Components.component_storage import ComponentStorage
 from Blueprint.PageObject.Flows.Elements.Components.action_component import ActionComponent
@@ -53,6 +55,7 @@ class FlowMainPanelActions(FlowMainPanelObject):
         """Clicks a component"""
         component: BaseComponent = self.index.component_dictionary[component_id]
         component.select_component()
+
     
     def obtain_component_color_in_flow_main_panel(self, component_id :str) -> str:
         """Returns the component color"""
@@ -115,3 +118,10 @@ class FlowMainPanelActions(FlowMainPanelObject):
         self.index.counter_action = 1
         self.index.counter_step = 1
         self.index.counter_end = 1
+
+    def connect_components_by_title(self, source_title: str, target_title: str, source_point_number: int,
+                                                target_point_number: int) -> None:
+        """Connect two components.using the title"""
+        source_id = self.get_component_id_by_title(source_title)
+        target_id = self.get_component_id_by_title(target_title)
+        self.connect_components_in_flow_main_panel(source_id, target_id, source_point_number, target_point_number)

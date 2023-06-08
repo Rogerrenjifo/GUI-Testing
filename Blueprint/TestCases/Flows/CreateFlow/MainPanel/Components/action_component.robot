@@ -1,10 +1,10 @@
 *** Settings ***
-Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.Resource
+Resource            Blueprint/TestCasesResources/Flow/CreateFlow/common_main_panel_imports.resource
 Suite Setup         Navigate To Flows-Page-Create-Flow
 Suite Teardown      Delete Flow Process In Flow Header
 Test Setup          Move components to the main panel
 Test Teardown       Clean Components Added
-Force Tags          CREATE_FLOW
+Force Tags          CREATE_FLOW   FLOWS
 
 *** Variables ***
 ${red_color}                     rgb(255, 114, 105)
@@ -48,6 +48,7 @@ Verify that an action connected to a final step has a turquoise color
     Click End Step Checkbox In Flow Properties    001Added1
     Connect Components In Flow Main Panel    first    002Added2    5    14
     Connect Components In Flow Main Panel    002Added2    001END1    2    3
+    Click Component    002Added1
     ${color}    Obtain Component Color In Flow Main Panel    001END1
     Component Rgb Color Should Be Equal    ${color}    ${turquoise_color}
 

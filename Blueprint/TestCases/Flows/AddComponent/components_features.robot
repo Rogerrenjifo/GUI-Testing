@@ -10,7 +10,7 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To Flows-Page-Create-Flow And Add Components
 Suite Teardown     Delete Flow Process In Flow Header
-Test Tags          ADD_COMPONENTS    CREATE_FLOW
+Force Tags         ADD_COMPONENTS    CREATE_FLOW   FLOWS
 
 *** Variables ***
 ${red_color}              rgb(255, 114, 105)

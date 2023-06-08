@@ -64,7 +64,7 @@ class SectionsVisibilityActions(ProcessPermissions):
     def obtain_typed_characters_from_dropdown_in_section_visibility(self, dropdown_index: str) -> str:
         """Retrieves the characters from the text box"""
         character = self.dropdown.get_characters_from_text_box('INPUT_TEXT_BOX', dropdown_index)
-        self.delete_typed_name_from_dropdown_in_section_visibility()
+        self.delete_typed_name_from_dropdown_in_section_visibility(dropdown_index)
         return character
 
     def select_user_from_dropdown_in_section_visibility(self, user: str, dropdown_index: str):

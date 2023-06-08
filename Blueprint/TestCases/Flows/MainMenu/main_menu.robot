@@ -1,8 +1,9 @@
 *** Settings ***
 Resource    Blueprint/TestCasesResources/Flow/MainMenu/main_menu_imports.resource
 Library     Blueprint.Steps.Verifications.Flow.MainMenu.main_menu_verifications.MainMenuVerifications
-Force Tags    MAIN_MENU
+Force Tags    MAIN_MENU      FLOWS
 Suite Setup      Click On Flows Button
+Suite Teardown    Close Dialog Adn Menu
 
 
 *** Variables ***
@@ -27,3 +28,8 @@ Verify that the 'New flow' button is displayed
 Verify that click on 'New flow' button displays the 'Create flow' dialog
     Click On New Flow Button
     Create Flow Dialog Should Be Displayed
+
+*** Keywords ***
+Close Dialog Adn Menu
+    Click On Cancel New Flow Button
+    Click On Flows Button

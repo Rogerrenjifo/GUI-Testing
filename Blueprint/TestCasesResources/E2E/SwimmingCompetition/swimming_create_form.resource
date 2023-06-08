@@ -70,12 +70,16 @@ Create Swimming Styles Section
 
 Applicant Information Section Should Be Displayed
     ${expected_labels}   Create List    Name  Gender   ID   Age   
-    Components Order Should Be    ${expected_labels}
+    Component Order Should Be    ${expected_labels}
     ${expected_components}   Create List   Dropdown   Number    Number
     Component type should be   ${expected_components}    section-1
 
 Swimming Styles Section Should Be Displayed
     ${expected_labels}   Create List    Free  Butterfly   Back   Chest  
-    Components Order Should Be    ${expected_labels}    section-2
+    Component Order Should Be    ${expected_labels}    section-2
     ${expected_components}   Create List   Checkbox   Checkbox    Checkbox    Checkbox
     Component type should be   ${expected_components}    section-2
+
+Delete Storage
+    Clean Dictionary
+    Delete Form Storage

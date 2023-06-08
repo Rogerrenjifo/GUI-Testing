@@ -12,6 +12,10 @@ class DeleteDialogVerifications:
         """Verifies that the delete dialog is displayed."""        
         self.verification.verify_element_is_displayed(self.delete_dialog.get_delete_dialog())
 
+    def delete_dialog_should_not_be_displayed(self):
+        """Verifies that the delete dialog is not displayed."""
+        self.verification.verify_equal_ignore(self.delete_dialog.get_delete_dialog(),False)
+
     def delete_dialog_title_should_be_displayed(self):
         """Verifies that the title of delete dialog is displayed."""        
         self.verification.verify_element_is_displayed(self.delete_dialog.get_dialog_title())

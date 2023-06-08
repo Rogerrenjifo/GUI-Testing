@@ -70,7 +70,7 @@ class ProcessPermissionsActions(ProcessPermissions):
     def obtain_typed_characters_in_dropdown_in_process_permissions(self) -> str:   
         """Retrieves the characters from the text box"""
         character = self.dropdown.get_characters_from_text_box('INPUT_TEXT_BOX', self.index_dropdown)
-        self.delete_typed_name_in_dropdown_in_process_permissions()
+        self.delete_typed_name_in_dropdown_in_process_permission()
         return character
 
     def select_user_from_dropdown_in_process_permission(self, user: str):

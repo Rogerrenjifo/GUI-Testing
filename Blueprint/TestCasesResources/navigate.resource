@@ -26,7 +26,7 @@ Navigate To A Flow
     Click On Flows Button
     Insert Flow Name Into The Search Bar    ${search_flow}
     Click On Flow Result
-    
+
 Navigate to Flows-page-Permission
     Create A New Flow With Random Code
     Click Tab In Flow Header    Permissions
@@ -34,3 +34,8 @@ Navigate to Flows-page-Permission
 Reload Permissions Tab
     Reload Window
     Click Tab In Flow Header    Permissions
+
+Navigate to Flows-page-Publish
+    Create A New Flow With Random Code
+    Click Tab In Flow Header    Publish
+    Sleep    5

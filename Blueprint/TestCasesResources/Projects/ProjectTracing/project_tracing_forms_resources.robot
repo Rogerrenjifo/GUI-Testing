@@ -10,9 +10,7 @@ ${project_tracing_forms_page}    https://test.blueprint.ses-unit.com/project-tra
 
 *** Keywords ***
 Open project tracing forms webpage
-    get_driver
     navigate_to_url    ${project_tracing_forms_page}
-    login
     wait_for_project_forms_page_to_load_in_project_forms    Section 1
 
 Put mouse hover field with title

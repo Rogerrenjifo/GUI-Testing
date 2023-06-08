@@ -67,7 +67,7 @@ class FlowPropertiesObjects(BasePage):
 
     def click_select_owner_menu_in_flow_properties(self) -> None:
         """Performs click on 'select owner' combobox."""
-        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()
+        self.find_element.by_xpath(locators.OWNER_COMBOBOX_MENU).click()   
 
     def select_owner_in_menu_in_flow_properties(self):
         """Clicks on select owner in menu in flow properties"""
@@ -76,3 +76,11 @@ class FlowPropertiesObjects(BasePage):
     def search_owner_in_menu_in_flow_properties(self, user: str):
         """Search owner in select owner in menu in flow properties"""
         self.find_element.by_xpath(locators.SEARCH_OWNER).send_keys(user)
+
+    def click_owner_combobox_in_flow_properties(self) -> None:
+        """Performs click on 'owner' combobox."""
+        self.select_owner_dropbox.owner_combobox.click()
+
+    def select_owner_from_list_in_flow_properties(self, text: str = "", position: int = None) -> None:
+        """Selects owner from list by text or position."""
+        self.select_owner_dropbox.select_owner_item(text, str(position)).click()
