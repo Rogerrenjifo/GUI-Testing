@@ -31,7 +31,8 @@ Verify that hover on the label of a datebox the color change to purple "rgba(117
 Verify That clicking into a datebox its border change to purple "rgb(117, 105, 255)"
     Border Of A Component Should Be Highlighted    ${section_delivering}   ${label_received_date}   ${purple_color_rgb}
 
-Verify that if the datebox is a required field and it is empty the Field Required message is displayed in red color
+Verify that if the datebox is a required field and it is empty the Field Required message is displayed in red color "rgba(255, 114, 105, 1)"
+    [Tags]    NEGATIVE
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_received_date}
     Field Required Message Should Be Displayed
 
@@ -39,7 +40,8 @@ Verify that if the datebox is a required field and it is empty error icon is dis
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_received_date}
     Field Required Icon Should Be Displayed
 
-Verify that if the datebox is a required field and it is empty its label change to red color
+Verify that if the datebox is a required field and it is empty its label change to red color "rgba(255, 114, 105, 1)"
+    [Tags]    NEGATIVE
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_received_date}
     The Rgb Color Of A Label Should Be As Expected    ${section_delivering}    ${label_received_date}   ${red_color}
 
@@ -52,14 +54,14 @@ Verify that clicking the input of datebox the calendar is displayed
     The Datepicker In Datebox Should Be Displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
 
-Verify that clicking the month in datapicker the month list is displayed
-    Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
-    Click To Display Months In Datepicker New Project Page
-    Month Or Year In Datapicker Should Be Displayed
-    Click To Display Months In Datepicker New Project Page
-    Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
+Verify that clicking the month in datapicker the month list is displayed 
+    Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date} 
+    Click To Display Months In Datepicker New Project Page 
+    Month Or Year In Datapicker Should Be Displayed 
+    Click To Display Months In Datepicker New Project Page 
+    Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date} 
 
-Verify that clicking the year in datapicker the year list is displayed
+Verify that clicking the year in datapicker the year list is displayed 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
     Click To Display Years In Datepicker New Project Page
     Month Or Year In Datapicker Should Be Displayed
