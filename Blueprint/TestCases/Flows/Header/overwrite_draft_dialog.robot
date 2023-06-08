@@ -7,6 +7,7 @@ Library            Blueprint.Steps.Verifications.Flow.Header.overwrite_draft_dia
 Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Create Draft Version
+Suite Teardown     Click On Flows Button
 Force Tags         FLOWS    OVERWRITE_DRAFT_DIALOG
 
 *** Variables ***
@@ -69,7 +70,8 @@ Verify 'Flow updated.' pop-up message is displayed when 'Confirm' button is clic
 
 *** Keywords ***
 Create Draft Version
-    Navigate To A Flow
+    # Navigate To A Flow
+    Reload The Page
     Click Tab In Flow Header    Create Form
     Add Component To Column Section In Create Form    numericbox   section-2-columnA
     Click Save Button In Flow Header
@@ -78,5 +80,6 @@ Make A Change In Create Form
     Display Header Dropdown In Flow Header
     Display Select Version In Flow Header
     Click Version In Flow Header    ${deprecated_flow_version}
+    Sleep    30
     Click Tab In Flow Header    Create Form
     Add Component To Column Section In Create Form    numericbox   section-2-columnA    

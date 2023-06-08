@@ -3,9 +3,8 @@ Library            Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
 Library            Blueprint.Steps.Verifications.Flow.Header.flow_tabs_verifications.FlowTabsVerifications
 Resource           Blueprint/TestCasesResources/navigate.resource
 
-Suite Setup        Navigate To A Flow
+Suite Setup        Reload The Page
 Force Tags         FLOWS    FLOW_TABS
-Suite Teardown     Click On Flows Button
 
 *** Variables ***
 ${create_form_tab}     Create Form

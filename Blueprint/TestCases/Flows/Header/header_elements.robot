@@ -6,8 +6,6 @@ Library            Blueprint.Steps.Actions.CommonElements.popup_messages_actions
 Library            Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
 Resource           Blueprint/TestCasesResources/navigate.resource
 
-Suite Setup        Navigate To A Flow
-Suite Teardown     Click On Flows Button
 Force Tags         FLOWS    HEADER_ELEMENTS
 
 *** Variables ***
