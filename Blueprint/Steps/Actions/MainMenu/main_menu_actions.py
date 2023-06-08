@@ -1,3 +1,5 @@
+import time
+
 from Blueprint.PageObject.MainMenu.main_menu_objects import MainMenuObjects
 
 
@@ -49,6 +51,7 @@ class MainMenuActions(MainMenuObjects):
 
     def go_to_project_process_in_main_menu(self, project_name: str):
         """Goes to a specific project"""
+        time.sleep(10)
         self.click_on_projects_button()
         self.insert_project_name_into_the_search_bar(project_name)
         self.click_on_a_project_result()
