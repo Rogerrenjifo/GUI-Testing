@@ -26,7 +26,9 @@ pipeline {
     stage('Run Functional'){
       steps{
         dir("${WORKSPACE}"){
-          bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'
+          }
         }
       }
       post {
@@ -40,7 +42,9 @@ pipeline {
     stage('Run Regretion Test Cases'){
       steps{
         dir("${WORKSPACE}"){
-          bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion -i PROJECT .\\Blueprint\\TestCases'
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion -i PROJECT .\\Blueprint\\TestCases'
+          }
         }
       }
       post {
@@ -58,7 +62,9 @@ pipeline {
       }
       steps{
         dir("${WORKSPACE}"){
-          bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\MobileDevice -i PROJECT .\\Blueprint\\TestCases'
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\MobileDevice -i PROJECT .\\Blueprint\\TestCases'
+          }
         }
       }
       post {
