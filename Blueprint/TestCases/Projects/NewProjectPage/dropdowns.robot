@@ -23,7 +23,7 @@ Verify that dropdownbox has the default value
     ${content}    Get The Content Of A Dropdown    ${section_new_history}   ${label_responsible}
     Option Should Be Equal   ${content}    ${user_by_default} 
 
-Verify that hover on the label of a dropdown the color change to purple
+Verify that hover on the label of a dropdown the color change to purple "rgba(117, 105, 255, 1)"
     The Rgb Color Of A Label Should Be As Expected    ${section_new_history}   ${label_responsible}   ${purple_color}
 
 verify that it is possible to select one of the available options
@@ -41,7 +41,8 @@ Verify when the box is clicked the list with the option is displayed
     Click In The Dropdown    ${section_new_history}    ${label_responsible}
     The Options List In Dropdown Should Be Displayed
 
-Verify that if the dropdown is a required field and it is empty the Field Required message is displayed in red color
+Verify that if the dropdown is a required field and it is empty the Field Required message is displayed in red color "rgba(255, 114, 105, 1)"
+    [Tags]    NEGATIVE
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_Multiline Box 1 }
     Field Required Message Should Be Displayed
 
@@ -49,6 +50,7 @@ Verify that if the dropdown is a required field and it is empty error icon is di
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_Multiline Box 1 }
     Field Required Icon Should Be Displayed
 
-Verify that if the dropdown is a required field and it is empty its label change to red color
+Verify that if the dropdown is a required field and it is empty its label change to red color "rgba(255, 114, 105, 1)"
+    [Tags]    NEGATIVE
     Remove The Content Of A Component In New Project Page    ${section_delivering}    ${label_Multiline Box 1 }
     The Rgb Color Of A Label Should Be As Expected    ${section_delivering}    ${label_Multiline Box 1 }   ${red_color}

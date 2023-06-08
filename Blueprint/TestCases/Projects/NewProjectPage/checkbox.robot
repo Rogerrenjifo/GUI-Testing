@@ -22,6 +22,7 @@ Verify that hover on the label of a checkbox the color change to purple "rgba(11
     The Rgb Color Of A Label Should Be As Expected    ${section_new_history}   ${label_go_to_school}   ${purple_color}
 
 Verify that a checkbox not marked like “Default Checked” in flow page is not marked by default
+    [Tags]    NEGATIVE
     Checkbox Should Not Be Marked    ${section_new_history}   ${label_go_to_school}
 
 Verify that clicking on the label of checkbox it gets marked
