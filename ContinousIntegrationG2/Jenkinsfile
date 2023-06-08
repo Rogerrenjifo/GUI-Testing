@@ -47,7 +47,7 @@ pipeline {
     // }
     stage('Run Test Mobile Device'){
       environment {
-        NOMBRE_VARIABLE = 'galaxy s20 ultra'
+        DEVICE='galaxy s20 ultra'
       }
       steps{
         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\ReportsProjects -i PROJECT .\\Blueprint\\TestCases'
