@@ -5,7 +5,7 @@ Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_create
 Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_create_flow.resource
 Resource    Blueprint/TestCasesResources/E2E/SwimmingCompetition/swimming_permissions.resource
 
-Force Tags    E2E    Swimming_Competition    PROJECT
+Force Tags    E2E    Swimming_Competition    PROJECTs
 Suite Teardown    Delete Storage
 
 *** Variables ***
