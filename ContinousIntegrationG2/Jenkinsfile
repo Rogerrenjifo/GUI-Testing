@@ -27,8 +27,8 @@ pipeline {
       }
     }
     stage('Run Functional'){
-      when{
-        exprssion {${SMOKE_TEST} == 'true'}
+      when {
+        expression { SMOKE_TEST == true }
       }
       steps{
         dir("${WORKSPACE}"){
@@ -46,8 +46,8 @@ pipeline {
       }
     }
     stage('Run Regression Test'){
-      when{
-        expression {${REGESSION} == 'true'}
+      when {
+        expression { REGESSION == true }
       }
       steps{
         dir("${WORKSPACE}"){
@@ -65,8 +65,8 @@ pipeline {
       }
     }
     stage('Compa Test Mobile Device'){
-      when{
-        expression {${COMPATIBILITY} == 'true'}
+      when {
+        expression { COMPATIBILITY == true }
       }
       environment {
         DEVICE='galaxy s20 ultra'
