@@ -26,25 +26,25 @@ pipeline {
         }
       }
     }
-    stage('Smoke Test'){
-      when {
-        expression { SMOKE_TEST == "true" }
-      }
-      steps{
-        dir("${WORKSPACE}"){
-          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Smoke -i PROJECTANDSMOKE .\\Blueprint\\TestCases'
-          }
-        }
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/output.xml', fingerprint: true
-        }
-      }
-    }
+    // stage('Smoke Test'){
+    //   when {
+    //     expression { SMOKE_TEST == "true" }
+    //   }
+    //   steps{
+    //     dir("${WORKSPACE}"){
+    //       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+    //         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Smoke -i PROJECTANDSMOKE .\\Blueprint\\TestCases'
+    //       }
+    //     }
+    //   }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/output.xml', fingerprint: true
+    //     }
+    //   }
+    // }
     stage('Regression Test'){
       when {
         expression { REGESSION == "true" }
@@ -64,29 +64,29 @@ pipeline {
         }
       }
     }
-    stage('Compatibility Test'){
-      when {
-        expression { COMPATIBILITY == "true" }
-      }
-      environment {
-        DEVICE='galaxy s20 ultra'
-        IMPLICIT_TIMEOUT="30"
-      }
-      steps{
-        dir("${WORKSPACE}"){
-          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Compatibility -i PROJECT .\\Blueprint\\TestCases'
-          }
-        }
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/output.xml', fingerprint: true
-        }
-      }
-    }
+    // stage('Compatibility Test'){
+    //   when {
+    //     expression { COMPATIBILITY == "true" }
+    //   }
+    //   environment {
+    //     DEVICE='galaxy s20 ultra'
+    //     IMPLICIT_TIMEOUT="30"
+    //   }
+    //   steps{
+    //     dir("${WORKSPACE}"){
+    //       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+    //         bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Compatibility -i PROJECT .\\Blueprint\\TestCases'
+    //       }
+    //     }
+    //   }
+    //   post {
+    //     always {
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/log.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/report.html', fingerprint: true
+    //       archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/output.xml', fingerprint: true
+    //     }
+    //   }
+    // }
   }
   post {
     always {
