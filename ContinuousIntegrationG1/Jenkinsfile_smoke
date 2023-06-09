@@ -8,7 +8,7 @@ pipeline {
     IMPLICIT_TIMEOUT="60"
   }
   stages {          
-    stage('Setup Browser Environments') {    
+    stage('Build Browser Environments') {    
       steps {
         script {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -18,22 +18,22 @@ pipeline {
         }
       }
     }
-    stage('Regression'){
+    stage('Smoke_Test'){
       environment {
-        DEVICE="pc"
+        DEVICE="ipad air"
         BROWSER="remote_chrome"
       }
       steps {
         script{
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS .\\Blueprint\\TestCases"
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i CREATE_F0RM .\\Blueprint\\TestCases"
           }
         }
       }
       post {
         always {
           script {
-            stepName = "Regression_Test_PC"
+            stepName = "Regretion_Test_Ipad_Air"
             folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
             bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
             bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
@@ -43,7 +43,32 @@ pipeline {
         }
       }
     }
-  }
+  stage('Regression_Test_Galaxy_S20_Ultra'){
+      environment {
+        DEVICE="galaxy s20 ultra"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i CREATE_FLOW .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "Regretion_Test_Galaxy_S20_Ultra"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
+  } 
   post{
     always{
       archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true, allowEmptyArchive: true

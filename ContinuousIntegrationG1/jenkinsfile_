@@ -1,0 +1,129 @@
+pipeline {
+  agent any
+  environment {
+    PYTHONPATH = "${WORKSPACE}"
+    REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
+    USER=credentials('user')
+    PASSWORD=credentials('password')
+    IMPLICIT_TIMEOUT="60"
+  }
+  stages {          
+    stage('Build Browser Environments') {    
+      steps {
+        script {
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat 'docker run -d -p 4444:4444 --name chrome -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest'
+            sleep time: 20000, unit: 'MILLISECONDS'
+          }    
+        }
+      }
+    }
+    stage('E2E_Scenarios'){
+      environment {
+        DEVICE="pc"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWSANDE2E .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "E2E_Scenarios"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
+    stage('Regression_Test_PC'){
+      environment {
+        DEVICE="pc"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -i FLOWS .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "Regretion_Test_PC"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
+    stage('Regression_Test_Ipad_Air'){
+      environment {
+        DEVICE="ipad air"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i CREATE_F0RM .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "Regretion_Test_Ipad_Air"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
+  stage('Regression_Test_Galaxy_S20_Ultra'){
+      environment {
+        DEVICE="galaxy s20 ultra"
+        BROWSER="remote_chrome"
+      }
+      steps {
+        script{
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            bat ".\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports -e E2E -i CREATE_FLOW .\\Blueprint\\TestCases"
+          }
+        }
+      }
+      post {
+        always {
+          script {
+            stepName = "Regretion_Test_Galaxy_S20_Ultra"
+            folderPath = "${env.WORKSPACE}\\Blueprint\\Reports\\${stepName}"
+            bat "if not exist \"${folderPath}\" mkdir \"${folderPath}\""
+            bat "move /Y .\\Blueprint\\Reports\\log.html ${folderPath}\\log.html"
+            bat "move /Y .\\Blueprint\\Reports\\output.xml ${folderPath}\\output.xml"
+            bat "move /Y .\\Blueprint\\Reports\\report.html ${folderPath}\\report.html"
+          }
+        }
+      }
+    }
+  } 
+  post{
+    always{
+      archiveArtifacts artifacts: "Blueprint/Reports/", fingerprint: true, allowEmptyArchive: true
+      bat 'docker container stop chrome'
+      bat 'docker container rm chrome'
+    }
+  }
+}
