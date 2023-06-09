@@ -11,8 +11,8 @@ pipeline {
     CI_EXECUTION="False"
     virtualenvDir = "${WORKSPACE}\\venv"
     SMOKE_TEST="false"
-    REGESSION="false"
-    COMPATIBILITY="true"
+    REGRESSION="true"
+    COMPATIBILITY="false"
   }
   stages{
     stage('Install Dependencies') {
@@ -47,12 +47,13 @@ pipeline {
     // }
     stage('Regression Test'){
       when {
-        expression { REGESSION == "true" }
+        expression { REGRESSION == "true" }
       }
       steps{
         dir("${WORKSPACE}"){
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion -i PROJECT .\\Blueprint\\TestCases'
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion 
+            -i PROJECT .\\Blueprint\\TestCases'
           }
         }
       }
