@@ -38,7 +38,6 @@ Verify that when click in close button of delete dialog, the delete dialog is no
     Delete Dialog Should Not Be Displayed
 
 Verify that when canceling the deletion of a project instance it still exists in the list
-    [Tags]    SMOKE
     Cancel Delete Project Instance Process In Project Page    ${project_id}
     Project Instance Should Still Exist    ${project_id}
 
