@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_pag
 Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     PROJECT    SMOKE    NEW_PROJECT    COMPONENTS
+Force Tags     PROJECT    NEW_PROJECT    COMPONENTS
 
 *** Variables ***
 ${section_name}    New history
