@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectAction
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     New_Project_Page    Datebox    PROJECT
+Force Tags     NEW_PROJECT    DATEBOX    PROJECT
 
 *** Variables ***
 ${section_delivering}    Delivering
@@ -50,18 +50,19 @@ Verify if the input of datebox has a default value the default value is displaye
     Option Should Be Equal   ${content}    ${default_date} 
 
 Verify that clicking the input of datebox the calendar is displayed
+    [Tags]    SMOKE
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
     The Datepicker In Datebox Should Be Displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
 
-Verify that clicking the month in datapicker the month list is displayed 
+Verify that clicking the month in datapicker the month list is displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date} 
     Click To Display Months In Datepicker New Project Page 
     Month Or Year In Datapicker Should Be Displayed 
     Click To Display Months In Datepicker New Project Page 
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date} 
 
-Verify that clicking the year in datapicker the year list is displayed 
+Verify that clicking the year in datapicker the year list is displayed
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
     Click To Display Years In Datepicker New Project Page
     Month Or Year In Datapicker Should Be Displayed
@@ -81,12 +82,14 @@ Verify the user is able to select a year in a datebox
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
 
 Verify the user is able to set a complete date in a datebox
+    [Tags]    SMOKE
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
     Select A Complete Date In Datepicker    ${year_to_select}    ${month_to_select}    ${day_to_select}
     ${content}    Get The Content Of A Component In New Project Page    ${section_delivering}   ${label_received_date}
     Option Should Be Equal   ${content}    ${date_to_compare}
 
 Verify user is able to change a selected date in a datebox
+    [Tags]    SMOKE
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
     Select A Complete Date In Datepicker    ${select_new_year}    ${select_new_month}    ${select_new_day}
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
@@ -95,6 +98,7 @@ Verify user is able to change a selected date in a datebox
     Option Should Be Equal   ${content}    ${date_to_compare}
 
 Verify date can be deleted from a datebox
+    [Tags]    SMOKE
     Click A Component Inside A Section In New Project Page    ${section_delivering}    ${label_received_date}
     Select A Complete Date In Datepicker    ${select_new_year}    ${select_new_month}    ${select_new_day}
     Delete Date In A Datebox    ${section_delivering}   ${label_received_date}

@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Actions.Projects.new_project_actions.NewProjectAction
 Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_page_verifications.NewProjectPageVerifications
 Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     New_Project_Page    Dropdowns    PROJECT
+Force Tags     NEW_PROJECT    DROPDOWNS    PROJECT
 
 *** Variables ***
 ${user_to_select}    Roger Renjifo
@@ -27,6 +27,7 @@ Verify that hover on the label of a dropdown the color change to purple "rgba(11
     The Rgb Color Of A Label Should Be As Expected    ${section_new_history}   ${label_responsible}   ${purple_color}
 
 verify that it is possible to select one of the available options
+    [Tags]    SMOKE
     Select User From The Dropdown In New Project Page    ${section_new_history}    ${label_responsible}    ${user_to_select}
     ${content}    Get The Content Of A Dropdown    ${section_new_history}   ${label_responsible}
     Option Should Be Equal   ${content}    ${user_to_select}

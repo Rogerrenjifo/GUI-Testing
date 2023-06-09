@@ -2,7 +2,7 @@
 Documentation    This suite verifies the funcitonalities of the "Delete process instance" dialog
 Resource    Blueprint/TestCasesResources/project_page.resource
 Library    Blueprint.Steps.Verifications.Projects.ProjectPage.delete_dialog_project_page_verifications.DeleteDialogProjectPageVerifications
-Force Tags    DELETE_INSTANCE   PROJECT_PAGE    PROJECT
+Force Tags    PROJECT_PAGE    DELETE_INSTANCE    PROJECT
 Suite Setup    Search Project, Create Instances, And Open Delete Dialog    ${3}    ${project_name}
 Suite Teardown    Delete Created Instances
 
@@ -38,6 +38,7 @@ Verify that when click in close button of delete dialog, the delete dialog is no
     Delete Dialog Should Not Be Displayed
 
 Verify that when canceling the deletion of a project instance it still exists in the list
+    [Tags]    SMOKE
     Cancel Delete Project Instance Process In Project Page    ${project_id}
     Project Instance Should Still Exist    ${project_id}
 
@@ -59,6 +60,7 @@ Verify the text of the pop up message matches “Process instance deleted”
     Close Pop Up Message In Project Page
 
 Verify that when deleting a project instance, it is no longer found on any of the pages
+    [Tags]    SMOKE
     ${ids}     Get All Projects Ids Text In Project Page
     ${project_id}   Obtain Random Id    ${ids}
     Delete Project Instance Process In Project Page    ${project_id}

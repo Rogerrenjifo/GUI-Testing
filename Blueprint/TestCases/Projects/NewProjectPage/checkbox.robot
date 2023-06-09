@@ -7,7 +7,7 @@ Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_pag
 Library    Blueprint.Steps.Utils.main_menu_manager.MainMenuManager
 Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     New_Project_Page    Checkbox    PROJECT
+Force Tags     NEW_PROJECT    CHECKBOX    PROJECT
 
 *** Variables ***
 ${section_new_history}    New history
@@ -30,6 +30,7 @@ Verify that clicking on the label of checkbox it gets marked
     Checkbox Should Be marked    ${section_new_history}   ${label_go_to_school}
 
 Verify that clicking the checkbox it gets marked
+    [Tags]    SMOKE
     Click A Checkbox Inside A Section In New Project Page    ${section_new_history}    ${label_photo_and_video_done}
     Checkbox Should Be marked    ${section_new_history}    ${label_photo_and_video_done}
 
@@ -41,5 +42,6 @@ Verify that clicking a marked checkbox it gets unmarked
     Checkbox Should Not Be Marked    ${section_delivering}    ${label_has_identity_card}
 
 Verify that clicking the label of a marked checkbox it gets unmarked
+    [Tags]    SMOKE
     Click A Checkbox Label Inside A Section In New Project Page    ${section_new_history}   ${label_go_to_school}
     Checkbox Should Not Be Marked    ${section_new_history}   ${label_go_to_school}

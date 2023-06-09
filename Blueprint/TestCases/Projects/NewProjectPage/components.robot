@@ -6,7 +6,7 @@ Library    Blueprint.Steps.Verifications.Projects.NewProjectPage.new_project_pag
 Resource    Blueprint/TestCasesResources/Projects/NewProjectPage/new_project.resource
 
 Suite Setup    Search An Specific Project And Click On New Request Button
-Force Tags     PROJECT
+Force Tags     PROJECT    SMOKE    NEW_PROJECT    COMPONENTS
 
 *** Variables ***
 ${section_name}    New history
@@ -34,14 +34,17 @@ Verify the user is able to select the text box
     Border Of A Component Should Be Highlighted    ${section_name}    ${label_email}    ${highlighted_border_color}
 
 Verify the user is able to type text or number in a text box
+    [Tags]    SMOKE
     Insert Text Or Number In A Component In New Project Page    ${section_name}    ${label_lastname}    ${text_number}
     The Text Or Number Should Be As Expected    ${section_name}    ${label_lastname}    ${text_number}
 
 Verify the user is able to type special characters in a text box
+    [Tags]    SMOKE
     Insert Text Or Number In A Component In New Project Page    ${section_name}    ${label_email}    ${chars_text}
     The Text Or Number Should Be As Expected    ${section_name}    ${label_email}    ${chars_text}
 
 Verify it is posible to remove the text in a text box
+    [Tags]    SMOKE
     Remove The Content Of A Component In New Project Page    ${section_name}    ${label_lastname}
     The Content Of A Component Should Be Empty    ${section_name}    ${label_lastname}
 

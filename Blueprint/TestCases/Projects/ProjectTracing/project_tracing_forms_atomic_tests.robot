@@ -4,7 +4,7 @@ Documentation    Tests to verify the functionality of each component
 Resource         Blueprint/TestCasesResources/Projects/ProjectTracing/project_tracing_forms_resources.robot
 Suite Setup      Open project tracing forms webpage
 Test Teardown    Click section title in project forms    Section 1
-Force Tags        PROJECT    HOLI
+Force Tags        PROJECT    PROJECT_TRACING_FORM    PROJECT_TRACING
 *** Test Cases ***
 Verify edit button is visible when mouse is hover text field
     Put mouse hover field with title    Title    Section 1
@@ -173,11 +173,13 @@ Verify cancel button is enabled when a required field is empty
     Cancel button should be enabled
 
 Verify text fields can have alphanumeric characters
+    [Tags]    SMOKE
     Set text input in project forms    Title    Section 1    qwertyuiopasdfghjklzxcvbnm123456789
     Editable text input should be    qwertyuiopasdfghjklzxcvbnm123456789
     Click cancel changes in project forms
 
 Verify text fields can have special characters
+    [Tags]    SMOKE
     Set text input in project forms    Title    Section 1    ñ*!!$%&/|@#~€¬
     Editable text input should be    ñ*!!$%&/|@#~€¬
 
@@ -195,17 +197,17 @@ Verify that typing not matching information displays "No items found" label
     Dropdown no items found label should be visible
 
 Verify that typing not matching information disables save button
-    [Tags]    BG-245    BUG    NEGATIVE
+    [Tags]    BUG-BG-245    NEGATIVE
     Set text input in project forms    Dropdown Box 1    Section 1    z
     Save button should be disabled
 
 Verify that only letter 'e' is allowed on a numeric field
-    [Tags]    BG-254    BUG    NEGATIVE
+    [Tags]    BUG-BG-254    NEGATIVE
     Set numeric input in project forms    Numeric Box 1    Section 1    abcdefghijklmnopqrstuvwxyz
     Editable numeric input should be    e
 
 Verify that only '+' and '-' special character are allowed on a numeric field
-    [Tags]    BG-254    BUG
+    [Tags]    BUG-BG-254
     Set numeric input in project forms    Numeric Box 1    Section 1    +-ñ^*!¨!$%&/|@#~€¬
     Editable numeric input should be    +-
 
@@ -220,6 +222,7 @@ Verify that 'down' arrow adds 1 unit to the value on a numeric field
     Editable numeric input should be    1
 
 Verify that checkbox value changes when is clicked
+    [Tags]    SMOKE
     Click checkbox label in project forms    CheckBox 1    Section 1
     Checkbox value should be    CheckBox 1    Section 1    true
 

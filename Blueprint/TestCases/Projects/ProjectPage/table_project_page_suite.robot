@@ -11,10 +11,12 @@ ${project_name}    AT19-ProjectPage-9D6
 
 *** Test Cases ***
 Verify all projects have an Id
+    [Tags]    SMOKE
     ${projects_ids}    Get All Projects Ids Text In Project Page
     All Projects Should Have Id    ${projects_ids}
 
 Verify that all instance ids are different
+    [Tags]    SMOKE
     ${projects_ids}    Get All Projects Ids Text In Project Page
     Verify All Elements Are Different    ${projects_ids}
 
@@ -73,6 +75,7 @@ Verify that when clicking on the delete button from actions, delete dialog is vi
     Delete Dialog Should Be Displayed
 
 Verify that when clicking on a project instance the site redirects to the project trace page of that instance
+    [Tags]    SMOKE
     [Teardown]    Go To Project Process In Main Menu    ${flow_name}
     ${projects_ids}    Get All Projects Ids Text In Project Page
     ${project_id}   Obtain Random Id    ${projects_ids}
