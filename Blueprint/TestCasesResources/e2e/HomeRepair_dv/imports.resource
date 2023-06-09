@@ -1,0 +1,23 @@
+*** Settings ***
+Library              Blueprint.Steps.Actions.Flows.create_form_elements_actions.CreateFormElementsActions
+Library              Blueprint.Steps.Actions.Flows.create_form_main_panel_actions.FormMainPanelActions
+Library              Blueprint.Steps.Actions.Flows.create_form_properties_panel_actions.PropertiesPanelActions
+Library              Blueprint.Steps.Actions.Flows.flow_main_panel_actions.FlowMainPanelActions
+Library              Blueprint.Steps.Actions.Flows.flow_components_actions.FlowComponentsActions
+Library              Blueprint.Steps.Actions.Flows.flows_properties_actions.FlowPropertiesActions
+Library              Blueprint.Steps.Actions.MainMenu.main_menu_actions.MainMenuActions
+Library              Blueprint.Steps.Utils.main_menu_manager.MainMenuManager
+Library              Blueprint.Steps.Verifications.e2e.HomeRepair_dv.home_repair_verifications.HomeRepairVerifications
+Library              Blueprint.Steps.Verifications.Flow.CreateForm.create_form_add_component_verification.CreateFormAddComponentVerifications
+Library              Blueprint.Steps.Actions.Flows.header_actions.HeaderActions
+Library              Blueprint.Steps.Actions.Flows.flow_page_actions.NewFlowActions
+Library              Blueprint.Steps.Actions.Logout.logout_actions.LogoutActions
+Library              Blueprint.Steps.Actions.Flows.flow_permissions_actions.FlowPermissionsActions
+Library              Blueprint.Steps.Verifications.Flow.Header.header_verifications.HeaderVerifications
+Library              Blueprint.Steps.Actions.Flows.section_visibility_permissions_actions.SectionsVisibilityActions
+Library              Blueprint.Steps.Verifications.Flow.Permissions.sections_visibility_verifications.SectionsVisibilityVerifications
+Library              Blueprint.Steps.Actions.Flows.publish_tab_actions.PublishTabActions
+Library              Blueprint.Steps.Verifications.Projects.ProjectPage.header_project_page_verifications.HeaderProjectPageVerifications
+Resource             Blueprint/TestCasesResources/e2e/HomeRepair_dv/keywords.resource
+Resource             Blueprint/TestCasesResources/e2e/HomeRepair_dv/home_repair_forms.resource
+Resource             Blueprint/TestCasesResources/e2e/HomeRepair_dv/home_repair_flows.resource
