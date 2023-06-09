@@ -10,9 +10,9 @@ pipeline {
     IMPLICIT_TIMEOUT="70"
     CI_EXECUTION="False"
     virtualenvDir = "${WORKSPACE}\\venv"
-    SMOKE_TEST=false
-    REGESSION=false
-    COMPATIBILITY=true
+    SMOKE_TEST="false"
+    REGESSION="false"
+    COMPATIBILITY="true"
   }
   stages{
     stage('Install Dependencies') {
@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Run Functional'){
       when {
-        expression { SMOKE_TEST == true }
+        expression { SMOKE_TEST == "true" }
       }
       steps{
         dir("${WORKSPACE}"){
@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Run Regression Test'){
       when {
-        expression { REGESSION == true }
+        expression { REGESSION == "true" }
       }
       steps{
         dir("${WORKSPACE}"){
@@ -64,9 +64,9 @@ pipeline {
         }
       }
     }
-    stage('Compa Test Mobile Device'){
+    stage('Compatibility'){
       when {
-        expression { COMPATIBILITY == true }
+        expression { COMPATIBILITY == "true" }
       }
       environment {
         DEVICE='galaxy s20 ultra'
