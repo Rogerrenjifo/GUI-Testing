@@ -7,7 +7,6 @@ Resource           Blueprint/TestCasesResources/navigate.resource
 
 Suite Setup        Navigate To A Flow
 Force Tags         DELETE_DIALOG   FLOWS
-Suite Teardown     Click On Flows Button
 
 *** Variables ***
 ${deprecated_flow_version}      v1

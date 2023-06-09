@@ -1,6 +1,7 @@
 import time
 
 from Blueprint.PageObject.MainMenu.main_menu_objects import MainMenuObjects
+import time
 
 
 class MainMenuActions(MainMenuObjects):

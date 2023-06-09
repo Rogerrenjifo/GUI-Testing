@@ -30,9 +30,15 @@ Return to previous page
     Go Back To Previous Page
 
 Navigate To A Flow
+    Reload Window
     Click On Flows Button
+    Sleep    20s
     Insert Flow Name Into The Search Bar    ${search_flow}
     Click On Flow Result
+
+Reload The Page
+    Reload Window
+    Sleep    45s    
 
 Navigate to Flows-page-Permission
     Create A New Flow With Random Code
