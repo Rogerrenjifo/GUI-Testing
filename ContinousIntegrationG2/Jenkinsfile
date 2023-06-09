@@ -10,9 +10,9 @@ pipeline {
     IMPLICIT_TIMEOUT="70"
     CI_EXECUTION="False"
     virtualenvDir = "${WORKSPACE}\\venv"
-    SMOKE_TEST="true"
+    SMOKE_TEST="false"
     REGESSION="false"
-    COMPATIBILITY="false"
+    COMPATIBILITY="true"
   }
   stages{
     stage('Install Dependencies') {
@@ -75,15 +75,15 @@ pipeline {
       steps{
         dir("${WORKSPACE}"){
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\MobileDevice -i PROJECT .\\Blueprint\\TestCases'
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Compatibility -i PROJECT .\\Blueprint\\TestCases'
           }
         }
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/output.xml', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Compatibility/output.xml', fingerprint: true
         }
       }
     }
