@@ -10,6 +10,9 @@ pipeline {
     IMPLICIT_TIMEOUT="70"
     CI_EXECUTION="False"
     virtualenvDir = "${WORKSPACE}\\venv"
+    SMOKE_TEST=false
+    REGESSION=false
+    COMPATIBILITY=true
   }
   stages{
     stage('Install Dependencies') {
@@ -24,63 +27,69 @@ pipeline {
       }
     }
     stage('Run Functional'){
-      steps{
-        dir("${WORKSPACE}"){
-          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'
+      when(exprssion {${SMOKE_TEST} == 'true'}){
+        steps{
+          dir("${WORKSPACE}"){
+            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+              bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -e NEGATIVE .\\Blueprint\\TestCases'
+            }
           }
         }
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/output.xml', fingerprint: true
+        post {
+          always {
+            archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/log.html', fingerprint: true
+            archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/report.html', fingerprint: true
+            archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/output.xml', fingerprint: true
+          }
         }
       }
     }
-    stage('Run Regretion Test Cases'){
-      steps{
-        dir("${WORKSPACE}"){
-          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion -i PROJECT .\\Blueprint\\TestCases'
+    stage('Run Regression Test'){
+      when(expression {${REGESSION} == 'true'}){
+        steps{
+          dir("${WORKSPACE}"){
+            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+              bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Regretion -i PROJECT .\\Blueprint\\TestCases'
+            }
           }
         }
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/output.xml', fingerprint: true
+        post {
+          always {
+            archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/log.html', fingerprint: true
+            archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/report.html', fingerprint: true
+            archiveArtifacts artifacts: 'Blueprint/Reports/Regretion/output.xml', fingerprint: true
+          }
         }
       }
     }
-    stage('Run Test Mobile Device'){
-      environment {
-        DEVICE='galaxy s20 ultra'
-        IMPLICIT_TIMEOUT="30"
-      }
-      steps{
-        dir("${WORKSPACE}"){
-          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\MobileDevice -i PROJECT .\\Blueprint\\TestCases'
+    stage('Compa Test Mobile Device'){
+      when(expression {${COMPATIBILITY} == 'true'}){
+        environment {
+          DEVICE='galaxy s20 ultra'
+          IMPLICIT_TIMEOUT="30"
+        }
+        steps{
+          dir("${WORKSPACE}"){
+            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+              bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\MobileDevice -i PROJECT .\\Blueprint\\TestCases'
+            }
           }
         }
-      }
-      post {
-        always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/output.xml', fingerprint: true
+        post {
+          always {
+            archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/log.html', fingerprint: true
+            archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/report.html', fingerprint: true
+            archiveArtifacts artifacts: 'Blueprint/Reports/MobileDevice/output.xml', fingerprint: true
+          }
         }
       }
     }
   }
-  // post {
-  //   always {
-  //     script {
-  //       bat "rmdir /s /q ${virtualenvDir}"
-  //     }
-  //   }
-  // }
+  post {
+    always {
+      script {
+        bat "rmdir /s /q ${virtualenvDir}"
+      }
+    }
+  }
 }
