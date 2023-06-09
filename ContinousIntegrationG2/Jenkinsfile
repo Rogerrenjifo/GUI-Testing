@@ -10,8 +10,8 @@ pipeline {
     IMPLICIT_TIMEOUT="70"
     CI_EXECUTION="False"
     virtualenvDir = "${WORKSPACE}\\venv"
-    SMOKE_TEST="false"
-    REGESSION="true"
+    SMOKE_TEST="true"
+    REGESSION="false"
     COMPATIBILITY="false"
   }
   stages{
@@ -33,15 +33,15 @@ pipeline {
       steps{
         dir("${WORKSPACE}"){
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\HappyPath -i PROJECT -i SMOKE .\\Blueprint\\TestCases'
+            bat '.\\venv\\Scripts\\robot  --outputdir .\\Blueprint\\Reports\\Smoke -i PROJECT -i SMOKE .\\Blueprint\\TestCases'
           }
         }
       }
       post {
         always {
-          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/log.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/report.html', fingerprint: true
-          archiveArtifacts artifacts: 'Blueprint/Reports/HappyPath/output.xml', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/log.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/report.html', fingerprint: true
+          archiveArtifacts artifacts: 'Blueprint/Reports/Smoke/output.xml', fingerprint: true
         }
       }
     }
